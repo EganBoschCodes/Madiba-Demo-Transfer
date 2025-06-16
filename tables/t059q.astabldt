@@ -1,0 +1,45 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Quellensteuer'
+
+define table t059q {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key land1: land1; // abap.char(3): Country/Region Key
+	key qsskz: qsskz; // abap.char(2): Withholding Tax Code
+	qscod: qscod; // abap.char(4): Official Wh Tax Code
+	qsbez: qsbez; // abap.char(40): Description
+	qproz: qproz; // abap.dec(5, 2): Percentage Subject To Tax
+	qsatz: qsatz; // abap.dec(4, 2): Withholding Tax Rate
+	xntto: xntto; // abap.char(1): Base For Calculating Net Tax
+	xqsbz: xqsbz; // abap.char(1): Posting With Payment
+	qsatr: qsatr; // abap.dec(4, 2): Reduced Rate
+	xqfor: xqfor; // abap.char(1): Wtax Formula
+	
+	@Semantics.amount.currencyCode: 't059q.qmiwa'
+	qmind: qmind; // abap.curr(23, 2): Minimum Amount
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	qmiwa: qmiwa; // abap.cuky(5): Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bland: regio; // abap.char(3): Region
+	fprcd: fprcd; // abap.char(3): Provincial Tax Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	qekar: qekar; // abap.char(4): Income Type
+	qsats: qsats; // abap.dec(4, 2): Reunification Tax
+	j_1isectio: j_1isectio; // abap.char(10): Tds Section
+	j_1itxvnty: j_1itxvnty; // abap.char(1): Type Of Company
+	j_1ixvnds: j_1itxvnds; // abap.char(20): Wt - Vendor Type Desc
+}

@@ -1,0 +1,111 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Kostenrechnungskreise .'
+
+define table tka01 {
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key kokrs: kokrs; // abap.char(4): Controlling Area
+	bezei: bezei; // abap.char(25): Name
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers; // abap.cuky(5): Currency
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktopl: ktopl; // abap.char(4): Chart Of Accounts
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lmona: periv; // abap.char(2): Fiscal Year Variant
+	kokfi: kokfi; // abap.char(1): Cocd -> Co Area
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	logsystem: logsystem; // abap.char(10): Logical System
+	alemt: co_alemt; // abap.char(2): Distribution Method
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	md_logsystem: masterdata_logsystem; // abap.char(10): Lsystem Master Data
+	khinr: ksthi; // abap.char(12): Cctr Std. Hierarchy
+	komp1: komp1; // abap.char(1): Convert Revenue
+	komp0: komp0; // abap.char(1): Productive Indicator
+	komp2: komp2; // abap.char(1): Reserve
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	erkrs: erkrs; // abap.char(4): Operating Concern
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	dprct: dprct; // abap.char(10): Dummy Profit Center
+	phinr: phinr; // abap.char(12): Hierarchy Area
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	pcldg: pcldg; // abap.char(2): Profit Ctr Ledger
+	pcbel: pcbel; // abap.char(1): Elim.intern.bus.vol
+	xwbuk: xwbuk; // abap.char(1): Diff. Ccode Currency
+	bphinr: co_bphinr; // abap.char(12): Hierarchy Area
+	xbpale: xbpale; // abap.char(1): Bus.proc. Ale Active
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kstar_fin: kstar_fin; // abap.char(10): Celem Vend.dwnpaymnt
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kstar_fid: kstar_fid; // abap.char(10): Revtyp Cus.downpaymt
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'CO-PCA: Berichtswhrung'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pcacur: pcacur; // abap.cuky(5): Profit Center Local Currency
+	pcacurtp: curtppc; // abap.char(2): Currency Type For Profit Ctr Acctg
+	pcatrcur: pcatrcur; // abap.char(1): Transaction Currency
+	ctyp: co_ctyp; // abap.char(2): Currency Type
+	rclac: rclactiv; // abap.char(1): Recon.ledger Active
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	blart: rcl_blart; // abap.char(2): Document Type
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fikrs: fikrs; // abap.char(4): Fm Area
+	rcl_primac: rcl_primac; // abap.char(1): Acct Determination For Primary Celms
+	pca_alemt: pca_alemt; // abap.char(2): Ale Distribution Method
+	pca_valu: valutyp; // abap.numc(1): Valuation View
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cvprof: cvprof; // abap.char(4): Currency And Valuation Profile
+	cvact: cvact; // abap.char(1): C&V Profile Active
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vname: co_vname; // abap.char(12): Person Responsible
+	pca_acc_diff: pca_account_val_diff; // abap.char(1): Account Control Transfer Valuation Diff.
+	tp_valohb: valutyp_oh_base; // abap.numc(1): Valview For Calcbase
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	defprctr: fagl_defprctr; // abap.char(10): Default Profit Ctr
+	f_obsolete: co_obsolete_f4; // abap.char(1): Hide Entry In Input Help
+	leading_fsv: fco_leading_fsv; // abap.char(42): Leading Fin Stmnt Version
+	auth_use_no_std: auth_use_no_std; // abap.char(1): Do Not Use Std Hier.
+	auth_use_add1: auth_use_add1; // abap.char(1): Hierarchy 1
+	auth_use_add2: auth_use_add2; // abap.char(1): Hierarchy 2
+	auth_ke_no_std: auth_use_no_std; // abap.char(1): Do Not Use Std Hier.
+	auth_ke_use_add1: auth_use_add1; // abap.char(1): Hierarchy 1
+	auth_ke_use_add2: auth_use_add2; // abap.char(1): Hierarchy 2
+	objcur_use: objcuruse; // abap.char(4): Alternative Use Of Object Currency
+	objcur_kurst: kurst; // abap.char(4): Exchange Rate Type
+	objcur_curdt: objcurcurdt; // abap.char(1): Transltn Date Type
+	objcur_srcct: fins_source_curtype; // abap.char(2): Source Currency Type
+	objcur_srcal: objcursrcalt; // abap.char(1): Equal Currency Preferred
+}

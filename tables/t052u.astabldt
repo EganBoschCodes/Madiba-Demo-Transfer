@@ -1,0 +1,23 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Eigene Erluterungen zu Zahlungsbedingungen'
+
+define table t052u {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key spras: spras; // abap.lang(1): Language Key
+	key zterm: dzterm; // abap.char(4): Terms Of Payment
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key ztagg: dztagg_052; // abap.numc(2): Day Limit
+	text1: text1_052; // abap.char(50): Own Explanation
+}

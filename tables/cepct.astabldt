@@ -1,0 +1,34 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Profit-Center-Stammdaten Texte'
+
+define table cepct {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Mandant'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Sprachenschlssel'
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.label: 'Profit Center'
+	@AbapCatalog.foreignKey.messageClass: 'KM'
+	@AbapCatalog.foreignKey.messageNumber: '004'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key prctr: prctr; // abap.char(10): Profit Center
+	key datbi: datbi; // abap.dats(8): Valid To
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	key kokrs: kokrs; // abap.char(4): Controlling Area
+	ktext: ktext; // abap.char(20): Name
+	ltext: ltext; // abap.char(40): Long Text
+	mctxt: mcpct; // abap.char(20): Profit Center Text
+}

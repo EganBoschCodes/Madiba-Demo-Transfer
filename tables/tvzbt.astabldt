@@ -1,0 +1,18 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Customers: Terms of Payment Texts'
+
+define table tvzbt {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key zterm: dzterm; // abap.char(4): Terms Of Payment
+	vtext: dzterm_bez; // abap.char(30): Description
+}

@@ -1,0 +1,101 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Sachkontenstamm (Buchungskreis)'
+
+define table skb1 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	key saknr: saknr; // abap.char(10): G/L Account
+	begru: brgru; // abap.char(4): Authorization Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	busab: busab; // abap.char(2): Clerk Abbreviation
+	datlz: datlz; // abap.dats(8): Date Of Last Interest Calc.
+	erdat: erdat_rf; // abap.dats(8): Created On
+	ernam: ernam_rf; // abap.char(12): Created By
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	fdgrv: fdgrv; // abap.char(10): Planning Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	fdlev: fdlev; // abap.char(2): Planning Level
+	fipls: fipls; // abap.numc(3): Financial Budget
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	fstag: fstag; // abap.char(4): Field Status Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hbkid: hbkid; // abap.char(5): House Bank
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hktid: hktid; // abap.char(5): Account Id
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	kdfsl: kdfsl; // abap.char(4): Exchange Rate Difference Key
+	mitkz: mitkz; // abap.char(1): Recon. Account For Acct Type
+	mwskz: smwsk; // abap.char(2): Tax Category
+	stext: stext_skb1; // abap.char(50): G/L Acct Add. Text
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vzskz: vzskz; // abap.char(2): Interest Indicator
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers_skb1; // abap.cuky(5): Account Currency
+	wmeth: wmeth; // abap.char(2): Acct Managed In Ext. System
+	xgkon: xgkon; // abap.char(1): Relevant To Cash Flow
+	xintb: xintb; // abap.char(1): Post Automatically Only
+	xkres: xkres; // abap.char(1): Line Item Display
+	xloeb: xloev; // abap.char(1): Mark For Deletion
+	xnkon: xnkon; // abap.char(1): Supplement Auto. Postings
+	xopvw: xopvw; // abap.char(1): Open Item Management
+	xspeb: xspeb; // abap.char(1): Blocked For Posting
+	zindt: dzindt; // abap.dats(8): Key Date Of Last Int. Calc.
+	zinrt: dzinrt; // abap.numc(2): Interest Calc. Frequency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zuawa: dzuawa; // abap.char(3): Sort Key
+	altkt: altkt_skb1; // abap.char(10): Alternative Account No.
+	xmitk: xmitk; // abap.char(1): Recon. Acct Ready For Input
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	recid: jv_recind; // abap.char(2): Recovery Indicator
+	fipos: fipos; // abap.char(14): Commitment Item
+	xmwno: xmwno; // abap.char(1): Posting Without Tax Allowed
+	xsalh: xsalh; // abap.char(1): Balances In Local Crcy Only
+	bewgp: bewgp; // abap.char(10): Valuation Group
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	infky: j_1aifsks; // abap.char(8): Inflation Key
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	togru: togru_s; // abap.char(4): Tolerance Group
+	xlgclr: xlgclr; // abap.char(1): Open Item Mgmt By Ledger Group
+	x_uj_clr: x_uj_clr; // abap.char(1): Extended Open Item Management
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	mcakey: gle_dte_mca_mcakey; // abap.char(5): Mca Key
+	cochanged: fins_skb1_cochanged; // abap.char(1): Coa Data Changed
+	last_changed_ts: timestamp; // abap.dec(15, 0): Time Stamp
+}

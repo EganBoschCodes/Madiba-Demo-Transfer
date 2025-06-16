@@ -1,0 +1,42 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Gesellschaftsdaten (fr KONS-Ledger)'
+
+define table t880 {
+	key mandt: mandt; // abap.clnt(3): Client
+	key rcomp: rcomp_d; // abap.char(6): Company
+	name1: name_1; // abap.char(30): Name Of The Company
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cntry: land; // abap.char(3): Country/Region
+	name2: name_2; // abap.char(30): Name 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	langu: spras; // abap.lang(1): Language Key
+	stret: strasse; // abap.char(30): Street
+	pobox: postfach; // abap.char(10): Po Box
+	pstlc: plz; // abap.char(10): Postal Code
+	city: ort; // abap.char(30): City
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	curr: waerh; // abap.cuky(5): Currency
+	modcp: modcp; // abap.char(4): Glob.comp. Gr. Code
+	glsip: glsip; // abap.char(1): Write Line Items
+	resta: rechtssts; // abap.char(1): Legal Status
+	rform: rechtform; // abap.char(30): Legal Form
+	zweig: wi_zweig; // abap.char(30): Industrial Sector
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mcomp: scomp; // abap.char(4): Master Data Co.code
+	mclnt: sclnt; // abap.numc(3): Master Data Client
+	lccomp: kz_lccomp; // abap.char(1): Consol.company
+	strt2: stre2; // abap.char(30): Street Of Company 2
+	indpo: indpo; // abap.char(1): Read Purchase Order
+}

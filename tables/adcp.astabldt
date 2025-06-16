@@ -1,0 +1,74 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Zuordnung Person/Adresse (Business Address Services)'
+
+define table adcp {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Mandant, in dem die Adresse/Person liegt'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key client: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Schlssel der Adresse'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key addrnumber: ad_addrnum; // abap.char(10): Address Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Schlssel der Person'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key persnumber: ad_persnum; // abap.char(10): Person Number
+	key date_from: ad_date_fr; // abap.dats(8): From
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Versionskennzeichen fr internationale Adressen'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key nation: ad_nation; // abap.char(1): Address Version
+	date_to: ad_date_to; // abap.dats(8): To
+	comp_pers: ad_cmp_prs; // abap.char(1): Company/Person
+	so_key: ad_so_key; // abap.char(10): Sap-Office Key
+	department: ad_dprtmnt; // abap.char(40): Department
+	function: ad_fnctn; // abap.char(40): Function
+	building: ad_bldng_p; // abap.char(10): Building Code
+	floor: ad_floor; // abap.char(10): Floor
+	roomnumber: ad_roomnum; // abap.char(10): Room Number
+	id_code: ad_id_code; // abap.char(10): Short Name
+	ih_mail: ad_ih_mail; // abap.char(10): Internal Mail
+	sort1: ad_sortold; // abap.char(20): Search Term 1
+	sort2: ad_sortold; // abap.char(20): Search Term 1
+	sort_phn: ad_srtphn; // abap.char(20): Sort Phonetically
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Nummer der abweichenden Dienstadresse'
+	@AbapCatalog.foreignKey.screenCheck: true
+	alt_compny: ad_altcmpy; // abap.char(10): Business Addr
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Standard-Kommunikationsart'
+	@AbapCatalog.foreignKey.screenCheck: true
+	deflt_comm: ad_comm; // abap.char(3): Comm. Method
+	tel_number: ad_tlnmbr1; // abap.char(30): Telephone
+	tel_extens: ad_tlxtns1; // abap.char(10): Extension
+	fax_number: ad_fxnmbr1; // abap.char(30): Fax
+	fax_extens: ad_fxxtns1; // abap.char(10): Extension
+	flagcomm2: ad_flgcm02; // abap.char(1): Telephone...
+	flagcomm3: ad_flgcm03; // abap.char(1): Fax...
+	flagcomm4: ad_flgcm04; // abap.char(1): Teletex
+	flagcomm5: ad_flgcm05; // abap.char(1): Telex
+	flagcomm6: ad_flgcm06; // abap.char(1): E-Mail Defined
+	flagcomm7: ad_flgcm07; // abap.char(1): R/Mail
+	flagcomm8: ad_flgcm08; // abap.char(1): X.400
+	flagcomm9: ad_flgcm09; // abap.char(1): Rfc
+	flagcomm10: ad_flgcm10; // abap.char(1): Printer
+	flagcomm11: ad_flgcm11; // abap.char(1): Ssf
+	flagcomm12: ad_flgcm12; // abap.char(1): Uri/Ftp
+	flagcomm13: ad_flgcm13; // abap.char(1): Pager
+	adcp_uuid: ad_uuid; // abap.raw(16): Address Uuid
+	uuid_belated: ad_uuid_belated; // abap.char(1): Uuid Generated Later
+	id_category: ad_id_category; // abap.char(1): Address Id Category
+	adcp_err_status: ad_err_status; // abap.char(1): Error Status
+	xpcpt: ad_xpcpt; // abap.char(1): Business Purpose Completed Flag
+	_dataaging: data_temperature; // abap.dats(8): Data Aging Filter
+}
