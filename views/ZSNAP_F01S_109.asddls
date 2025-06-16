@@ -109,6 +109,7 @@ define view entity ZSNAP_F01S_109
 		when main.NetDueInterval > 0 then ''
 		else 'X'
 	end as IsOverdue,
+	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'
 	main.AmountInCompanyCodeCurrency,

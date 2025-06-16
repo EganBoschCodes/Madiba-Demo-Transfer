@@ -445,6 +445,9 @@ define view entity ZSNAP_F01S_C01
 	@ObjectModel.foreignKey.association: '_IntercompanyPairing'
 	main.IntercompanyPairing,
 	
+	@EndUserText.label: 'Title'
+	main.Title,
+	
 	@DefaultAggregation: #SUM
 	@EndUserText.label: 'Amount in Trans. Crcy'
 	@Semantics.amount.currencyCode: 'TransactionCurrency'

@@ -52,6 +52,7 @@ define view entity ZSNAP_F01S_050
 	main.AssignmentReference,
 	_OperationalAcctgDocItem.PaymentTerms,
 	main.PostingKey,
+	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'
 	main.AmountInCompanyCodeCurrency,

@@ -124,6 +124,7 @@ define view entity ZSNAP_F01S_305
 	end as IsConversionBroken,
 	$parameters.P_IncludeSpecialGL as IncludeSpecialGL,
 	$parameters.P_Signage as Signage,
+	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'
 	case $parameters.P_Signage

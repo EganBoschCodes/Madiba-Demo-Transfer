@@ -96,6 +96,7 @@ define view entity ZSNAP_F01S_107
 		when main.NumberOfParameters = 0 and main.NetDueArrearsDays < 0 then main.MaxNetDueIntervalInDays
 		else 0
 	end as NetDueInterval,
+	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'
 	main.AmountInCompanyCodeCurrency,

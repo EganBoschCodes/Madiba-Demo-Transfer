@@ -67,6 +67,7 @@ define view entity ZSNAP_F01S_103
 	-1 * $parameters.P_NetDueInterval2InDays as NegNetDueInterval2InDays,
 	-1 * $parameters.P_NetDueInterval3InDays as NegNetDueInterval3InDays,
 	-1 * $parameters.P_NetDueInterval4InDays as NegNetDueInterval4InDays,
+	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'
 	main.AmountInCompanyCodeCurrency,

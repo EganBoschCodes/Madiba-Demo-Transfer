@@ -510,6 +510,11 @@ define view entity ZSNAP_F01S_Q02
 	@AnalyticsDetails.query.axis: #FREE
 	@AnalyticsDetails.query.display: #KEY
 	@AnalyticsDetails.query.totals: #HIDE
+	main.Title,
+	
+	@AnalyticsDetails.query.axis: #FREE
+	@AnalyticsDetails.query.display: #KEY
+	@AnalyticsDetails.query.totals: #HIDE
 	main.TransactionCurrency,
 	
 	@AnalyticsDetails.query.axis: #FREE

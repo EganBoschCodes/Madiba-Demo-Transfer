@@ -67,6 +67,7 @@ define view entity ZSNAP_F01S_303
 	main.DaysOverdue,
 	main.IsCleared,
 	main.NetDueIntervalText,
+	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'
 	main.AmountInCompanyCodeCurrency,
@@ -138,6 +139,7 @@ union all select from ZSNAP_F01S_203 (P_KeyDate: $parameters.P_KeyDate, P_Cleare
 	main.DaysOverdue,
 	main.IsCleared,
 	main.NetDueIntervalText,
+	main.Title,
 	main.AmountInCompanyCodeCurrency,
 	main.CompanyCodeCurrency,
 	main.AmountInGlobalCurrency,

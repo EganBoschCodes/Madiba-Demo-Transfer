@@ -71,6 +71,7 @@ define view entity ZSNAP_F01S_105
 		when main.PosNetDueInterval1InDays <> 0 then 1
 		else 0
 	end as NumberOfParameters,
+	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'
 	main.AmountInCompanyCodeCurrency,

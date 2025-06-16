@@ -71,6 +71,7 @@ define view entity ZSNAP_F01S_203
 	cast (cast (0 as abap.char (15)) as abap.numc (15)) as DaysOverdue,
 	'X' as IsCleared,
 	cast ('A. Cleared' as farp_netdue_intvl_text) as NetDueIntervalText,
+	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'
 	main.AmountInCompanyCodeCurrency,

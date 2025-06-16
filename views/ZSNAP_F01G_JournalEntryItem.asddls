@@ -56,7 +56,8 @@ define view entity ZSNAP_F01G_JournalEntryItem
 	cast (main.koart as farp_koart preserving type) as FinancialAccountType,
 	cast (main.umskz as fac_umskz preserving type) as SpecialGLCode,
 	cast (main.augdt as fis_augdt preserving type) as ClearingDate,
-	cast (main.netdt as faedt_fpos preserving type) as NetDueDate
+	cast (main.netdt as faedt_fpos preserving type) as NetDueDate,
+	cast (main.zztitle as zztitle preserving type) as Title
 }
 where (main.poper > '000' or (main.poper = '000' and (main.bstat = 'J' or main.bstat = 'L')))
 	and main.rldnr = '0L'
