@@ -1,0 +1,11 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Organizational Unit: Distribution Channels'
+
+define table tvtw {
+	key mandt: mandt; // abap.clnt(3): Client
+	key vtweg: vtweg; // abap.char(2): Distribution Channel
+	hide: sd_obsolete; // abap.char(1): Hide Value In Input Help
+}

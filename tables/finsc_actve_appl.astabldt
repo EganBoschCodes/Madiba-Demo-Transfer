@@ -1,0 +1,15 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Active Application and Subapplication in Client'
+
+define table finsc_actve_appl {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	appl: glxappl; // abap.char(2): Application
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	subappl: glxsubappl; // abap.char(3): Subapplication
+}

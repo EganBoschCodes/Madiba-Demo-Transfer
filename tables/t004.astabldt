@@ -1,0 +1,39 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Verzeichnis der Kontenplne'
+
+define table t004 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key ktopl: ktopl; // abap.char(4): Chart Of Accounts
+	sakln: sakln; // abap.numc(2): Length Of G/L Account Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	dspra: spras_004; // abap.lang(1): Maint.language
+	aspra: aspra; // abap.char(10): Alternative Language
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kktpl: kktpl; // abap.char(4): Group Chart Of Accts
+	xsper: xsper; // abap.char(1): Blocked
+	no_vbund: no_vbund; // abap.char(1): Trading Partner Cannot Be Entered
+	integ_co: integ_co; // abap.char(1): Controlling Integration
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	layout_0: tab_layout_gl_0; // abap.char(4): Central Layout
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	layout_p: tab_layout_gl_p; // abap.char(4): Chart Of Accts Layout
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	layout_s: tab_layout_gl_s; // abap.char(4): Company Code Layout
+}

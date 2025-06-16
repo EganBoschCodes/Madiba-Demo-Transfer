@@ -1,0 +1,452 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'General Data in Customer Master'
+
+define table kna1 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key kunnr: kunnr; // abap.char(10): Customer
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	land1: land1_gp; // abap.char(3): Country/Region Key
+	name1: name1_gp; // abap.char(35): Name
+	name2: name2_gp; // abap.char(35): Name 2
+	ort01: ort01_gp; // abap.char(35): City
+	pstlz: pstlz; // abap.char(10): Postal Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	regio: regio; // abap.char(3): Region
+	sortl: sortl; // abap.char(10): Search Term
+	stras: stras_gp; // abap.char(35): Street
+	telf1: telf1; // abap.char(16): Telephone 1
+	telfx: telfx; // abap.char(31): Fax Number
+	xcpdk: xcpdk; // abap.char(1): One-Time Account
+	adrnr: adrnr; // abap.char(10): Address
+	mcod1: mcdd1; // abap.char(25): Name
+	mcod2: mcdd2; // abap.char(25): Name 2
+	mcod3: mcdd3; // abap.char(25): City
+	anred: anred; // abap.char(15): Title
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	aufsd: aufsd_x; // abap.char(2): Central Order Block
+	bahne: bahne; // abap.char(25): Express Station
+	bahns: bahns; // abap.char(25): Train Station
+	bbbnr: bbbnr; // abap.numc(7): Int. Location No. 1
+	bbsnr: bbsnr; // abap.numc(5): Int. Location No. 2
+	begru: brgru; // abap.char(4): Authorization Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	brsch: brsch; // abap.char(4): Industry
+	bubkz: bubkz; // abap.numc(1): Check Digit
+	datlt: datlt; // abap.char(14): Data Line
+	erdat: erdat_rf; // abap.dats(8): Created On
+	ernam: ernam_rf; // abap.char(12): Created By
+	exabl: exabl; // abap.char(1): Unloading Points
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	faksd: faksd_x; // abap.char(2): Central Billing Block
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fiskn: fiskn_d; // abap.char(10): Fiscal Address
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	knazk: knazk; // abap.char(2): Working Times
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	knrza: knrza; // abap.char(10): Alternative Payer
+	konzs: konzs; // abap.char(10): Group Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktokd: ktokd; // abap.char(4): Account Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kukla: kukla; // abap.char(2): Customer Classific.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifnr: lifnr; // abap.char(10): Supplier
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifsd: lifsd_x; // abap.char(2): Central Delivery Block
+	locco: locco; // abap.char(10): Location Code
+	loevm: loevm_x; // abap.char(1): Central Deletion Flag
+	name3: name3_gp; // abap.char(35): Name 3
+	name4: name4_gp; // abap.char(35): Name 4
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	niels: niels; // abap.char(2): Nielsen Indicator
+	ort02: ort02_gp; // abap.char(35): District
+	pfach: pfach; // abap.char(10): Po Box
+	pstl2: pstl2; // abap.char(10): P.o. Box Postal Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	counc: counc; // abap.char(3): County Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cityc: cityc; // abap.char(4): City Code
+	rpmkr: rpmkr; // abap.char(5): Regional Market
+	sperr: sperb_x; // abap.char(1): Central Posting Block
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	spras: spras; // abap.lang(1): Language Key
+	stcd1: stcd1; // abap.char(16): Tax Number 1
+	stcd2: stcd2; // abap.char(11): Tax Number 2
+	stkza: stkza; // abap.char(1): Sales Equalizatn Tax
+	stkzu: stkzu; // abap.char(1): Liable For Vat
+	telbx: telbx; // abap.char(15): Telebox Number
+	telf2: telf2; // abap.char(16): Telephone 2
+	teltx: teltx; // abap.char(30): Teletex Number
+	telx1: telx1; // abap.char(30): Telex Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lzone: lzone; // abap.char(10): Transportation Zone
+	xzemp: xregu; // abap.char(1): Alt.payer In Doc?
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vbund: rassc; // abap.char(6): Trading Partner No.
+	stceg: stceg; // abap.char(20): Vat Registration No.
+	dear1: dear1; // abap.char(1): Competitors
+	dear2: dear2; // abap.char(1): Sales Partners
+	dear3: dear3; // abap.char(1): Prospect
+	dear4: dear4; // abap.char(1): Customer Type 4
+	dear5: dear5; // abap.char(1): Default Sold-To Pty
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gform: gform; // abap.char(2): Legal Status
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bran1: bran1_d; // abap.char(10): Industry Code 1
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bran2: bran2; // abap.char(10): Industry Code 2
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bran3: bran3; // abap.char(10): Industry Code 3
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bran4: bran4; // abap.char(10): Industry Code 4
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bran5: bran5; // abap.char(10): Industry Code 5
+	ekont: ekont; // abap.char(10): Initial Contact
+	
+	@Semantics.amount.currencyCode: 'si_kna1.uwaer'
+	umsat: umsat; // abap.curr(8, 2): Annual Sales
+	umjah: umjah; // abap.numc(4): Sales Year
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	uwaer: uwaer; // abap.cuky(5): Currency Of Sales
+	jmzah: jmzah; // abap.numc(6): Employee
+	jmjah: jmjah; // abap.numc(4): Year No. Given For
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr1: katr1; // abap.char(2): Attribute 1
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr2: katr2; // abap.char(2): Attribute 2
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr3: katr3; // abap.char(2): Attribute 3
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr4: katr4; // abap.char(2): Attribute 4
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr5: katr5; // abap.char(2): Attribute 5
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr6: katr6; // abap.char(3): Attribute 6
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr7: katr7; // abap.char(3): Attribute 7
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr8: katr8; // abap.char(3): Attribute 8
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr9: katr9; // abap.char(3): Attribute 9
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	katr10: katr10; // abap.char(3): Attribute 10
+	stkzn: stkzn; // abap.char(1): Natural Person
+	
+	@Semantics.amount.currencyCode: 'si_kna1.uwaer'
+	umsa1: umsa1; // abap.curr(15, 2): Annual Sales
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	txjcd: txjcd; // abap.char(15): Tax Jurisdiction
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	periv: periv; // abap.char(2): Fiscal Year Variant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abrvw: abrvw; // abap.char(3): Usage
+	inspbydebi: qinspbydeb; // abap.char(1): By Customer
+	inspatdebi: qinspatdeb; // abap.char(1): After Delivery
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktocd: ktocd; // abap.char(4): Reference Acct Group
+	pfort: pfort_gp; // abap.char(35): P.o. Box City
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	werks: werks_d; // abap.char(4): Plant
+	dtams: dtams; // abap.char(1): Dme Recipient Code
+	dtaws: dtaws; // abap.char(2): Instruction Key
+	duefl: duefl_bkpf; // abap.char(1): Status Of Data Transfer To Next Release
+	hzuor: hzuor; // abap.numc(2): Hierarchy Assignment
+	sperz: sperz; // abap.char(1): Payment Block
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	etikg: etikg; // abap.char(10): Lab.customer Group
+	civve: civve; // abap.char(1): Non-Milit. Use
+	milve: milve; // abap.char(1): Military Use
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Customer Condition Group'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kdkg1: kdkg1; // abap.char(2): Condition Group 1
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Customer Condition Group'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kdkg2: kdkg2; // abap.char(2): Condition Group 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Customer Condition Group'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kdkg3: kdkg3; // abap.char(2): Condition Group 3
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Customer Condition Group'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kdkg4: kdkg4; // abap.char(2): Condition Group 4
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Customer Condition Group'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kdkg5: kdkg5; // abap.char(2): Condition Group 5
+	xknza: xknza; // abap.char(1): Accts For Alt. Payer
+	
+	@AbapCatalog.foreignKey.label: 'Tax Type'
+	@AbapCatalog.foreignKey.screenCheck: true
+	fityp: j_1afitp_d; // abap.char(2): Tax Type
+	
+	@AbapCatalog.foreignKey.label: 'J_1ATODC'
+	@AbapCatalog.foreignKey.screenCheck: true
+	stcdt: j_1atoid; // abap.char(2): Tax Number Type
+	stcd3: stcd3; // abap.char(18): Tax Number 3
+	stcd4: stcd4; // abap.char(18): Tax Number 4
+	stcd5: stcd5; // abap.char(60): Tax Number 5
+	stcd6: stcd6; // abap.char(20): Tax Number 6
+	xicms: j_1btcicms; // abap.char(1): Icms-Exempt
+	xxipi: j_1btcipi; // abap.char(1): Ipi-Exempt
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	xsubt: j_1btcst; // abap.char(3): Subtrib Group
+	cfopc: j_1bindus1; // abap.char(2): Cust. Cfop Category
+	
+	@AbapCatalog.foreignKey.label: 'Tax Law 1'
+	@AbapCatalog.foreignKey.screenCheck: true
+	txlw1: j_1btaxlw1; // abap.char(3): Icms Law
+	
+	@AbapCatalog.foreignKey.label: 'Tax Law 2'
+	@AbapCatalog.foreignKey.screenCheck: true
+	txlw2: j_1btaxlw2; // abap.char(3): Ipi Law
+	ccc01: ccc01; // abap.char(1): Biochemical Warfare
+	ccc02: ccc02; // abap.char(1): Nuclear Nonprolif.
+	ccc03: ccc03; // abap.char(1): National Security
+	ccc04: ccc04; // abap.char(1): Missile Technology
+	bonded_area_confirm: twvat_bonded_area_conf; // abap.char(1): Bonded Area Confirm
+	donate_mark: twvat_donate_mark; // abap.char(1): Donate Mark
+	consolidate_invoice: twgui_consolidate_invoice; // abap.char(1): Consolidated Invoicing
+	allowance_type: twvat_allowance_type; // abap.char(1): Allowance Type
+	einvoice_mode: twvat_einvoice_mode; // abap.char(1): Mode
+	b2c_indicator: twvat_b2c_indicator; // abap.char(1): B2c Invoicing Indicator
+	cassd: cassd_x; // abap.char(2): Central Sales Block
+	knurl: url; // abap.char(132): Url
+	j_1kfrepre: repres; // abap.char(10): Name Of Representative
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	j_1kftbus: gestyp; // abap.char(30): Type Of Business
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	j_1kftind: indtyp; // abap.char(30): Type Of Industry
+	confs: confs_x; // abap.char(1): Confirmation Status
+	updat: updat_rf; // abap.dats(8): Confirmation Date
+	uptim: uptim_rf; // abap.tims(6): Confirmation Time
+	nodel: nodel_x; // abap.char(1): Central Del.block
+	dear6: dear6; // abap.char(1): Consumer
+	delivery_date_rule: sd_delivery_date_type_rule; // abap.char(1): Delivery Date Rule
+	cvp_xblck: cvp_xblck; // abap.char(1): Business Purpose Completed Flag
+	suframa: j_1bsuframa; // abap.char(9): Suframa Code
+	rg: j_1brg; // abap.char(11): Rg Number
+	exp: j_1bexp; // abap.char(3): Issued By
+	uf: j_1buf; // abap.char(2): State
+	rgdate: j_1brgdate; // abap.dats(8): Rg Issuing Date
+	ric: j_1bric; // abap.numc(11): Ric Number
+	rne: j_1brne; // abap.char(10): Foreign National Registration
+	rnedate: j_1brnedate; // abap.dats(8): Rne Issuing Date
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cnae: j_1bcnae; // abap.char(7): Cnae
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	legalnat: j_1blegalnat; // abap.numc(4): Legal Nature
+	crtn: j_1bcrtn; // abap.char(1): Crt Number
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	icmstaxpay: j_1bicmstaxpay; // abap.char(2): Icms Taxpayer
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	indtyp: j_1bindtyp; // abap.char(2): Industry Main Type
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	tdt: j_1btdt; // abap.char(2): Tax Declaration Type
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	comsize: j_1bcomsize; // abap.char(2): Company Size
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	decregpc: j_1bdecregpc; // abap.char(2): Declaration Regimen For Pis/Cofins
+	ph_biz_style: ph_biz_style; // abap.char(140): Business Style For Philippines
+	paytrsn: farp_payt_rsn; // abap.char(4): Payment Reason
+	kna1_eew_cust: kna1_eew_cust; // abap.char(1): 
+	rule_exclusion: crmt_bus_rule_exclusion; // abap.char(1): Excluded From Rule-Based Assignment
+	kna1_addr_eew_cust: kna1_addr_eew_cust; // abap.char(1): 
+	/vso/r_palhgt: /vso/r_pal_bin_hgt; // abap.quan(13, 3): Max. Stacking Height
+	/vso/r_pal_ul: /vso/r_pal_unit_l; // abap.unit(3): Pkm Length Unit
+	/vso/r_pk_mat: /vso/m_pack_by_mat; // abap.char(1): Pack Customerrelated
+	/vso/r_matpal: /vso/m_matnr_pal; // abap.char(40): Packmat.customer
+	/vso/r_i_no_lyr: /vso/m_ipal_no_lyr; // abap.numc(2): No.layers Int.pallet
+	/vso/r_one_mat: /vso/m_one_mat; // abap.char(1): Material-Spec. Pack.
+	/vso/r_one_sort: /vso/m_one_sort; // abap.char(1): Pack Pcktype Packing
+	/vso/r_uld_side: /vso/m_unload_side_pref; // abap.numc(1): Side Preference
+	/vso/r_load_pref: /vso/m_load_pref; // abap.numc(1): F/B Preference
+	/vso/r_dpoint: /vso/r_deliverypoint; // abap.char(10): Coll. Unload. Point
+	alc: fmfg_alc; // abap.char(8): Agency Location Code
+	pmt_office: fmfg_pmt_off; // abap.char(5): Payment Office
+	fee_schedule: fm_fee_sched; // abap.char(4): Fee Schedule
+	duns: fmccrduns; // abap.char(9): Duns Number
+	duns4: fmccrduns4; // abap.char(4): Duns+4
+	sam_ue_id: fmfg_unique_entity_id; // abap.char(12): Sam Unique Entity Identifier
+	sam_eft_ind: fmfg_eft_ind; // abap.char(4): Sam Electronic Fund Transfer Indicator
+	psofg: psofg; // abap.char(10): Processor Group
+	psois: psois; // abap.char(20): Slaprepr.proced
+	pson1: name1_gp; // abap.char(35): Name
+	pson2: name2_gp; // abap.char(35): Name 2
+	pson3: name3_gp; // abap.char(35): Name 3
+	psovn: psovn; // abap.char(35): First Name
+	psotl: psotl; // abap.char(20): Title
+	psohs: psohs; // abap.char(6): House Number
+	psost: psost; // abap.char(28): Street
+	psoo1: psoo1; // abap.char(50): Description
+	psoo2: psoo1; // abap.char(50): Description
+	psoo3: psoo1; // abap.char(50): Description
+	psoo4: psoo1; // abap.char(50): Description
+	psoo5: psoo1; // abap.char(50): Description
+	j_1iexcd: j_1iexcd; // abap.char(40): Ecc No.
+	j_1iexrn: j_1iexrn; // abap.char(40): Excise Reg. No.
+	j_1iexrg: j_1iexrg; // abap.char(60): Excise Range
+	j_1iexdi: j_1iexdi; // abap.char(60): Excise Division
+	j_1iexco: j_1iexco; // abap.char(60): Excise Commissionerate
+	j_1icstno: j_1icstno; // abap.char(40): Cst Number
+	j_1ilstno: j_1ilstno; // abap.char(40): Lst Number
+	j_1ipanno: j_1ipanno; // abap.char(40): Permanent Account Number
+	j_1iexcicu: j_1iexcicu; // abap.char(1): Exc.tax Ind. Custom.
+	aedat: j_1iaedat_obsolete; // abap.dats(8): (Obsolete) Last Changed
+	usnam: j_1iusnam_obsolete; // abap.char(12): (Obsolete) Changed By The User
+	j_1isern: j_1isern; // abap.char(40): Service Tax Regn.no
+	j_1ipanref: j_1ipanref; // abap.char(40): Pan Reference Number
+	gst_tds: j_1igsttds; // abap.char(18): Gst Tds Registration
+	j_3getyp: j_3getyp; // abap.char(2): Recipient Type
+	j_3greftyp: j_3greftyp; // abap.char(2): Reference Type
+	pspnr: ps_posnr; // abap.numc(8): Wbs Element
+	coaufnr: aufnr; // abap.char(12): Order
+	j_3gagext: j_3gagext; // abap.char(10): Ext. Sold-To Party
+	j_3gagint: j_3gagint; // abap.char(10): Cust. Int. Settlmnt
+	j_3gagdumi: j_3gdempst; // abap.char(10): Dummy Recipient
+	j_3gagstdi: j_3gagstdi; // abap.char(10): Standard Recipient
+	lgort: lgort_d; // abap.char(4): Storage Location
+	kokrs: kokrs; // abap.char(4): Controlling Area
+	kostl: kostl; // abap.char(10): Cost Center
+	j_3gabglg: j_3gabglg; // abap.char(1): Retiredate/Perf.bsdequi.
+	j_3gabgvg: j_3gabgvg; // abap.char(1): Retiredate/Timebsdequi.
+	j_3gabrart: j_3gabrart; // abap.char(1): Settlement Type
+	j_3gstdmon: j_3gstdmon; // abap.dec(5, 2): Hours Per Month
+	j_3gstdtag: j_3gstdtag; // abap.dec(5, 2): Hours/Days
+	j_3gtagmon: j_3gtagmon; // abap.dec(5, 2): Number Of Days/Month
+	j_3gzugtag: j_3gzugtag; // abap.char(1): Acqdate/Pbe
+	j_3gmaschb: j_3gmaschb; // abap.char(1): Fill Pbe Document
+	j_3gmeinsa: j_3gmeinsa; // abap.char(1): Multiple Usage Periods
+	j_3gkeinsa: j_3gkeinsa; // abap.char(1): Short Op.
+	j_3gblsper: j_3gblsper; // abap.char(1): Blockind. Doc. Entry
+	j_3gkleivo: j_3gkleivo; // abap.char(1): Calculate Pbe As Tbe
+	j_3gcalid: j_3gcalid; // abap.char(2): Calendar Id
+	j_3gvmonat: j_3gvmonat; // abap.numc(1): Complete Month
+	j_3gabrken: j_3gabrken; // abap.char(1): Settlement Indicator
+	j_3glabrech: j_3glabrech; // abap.dats(8): Last Settlement
+	j_3gaabrech: j_3gaabrech; // abap.dats(8): Current Settlement
+	j_3gzutvhlg: j_3gzutvhlg; // abap.char(1): With Acq. Date
+	j_3gnegmen: j_3gnegmen; // abap.char(1): Neg. Qty Allowed
+	j_3gfristlo: j_3gfristlo; // abap.char(1): Deadline Logic
+	j_3geminbe: j_3geminbe; // abap.numc(5): Minusperiod - Rsctd
+	j_3gfmgue: j_3gfmgue; // abap.numc(5): Relnotifallowunrusge
+	j_3gzuschue: j_3gzuschue; // abap.numc(5): Srchrgeunrstrctduse
+	j_3gschprs: j_3gschprs; // abap.char(1): Shift Price
+	j_3ginvsta: j_3ginvsta; // abap.char(1): Inv. Status Cs
+	/sapcem/dber: /sapcem/dber; // abap.char(8): Planning Area
+	/sapcem/kvmeq: /sapcem/kvmeq; // abap.char(1): Settlqtyequirel.
+}

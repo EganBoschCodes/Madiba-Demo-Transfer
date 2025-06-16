@@ -1,0 +1,32 @@
+CLASS zcsnap_f72m_iccustomer DEFINITION
+    PUBLIC
+    FINAL
+    CREATE PUBLIC .
+
+    PUBLIC SECTION.
+
+        INTERFACES if_amdp_marker_hdb.
+
+        CLASS-METHODS get_data
+            FOR TABLE FUNCTION ZSNAP_F72M_ICCustomer.
+
+    PROTECTED SECTION.
+    PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zcsnap_f72m_iccustomer IMPLEMENTATION.
+
+  METHOD get_data BY DATABASE FUNCTION FOR HDB LANGUAGE SQLSCRIPT OPTIONS READ-ONLY USING kna1.
+
+    return /* ZSNAP_F72M_ICCustomer */ select
+		main.kunnr as Customer,
+		'X' as IsIntercompany,
+		case
+			when main.kunnr between '0000000000' and '0000009999' then right (main.kunnr, 6)
+			else right (main.kunnr, 4)
+		end as PartnerCompany
+	from kna1 as main
+	where main.ktokd in ('');
+
+  ENDMETHOD.
+ENDCLASS.

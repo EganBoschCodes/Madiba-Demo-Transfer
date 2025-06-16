@@ -1,0 +1,50 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Material Groups'
+
+define table t023 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Client'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key matkl: matkl; // abap.char(9): Material Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	spart: spart; // abap.char(2): Division
+	lref3: lref3; // abap.char(3): Logist.reference
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wwgda: wwgda; // abap.char(40): Mg Ref. Material
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wwgpa: wwgpa; // abap.char(40): Mg Material
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abtnr: abtnr; // abap.char(4): Department
+	begru: begru; // abap.char(4): Authorization Group
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	gewei: gewei_v; // abap.unit(3): Default Unit Of Wt
+	j_1bnbm: j_1bnbmco1; // abap.char(16): Ncm Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bklas: bklas; // abap.char(4): Valuation Class
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ekwsl: ekwsl; // abap.char(4): Purchasing Value Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	anlkl: mevak; // abap.char(8): Asset Class
+	def_schdsc: exp_schdsc; // abap.char(6): Scenario
+	price_group: price_group; // abap.char(6): Price Level Group
+}

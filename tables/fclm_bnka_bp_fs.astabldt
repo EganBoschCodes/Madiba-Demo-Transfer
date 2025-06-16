@@ -1,0 +1,26 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Netting Business Partners Assigned to Bank'
+
+define table fclm_bnka_bp_fs {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	key banks: banks; // abap.char(3): Bank Country/Region
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bankl: bankk; // abap.char(15): Bank Key
+	key valid_from: fclm_bam_valid_from; // abap.dats(8): Valid From
+	valid_to: fclm_bam_valid_to; // abap.dats(8): Valid To
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	partner: bu_partner; // abap.char(10): Business Partner
+	created_by: fclm_bam_created_by; // abap.char(12): Created By
+	created_at_dat: fclm_bam_created_date; // abap.dats(8): Created On
+	created_at_tim: fclm_bam_created_at; // abap.tims(6): Created At
+	last_changed_by: fclm_bam_changed_by; // abap.char(12): Changed By
+	last_changed_at_dat: fclm_bam_changed_on; // abap.dats(8): Changed On
+	last_changed_at_tim: fclm_bam_changed_time; // abap.tims(6): Changed At
+}

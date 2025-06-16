@@ -1,0 +1,31 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Zuordnung Benutzername Adressschlssel'
+
+define table usr21 {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.label: 'Adressschlusselzuordnung zu Benutzern'
+	@AbapCatalog.foreignKey.screenCheck: false
+	key bname: xubname; // abap.char(12): User
+	
+	@AbapCatalog.foreignKey.label: 'Adressnummer eines Benutzers'
+	@AbapCatalog.foreignKey.screenCheck: true
+	persnumber: ad_persnum; // abap.char(10): Person Number
+	
+	@AbapCatalog.foreignKey.label: 'Adressnummer eines Benutzers'
+	@AbapCatalog.foreignKey.screenCheck: true
+	addrnumber: ad_addrnum; // abap.char(10): Address Number
+	kostl: xukostl; // abap.char(8): Cost Center
+	start_menu: xustart; // abap.char(30): Start Menu
+	idadtype: suidadtype; // abap.numc(2): Identity Add. Type
+	bpperson: bu_partner_guid; // abap.raw(16): Business Partner Guid
+	organization: bu_partner_guid; // abap.raw(16): Business Partner Guid
+	responsible: suidresponsible; // abap.char(12): User Responsible
+	techdesc: suidtechdesc; // abap.char(80): Description
+	identity_guid: suid_guid; // abap.raw(16): Identity Guid
+	template_orgtype: suid_orgtype; // abap.char(1): Organization Type
+	template_orgaddr: ad_addrnum; // abap.char(10): Address Number
+}

@@ -1,0 +1,19 @@
+@AbapCatalog.activationType: #NAMETAB_GENERATION_OFFLINE
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #W
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'R/3-DD: Werte zu den Domaenen'
+
+define table dd07l {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key domname: domname; // abap.char(30): Domain Name
+	key as4local: as4local; // abap.char(1): Activation State
+	key valpos: valpos; // abap.numc(4): Value Key
+	key as4vers: as4vers; // abap.numc(4): Version
+	domvalue_l: domvalue_l; // abap.char(10): Lower Value
+	domvalue_h: domvalue_h; // abap.char(10): Dom.upper Limit
+	appval: ddappval; // abap.char(1): Belongstoapp
+}

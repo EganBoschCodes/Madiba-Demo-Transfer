@@ -1,0 +1,38 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Kontogruppen Sachkonten'
+
+define table t077s {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key ktopl: ktopl; // abap.char(4): Chart Of Accounts
+	key ktoks: ktoks; // abap.char(4): Account Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	vonnr: vonnr_077s; // abap.char(10): From G/L Account
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	bisnr: bisnr_077s; // abap.char(10): To G/L Account
+	fauss: fauss; // abap.char(40): Field Status
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	layout_0: tab_layout_gl_0; // abap.char(4): Central Layout
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	layout_p: tab_layout_gl_p; // abap.char(4): Chart Of Accts Layout
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	layout_s: tab_layout_gl_s; // abap.char(4): Company Code Layout
+}

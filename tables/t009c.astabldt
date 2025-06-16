@@ -1,0 +1,25 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Bezeichnung der Perioden'
+
+define table t009c {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key periv: periv; // abap.char(2): Fiscal Year Variant
+	key poper: poper; // abap.numc(3): Posting Period
+	key bdatj: bdatj; // abap.numc(4): Year
+	ktext: txt03_009; // abap.char(3): Text
+	ltext: txt20_009; // abap.char(20): Text
+}

@@ -1,0 +1,800 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Belegsegment Buchhaltung'
+
+define table bseg {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	key belnr: belnr_d; // abap.char(10): Document Number
+	key gjahr: gjahr; // abap.numc(4): Fiscal Year
+	key buzei: buzei; // abap.numc(3): Item
+	buzid: buzid; // abap.char(1): Line Item Id
+	augdt: augdt; // abap.dats(8): Clearing Date
+	augcp: augcp; // abap.dats(8): Clearing Entry Date
+	augbl: augbl; // abap.char(10): Clearing Document
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bschl: bschl; // abap.char(2): Posting Key
+	koart: koart; // abap.char(1): Account Type
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	umskz: umskz; // abap.char(1): Special G/L Ind.
+	umsks: umsks; // abap.char(1): Sp. G/L Trans.type
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zumsk: dzumsk; // abap.char(1): Target Sp.g/L Ind.
+	shkzg: shkzg; // abap.char(1): Debit/Credit Ind
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gsber: gsber; // abap.char(4): Business Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	pargb: pargb; // abap.char(4): Trading Part.ba
+	tax_country: fot_tax_country; // abap.char(3): Tax Country/Region
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mwskz: mwskz; // abap.char(2): Tax Code
+	txdat_from: fot_txdat_from; // abap.dats(8): Tax Rate Valid-From
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	qsskz: qsskz; // abap.char(2): Withholding Tax Code
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	dmbtr: dmbtr; // abap.curr(23, 2): Amount In Loc. Curr.
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	wrbtr: wrbtr; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bseg.rfccur'
+	fcsl: fins_vfccur12; // abap.curr(23, 2): Amount In Functional Currency
+	rfccur: fins_currfc; // abap.cuky(5): Functional Currency
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwaer'
+	kzbtr: kzbtr_fi; // abap.curr(23, 2): Orig.reduction Amnt
+	
+	@Semantics.amount.currencyCode: 'bseg.pswsl'
+	pswbt: pswbt; // abap.curr(23, 2): General Ledger Amount
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	pswsl: pswsl; // abap.cuky(5): General Ledger Currency
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	txbhw: txbhw; // abap.curr(23, 2): Original Tax Base Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	txbfw: txbfw; // abap.curr(23, 2): Original Tax Base Amount
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	mwsts: mwsts; // abap.curr(23, 2): Lc Tax Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	wmwst: wmwst; // abap.curr(23, 2): Tax Amount
+	
+	@Semantics.amount.currencyCode: 't005.waers'
+	lwsts: lwsts; // abap.curr(23, 2): Tax In Reporting Currency
+	
+	@Semantics.amount.currencyCode: 't005.waers'
+	lwbtr: lwbtx; // abap.curr(23, 2): Amount In Reporting Currency
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	hwbas: hwbas; // abap.curr(23, 2): Lc Tax Base
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	fwbas: fwbas; // abap.curr(23, 2): Tax Base Amount
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	hwzuz: hwzuz; // abap.curr(23, 2): Lc Provision
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	fwzuz: fwzuz; // abap.curr(23, 2): Additional Tax
+	shzuz: shzuz; // abap.char(1): Cash Discount (+/-)
+	stekz: char2; // abap.char(2): 
+	mwart: mwart; // abap.char(1): Tax Type
+	txgrp: txgrp; // abap.numc(3): Group Indicator
+	ktosl: ktosl; // abap.char(3): Transaction
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	qsshb: qsshb; // abap.curr(23, 2): Withholding Tax Base
+	kursr: kursr; // abap.dec(9, 5): Hedged Exchange Rate
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	gbetr: gbetr; // abap.curr(23, 2): Hedged Amount
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	bdiff: bdiff; // abap.curr(23, 2): Valuation Difference
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	bdif2: bdif2; // abap.curr(23, 2): Valuation Difference 2
+	valut: valut; // abap.dats(8): Value Date
+	zuonr: dzuonr; // abap.char(18): Assignment
+	sgtxt: sgtxt; // abap.char(50): Text
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	zinkz: dzinkz; // abap.char(2): Interest Block
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vbund: rassc; // abap.char(6): Trading Partner No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bewar: rmvct; // abap.char(3): Transaction Type
+	altkt: bilkt_ska1; // abap.char(10): Group Account Number
+	vorgn: vorgn; // abap.char(4): G/L Transaction Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	fdlev: fdlev; // abap.char(2): Planning Level
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fdgrp: fdgrp; // abap.char(10): Planning Group
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	fdwbt: fdwbt; // abap.curr(23, 2): Planned Amount
+	fdtag: fdtag; // abap.dats(8): Planning Date
+	fkont: fipls; // abap.numc(3): Financial Budget
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kokrs: kokrs; // abap.char(4): Controlling Area
+	kostl: kostl; // abap.char(10): Cost Center
+	projn: projn; // abap.char(16): Not In Use
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	aufnr: aufnr; // abap.char(12): Order
+	vbeln: vbeln_vf; // abap.char(10): Billing Document
+	vbel2: vbeln_va; // abap.char(10): Sales Document
+	posn2: posnr_va; // abap.numc(6): Sales Document Item
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	eten2: etenr; // abap.numc(4): Schedule Line Number
+	service_doc_type: fco_srvdoc_type; // abap.char(4): Service Document Type
+	service_doc_id: fco_srvdoc_id; // abap.char(10): Service Document
+	service_doc_item_id: fco_srvdoc_item_id; // abap.numc(6): Service Document Item
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	anln1: anln1; // abap.char(12): Asset
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	anln2: anln2; // abap.char(4): Sub-Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	anbwa: anbwa; // abap.char(3): Asset Transaction Type
+	bzdat: bzdat; // abap.dats(8): Asset Value Date
+	pernr: pernr_d; // abap.numc(8): Personnel Number
+	xumsw: xumsw; // abap.char(1): Sales-Related
+	xhres: xhres; // abap.char(1): 
+	xkres: xkres; // abap.char(1): Line Item Display
+	xopvw: xopvw; // abap.char(1): Open Item Management
+	xcpdd: xcpdd; // abap.char(1): Individ. Set
+	xskst: xskst; // abap.char(1): Cctrpostingstatist
+	xsauf: xsauf; // abap.char(1): Order Post.statist.
+	xspro: xspro; // abap.char(1): Proj. Posting Stat
+	xserg: xserg; // abap.char(1): Pa Posting Stat.
+	xfakt: xfakt; // abap.char(1): 
+	xuman: xuman; // abap.char(1): 
+	xanet: xanet; // abap.char(1): 
+	xskrl: xskrl; // abap.char(1): W/O Cash Dscnt
+	xinve: xinve; // abap.char(1): Investment Id
+	xpanz: xpanz; // abap.char(1): Display Item
+	xauto: xauto; // abap.char(1): Line Item Automatically Created
+	xncop: xncop; // abap.char(1): 
+	xzahl: xzahl; // abap.char(1): Payment Transaction
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	saknr: saknr; // abap.char(10): G/L Account
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hkont: hkont; // abap.char(10): G/L Account
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kunnr: kunnr; // abap.char(10): Customer
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifnr: lifnr; // abap.char(10): Supplier
+	filkd: filkd; // abap.char(10): Branch Account
+	xbilk: xbilk; // abap.char(1): Balance Sheet Account
+	gvtyp: gvtyp; // abap.char(2): P&L Statmt Acct Type
+	hzuon: hzuon; // abap.char(18): Specl G/L Assgt
+	zfbdt: dzfbdt; // abap.dats(8): Baseline Payment Dte
+	zterm: dzterm; // abap.char(4): Terms Of Payment
+	zbd1t: dzbd1t; // abap.dec(3, 0): Days 1
+	zbd2t: dzbd2t; // abap.dec(3, 0): Days 2
+	zbd3t: dzbd3t; // abap.dec(3, 0): Days Net
+	zbd1p: dzbd1p; // abap.dec(5, 3): Cd Percentage 1
+	zbd2p: dzbd2p; // abap.dec(5, 3): Cd Percentage 2
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	skfbt: skfbt; // abap.curr(23, 2): Cd Base
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	sknto: sknto; // abap.curr(23, 2): Cash Discount Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	wskto: wskto; // abap.curr(23, 2): Cd Amount
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zlsch: schzw_bseg; // abap.char(1): Payment Method
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zlspr: dzlspr; // abap.char(1): Payment Block
+	zbfix: dzbfix; // abap.char(1): Fixed
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hbkid: hbkid; // abap.char(5): House Bank
+	bvtyp: bvtyp; // abap.char(4): Part.bank Type
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	nebtr: nebtr; // abap.curr(23, 2): Payment Amount
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mwsk1: mwskx; // abap.char(2): Tax Code
+	txdat_from1: fot_txdat_fromx; // abap.dats(8): Tax Rate Valid-From (Tax Backpack)
+	tax_country1: fot_tax_countryx; // abap.char(3): Tax Ctry/Reg For Tax Breakdown
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	dmbt1: dmbtx; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	wrbt1: wrbtx; // abap.curr(23, 2): Amount
+	hist_tax_factor1: fot_hist_factor_for_tax_amount; // abap.d34r(34): Crcy Conversion Factor For Tax Amount
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mwsk2: mwskx; // abap.char(2): Tax Code
+	txdat_from2: fot_txdat_fromx; // abap.dats(8): Tax Rate Valid-From (Tax Backpack)
+	tax_country2: fot_tax_countryx; // abap.char(3): Tax Ctry/Reg For Tax Breakdown
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	dmbt2: dmbtx; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	wrbt2: wrbtx; // abap.curr(23, 2): Amount
+	hist_tax_factor2: fot_hist_factor_for_tax_amount; // abap.d34r(34): Crcy Conversion Factor For Tax Amount
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mwsk3: mwskx; // abap.char(2): Tax Code
+	txdat_from3: fot_txdat_fromx; // abap.dats(8): Tax Rate Valid-From (Tax Backpack)
+	tax_country3: fot_tax_countryx; // abap.char(3): Tax Ctry/Reg For Tax Breakdown
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	dmbt3: dmbtx; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	wrbt3: wrbtx; // abap.curr(23, 2): Amount
+	hist_tax_factor3: fot_hist_factor_for_tax_amount; // abap.d34r(34): Crcy Conversion Factor For Tax Amount
+	hist_tax_factor: fot_hist_factor_for_tax_amount; // abap.d34r(34): Crcy Conversion Factor For Tax Amount
+	rebzg: rebzg; // abap.char(10): Invoice Reference
+	rebzj: rebzj; // abap.numc(4): Fiscal Year
+	rebzz: rebzz; // abap.numc(3): Item
+	rebzt: rebzt; // abap.char(1): Follow-On Doc. Type
+	zollt: dzollt; // abap.char(8): Customs Tariff No.
+	zolld: dzolld; // abap.dats(8): Cust. Date
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lzbkz: lzbkz; // abap.char(3): Scb Indicator
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	landl: landl; // abap.char(3): Supply Ctry/Reg
+	diekz: diekz; // abap.char(1): Service Indicator
+	samnr: samnr; // abap.numc(8): Collective Invoice
+	abper: abper_rf; // abap.accp(6): Settlmnt Period
+	vrskz: vrskz; // abap.char(1): Insurance Indicator
+	vrsdt: vrsdt; // abap.dats(8): Insurance Date
+	disbn: disbn; // abap.char(10): Usage Document
+	disbj: disbj; // abap.numc(4): Year
+	disbz: disbz; // abap.numc(3): Discount Lne Iem
+	wverw: wverw; // abap.char(1): Bill/Ex. Usage
+	anfbn: anfbn; // abap.char(10): Boe Payment Request
+	anfbj: anfbj; // abap.numc(4): Fisc. Year
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	anfbu: anfbu; // abap.char(4): Company Code
+	anfae: anfae; // abap.dats(8): Return Before
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	blnbt: blnbt; // abap.curr(23, 2): Preference Amount
+	blnkz: blnkz; // abap.char(2): Subsidy Indicator
+	blnpz: blnpz; // abap.dec(7, 2): Pref.percentage Rate
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mschl: mschl; // abap.char(1): Dunning Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mansp: mansp; // abap.char(1): Dunning Block
+	madat: madat; // abap.dats(8): Last Dunned
+	manst: mahns_d; // abap.numc(1): Dunning Level
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	maber: maber; // abap.char(2): Dunning Area
+	esrnr: esrnr; // abap.char(11): Pbc/Isr Number
+	esrre: esrre; // abap.char(27): Isr/Qr Reference No.
+	esrpz: esrpz; // abap.char(2): Check Digit
+	
+	@Semantics.amount.currencyCode: 't014.waers'
+	klibt: klibt; // abap.curr(23, 2): Credit Control Amt
+	qsznr: qsznr; // abap.char(10): Exemption Number
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	qbshb: qbshb; // abap.curr(23, 2): Withholding Tax Amt
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	qsfbt: qsfbt; // abap.curr(23, 2): Wtax-Exempt Amount
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	navhw: navhw; // abap.curr(23, 2): Non-Deductible
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	navfw: navfw; // abap.curr(23, 2): Non-Deductible
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	matnr: matnr; // abap.char(40): Material
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	werks: werks_d; // abap.char(4): Plant
+	
+	@Semantics.quantity.unitOfMeasure: 'bseg.meins'
+	menge: menge_d; // abap.quan(13, 3): Quantity
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	meins: meins; // abap.unit(3): Base Unit Of Measure
+	
+	@Semantics.quantity.unitOfMeasure: 'bseg.erfme'
+	erfmg: erfmg; // abap.quan(13, 3): Qty In Unit Of Entry
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	erfme: erfme; // abap.unit(3): Unit Of Entry
+	
+	@Semantics.quantity.unitOfMeasure: 'bseg.bprme'
+	bpmng: bpmng; // abap.quan(13, 3): Qty In Opun
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bprme: bprme; // abap.unit(3): Order Price Unit
+	ebeln_logsys: ebeln_logsys; // abap.char(10): Logical System Of Purchasing Document
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ebeln: ebeln; // abap.char(10): Purchasing Document
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ebelp: ebelp; // abap.numc(5): Item
+	zekkn: dzekkn; // abap.numc(2): Seq. No. Of Account Assgt
+	elikz: elikz; // abap.char(1): Delivery Completed
+	vprsv: vprsv; // abap.char(1): Price Control
+	peinh: peinh; // abap.dec(5, 0): Price Unit
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bwkey: bwkey; // abap.char(4): Valuation Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bwtar: bwtar_d; // abap.char(10): Valuation Type
+	bustw: bustw; // abap.char(4): Value String
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	rewrt: reewr; // abap.curr(13, 2): Invoice Value
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	rewwr: rewwr; // abap.curr(23, 2): Fc Invoice Amount
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	bonfb: bonfb; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	bualt: bualt; // abap.curr(13, 2): Amount
+	psalt: psalt; // abap.char(1): Alt. Price Control
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	nprei: nprei; // abap.curr(11, 2): New Price
+	tbtkz: tbtkz; // abap.char(1): Subseq. Debit/Credit
+	spgrp: spgrp; // abap.char(1): Blocking Reas. Price
+	spgrm: spgrm; // abap.char(1): Blocking Reason: Qty
+	spgrt: spgrt; // abap.char(1): Block. Reason: Date
+	spgrg: spgrg; // abap.char(1): Blocking Reason:opq
+	spgrv: spgrv; // abap.char(1): Blocking Reas: Proj.
+	spgrq: spgrq; // abap.char(1): Manual Block. Reason
+	stceg: stceg; // abap.char(20): Vat Registration No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	egbld: egbld; // abap.char(3): C/R Of Destination
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	eglld: eglld; // abap.char(3): Supplying Ctry/Reg
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	rstgr: rstgr; // abap.char(3): Reason Code
+	ryacq: ryacq; // abap.char(4): Year Of Acquisition
+	rpacq: rpacq; // abap.numc(3): Per. Of Acquisition
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	rdiff: rdiff; // abap.curr(23, 2): Difference Realized
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	rdif2: rdif2; // abap.curr(23, 2): Difference Realized 2
+	prctr: prctr; // abap.char(10): Profit Center
+	xhkom: xhkom; // abap.char(1): Manual G/L Account
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vname: jv_name; // abap.char(6): Joint Venture
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	recid: jv_recind; // abap.char(2): Recovery Indicator
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	egrup: jv_egroup; // abap.char(3): Equity Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vptnr: jv_part; // abap.char(10): Partner
+	vertt: rantyp; // abap.char(1): Contract Type
+	vertn: ranl; // abap.char(13): Contract Number
+	vbewa: sbewart; // abap.char(4): Flow Type
+	depot: rldepo; // abap.char(10): Securities Account
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	txjcd: txjcd; // abap.char(15): Tax Jurisdiction
+	imkey: imkey; // abap.char(8): Real Estate Key
+	dabrz: dabrbez; // abap.dats(8): Reference Date
+	popts: poptsatz; // abap.dec(9, 6): Option Rate
+	fipos: fipos; // abap.char(14): Commitment Item
+	kstrg: kstrg; // abap.char(12): Cost Object
+	nplnr: nplnr; // abap.char(12): Network
+	aufpl: aufpl_ch; // abap.numc(10): Task List No. Oper.
+	aplzl: aplzl_ch; // abap.numc(8): Counter
+	projk: ps_psp_pnr; // abap.numc(8): Wbs Element
+	paobjnr: rkeobjnr; // abap.numc(10): Profitab. Segmt No.
+	pasubnr: rkesubnr; // abap.numc(4): Subnumber
+	spgrs: spgrs; // abap.char(1): Blkg Reason: Item Amount
+	spgrc: spgrc; // abap.char(1): Blockreason:quality
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	btype: jv_bilind; // abap.char(2): Billing Indicator
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	etype: jv_etype; // abap.char(3): Equity Type
+	xegdr: xegdr; // abap.char(1): Eu Triangular Deal
+	lnran: lnran; // abap.numc(5): Sequence Number
+	hrkft: hrkft; // abap.char(4): Origin Group
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	dmbe2: dmbe2; // abap.curr(23, 2): Lc2 Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	dmbe3: dmbe3; // abap.curr(23, 2): Lc3 Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	dmb21: dmb2x; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	dmb22: dmb2x; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	dmb23: dmb2x; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	dmb31: dmb3x; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	dmb32: dmb3x; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	dmb33: dmb3x; // abap.curr(23, 2): Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	mwst2: mwst2; // abap.curr(23, 2): Lc2 Tax Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	mwst3: mwst3; // abap.curr(23, 2): Lc3 Tax Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	navh2: navh2; // abap.curr(23, 2): Lc2 Non-Deductible
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	navh3: navh3; // abap.curr(23, 2): Lc3 Non-Deductible
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	sknt2: sknt2; // abap.curr(23, 2): Cd Amount In Lc2
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	sknt3: sknt3; // abap.curr(23, 2): Cd Amount In Lc3
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	bdif3: bdif3; // abap.curr(23, 2): Valuation Difference 3
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	rdif3: rdif3; // abap.curr(23, 2): Difference Realized 3
+	hwmet: hwmet; // abap.char(1): 
+	glupm: glupm; // abap.char(1): Update Method
+	xragl: xragl; // abap.char(1): Reverse Clearing
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	uzawe: uzawe; // abap.char(2): Pmt Meth. Supplement
+	lokkt: altkt_skb1; // abap.char(10): Alternative Account No.
+	fistl: fistl; // abap.char(16): Funds Center
+	geber: bp_geber; // abap.char(10): Fund
+	stbuk: stbuk; // abap.char(4): Tax Company Code
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	txbh2: txbh2; // abap.curr(23, 2): Lc2 Tax Base Amount
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	txbh3: txbh3; // abap.curr(23, 2): Lc3 Tax Base Amount
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	pprct: pprctr; // abap.char(10): Partner Profit Ctr
+	xref1: xref1; // abap.char(12): Reference Key 1
+	xref2: xref2; // abap.char(12): Reference Key 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kblnr: kblnr_fi; // abap.char(10): Earmarked Funds
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kblpos: kblpos; // abap.numc(3): Document Item
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	sttax: sttax; // abap.curr(13, 2): Statistical Tax Amount In Document Crcy
+	fkber: fkber_short; // abap.char(4): Functional Area
+	obzei: obzei; // abap.numc(3): Original Item
+	xnegp: xnegp; // abap.char(1): Negative Posting
+	rfzei: rfzei_cc; // abap.numc(3): Payment Card Item
+	ccbtc: ccbtc; // abap.char(10): Settlement Run
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kkber: kkber; // abap.char(4): Credit Control Area
+	empfb: empfb; // abap.char(10): Payee
+	xref3: xref3; // abap.char(20): Reference Key 3
+	dtws1: dtat16; // abap.numc(2): Instruction Key 1
+	dtws2: dtat17; // abap.numc(2): Instruction Key 2
+	dtws3: dtat18; // abap.numc(2): Instruction Key 3
+	dtws4: dtat19; // abap.numc(2): Instruction Key 4
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gricd: j_1agicd_d; // abap.char(2): Activity Code Gi Tax
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	grirg: regio; // abap.char(3): Region
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gityp: j_1adtyp_d; // abap.char(2): Distribution Type
+	xpypr: xpypr; // abap.char(1): Payment Sent
+	kidno: kidno; // abap.char(30): Payment Reference
+	
+	@Semantics.amount.currencyCode: 't014.waers'
+	absbt: absbt; // abap.curr(23, 2): Hedged Amount
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	idxsp: j_1aindxsp; // abap.char(5): Inflation Index
+	linfv: j_1alinfvl; // abap.dats(8): Last Adjustment Date
+	kontt: kontt_fi; // abap.char(2): Acct Assignment Cat.
+	kontl: kontl_fi; // abap.char(50): Account Assignment
+	uebgdat: uebgdatum; // abap.dats(8): Transfer Date To Legal Dunning Proc.
+	txdat: txdat; // abap.dats(8): Tax Date
+	agzei: agzei; // abap.dec(5, 0): Clearing Item
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	pycur: pycur; // abap.cuky(5): Pymnt Currency
+	
+	@Semantics.amount.currencyCode: 'bseg.pycur'
+	pyamt: pyamt; // abap.curr(23, 2): Payt Crcy Amt
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bupla: bupla; // abap.char(4): Business Place
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	secco: secco; // abap.char(4): Section Code
+	lstar: lstar; // abap.char(6): Activity Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	cession_kz: cession_kz; // abap.char(2): Ar Pledging Ind.
+	prznr: co_prznr; // abap.char(12): Business Process
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	ppdiff: ppdiff; // abap.curr(23, 2): Difference Realized
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	ppdif2: ppdif2; // abap.curr(23, 2): Difference Realized
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	ppdif3: ppdif3; // abap.curr(23, 2): Difference Realized
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwaer'
+	penlc1: penalty1; // abap.curr(23, 2): Penalty Chge In Lc
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae2'
+	penlc2: penalty2; // abap.curr(23, 2): Pen.charge In Lc2
+	
+	@Semantics.amount.currencyCode: 'bkpf.hwae3'
+	penlc3: penalty3; // abap.curr(23, 2): Pen.charge In Lc3
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	penfc: penalty; // abap.curr(23, 2): Penalty Charge
+	pendays: pdays; // abap.int4(10): Days In Arrears
+	penrc: penrc; // abap.char(2): Reason For Late Pmnt
+	grant_nbr: gm_grant_nbr; // abap.char(20): Grant
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	sctax: sctax; // abap.curr(13, 2): Tax Portion Fi-Ca Local Currency
+	fkber_long: fkber; // abap.char(16): Functional Area
+	gmvkz: fm_gmvkz; // abap.char(1): Transfer To Execution
+	srtype: fm_srtype; // abap.char(2): Type Of Addtnl Recvabl
+	intreno: vvintreno; // abap.char(13): Real Estate Code
+	measure: fm_measure; // abap.char(24): Funded Program
+	auggj: auggj; // abap.numc(4): Clearing Fiscal Year
+	ppa_ex_ind: exclude_flg; // abap.char(1): Ppa Exclude Ind.
+	docln: docln6; // abap.char(6): Posting Item
+	segment: fb_segment; // abap.char(10): Segment
+	psegment: fb_psegment; // abap.char(10): Partner Segment
+	pfkber: sfkber; // abap.char(16): Partner Func. Area
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	hktid: hktid; // abap.char(5): Account Id
+	kstar: kstar; // abap.char(10): Cost Element
+	xlgclr: xlgclr; // abap.char(1): Open Item Mgmt By Ledger Group
+	taxps: tax_posnr; // abap.numc(6): Document Item Number For Tax Document.
+	pays_prov: com_wec_payment_srv_provider; // abap.char(4): Payment Service Provider
+	pays_tran: fps_transaction; // abap.char(35): Payment Ref.of Payment Service Provider
+	mndid: sepa_mndid; // abap.char(35): Mandate Reference
+	xfrge_bseg: xfrge_bseg; // abap.char(1): Payment Is Released
+	awtyp: awtyp; // abap.char(5): Reference Procedure
+	awkey: awkey; // abap.char(20): Reference Key
+	awsys: awsys; // abap.char(10): Log. System Source
+	posnr: posnr_acc; // abap.numc(10): Position
+	buzei_sender: buzei_sender; // abap.numc(3): Item In Sender System
+	h_monat: monat; // abap.numc(2): Posting Period
+	h_bstat: bstat_d; // abap.char(1): Document Status
+	h_budat: budat; // abap.dats(8): Posting Date
+	h_bldat: bldat; // abap.dats(8): Document Date
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	h_waers: waers; // abap.cuky(5): Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	h_blart: blart; // abap.char(2): Document Type
+	h_hwaer: hwaer; // abap.cuky(5): Local Currency
+	h_hwae2: hwae2; // abap.cuky(5): Local Currency 2
+	h_hwae3: hwae3; // abap.cuky(5): Local Currency 3
+	sk1dt: sk1dt; // abap.dats(8): Cash Disc 1 Due Date
+	sk2dt: sk2dt; // abap.dats(8): Cash Disc 2 Due Date
+	prctr_drvtn_source_type: finoc_prctr_drvtn_source_type; // abap.char(2): Profit Center Derivation Srce
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	payt_rsn: farp_payt_rsn; // abap.char(4): Payment Reason
+	_dataaging: data_temperature; // abap.dats(8): Data Aging Filter
+	fqftype: fqm_flow_type; // abap.char(6): Flow Type
+	lqitem: flqpos; // abap.char(16): Liquidity Item
+	gkont: gkont; // abap.char(10): Offsetting Account
+	gkart: gkoar; // abap.char(1): Offsetting Account Type
+	ghkon: ghkont; // abap.char(10): Offsetting Account In General Ledger
+	squan: sign_quantity; // abap.char(1): Quantity +/- Sign
+	anln2_pn: anln2; // abap.char(4): Sub-Number
+	bwasl_pn: bwasl; // abap.char(3): Transaction Type
+	bzdat_pn: bzdat; // abap.dats(8): Asset Value Date
+	xvabg_pn: xvabg; // abap.char(1): Complete Retirement
+	
+	@Semantics.amount.currencyCode: 'bkpf.waers'
+	anbtr_pn: anbtr; // abap.curr(23, 2): Amount Posted
+	prozs_pn: prozs; // abap.dec(5, 2): Percentage Rate
+	acdoc_eew_dummy: cfd_dummy; // abap.char(1): Dummy
+	zztitle: zztitle; // abap.char(40): Title
+	dummy_incl_eew_cobl: cfd_dummy; // abap.char(1): Dummy
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	acrobjtype: acr_obj_type; // abap.char(4): Accrual Object Type
+	acrlogsys: acr_logsys; // abap.char(10): Logical System Of Accrual Object
+	acrobj_id: acr_obj_id; // abap.char(32): Accrual Object
+	acrsobj_id: acr_subobj_id; // abap.char(32): Accrual Subobject
+	acritmtype: acr_item_type; // abap.char(11): Accrual Item Type
+	acrrefobj_id: acr_refobj_id; // abap.char(32): Accrual Reference Id
+	acrvaldat: acr_value_date; // abap.dats(8): Accrual Value Date
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	valobjtype: val_obj_type; // abap.char(4): Type Of The Financial Valuation Object
+	valobj_id: val_obj_id; // abap.char(32): Financial Valuation Object
+	valsobj_id: val_subobj_id; // abap.char(32): Financial Valuation Subobject
+	netdt: netdt; // abap.dats(8): Net Due Date
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	risk_class: ukm_risk_class; // abap.char(3): Risk Class
+	sdm_version: fins_sdm_version_bseg; // abap.char(2): Sdm Versioning
+	glo_ref1: fac_glo_ref1; // abap.char(50): Country/Region Specific Reference 1
+	re_bukrs: fagl_re_bukrs; // abap.char(4): Company Code
+	re_account: fagl_re_account; // abap.char(10): Expense Or Revenue Account In Cl
+	dp_payment_type: dp_payment_type; // abap.char(2): Digital Payments Payment Type
+	dp_trans_id: dp_transid; // abap.char(44): Digital Payments Transaction/Payment Id
+	pgeber: fm_pfund; // abap.char(10): Partner Fund
+	pgrant_nbr: gm_grant_partner; // abap.char(20): Partner Grant
+	budget_pd: fm_budget_period; // abap.char(10): Budget Period
+	pbudget_pd: fm_pbudget_period; // abap.char(10): Par. Budget Per.
+	j_1tpbupl: bcode; // abap.char(5): Branch Code
+	perop_beg: fm_perop_fi_low; // abap.dats(8): Billing Period Of Performance Start Date
+	perop_end: fm_perop_fi_high; // abap.dats(8): Billing Period Of Performance End Date
+	fastpay: fmfg_fastpay_flg; // abap.char(1): Fast Pay Indicator
+	ignr_ivref: fmfg_ignore_inv_ref; // abap.char(1): Ignore Invoice Reference
+	fmfgus_key: fmfg_us_key; // abap.char(22): Us Government Fields
+	fmxdocnr: fm_xdocnr; // abap.char(10): Fm Reference Document Number
+	fmxyear: fm_xyear; // abap.numc(4): Fm Reference Year
+	fmxdocln: fm_xdocln; // abap.numc(6): Fm Reference Line Item
+	fmxzekkn: fm_xzekkn; // abap.numc(5): Fm Reference Sequence Account Assignment
+	prodper: jv_prodper; // abap.dats(8): Production Month
+	gst_part: j_1ig_partner; // abap.char(10): Gst Partner
+	plc_sup: j_1ig_region; // abap.char(3): Place Of Supply
+	hsn_sac: j_1ig_hsn_sac; // abap.char(16): Hsn/Sac Code
+	irn: j_1ig_irn; // abap.char(64): Invoice Reference Number
+	recrf: j_1irecrf; // abap.char(1): St Recredit Flag
+	bdgt_account: psm_bdgt_account; // abap.char(10): Budget Account
+	bdgt_account_cocode: psm_bdgt_account_cocode; // abap.char(4): Company Code For Budget Account
+	inward_no: safm_ap_inward_no; // abap.char(30): Incoming Doc. Nmbr
+	inward_dt: safm_ap_inward_dt; // abap.dats(8): Incoming Doc. Date
+	ground_no: safm_ap_pybsno; // abap.char(16): Payt. Ground No.
+	ground_dt: safm_ap_pybsdat; // abap.dats(8): Payt. Ground Date
+	ground_typ: safm_ap_pybstyp; // abap.char(2): Payt. Against
+	pymtkey: safm_ap_pymntkey; // abap.char(20): Payment/Proposal Key
+}
