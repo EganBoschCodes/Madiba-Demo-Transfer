@@ -1,0 +1,167 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Buchungskreise'
+
+define table t001 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key bukrs: bukrs; // abap.char(4): Company Code
+	butxt: butxt; // abap.char(25): Company Name
+	ort01: ort01; // abap.char(25): City
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	land1: land1; // abap.char(3): Country/Region Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers; // abap.cuky(5): Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktopl: ktopl; // abap.char(4): Chart Of Accounts
+	waabw: waabw_001; // abap.numc(2): Max. Exchange Rate Deviation
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	periv: periv; // abap.char(2): Fiscal Year Variant
+	kokfi: kokfi; // abap.char(1): Cocd -> Co Area
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Zuordnung Buchungskreis zu Gesellschaft'
+	@AbapCatalog.foreignKey.screenCheck: true
+	rcomp: rcomp_d; // abap.char(6): Company
+	adrnr: adrnr; // abap.char(10): Address
+	stceg: stceg; // abap.char(20): Vat Registration No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fikrs: fikrs; // abap.char(4): Fm Area
+	xfmco: xfmco; // abap.char(1): Project Cash Mgmt Active
+	xfmcb: xfmcb; // abap.char(1): Csh Bdgt Mgt Active
+	xfmca: xfmca; // abap.char(1): Update Fm
+	txjcd: txjcd_nstx; // abap.char(15): Jurisdiction Code
+	fmhrdate: fm_hrdate; // abap.dats(8): Fds Ctr Active In Hr
+	xtemplt: fins_xtemplt; // abap.char(1): Template
+	transit_plant: fins_transit_plant; // abap.char(4): Transit Plant
+	buvar: buvar; // abap.char(1): Document Entry Screen Variant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fdbuk: fdbuk; // abap.char(4): Cash Management Company Code
+	xfdis: xfdis; // abap.char(1): Cash Management Activated
+	xvalv: xvalv; // abap.char(1): Define Default Value Date
+	xskfn: xskfn; // abap.char(1): Discount Base Is Net Value
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kkber: kkber; // abap.char(4): Credit Control Area
+	xmwsn: xmwsn; // abap.char(1): Tax Base Is Net Value
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mregl: mregl; // abap.char(4): Sample Acct Rules Var.
+	xgsbe: xgsbe; // abap.char(1): Business Area Fin. Statements
+	xgjrv: xgjrv; // abap.char(1): Propose Fiscal Year
+	xkdft: xkdft; // abap.char(1): Post Translation
+	xprod: xprod_001; // abap.char(1): Company Code Is Productive
+	xeink: xeink; // abap.char(1): Purchase Acct Proc.
+	xjvaa: jv_active; // abap.char(1): Jv Accounting Active
+	xvvwa: xvvwa; // abap.char(1): Financial Assets Mgmt Active
+	xslta: xslta; // abap.char(1): No Exch. Rate Diff. When Clearing In Lc
+	xfdmm: xfdmm; // abap.char(1): Update Mm In Cmf
+	xfdsd: xfdsd; // abap.char(1): Update Sd In Cmf
+	xextb: xextb; // abap.char(1): External Cocode
+	ebukr: ebukr_001; // abap.char(4): Original Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktop2: ktop2; // abap.char(4): Alternative Coa
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	umkrs: umkrs; // abap.char(4): Taxes On Sls/Purc.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs_glob: bukrs_glob; // abap.char(6): Global Cocde
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fstva: fstva; // abap.char(4): Field Status Variant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	opvar: opvar; // abap.char(4): Pstng Period Variant
+	xcovr: xcovr; // abap.char(1): Hedge Request Active
+	txkrs: txkrs; // abap.char(1): Tax Crcy Translation
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wfvar: wfvar; // abap.char(4): Workflow Variant
+	xbbbf: xbbbf; // abap.char(1): Inventory Management
+	xbbbe: xbbbe; // abap.char(1): Po/Scheduling Agmt.
+	xbbba: xbbba; // abap.char(1): Purchase Requisition
+	xbbko: xbbko; // abap.char(1): Contract
+	xstdt: xstdt_001; // abap.char(1): Tax Determ.with Doc.date
+	mwskv: mwskz_nstv; // abap.char(2): Input Tax Code
+	mwska: mwskz_nsta; // abap.char(2): Output Tax Code
+	impda: impdaten; // abap.char(1): Import Data In Po
+	xnegp: xnegp_act; // abap.char(1): Negative Postings Permitted
+	xkkbi: xkkbi; // abap.char(1): Control Area Can Be Input
+	wt_newwt: wt_newwt; // abap.char(1): Extended Withholding Tax Active
+	pp_pdate: pp_pdate; // abap.char(1): Posting Date For Parking
+	
+	@AbapCatalog.foreignKey.label: 'Inflationsmethoden'
+	@AbapCatalog.foreignKey.screenCheck: true
+	infmt: j_1ainfme_; // abap.char(4): Inflation Method
+	
+	@AbapCatalog.foreignKey.label: 'Fremdschlssel Feldstatusvariante Mittelreservierung'
+	@AbapCatalog.foreignKey.screenCheck: true
+	fstvare: fstvare; // abap.char(4): Field Status Variant
+	kopim: kopim; // abap.char(1): Copying Control Gr
+	dkweg: dkweg; // abap.char(1): Import Data Gr
+	offsacct: goffsacct; // abap.numc(1): Method Offsttng Acct
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bapovar: bapovar; // abap.char(2): Ba Variant
+	xcos: xcos; // abap.char(1): Cost Of Sales Accounting Actv.
+	xcession: x_cession; // abap.char(1): Accts Recble Pled. Active
+	xsplt: bsplt; // abap.char(1): Enable Amount Split
+	surccm: j_1isurc; // abap.char(1): Surcharge Method
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	dtprov: j_1iprov; // abap.char(2): Document Type For Provisions For Taxes
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	dtamtc: j_1iamtc; // abap.char(2): Document Type For Jv (Amount Correction)
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	dttaxc: j_1itaxc; // abap.char(2): Document Type For Jv (Tax Code)
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	dttdsp: j_1itdstyp; // abap.char(2): Remittance Challan Document Type
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	dtaxr: dtaxr; // abap.char(4): Deferred Tax Rule
+	xvatdate: xvatdate; // abap.char(1): Tax Reporting Date Active
+	pst_per_var: fagl_post_per_var; // abap.char(1): Manage Posting Period For Cocode/Ledger
+	xbbsc: /srmerp/xbbsc; // abap.char(1): Shopping Cart
+	f_obsolete: fi_obsolete_f4; // abap.char(1): Hide Entry In Input Help
+	fm_derive_acc: fm_derive_acc; // abap.char(1): Activate Aa Derivation
+}

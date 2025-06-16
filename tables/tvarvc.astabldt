@@ -1,0 +1,17 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #G
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Tabelle der Variantenvariablen (mandantenabhngig)'
+
+define table tvarvc {
+	key mandt: symandt; // abap.clnt(3): Client Id
+	key name: rvari_vnam; // abap.char(30): Variable Name
+	key type: rsscr_kind; // abap.char(1): Selection Type
+	key numb: tvarv_numb; // abap.numc(4): Number
+	sign: tvarv_sign; // abap.char(1): Incl/Excl
+	opti: tvarv_opti; // abap.char(2): Option
+	low: rvari_val_255; // abap.char(255): Field Value
+	high: rvari_val_255; // abap.char(255): Field Value
+	clie_indep: sychar01; // abap.char(1): 
+}

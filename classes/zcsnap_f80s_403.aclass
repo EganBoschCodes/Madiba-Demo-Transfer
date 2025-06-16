@@ -1,0 +1,542 @@
+CLASS zcsnap_f80s_403 DEFINITION
+    PUBLIC
+    FINAL
+    CREATE PUBLIC .
+
+    PUBLIC SECTION.
+
+        INTERFACES if_amdp_marker_hdb.
+
+        CLASS-METHODS get_data
+            FOR TABLE FUNCTION ZSNAP_F80S_403.
+
+    PROTECTED SECTION.
+    PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zcsnap_f80s_403 IMPLEMENTATION.
+
+  METHOD get_data BY DATABASE FUNCTION FOR HDB LANGUAGE SQLSCRIPT OPTIONS READ-ONLY USING ZSNAP_F80G_JournalEntryItem
+	  ZSNAP_F80M_CashGLAccounts acdoca bkpf bseg bvor tvarvc zsnapf80cashhist.
+
+    ZSNAP_F80S_203 = /* ZSNAP_F80S_203 */ select
+			main.mandt,
+			main.belnr as AccountingDocument,
+			main.bukrs as CompanyCode,
+			main.gjahr as FiscalYear,
+			main.buzei as AccountingDocumentItem,
+			ClearingHistory.EntryCounter,
+			main.augdt as ClearingDate
+		from bseg as main
+		inner one to one join zsnapf80cashhist as ClearingHistory on ClearingHistory.FiscalYear = main.gjahr and
+			ClearingHistory.AccountingDocument = main.belnr and ClearingHistory.CompanyCode = main.bukrs and
+			ClearingHistory.AccountingDocumentItem = main.buzei and ClearingHistory.ClearingAccountingDocument <> main.augbl and
+			ClearingHistory.MostRecentFlag = 'X'
+		where main.mandt = :P_Client
+			and main.h_budat >= :P_CashStartDate
+			and main.koart in ('D', 'K');
+	
+	ZSNAP_F80S_205 = /* ZSNAP_F80S_205 */ select
+			main.mandt,
+			main.AccountingDocument,
+			main.CompanyCode,
+			main.FiscalYear,
+			coalesce (min (case
+				when main.ClearingDate <> '00000000' then main.ClearingDate
+			end), '00000000') as ClearingDate,
+			max (main.EntryCounter) as EntryCounter
+		from :ZSNAP_F80S_203 as main
+		group by main.mandt,
+			main.AccountingDocument,
+			main.CompanyCode,
+			main.FiscalYear;
+	
+	ZSNAP_F80S_181 = /* ZSNAP_F80S_181 */ select
+			main.mandt,
+			main.AccountingDocument,
+			main.CompanyCode,
+			main.FiscalYear,
+			main.PostingDate as CashPostingDate,
+			'1A' as Source
+		from (/* ZSNAP_F80S_103 */ select
+				main.rclnt as mandt,
+				main.belnr as AccountingDocument,
+				main.rbukrs as CompanyCode,
+				main.gjahr as FiscalYear,
+				main.budat as PostingDate
+			from acdoca as main
+			inner many to many join ZSNAP_F80M_CashGLAccounts as CashAccounts on main.racct = CashAccounts.GLAccount
+			where main.budat >= :P_CashStartDate
+				and main.rldnr = '0L'
+				and main.rclnt = :P_Client) as main
+		union all /* ZSNAP_F80S_181 - Union */ select
+			main.mandt,
+			main.AccountingDocument,
+			main.CompanyCode,
+			main.FiscalYear,
+			main.DocumentDate as CashPostingDate,
+			'2A' as Source
+		from (/* ZSNAP_F80S_113 */ select
+				main.rclnt as mandt,
+				main.belnr as AccountingDocument,
+				main.rbukrs as CompanyCode,
+				main.gjahr as FiscalYear,
+				main.bldat as DocumentDate
+			from acdoca as main
+			inner many to one join tvarvc as CashDocTypes on CashDocTypes.low = main.blart and CashDocTypes.name =
+				'ZZSNAP_CASHFLOW_JEDOCTYPE' and CashDocTypes.sign = 'I' and CashDocTypes.opti = 'EQ'
+			where main.rldnr = '0L'
+				and main.budat >= :P_CashStartDate
+				and main.rclnt = :P_Client) as main;
+	
+	ZSNAP_F80S_185 = /* ZSNAP_F80S_185 */ select
+			main.mandt,
+			main.AccountingDocument,
+			main.CompanyCode,
+			main.FiscalYear,
+			main.CashPostingDate,
+			main.Source
+		from :ZSNAP_F80S_181 as main
+		union all /* ZSNAP_F80S_185 - Union */ select
+			main.mandt,
+			main.AccountingDocument,
+			main.CompanyCode,
+			main.FiscalYear,
+			main.CashPostingDate,
+			main.Source
+		from (/* ZSNAP_F80S_183 */ select
+				Intercompany.mandt,
+				Intercompany.belnr as AccountingDocument,
+				Intercompany.bukrs as CompanyCode,
+				Intercompany.gjahr as FiscalYear,
+				main.CashPostingDate,
+				concat (substring (main.Source, 1, 1), 'B') as Source
+			from :ZSNAP_F80S_181 as main
+			left outer many to one join bkpf as Header on Header.belnr = main.AccountingDocument and Header.bukrs =
+				main.CompanyCode and Header.gjahr = main.FiscalYear
+			inner many to many join bvor as Intercompany on Intercompany.bvorg = Header.bvorg
+			where Header.bvorg != ''
+				and main.CompanyCode != Intercompany.bukrs) as main;
+	
+	ZSNAP_F80S_195 = /* ZSNAP_F80S_195 */ select
+			main.mandt,
+			main.AccountingDocument,
+			main.CompanyCode,
+			main.FiscalYear,
+			main.CashPostingDate,
+			main.Source,
+			'' as ResetFlag
+		from (/* ZSNAP_F80S_193 */ select
+				main.mandt,
+				main.AccountingDocument,
+				main.CompanyCode,
+				main.FiscalYear,
+				main.Source,
+				main.CashPostingDate,
+				row_number () over (partition by main.AccountingDocument, main.CompanyCode, main.FiscalYear order by main.Source asc)
+					as RowNumber
+			from (/* ZSNAP_F80S_189 */ select
+					main.mandt,
+					main.AccountingDocument,
+					main.CompanyCode,
+					main.FiscalYear,
+					main.CashPostingDate,
+					main.Source
+				from :ZSNAP_F80S_185 as main
+				union all /* ZSNAP_F80S_189 - Union */ select
+					main.mandt,
+					main.AccountingDocument,
+					main.CompanyCode,
+					main.FiscalYear,
+					main.CashPostingDate,
+					main.Source
+				from (/* ZSNAP_F80S_187 */ select
+						main.mandt,
+						main.belnr as AccountingDocument,
+						main.bukrs as CompanyCode,
+						main.gjahr as FiscalYear,
+						main.budat as CashPostingDate,
+						concat (substring (NonResettableICDocs.Source, 1, 1), 'D') as Source
+					from bkpf as main
+					inner one to many join :ZSNAP_F80S_185 as NonResettableICDocs on NonResettableICDocs.AccountingDocument = main.stblg
+						and NonResettableICDocs.CompanyCode = main.bukrs and NonResettableICDocs.FiscalYear = main.stjah
+					where main.mandt = :P_Client) as main) as main) as main
+		where main.RowNumber = 1;
+	
+	ZSNAP_F80S_315 = /* ZSNAP_F80S_315 */ select
+			main.mandt,
+			main.CompanyCode,
+			main.AccountingDocument,
+			main.FiscalYear,
+			main.AccountingDocumentItem,
+			main.EntryCounter,
+			main.ClearingDate,
+			main.ClearingAccountingDocument,
+			main.Source,
+			main.ResetFlag
+		from (/* ZSNAP_F80S_313 */ select
+				main.mandt,
+				main.CompanyCode,
+				main.AccountingDocument,
+				main.FiscalYear,
+				main.AccountingDocumentItem,
+				main.EntryCounter,
+				main.ClearingDate,
+				main.ClearingAccountingDocument,
+				main.Source,
+				main.ResetFlag
+			from (/* ZSNAP_F80S_303 */ select
+					main.mandt,
+					main.CompanyCode,
+					main.AccountingDocument,
+					main.FiscalYear,
+					main.AccountingDocumentItem,
+					main.EntryCounter,
+					main.ClearingDate,
+					main.ClearingAccountingDocument,
+					main.ResetFlag,
+					case
+						when main.FinancialAccountType = 'D' and main.ResetFlag = '' then '5A'
+						when main.FinancialAccountType = 'D' and main.ResetFlag = 'X' then '5C'
+						when main.FinancialAccountType = 'K' and main.ResetFlag = '' then '6A'
+						else '6C'
+					end as Source
+				from zsnapf80cashhist as main
+				left outer many to one join :ZSNAP_F80S_205 as ResettingDocuments on ResettingDocuments.mandt = main.mandt and
+					ResettingDocuments.CompanyCode = main.CompanyCode and ResettingDocuments.AccountingDocument = main.AccountingDocument
+					and ResettingDocuments.FiscalYear = main.FiscalYear) as main
+			union all /* ZSNAP_F80S_313 - Union */ select
+				main.mandt,
+				main.CompanyCode,
+				main.AccountingDocument,
+				main.FiscalYear,
+				main.AccountingDocumentItem,
+				main.EntryCounter,
+				main.ClearingDate,
+				main.ClearingAccountingDocument,
+				main.Source,
+				main.ResetFlag
+			from (/* ZSNAP_F80S_305 */ select
+					main.mandt,
+					main.CompanyCode,
+					main.AccountingDocument,
+					main.FiscalYear,
+					main.AccountingDocumentItem,
+					main.EntryCounter + 1 as EntryCounter,
+					case
+						when :P_SystemDate < ResettingDocuments.ClearingDate or ResettingDocuments.ClearingDate = '00000000' then
+							:P_SystemDate
+						else ResettingDocuments.ClearingDate
+					end as ClearingDate,
+					main.ClearingAccountingDocument,
+					case main.FinancialAccountType
+						when 'D' then '5C'
+						else '6C'
+					end as Source,
+					'X' as ResetFlag
+				from zsnapf80cashhist as main
+				inner one to one join :ZSNAP_F80S_205 as ResettingDocuments on ResettingDocuments.mandt = main.mandt and
+					ResettingDocuments.CompanyCode = main.CompanyCode and ResettingDocuments.AccountingDocument = main.AccountingDocument
+					and ResettingDocuments.FiscalYear = main.FiscalYear
+				where main.MostRecentFlag = 'X') as main
+			union all /* ZSNAP_F80S_313 - Union */ select
+				main.mandt,
+				main.CompanyCode,
+				main.AccountingDocument,
+				main.FiscalYear,
+				main.AccountingDocumentItem,
+				main.EntryCounter,
+				main.ClearingDate,
+				main.ClearingAccountingDocument,
+				main.Source,
+				main.ResetFlag
+			from (/* ZSNAP_F80S_307 */ select
+					main.mandt,
+					main.CompanyCode,
+					main.AccountingDocument,
+					main.FiscalYear,
+					CurrentClearing.buzei as AccountingDocumentItem,
+					main.EntryCounter + 2 as EntryCounter,
+					main.ClearingDate,
+					CurrentClearing.augbl as ClearingAccountingDocument,
+					case CurrentClearing.koart
+						when 'D' then '3A'
+						else '4A'
+					end as Source,
+					'' as ResetFlag
+				from :ZSNAP_F80S_205 as main
+				left outer one to many join bseg as CurrentClearing on CurrentClearing.mandt = main.mandt and CurrentClearing.belnr =
+					main.AccountingDocument and CurrentClearing.bukrs = main.CompanyCode and CurrentClearing.gjahr = main.FiscalYear
+				where main.ClearingDate <> '00000000'
+					and (CurrentClearing.koart = 'K' or CurrentClearing.koart = 'D')) as main
+			union all /* ZSNAP_F80S_313 - Union */ select
+				main.mandt,
+				main.CompanyCode,
+				main.AccountingDocument,
+				main.FiscalYear,
+				main.AccountingDocumentItem,
+				main.EntryCounter,
+				main.ClearingDate,
+				main.ClearingAccountingDocument,
+				main.Source,
+				main.ResetFlag
+			from (/* ZSNAP_F80S_309 */ select
+					main.mandt,
+					main.bukrs as CompanyCode,
+					main.belnr as AccountingDocument,
+					main.gjahr as FiscalYear,
+					main.buzei as AccountingDocumentItem,
+					coalesce (MaxEntryCounter.EntryCounter + 1, 0) as EntryCounter,
+					AllClearedDocuments.ClearingDate,
+					main.augbl as ClearingAccountingDocument,
+					case main.koart
+						when 'D' then '3A'
+						else '4A'
+					end as Source,
+					'' as ResetFlag
+				from bseg as main
+				inner many to one join (/* ZSNAP_F80S_207 */ select
+					main.mandt,
+					main.belnr as AccountingDocument,
+					main.bukrs as CompanyCode,
+					main.gjahr as FiscalYear,
+					coalesce (min (case
+						when main.augdt <> '00000000' then main.augdt
+					end), '00000000') as ClearingDate
+				from bseg as main
+				where main.mandt = :P_Client
+					and main.h_budat >= :P_CashStartDate
+					and main.koart in ('D', 'K')
+					and main.augdt <> '00000000'
+				group by main.mandt,
+					main.belnr,
+					main.bukrs,
+					
+						main.gjahr) as AllClearedDocuments on AllClearedDocuments.mandt = main.mandt and AllClearedDocuments.AccountingDocument = main.belnr and AllClearedDocuments.CompanyCode = main.bukrs and AllClearedDocuments.FiscalYear = main.gjahr
+				left outer one to one join zsnapf80cashhist as CurrentClearedDocuments on CurrentClearedDocuments.mandt = main.mandt
+					and CurrentClearedDocuments.CompanyCode = main.bukrs and CurrentClearedDocuments.AccountingDocument = main.belnr and
+					CurrentClearedDocuments.FiscalYear = main.gjahr and CurrentClearedDocuments.AccountingDocumentItem = main.buzei and
+					CurrentClearedDocuments.MostRecentFlag = 'X'
+				left outer one to one join (/* ZSNAP_F80S_209 */ select
+					main.mandt,
+					main.CompanyCode,
+					main.AccountingDocument,
+					main.FiscalYear,
+					max (main.EntryCounter) as EntryCounter
+				from zsnapf80cashhist as main
+				group by main.mandt,
+					main.CompanyCode,
+					main.AccountingDocument,
+					
+						main.FiscalYear) as MaxEntryCounter on MaxEntryCounter.mandt = main.mandt and MaxEntryCounter.CompanyCode = main.bukrs and MaxEntryCounter.AccountingDocument = main.belnr and MaxEntryCounter.FiscalYear = main.gjahr
+				where CurrentClearedDocuments.AccountingDocument is null
+					and (main.koart = 'K' or main.koart = 'D')) as main) as main
+		left outer many to one join :ZSNAP_F80S_195 as NonResettableDocuments on NonResettableDocuments.mandt = main.mandt and
+			NonResettableDocuments.CompanyCode = main.CompanyCode and NonResettableDocuments.AccountingDocument =
+			main.AccountingDocument and NonResettableDocuments.FiscalYear = main.FiscalYear
+		where NonResettableDocuments.AccountingDocument is null;
+	
+	ZSNAP_F80S_321 = /* ZSNAP_F80S_321 */ select
+			main.mandt,
+			main.CompanyCode,
+			main.AccountingDocument,
+			main.FiscalYear,
+			main.EntryCounter,
+			min (main.ClearingDate) as ClearingDate,
+			min (main.Source) as Source,
+			min (main.ResetFlag) as ResetFlag
+		from :ZSNAP_F80S_315 as main
+		group by main.mandt,
+			main.CompanyCode,
+			main.AccountingDocument,
+			main.FiscalYear,
+			main.EntryCounter;
+	
+	ZSNAP_F80S_325 = /* ZSNAP_F80S_325 */ select
+			main.mandt,
+			main.CompanyCode,
+			main.AccountingDocument,
+			main.FiscalYear,
+			main.EntryCounter,
+			main.ClearingDate,
+			main.Source,
+			main.ResetFlag
+		from :ZSNAP_F80S_321 as main
+		union all /* ZSNAP_F80S_325 - Union */ select
+			main.mandt,
+			main.CompanyCode,
+			main.AccountingDocument,
+			main.FiscalYear,
+			main.EntryCounter,
+			main.ClearingDate,
+			main.Source,
+			main.ResetFlag
+		from (/* ZSNAP_F80S_323 */ select
+				Intercompany.mandt,
+				Intercompany.bukrs as CompanyCode,
+				Intercompany.belnr as AccountingDocument,
+				Intercompany.gjahr as FiscalYear,
+				main.EntryCounter,
+				main.ClearingDate,
+				concat (substring (main.Source, 1, 1), 'B') as Source,
+				main.ResetFlag
+			from :ZSNAP_F80S_321 as main
+			left outer many to one join bkpf as Header on Header.belnr = main.AccountingDocument and Header.bukrs =
+				main.CompanyCode and Header.gjahr = main.FiscalYear
+			inner many to many join bvor as Intercompany on Intercompany.bvorg = Header.bvorg
+			left outer one to one join :ZSNAP_F80S_321 as DuplicateCheck on DuplicateCheck.CompanyCode = Intercompany.bukrs and
+				DuplicateCheck.AccountingDocument = Intercompany.belnr and DuplicateCheck.FiscalYear = Intercompany.gjahr
+			where DuplicateCheck.CompanyCode is null) as main;
+
+	return /* ZSNAP_F80S_403 */ select
+		main.mandt,
+		main.Ledger,
+		main.SourceLedger,
+		main.AccountingDocument,
+		main.CompanyCode,
+		main.FiscalYear,
+		main.LedgerGLLineItem,
+		CashFlowDocuments.Source,
+		CashFlowDocuments.CashPostingDate,
+		CashFlowDocuments.ResetFlag,
+		CashFlowDocuments.EntryCounter,
+		main.AccountingDocumentItem,
+		main.AccountingDocumentType,
+		main.ChartOfAccounts,
+		main.AssignmentReference,
+		main.TransactionTypeDetermination,
+		main.OrderID,
+		ResettableClearingInfo.ClearingAccountingDocument,
+		main.ControllingArea,
+		main.CostCenter,
+		main.Customer,
+		main.CustomerGroup,
+		main.DebitCreditCode,
+		main.DocumentItemText,
+		main.FinancialAccountType,
+		main.FollowOnDocumentType,
+		main.GLAccount,
+		main.InvoiceItemReference,
+		main.InvoiceReference,
+		main.IsOpenItemManaged,
+		main.IsReversal,
+		main.IsReversed,
+		main.PartnerCompany,
+		main.PostingKey,
+		main.Product,
+		main.ProfitCenter,
+		main.ReferenceDocument,
+		main.ReferenceDocumentItem,
+		main.SpecialGLCode,
+		main.Supplier,
+		main.TaxCode,
+		main.Product as Material,
+		main.SoldProductGroup as MaterialGroup,
+		main.ProjectInternalID as Project,
+		main.WBSElementInternalID as WBSElement,
+		main.ClearingDate,
+		main.DocumentDate,
+		main.FiscalYearVariant,
+		main.InvoiceReferenceFiscalYear,
+		main.PostingDate,
+		main.Title,
+		case CashFlowDocuments.ResetFlag
+			when 'X' then -main.AmountInTransactionCurrency
+			else main.AmountInTransactionCurrency
+		end as AmountInTransactionCurrency,
+		main.TransactionCurrency,
+		case CashFlowDocuments.ResetFlag
+			when 'X' then -main.AmountInCompanyCodeCurrency
+			else main.AmountInCompanyCodeCurrency
+		end as AmountInCompanyCodeCurrency,
+		main.CompanyCodeCurrency,
+		case CashFlowDocuments.ResetFlag
+			when 'X' then -main.AmountInGlobalCurrency
+			else main.AmountInGlobalCurrency
+		end as AmountInGlobalCurrency,
+		main.GlobalCurrency,
+		case CashFlowDocuments.ResetFlag
+			when 'X' then -main.AmountInFreeDefinedCurrency1
+			else main.AmountInFreeDefinedCurrency1
+		end as AmountInFourthCurrency,
+		main.FreeDefinedCurrency1 as FourthCurrency
+	from ZSNAP_F80G_JournalEntryItem as main
+	inner one to many join (/* ZSNAP_F80S_335 */ select
+		main.mandt,
+		main.CompanyCode,
+		main.AccountingDocument,
+		main.FiscalYear,
+		0 as EntryCounter,
+		main.CashPostingDate,
+		main.Source,
+		main.ResetFlag
+	from :ZSNAP_F80S_195 as main
+	union all /* ZSNAP_F80S_335 - Union */ select
+		main.mandt,
+		main.CompanyCode,
+		main.AccountingDocument,
+		main.FiscalYear,
+		main.EntryCounter,
+		main.CashPostingDate,
+		main.Source,
+		main.ResetFlag
+	from (/* ZSNAP_F80S_333 */ select
+			main.mandt,
+			main.CompanyCode,
+			main.AccountingDocument,
+			main.FiscalYear,
+			main.EntryCounter,
+			min (main.CashPostingDate) as CashPostingDate,
+			min (main.Source) as Source,
+			min (main.ResetFlag) as ResetFlag
+		from (/* ZSNAP_F80S_329 */ select
+				main.mandt,
+				main.CompanyCode,
+				main.AccountingDocument,
+				main.FiscalYear,
+				main.EntryCounter,
+				main.ClearingDate as CashPostingDate,
+				main.Source,
+				main.ResetFlag
+			from :ZSNAP_F80S_325 as main
+			union all /* ZSNAP_F80S_329 - Union */ select
+				main.mandt,
+				main.CompanyCode,
+				main.AccountingDocument,
+				main.FiscalYear,
+				main.EntryCounter,
+				main.ClearingDate as CashPostingDate,
+				main.Source,
+				main.ResetFlag
+			from (/* ZSNAP_F80S_327 */ select
+					main.mandt,
+					main.belnr as AccountingDocument,
+					main.bukrs as CompanyCode,
+					main.gjahr as FiscalYear,
+					ResettableICDocs.EntryCounter,
+					ResettableICDocs.ClearingDate,
+					concat (substring (ResettableICDocs.Source, 1, 1), 'D') as Source,
+					ResettableICDocs.ResetFlag
+				from bkpf as main
+				inner one to many join :ZSNAP_F80S_325 as ResettableICDocs on ResettableICDocs.CompanyCode = main.bukrs and
+					ResettableICDocs.AccountingDocument = main.stblg and ResettableICDocs.FiscalYear = main.stjah
+				left outer one to one join :ZSNAP_F80S_325 as DuplicateCheck on DuplicateCheck.CompanyCode = main.bukrs and
+					DuplicateCheck.AccountingDocument = main.belnr and DuplicateCheck.FiscalYear = main.gjahr
+				where main.budat >= ResettableICDocs.ClearingDate
+					and DuplicateCheck.CompanyCode is null) as main) as main
+		left outer one to one join :ZSNAP_F80S_195 as DuplicateCheck on DuplicateCheck.CompanyCode = main.CompanyCode and
+			DuplicateCheck.AccountingDocument = main.AccountingDocument and DuplicateCheck.FiscalYear = main.FiscalYear
+		where DuplicateCheck.CompanyCode is null
+		group by main.mandt,
+			main.CompanyCode,
+			main.AccountingDocument,
+			main.FiscalYear,
+			
+				main.EntryCounter) as main) as CashFlowDocuments on CashFlowDocuments.AccountingDocument = main.AccountingDocument and CashFlowDocuments.CompanyCode = main.CompanyCode and CashFlowDocuments.FiscalYear = main.FiscalYear
+	left outer many to one join :ZSNAP_F80S_315 as ResettableClearingInfo on ResettableClearingInfo.CompanyCode =
+		CashFlowDocuments.CompanyCode and ResettableClearingInfo.AccountingDocument = CashFlowDocuments.AccountingDocument and
+		ResettableClearingInfo.FiscalYear = CashFlowDocuments.FiscalYear and ResettableClearingInfo.AccountingDocumentItem =
+		main.AccountingDocumentItem and ResettableClearingInfo.EntryCounter = CashFlowDocuments.EntryCounter;
+
+  ENDMETHOD.
+ENDCLASS.

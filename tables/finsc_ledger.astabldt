@@ -1,0 +1,27 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #G
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Universal Journal Entry Ledger'
+
+define table finsc_ledger {
+	key mandt: mandt; // abap.clnt(3): Client
+	key rldnr: fins_ledger; // abap.char(2): Ledger
+	ledger_type: fins_ledger_type; // abap.char(1): Ledger Type
+	ext_ledger_type: fins_ext_ledger_type; // abap.char(1): Extension Ledger Type
+	appl: glxappl; // abap.char(2): Application
+	subappl: glxsubappl; // abap.char(3): Subapplication
+	xleading: fagl_flag_leading; // abap.char(1): Leading Ledger
+	core: fins_core_ledger; // abap.char(2): Underlying Ledger
+	valutyp: fins_valutyp_char; // abap.char(1): Valuation View
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	valusubtyp: fins_valusubtyp; // abap.char(2): Subtype Of Valuation View
+	man_post_not_allwd: fins_manual_post_not_allowed; // abap.char(1): Manual Postings Not Allowed
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	acc_principle: acc_principle_ledger; // abap.char(4): Corporate Accounting Principle
+	fallback_ledger: fins_fallback_ledger; // abap.char(2): Fallback Ledger
+	tech_ledger: fins_technical_ledger; // abap.char(2): Technical Ledger
+	xcash_ledger: fagl_cash_ledger; // abap.char(1): Cash Ledger
+}

@@ -1,0 +1,296 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Project definition'
+
+define table proj {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Client'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key pspnr: ps_intnr; // abap.numc(8): Project Definition
+	pspid: ps_pspid; // abap.char(24): Project Definition
+	post1: ps_post1; // abap.char(40): Description
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Object number, project definition cost collector'
+	@AbapCatalog.foreignKey.screenCheck: true
+	objnr: j_objnr; // abap.char(22): Object Number
+	ernam: ernam; // abap.char(12): Created By
+	erdat: erdat; // abap.dats(8): Created On
+	aenam: aenam; // abap.char(12): Changed By
+	aedat: updat; // abap.dats(8): Last Changed On
+	kimsk: ps_kimsk; // abap.char(24): Mask Short Id
+	autod: ps_autod; // abap.char(1): Transfer To Proj.def
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Status profile for project definition'
+	@AbapCatalog.foreignKey.screenCheck: true
+	stspd: ps_stspd; // abap.char(8): Pd Status Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Status profile for WBS element'
+	@AbapCatalog.foreignKey.screenCheck: true
+	stspr: ps_stspr; // abap.char(8): Wbs Status Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Project manager (personnel number)'
+	@AbapCatalog.foreignKey.screenCheck: true
+	vernr: ps_vernr; // abap.numc(8): No. Of Person Resp.
+	verna: ps_verna; // abap.char(25): Name Of Person Resp.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Applicant (personnel number)'
+	@AbapCatalog.foreignKey.screenCheck: true
+	astnr: ps_astnr; // abap.numc(8): Applicant No.
+	astna: ps_astna; // abap.char(25): Applicant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Company code'
+	@AbapCatalog.foreignKey.screenCheck: true
+	vbukr: ps_vbukr; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Business area'
+	@AbapCatalog.foreignKey.screenCheck: true
+	vgsbr: ps_vgsbr; // abap.char(4): Business Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Controlling area'
+	@AbapCatalog.foreignKey.screenCheck: true
+	vkokr: ps_vkokr; // abap.char(4): Controlling Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Profit Center'
+	@AbapCatalog.foreignKey.screenCheck: true
+	prctr: prctr; // abap.char(10): Profit Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Project currency'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pwhie: ps_pwhie; // abap.cuky(5): Project Currency
+	zuord: ps_zuord; // abap.numc(1): Network Asst
+	trmeq: ps_trmeq; // abap.char(1): Activity Dates
+	plfaz: ps_plfaz_chg; // abap.dats(8): Start Date
+	plsez: ps_plsez_chg; // abap.dats(8): Finish Date
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Plant'
+	@AbapCatalog.foreignKey.messageClass: 'M3'
+	@AbapCatalog.foreignKey.messageNumber: '102'
+	@AbapCatalog.foreignKey.screenCheck: true
+	werks: werks_d; // abap.char(4): Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Factory calendar ID'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalid: fabkl; // abap.char(2): Factory Calendar
+	vgplf: ps_vgplf; // abap.numc(1): Planmeth/Basic Dates
+	ewplf: ps_ewplf; // abap.numc(1): Plan.meth/Fcst Dates
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Factory calendar ID'
+	@AbapCatalog.foreignKey.screenCheck: true
+	zteht: ps_zteht; // abap.unit(3): Time Unit
+	nzanz: netzoberfl; // abap.char(1): Display Network Hdr
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Application of the network'
+	@AbapCatalog.foreignKey.screenCheck: true
+	plnaw: plnaw; // abap.char(1): Application
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Network profile'
+	@AbapCatalog.foreignKey.screenCheck: true
+	vprof: profidnzpl; // abap.char(7): Network Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Profile ID for project structure'
+	@AbapCatalog.foreignKey.screenCheck: true
+	profl: profidproj; // abap.char(7): Project Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Budget/plan profile'
+	@AbapCatalog.foreignKey.messageClass: 'BP'
+	@AbapCatalog.foreignKey.messageNumber: '045'
+	@AbapCatalog.foreignKey.screenCheck: false
+	bprof: bp_bprofil; // abap.char(6): Budget Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Language key for long text'
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	txtsp: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Cost center'
+	@AbapCatalog.foreignKey.screenCheck: false
+	kostl: kostl; // abap.char(10): Cost Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Cost object continuous flow production'
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktrg: kstrg; // abap.char(12): Cost Object
+	aedte: ps_aedte; // abap.dats(8): Last Basic Sched.
+	aedtp: ps_aedtp; // abap.dats(8): Last Forecast Sched.
+	berst: ps_berst; // abap.char(16): Master Data Auth.
+	bertr: ps_bertr; // abap.char(16): Date Authorization
+	berko: ps_berko; // abap.char(16): Costs/Revs Auth.
+	berbu: ps_berbu; // abap.char(16): Budget Authorization
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Standard project (reference)'
+	@AbapCatalog.foreignKey.screenCheck: true
+	spsnr: ps_ispsp; // abap.numc(8): Current Internal Project No. - Std. Wbs
+	besta: ps_bestand; // abap.char(1): Project Stock
+	scope: scope_cv; // abap.char(2): Object Class
+	xstat: ps_xstat; // abap.char(1): Statistical
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	txjcd: txjcd; // abap.char(15): Tax Jurisdiction
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Interest profile'
+	@AbapCatalog.foreignKey.screenCheck: true
+	zschm: ps_zschm; // abap.char(7): Interest Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Scheduling profile'
+	@AbapCatalog.foreignKey.screenCheck: true
+	scprf: ps_schdprf; // abap.char(12): Wbs Scheduling Prof.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Investment measure profile'
+	@AbapCatalog.foreignKey.screenCheck: true
+	imprf: im_profil; // abap.char(6): Investment Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Financial budget profile'
+	@AbapCatalog.foreignKey.screenCheck: false
+	fmprf: psfm_prf; // abap.char(6): Payment Plan Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Results analysis key'
+	@AbapCatalog.foreignKey.screenCheck: true
+	abgsl: abgr_schl; // abap.char(6): Results Analysis Key
+	postu: ps_postu; // abap.char(40): Description
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Planning profile'
+	@AbapCatalog.foreignKey.messageClass: 'BP'
+	@AbapCatalog.foreignKey.messageNumber: '045'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pprof: bp_pprofil; // abap.char(6): Planning Profile
+	plint: plint; // abap.char(1): Integrated Planning
+	loevm: loevm; // abap.char(1): Deletion Indicator
+	inact: ps_inact; // abap.char(1): Inactive
+	kzbws: kzbws; // abap.char(1): Spec. Stk Valuation
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	smprf: sim_profil; // abap.char(7): Simulation Profile
+	flgvrg: ps_flgvrg; // abap.char(1): Calculate With Act.
+	grtop: grontop; // abap.char(1): Automatic Reqmnts Grouping
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	pgprf: pgprofid; // abap.char(6): Distribution Profile
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	stort: ps_stort; // abap.char(10): Location
+	logsystem: logsystem; // abap.char(10): Logical System
+	kzerb: ps_kzerb; // abap.char(1): Proj. Summ. Mastdata
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	pargr: pargr; // abap.char(4): Partnerdetermproced.
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	func_area: fkber; // abap.char(16): Functional Area
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	vkorg: vkorg; // abap.char(4): Sales Organization
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	vtweg: vtweg; // abap.char(2): Distribution Channel
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	spart: spart; // abap.char(2): Division
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	dppprof: ad01profnr; // abap.char(8): Dip Profile
+	vpkstu: seu_level; // abap.numc(2): Level
+	pspid_edit: ps_pspid_edit; // abap.char(24): Project Definition
+	
+	@AbapCatalog.foreignKey.messageClass: 'KSCORE'
+	@AbapCatalog.foreignKey.messageNumber: '103'
+	@AbapCatalog.foreignKey.screenCheck: false
+	vname: jv_name; // abap.char(6): Joint Venture
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '104'
+	@AbapCatalog.foreignKey.screenCheck: false
+	recid: jv_recind; // abap.char(2): Recovery Indicator
+	
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '109'
+	@AbapCatalog.foreignKey.screenCheck: false
+	etype: jv_etype; // abap.char(3): Equity Type
+	otype: jv_otype; // abap.char(4): Joint Venture Object Type
+	
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '112'
+	@AbapCatalog.foreignKey.screenCheck: true
+	jibcl: jv_jibcl; // abap.char(3): Jib/Jibe Class
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '113'
+	@AbapCatalog.foreignKey.screenCheck: true
+	jibsa: jv_jibsa; // abap.char(5): Jib/Jibe Subclass A
+	eew_proj_ps_dummy: dummy; // abap.char(1): 
+	schtyp: ps_sched_type; // abap.char(1): Scheduling Scenario
+	sprog: ps_sprog; // abap.dats(8): Forecast Start Date
+	eprog: ps_eprog; // abap.dats(8): Finish Date (Frcst)
+	order_proc_mode: orderprocmode; // abap.char(1): Procurement Mode
+	settlementtype: ps_settlementtype; // abap.char(2): Enterprise Project Settlement Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	slwid: slwid; // abap.char(7): Field Key
+	usr00: usrchar20; // abap.char(20): User Field 20 Chars
+	usr01: usrchar20; // abap.char(20): User Field 20 Chars
+	usr02: usrchar10; // abap.char(10): User-Defined Field
+	usr03: usrchar10; // abap.char(10): User-Defined Field
+	
+	@Semantics.quantity.unitOfMeasure: 'proj.use04'
+	usr04: usrquan13; // abap.quan(13, 3): User Field Quantity
+	use04: usrunit; // abap.unit(3): User Field Unit
+	
+	@Semantics.quantity.unitOfMeasure: 'proj.use05'
+	usr05: usrquan13; // abap.quan(13, 3): User Field Quantity
+	use05: usrunit; // abap.unit(3): User Field Unit
+	
+	@Semantics.amount.currencyCode: 'proj.use06'
+	usr06: usrcurr13; // abap.curr(13, 3): User Field Value
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	use06: usrcuky; // abap.cuky(5): User Field Unit
+	
+	@Semantics.amount.currencyCode: 'proj.use07'
+	usr07: usrcurr13; // abap.curr(13, 3): User Field Value
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	use07: usrcuky; // abap.cuky(5): User Field Unit
+	usr08: usrdate; // abap.dats(8): User Field Date
+	usr09: usrdate; // abap.dats(8): User Field Date
+	usr10: usrflag; // abap.char(1): User Field Indicator
+	usr11: usrflag; // abap.char(1): User Field Indicator
+	cpd_updat: /cpd/pfp_sc_tstmp; // abap.dec(15, 0): Time Stamp
+	ferc_ind: fe_ind; // abap.char(4): Regulatory Indicator
+	avc_profile: fco_avc_profile; // abap.char(6): Budget Availability Ctrl Prfl
+	avc_active: ps_s4_avc_ind; // abap.char(1): Availability Control Is Active
+	cpcurr: ps_s4_waers; // abap.cuky(5): Custom Project Currency
+	proj_status: actcmb_dele; // abap.int1(3): Status Comb. Code
+}

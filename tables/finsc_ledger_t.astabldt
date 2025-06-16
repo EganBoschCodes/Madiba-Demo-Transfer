@@ -1,0 +1,17 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #G
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Unified Journal Entry Ledger'
+
+define table finsc_ledger_t {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.textLanguage
+	key langu: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key rldnr: fins_ledger; // abap.char(2): Ledger
+	name: ldtxt; // abap.char(30): Ledger Name
+}

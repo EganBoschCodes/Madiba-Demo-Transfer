@@ -1,0 +1,21 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Buchungskreisbergreifende Buchungsvorgnge'
+
+define table bvor {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key bvorg: bvorg; // abap.char(16): Cross-Comp.code No.
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	key gjahr: gjahr; // abap.numc(4): Fiscal Year
+	key belnr: belnr_d; // abap.char(10): Document Number
+	xarch: xarch; // abap.char(1): Archived
+	_dataaging: data_temperature; // abap.dats(8): Data Aging Filter
+}

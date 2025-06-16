@@ -1,0 +1,19 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #E
+@AbapCatalog.enhancement.category: #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'SNAP F80: AP/AR Clearing History'
+
+define table zsnapf80cashhist {
+	key mandt: abap.clnt (3); // abap.clnt(3): Abap.clnt (3)
+	key companycode: abap.char (4); // abap.char(4): Abap.char (4)
+	key fiscalyear: abap.numc (4); // abap.numc(4): Abap.numc (4)
+	key accountingdocument: abap.char (10); // abap.char(10): Abap.char (10)
+	key accountingdocumentitem: abap.numc (3); // abap.numc(3): Abap.numc (3)
+	key entrycounter: abap.int4 (0); // abap.int4(0): Abap.int4
+	clearingdate: abap.dats (8); // abap.dats(8): Abap.dats (8)
+	clearingaccountingdocument: abap.char (10); // abap.char(10): Abap.char (10)
+	financialaccounttype: abap.char (1); // abap.char(1): Abap.char (1)
+	resetflag: abap.char (1); // abap.char(1): Abap.char (1)
+	mostrecentflag: abap.char (1); // abap.char(1): Abap.char (1)
+}

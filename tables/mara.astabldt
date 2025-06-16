@@ -1,0 +1,526 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'General Material Data'
+
+define table mara {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Client'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key matnr: matnr; // abap.char(40): Material
+	ersda: ersda; // abap.dats(8): Created On
+	created_at_time: created_at_time; // abap.tims(6): Created At Time
+	ernam: ernam; // abap.char(12): Created By
+	laeda: laeda; // abap.dats(8): Last Change
+	aenam: aenam; // abap.char(12): Changed By
+	vpsta: vpsta; // abap.char(15): Compl. Maint. Status
+	pstat: pstat_d; // abap.char(15): Maintenance Status
+	lvorm: lvoma; // abap.char(1): Df At Client Level
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	mtart: mtart; // abap.char(4): Material Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	mbrsh: mbrsh; // abap.char(1): Industry Sector
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	matkl: matkl; // abap.char(9): Material Group
+	bismt: bismt; // abap.char(40): Old Material Number
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	meins: meins; // abap.unit(3): Base Unit Of Measure
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	bstme: bstme; // abap.unit(3): Order Unit
+	zeinr: dzeinr; // abap.char(22): Document
+	zeiar: dzeiar; // abap.char(3): Document Type
+	zeivr: dzeivr; // abap.char(2): Document Version
+	zeifo: dzeifo; // abap.char(4): Page Format
+	aeszn: aeszn; // abap.char(6): Document Change No.
+	blatt: blatt; // abap.char(3): Page Number
+	blanz: blanz; // abap.numc(3): Number Of Sheets
+	ferth: ferth; // abap.char(18): Prod./Insp. Memo
+	formt: formt; // abap.char(4): Page Format
+	groes: groes; // abap.char(32): Size/Dimensions
+	
+	@AbapCatalog.foreignKey.label: 'Basic Material'
+	@AbapCatalog.foreignKey.screenCheck: false
+	wrkst: wrkst; // abap.char(48): Basic Material
+	normt: normt; // abap.char(18): Industry Std Desc.
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	labor: labor; // abap.char(3): Lab/Office
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	ekwsl: ekwsl; // abap.char(4): Purchasing Value Key
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.gewei'
+	brgew: brgew; // abap.quan(13, 3): Gross Weight
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.gewei'
+	ntgew: ntgew; // abap.quan(13, 3): Net Weight
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	gewei: gewei; // abap.unit(3): Unit Of Weight
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.voleh'
+	volum: volum; // abap.quan(13, 3): Volume
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	voleh: voleh; // abap.unit(3): Volume Unit
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	behvo: behvo; // abap.char(2): Container Reqmts
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	raube: raube; // abap.char(2): Storage Conditions
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	tempb: tempb; // abap.char(2): Temp. Conditions
+	disst: disst; // abap.char(3): Low-Level Code
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	tragr: tragr; // abap.char(4): Transportation Group
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	stoff: stoff; // abap.char(40): Haz. Material Number
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	spart: spart; // abap.char(2): Division
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kunnr: wettb; // abap.char(10): Competitor
+	eannr: eannr; // abap.char(13): Ean Number
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.meins'
+	wesch: wesch; // abap.quan(13, 3): Number Of Gr Slips
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bwvor: bwvor; // abap.char(1): Procurement Rule
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bwscl: bwscl; // abap.char(1): Source Of Supply
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	saiso: saiso; // abap.char(4): Season
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	etiar: etiar; // abap.char(2): Label Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	etifo: etifo; // abap.char(2): Label Form
+	entar: dummyentar; // abap.char(1): Field Deactivated
+	ean11: ean11; // abap.char(18): Ean/Upc
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	numtp: numtp; // abap.char(2): Ean Category
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.meabm'
+	laeng: laeng; // abap.quan(13, 3): Length
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.meabm'
+	breit: breit; // abap.quan(13, 3): Width
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.meabm'
+	hoehe: hoehe; // abap.quan(13, 3): Height
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	meabm: meabm; // abap.unit(3): Unit Of Dimension
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	prdha: prodh_d; // abap.char(18): Product Hierarchy
+	aeklk: ck_aeklk; // abap.char(1): Net Change Costing
+	cadkz: cadkz; // abap.char(1): Cad Indicator
+	qmpur: qmpur; // abap.char(1): Qm In Procur. Active
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.ergei'
+	ergew: ergew; // abap.quan(13, 3): Allowed Packaging Weight
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	ergei: ergei; // abap.unit(3): Unit Of Weight
+	
+	@Semantics.quantity.unitOfMeasure: 'mara.ervoe'
+	ervol: ervol; // abap.quan(13, 3): Allowed Packaging Volume
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	ervoe: ervoe; // abap.unit(3): Volume Unit
+	gewto: gewto; // abap.dec(3, 1): Excess Wt Tolerance
+	volto: volto; // abap.dec(3, 1): Excess Volume Tol.
+	vabme: vabme; // abap.char(1): Variable Purchase Order Unit
+	kzrev: kzrev; // abap.char(1): Revision Level Assgd
+	kzkfg: kzkfg; // abap.char(1): Material Is Configurable
+	xchpf: xchpf; // abap.char(1): Batch Management
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	vhart: vhiart; // abap.char(4): Packaging Mat. Type
+	fuelg: fuelg; // abap.dec(3, 0): Maximum Level
+	stfak: stfak; // abap.int2(5): Stackability Factor
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	magrv: magrv; // abap.char(4): Matl Grp Pack.matls
+	begru: begru; // abap.char(4): Authorization Group
+	datab: datab; // abap.dats(8): Valid From
+	liqdt: liqdt; // abap.dats(8): Valid To
+	saisj: saisj; // abap.char(4): Season Year
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	plgtp: plgtp; // abap.char(2): Price Band Category
+	mlgut: w_mitleerg; // abap.char(1): With Empties Bom
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	extwg: extwg; // abap.char(18): Ext. Material Group
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	satnr: satnr; // abap.char(40): Cross-Plant Cm
+	attyp: attyp; // abap.char(2): Material Category
+	kzkup: kzkupmat; // abap.char(1): Co-Product
+	kznfm: kznfm; // abap.char(1): Follow-Up Material
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	pmata: pmatn; // abap.char(40): Pricing Ref. Matl
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	mstae: mstae; // abap.char(2): X-Plant Mat.status
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	mstav: mstav; // abap.char(2): X-Distr.chain Status
+	mstde: mstde; // abap.dats(8): Valid From
+	mstdv: mstdv; // abap.dats(8): Valid From
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	taklv: taklv; // abap.char(1): Tax Classification
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	rbnrm: rbnr; // abap.char(9): Catalog Profile
+	mhdrz: mhdrz; // abap.dec(4, 0): Min. Rem. Shelf Life
+	mhdhb: mhdhb; // abap.dec(4, 0): Total Shelf Life
+	mhdlp: mhdlp; // abap.dec(3, 0): Storage Percentage
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	inhme: inhme; // abap.unit(3): Content Unit
+	
+	@Semantics.quantity.unitOfMeasure: 'emara.inhme'
+	inhal: inhal; // abap.quan(13, 3): Net Contents
+	vpreh: vpreh; // abap.dec(5, 0): Comparisonpriceunit
+	etiag: etiag; // abap.char(18): Labeling Matl Grpg
+	
+	@Semantics.quantity.unitOfMeasure: 'emara.inhme'
+	inhbr: inhbr; // abap.quan(13, 3): Gross Contents
+	cmeth: oib_cmeth; // abap.char(1): Conversion Method
+	cuobf: cuobm; // abap.numc(18): Internal Object No.
+	kzumw: kzumw; // abap.char(1): Environmentally Rlvt
+	
+	@AbapCatalog.foreignKey.label: 'Product Allocation Determination Procedure'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kosch: kosch; // abap.char(18): Product Allocation
+	sprof: sprof; // abap.char(1): Pricing Profile
+	nrfhg: nrfhg; // abap.char(1): Qual.f.freegoodsdis.
+	mfrpn: mfrpn; // abap.char(40): Manufacturer Part No.
+	
+	@AbapCatalog.foreignKey.label: 'Manufacturer Number'
+	@AbapCatalog.foreignKey.screenCheck: true
+	mfrnr: mfrnr; // abap.char(10): Manufacturer
+	
+	@AbapCatalog.foreignKey.label: 'Number of Internal Material Master Record'
+	@AbapCatalog.foreignKey.screenCheck: true
+	bmatn: mpmat; // abap.char(40): Int. Material Number
+	
+	@AbapCatalog.foreignKey.label: 'Control Profile for Manufacturer Parts Processing'
+	@AbapCatalog.foreignKey.screenCheck: true
+	mprof: mprof; // abap.char(4): Mfr Part Profile
+	kzwsm: kzwso; // abap.char(1): Units Of Meas. Usage
+	
+	@AbapCatalog.foreignKey.label: 'Categories of Seasonal Materials'
+	@AbapCatalog.foreignKey.screenCheck: true
+	saity: saity; // abap.char(2): Rollout
+	
+	@AbapCatalog.foreignKey.label: 'Dangerous Goods Profile'
+	@AbapCatalog.foreignKey.screenCheck: true
+	profl: adge_profl; // abap.char(3): Dg Indicator Profile
+	ihivi: adge_ihivi; // abap.char(1): Highly Viscous
+	iloos: adge_iloos; // abap.char(1): In Bulk/Liquid
+	serlv: serlv; // abap.char(1): Serialization Level
+	kzgvh: kzgvh; // abap.char(1): Closed
+	xgchp: xgchp; // abap.char(1): Appr.batch Recd Req.
+	kzeff: cc_mteff; // abap.char(1): Assign Effect. Vals
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	compl: cscp_comp_lvl; // abap.numc(2): Material Completion Level
+	iprkz: dattp; // abap.char(1): Period Ind. For Sled
+	rdmhd: rdmhd; // abap.char(1): Rounding Rule Sled
+	przus: przus; // abap.char(1): Product Composition
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	mtpos_mara: mtpos_mara; // abap.char(4): Gen. Item Cat. Grp
+	bflme: bflme; // abap.char(1): Logistical Variants
+	matfi: matfi; // abap.char(1): Material Is Locked
+	cmrel: de_cm_relevance_flag; // abap.char(1): Relevant For Cm
+	bbtyp: bbtyp; // abap.char(1): Assortment List Type
+	sled_bbd: sled_bbd; // abap.char(1): Expiration Date
+	gtin_variant: gtin_variant; // abap.char(2): Ean Variant
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	gennr: wstr_satnr_pp; // abap.char(40): Generic Material
+	
+	@AbapCatalog.foreignKey.label: 'Reference Material Check Packing Instruction'
+	@AbapCatalog.foreignKey.screenCheck: true
+	rmatp: pl_rmatp; // abap.char(40): Reference Matl For Packing
+	gds_relevant: gds_relevant; // abap.char(1): Gds-Relevant
+	weora: weora; // abap.char(1): Origin Acceptance
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	hutyp_dflt: cifhutypdf; // abap.char(4): Standard Hu Type
+	pilferable: cifpilfrbl; // abap.char(1): Pilferable
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	whstc: cifwhstc; // abap.char(2): Whse Stor. Condition
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	whmatgr: cifwhmatgr; // abap.char(4): Wh Material Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hndlcode: cifhdlcode; // abap.char(4): Handling Indicator
+	hazmat: cifhazmat; // abap.char(1): Relevant For Hs
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hutyp: cifhutyp; // abap.char(4): Handling Unit Type
+	tare_var: ciftarevar; // abap.char(1): Varb. Tare Weight
+	maxc: cifmaxc; // abap.dec(15, 3): Maximum Capacity
+	maxc_tol: cifmaxctol; // abap.dec(3, 1): Overcapacity Toler.
+	
+	@Semantics.quantity.unitOfMeasure: 'emara.maxdim_uom'
+	maxl: cifmaxl; // abap.quan(15, 3): Max. Pack. Length
+	
+	@Semantics.quantity.unitOfMeasure: 'emara.maxdim_uom'
+	maxb: cifmaxb; // abap.quan(15, 3): Max. Pack. Width
+	
+	@Semantics.quantity.unitOfMeasure: 'emara.maxdim_uom'
+	maxh: cifmaxh; // abap.quan(15, 3): Max. Pack. Height
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	maxdim_uom: cifmaxduom; // abap.unit(3): Unit Of Measurement
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	herkl: herkl; // abap.char(3): Cntry/Reg Of Origin
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mfrgr: mfrgr; // abap.char(8): Material Freight Grp
+	
+	@Semantics.quantity.unitOfMeasure: 'emara.qqtimeuom'
+	qqtime: cifqqtime; // abap.quan(3, 0): Quarant. Per.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	qqtimeuom: cifqqtimeuom; // abap.unit(3): Time Unit
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	qgrp: cifqgrp; // abap.char(4): Quality Inspec. Grp
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	serial: cifserial; // abap.char(4): Serial No. Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ps_smartform: cifpssfname; // abap.char(30): Form Name
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	logunit: ciflogunit; // abap.unit(3): Logistics Unit Of Measure
+	cwqrel: cifcwqrel; // abap.char(1): Catch-Weight-Relevant
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cwqproc: cifcwqproc; // abap.char(2): Cw Profile For Cw Qty
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cwqtolgr: cifcwqtolgr; // abap.char(9): Catch Wt Tolerance Group
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	adprof: cifadprof; // abap.char(3): Adjustment Profile
+	ipmipproduct: crm_product_id_ip; // abap.char(40): Intellectual Property
+	allow_pmat_igno: wpm_allow_pmat_igno_mat; // abap.char(1): Variant Price Allowed
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	medium: mediu; // abap.char(6): Medium
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	commodity: tba_stoeffchen; // abap.char(18): Commodity
+	animal_origin: wrf_animal_origin_flag; // abap.char(1): Cont. Non-Textile Parts Of Animal Origin
+	textile_comp_ind: wrf_textl_comp_ind; // abap.char(1): Textile Composition Maintenance Active
+	last_changed_time: last_changed_time; // abap.tims(6): Last Changed Time
+	matnr_external: matnr_external; // abap.char(40): Material
+	chml_cmplnc_rlvnce_ind: chml_cmplnc_rlvnce_ind; // abap.char(1): Chemical Compliance Relevance Indicator
+	logistical_mat_category: de_logistical_mat_category; // abap.char(1): Logistical Material Category
+	
+	@AbapCatalog.foreignKey.messageClass: 'MM'
+	@AbapCatalog.foreignKey.messageNumber: '560'
+	@AbapCatalog.foreignKey.screenCheck: true
+	sales_material: de_sales_material; // abap.char(40): Sales Material Number
+	identification_tag_type: identificationtagtype; // abap.char(2): Identification Tag Type
+	productoid: product_oid; // abap.char(128): Product Oid
+	sdm_version: sdm_mig_status_mara; // abap.char(2): Migration Status
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	sgt_csgr: sgt_csgr; // abap.char(4): Segmentation Structure
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	sgt_covsa: sgt_covsa; // abap.char(8): Segmentation Strategy
+	sgt_stat: sgt_statd; // abap.char(1): Segmentation Status
+	sgt_scope: sgt_scope; // abap.char(1): Segmentation Strategy Scope
+	sgt_rel: sgt_rel; // abap.char(1): Segmentation Relevant
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	anp: j_1banp; // abap.numc(9): Anp Code
+	psm_code: wrf_psm_code; // abap.char(2): Protected Species Management Code
+	fsh_mg_at1: fsh_mg_attribute1; // abap.char(10): Fashion Attribute 1
+	fsh_mg_at2: fsh_mg_attribute2; // abap.char(10): Fashion Attribute 2
+	fsh_mg_at3: fsh_mg_attribute3; // abap.char(6): Fashion Attribute 3
+	fsh_sealv: fsh_sealv; // abap.char(1): Season Usage
+	fsh_seaim: fsh_seaim; // abap.char(1): Season Active In Inventory Management
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	fsh_sc_mid: fsh_sc_mid; // abap.char(2): Material Conv. Id
+	dummy_prd_incl_eew_ps: prd_incl_eew; // abap.char(1): 
+	scm_matid_guid16: /scmb/mdl_matid; // abap.raw(16): Product
+	scm_matid_guid22: /sapapo/matid; // abap.char(22): Product Id
+	scm_maturity_dur: /sapapo/maturity_dur; // abap.dec(11, 0): Maturation Time
+	scm_shlf_lfe_req_min: prd_scm_shelf_life_req_min; // abap.dec(11, 0): Reqd Min. Shelf Life
+	scm_shlf_lfe_req_max: /sapapo/shelf_life_req_max; // abap.dec(11, 0): Reqd Max. Shelf Life
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	scm_puom: /scwm/de_puom; // abap.unit(3): Preferred Unit Of Measure
+	rmatp_pb: /sapapo/matnr_rmatp_pb; // abap.char(40): Reference Product For Package Building
+	prod_shape: /sapapo/prod_shape; // abap.char(2): Product Shape
+	mo_profile_id: /scmb/mo_profile_id; // abap.char(20): Product Orientation Profile
+	overhang_tresh: /sapapo/overhang_tresh; // abap.dec(5, 2): Overhang Threshold [%]
+	bridge_tresh: /sapapo/bridge_tresh; // abap.dec(5, 2): Bridge Threshold [%]
+	bridge_max_slope: /sapapo/bridge_max_slope; // abap.dec(5, 2): Maximum Slope For Bridges [ ]
+	
+	@Semantics.quantity.unitOfMeasure: 'prd_s_scm_mara.height_nonflat_uom'
+	height_nonflat: /sapapo/height_nonflat; // abap.quan(13, 3): Absolute Height Threshold
+	height_nonflat_uom: /sapapo/height_nonflat_uom; // abap.unit(3): Uom Of Absolute Height Threshold
+	scm_kitcomp: /sapapo/cmpkit; // abap.char(1): Product For Kit-To-Order
+	scm_prod_paoopt: /sapapo/paoopt; // abap.char(1): Procure To Order
+	scm_bod_deplvl: /sapapo/boddeplvl; // abap.char(1): Push Deployment From Supplier
+	scm_restrict_invbal: /sapapo/restrict_invbal; // abap.char(1): Inventory Balancing Not Allowed
+	scm_drp_gl_stock: /sapapo/drp_gl_stock; // abap.char(1): Global Stock On Entry Location Drp
+	scm_excl_expedite: /sapapo/exclexp; // abap.char(1): Excl. From Express Shipm.
+	newprod_indi: /sapapo/newprod_indi; // abap.char(1): New Product
+	prd_startdt: /sapapo/prd_startdt; // abap.dats(8): Production Start Date
+	prd_enddt: /sapapo/prd_enddt; // abap.dats(8): Production End Date
+	inv_pln_mode: espp_inv_pln_mode; // abap.char(1): Inventory Planning Mode
+	flagclass: /sapapo/flgclass; // abap.char(1): Product Is Classified
+	/cwm/xcwmat: /cwm/xcwmat; // abap.char(1): Cw Material
+	/cwm/valum: /cwm/valum; // abap.unit(3): Valuation Uom
+	/cwm/tolgr: /cwm/tolgr; // abap.char(9): Cw Tolerance Group
+	/cwm/tara: /cwm/tara; // abap.char(1): Fixed Tare
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	/cwm/tarum: /cwm/tarum; // abap.unit(3): Ref.unit Of Measure Tare Calculation
+	/bev1/luleinh: /bev1/luleinh; // abap.numc(8): Loading Units
+	/bev1/luldegrp: /bev1/luldegrp; // abap.char(3): Loading Unit Group
+	/bev1/nestruccat: /bev1/nestruc_cat; // abap.char(1): Structure Category
+	/dsd/sl_toltyp: /dsd/sl_toltyp_id; // abap.char(4): Tolerance Type Id
+	/dsd/sv_cnt_grp: /dsd/sv_count_group; // abap.char(10): Counting Group
+	/dsd/vc_group: /dsd/vc_group; // abap.char(6): Dsd Grouping
+	/sapmp/kadu: /sapmp/kadu; // abap.dec(7, 2): Cable Diameter
+	/sapmp/abmein: /sapmp/abmein; // abap.unit(3): Unit For Dimensions
+	/sapmp/kadp: /sapmp/kadp; // abap.dec(5, 2): Cable Diameter Allowance In Percent
+	/sapmp/brad: /sapmp/brad; // abap.dec(4, 0): Bending Factor
+	/sapmp/spbi: /sapmp/spbi; // abap.dec(7, 2): Inner Width
+	/sapmp/trad: /sapmp/trad; // abap.dec(7, 2): Outer Diameter
+	/sapmp/kedu: /sapmp/kedu; // abap.dec(7, 2): Core Diameter
+	/sapmp/sptr: /sapmp/sptr; // abap.quan(13, 3): Load Capacity
+	/sapmp/fbdk: /sapmp/fbdk; // abap.dec(7, 2): R-O Flange Thick.
+	/sapmp/fbhk: /sapmp/fbhk; // abap.dec(7, 2): R-O Flange Height
+	/sapmp/rili: /sapmp/rili; // abap.char(1): Coil Delivery
+	/sapmp/fbak: /sapmp/fbak; // abap.char(1): Run-Out Flange
+	/sapmp/aho: /sapmp/aho; // abap.numc(3): No. Vertical Layers
+	/sapmp/mifrr: /sapmp/mifrr; // abap.dec(7, 2): Smallest Permitted Clearance
+	/sttpec/sertype: /sttpec/e_sertype; // abap.int1(3): Serialization Type
+	/sttpec/syncact: /sttpec/e_syncactive; // abap.char(1): Synchronization Active
+	/sttpec/synctime: /sttpec/e_synctime; // abap.dec(15, 0): Last Synchronization Time
+	/sttpec/syncchg: /sttpec/e_serchg; // abap.char(1): Changed Since Integration
+	/sttpec/country_ref: /sttpec/e_pr_rel_country; // abap.char(3): Profile Rel. Country/Region
+	/sttpec/prdcat: /sttpec/e_prdcat; // abap.char(10): Product Category
+	/vso/r_tilt_ind: /vso/m_tilt_ind; // abap.char(1): Tilting Allowed
+	/vso/r_stack_ind: /vso/m_stack_ind; // abap.char(1): No Stacking
+	/vso/r_bot_ind: /vso/m_bottom_ind; // abap.char(1): Only Bottom Layer
+	/vso/r_top_ind: /vso/m_top_ind; // abap.char(1): Only Top Layer
+	/vso/r_stack_no: /vso/m_stack_no; // abap.numc(3): Stacking Factor
+	/vso/r_pal_ind: /vso/m_pallet_ind; // abap.char(1): Load Without Pkm
+	/vso/r_pal_ovr_d: /vso/r_pal_ovr_d; // abap.quan(13, 3): Pkm Overhang Depth
+	/vso/r_pal_ovr_w: /vso/r_pal_ovr_w; // abap.quan(13, 3): Pkm Overhang Width
+	/vso/r_pal_b_ht: /vso/r_pal_bin_hgt; // abap.quan(13, 3): Max. Stacking Height
+	/vso/r_pal_min_h: /vso/r_pal_min_ht; // abap.quan(13, 3): Min. Stacking Height
+	/vso/r_tol_b_ht: /vso/r_tol_bin_ht; // abap.quan(13, 3): Max.stackh Tolerance
+	/vso/r_no_p_gvh: /vso/m_anz_per_gvh; // abap.numc(2): No. Mat / Closed Pkm
+	/vso/r_quan_unit: /vso/r_quan_unit; // abap.unit(3): Vso Unit Of Measure
+	/vso/r_kzgvh_ind: /vso/m_kzgvh_ind; // abap.char(1): Closed Pkm Required
+	packcode: cbune_pacode; // abap.char(10): Packaging Code
+	dg_pack_status: adge_dg_pack_status; // abap.char(10): Dg Packaging Status
+	srv_dura: crmt_pr_duration; // abap.quan(13, 3): Duration Of Work
+	srv_dura_uom: crmt_pr_duration_uom; // abap.unit(3): Unit
+	srv_serwi: srv_serwi; // abap.char(10): Service Profile
+	srv_escal: srv_escal; // abap.char(10): Response Prof.
+	som_cycle: cycle_kk; // abap.char(4): Billing Cycle
+	som_cycle_rule: crm_isx_cycle_rule; // abap.char(4): Billing Cycle Determination Rule Id
+	som_tc_schema: crmt_tc_schema; // abap.char(2): Assignment Schema
+	som_ctr_autorenewal: crms4_som_ctr_autorenewal; // abap.char(1): Contract Auto Renewal Indicator
+	mcond: dfps_mcond; // abap.char(1): Material Condition Mgmt
+	retdelc: dfps_retdelc; // abap.char(1): Return Code
+	loglev_reto: dfps_loglev_reto; // abap.char(1): Return To Logistics Level
+	nsnid: dfps_nsnid; // abap.char(9): Nato Stock Number
+	icfa: dfs_icfa; // abap.char(8): Interchangeability Code For Ammunition
+	ric_id: /isdfps/ric_id; // abap.int8(19): Ric Id
+	dfs_sensitivity_key: dfs_sensitivity_key; // abap.char(4): Sensitivity For Characteristics
+	dfs_mfrp2: dfs_mfrp2; // abap.char(60): Long Manufacturer Part Number
+	ovlpn: adspc_opn; // abap.char(32): Overlength Part Number
+	adspc_spc: adspc_spc; // abap.numc(1): Spare Part Class Code
+	varid: di_varid; // abap.raw(16): Variable Objectid
+	msbookpartno: dimp_drm_msbookpart; // abap.char(40): Ms Book Part Number
+	tolerance_type: lmd_mde_tolerance_type; // abap.char(4): Tolerance Type
+	dpcbt: mill_dpcbt; // abap.char(1): Su Batch Default Value
+	xgrdt: mill_xgrdt; // abap.char(1): Goods Rcpt To Posted Single-Unit Bch
+	imatn: imatn; // abap.char(40): Form-Fit-Function Class
+	picnum: pic_picnum_sus; // abap.char(40): Supersession Chain Number
+	bstat: wrfbstat; // abap.char(2): Creation Status
+	color_atinn: wrf_color_atinn; // abap.numc(10): Int. Char. Number
+	size1_atinn: wrf_size1_atinn; // abap.numc(10): Int. Char. Number
+	size2_atinn: wrf_size2_atinn; // abap.numc(10): Int. Char. Number
+	color: wrf_color; // abap.char(18): Color
+	size1: wrf_size1; // abap.char(18): Main Size
+	size2: wrf_size2; // abap.char(18): Second Size
+	free_char: wrf_free_char; // abap.char(18): Free Charact. Value
+	care_code: wrf_care_code; // abap.char(16): Care Code
+	brand_id: wrf_brand_id; // abap.char(4): Brand
+	fiber_code1: wrf_fiber_code_1; // abap.char(3): Component 1
+	fiber_part1: wrf_fiber_part_1; // abap.numc(3): Percentage Share 1
+	fiber_code2: wrf_fiber_code_2; // abap.char(3): Component 2
+	fiber_part2: wrf_fiber_part_2; // abap.numc(3): Percentage Share 2
+	fiber_code3: wrf_fiber_code_3; // abap.char(3): Component 3
+	fiber_part3: wrf_fiber_part_3; // abap.numc(3): Percentage Share 3
+	fiber_code4: wrf_fiber_code_4; // abap.char(3): Component 4
+	fiber_part4: wrf_fiber_part_4; // abap.numc(3): Percentage Share 4
+	fiber_code5: wrf_fiber_code_5; // abap.char(3): Component 5
+	fiber_part5: wrf_fiber_part_5; // abap.numc(3): Percentage Share 5
+	fashgrd: fashgrd; // abap.char(4): Fashion Grade
+}

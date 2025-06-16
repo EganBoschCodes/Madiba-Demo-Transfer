@@ -1,0 +1,26 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Bezeichnung der Lnder'
+
+define table t005t {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key land1: land1; // abap.char(3): Country/Region Key
+	landx: landx; // abap.char(15): Country/Region Name
+	natio: natio; // abap.char(15): Nationality
+	landx50: landx50; // abap.char(50): Country/Region Name
+	natio50: natio50; // abap.char(50): Nationality (Long)
+	prq_spregt: prq_spregt; // abap.char(30): Super Region
+}

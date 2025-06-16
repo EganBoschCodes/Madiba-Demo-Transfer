@@ -1,0 +1,252 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Order master data'
+
+define table aufk {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key aufnr: aufnr; // abap.char(12): Order
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	auart: aufart; // abap.char(4): Order Type
+	autyp: auftyp; // abap.numc(2): Order Category
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	refnr: aufrefnr; // abap.char(12): Reference Order
+	ernam: auferfnam; // abap.char(12): Entered By
+	erdat: auferfdat; // abap.dats(8): Created On
+	aenam: aufaenam; // abap.char(12): Last Changed By
+	aedat: aufaedat; // abap.dats(8): Change Date For Order Master
+	ktext: auftext; // abap.char(40): Description
+	ltext: aufltext; // abap.char(1): Long Text Exists
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs: bukrs; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	werks: werks_d; // abap.char(4): Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gsber: gsber; // abap.char(4): Business Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kokrs: kokrs; // abap.char(4): Controlling Area
+	cckey: cckey; // abap.char(23): Cost Collector Key
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	kostv: aufkostv; // abap.char(10): Responsible Cctr
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	stort: aufstort; // abap.char(10): Location/Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	sowrk: aufsowrk; // abap.char(4): Location Plant
+	astkz: aufstkz; // abap.char(1): Statistical
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: aufwaers; // abap.cuky(5): Currency
+	astnr: aufastnr; // abap.numc(2): Order Status
+	stdat: aufstdat; // abap.dats(8): Status Change
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	estnr: aufestnr; // abap.numc(2): Reached Status
+	phas0: aufphas0; // abap.char(1): Created
+	phas1: aufphas1; // abap.char(1): Released
+	phas2: aufphas2; // abap.char(1): Completed
+	phas3: aufphas3; // abap.char(1): Closed
+	pdat1: aufpdat1; // abap.dats(8): Planned Release
+	pdat2: aufpdat2; // abap.dats(8): Planned Completion
+	pdat3: aufpdat3; // abap.dats(8): Planned Closing Date
+	idat1: aufidat1; // abap.dats(8): Release
+	idat2: aufidat2; // abap.dats(8): Technical Completion
+	idat3: aufidat3; // abap.dats(8): Close
+	objid: ccobjid; // abap.char(1): Object Id
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	vogrp: aufspset; // abap.char(4): Disallowed Trans Grp
+	loekz: aufloekz; // abap.char(1): Deletion Flag
+	plgkz: plgkz; // abap.char(1): Plan Line Items
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kvewe: kvewe; // abap.char(1): Usage
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kappl: kappl; // abap.char(2): Application
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalsm: aufkalsm; // abap.char(6): Costing Sheet
+	zschl: aufzschl; // abap.char(6): Overhead Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abkrs: aufabkrs; // abap.numc(2): Processing Group
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	kstar: aufkstar; // abap.char(10): Settlement Cost Elem
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	kostl: aufkostl; // abap.char(10): Cost Center
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	saknr: aufsaknr; // abap.char(10): G/L Account
+	setnm: aufsetnm; // abap.char(12): Allocation Set
+	
+	@AbapCatalog.foreignKey.label: 'statische mitbebuchte Kostenstelle'
+	@AbapCatalog.foreignKey.screenCheck: false
+	cycle: st_kostl; // abap.char(10): Cctr: True Postings
+	sdate: sdate; // abap.dats(8): Start Date
+	seqnr: aufseqnr; // abap.numc(4): Sequence Number
+	user0: aufuser0; // abap.char(20): Applicant
+	user1: aufuser1; // abap.char(20): Telephone
+	user2: aufuser2; // abap.char(20): Person Responsible
+	user3: aufuser3; // abap.char(20): Telephone
+	
+	@Semantics.amount.currencyCode: 'aufk.waers'
+	user4: aufuser4; // abap.curr(11, 2): Estimated Costs
+	user5: aufuser5; // abap.dats(8): Application Date
+	user6: aufuser6; // abap.char(15): Department
+	user7: aufuser7; // abap.dats(8): Work Start
+	user8: aufuser8; // abap.dats(8): End Of Work
+	user9: aufuser9; // abap.char(1): Work Approval
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	objnr: j_objnr; // abap.char(22): Object Number
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	prctr: prctr; // abap.char(10): Profit Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	pspel: ps_psp_ele; // abap.numc(8): Wbs Element
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	awsls: awsls; // abap.char(6): Variance Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abgsl: abgr_schl; // abap.char(6): Results Analysis Key
+	eb_post: fco_eb_post; // abap.char(1): Event-Based Posting
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	txjcd: txjcd; // abap.char(15): Tax Jurisdiction
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	func_area: fkber; // abap.char(16): Functional Area
+	scope: scope_cv; // abap.char(2): Object Class
+	plint: plint; // abap.char(1): Integrated Planning
+	kdauf: kdauf; // abap.char(10): Sales Order
+	kdpos: kdpos; // abap.numc(6): Sales Order Item
+	aufex: aufex; // abap.char(20): External Order No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ivpro: im_profil; // abap.char(6): Investment Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	logsystem: logsystem; // abap.char(10): Logical System
+	flg_mltps: co_mltps; // abap.char(1): Order Has Multiple Items
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	abukr: im_abukrs; // abap.char(4): Requesting Co. Code
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	akstl: ps_akstl; // abap.char(10): Request. Cost Center
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	sizecl: im_sizecl; // abap.char(2): Scale
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	izwek: izwek; // abap.char(2): Investment Reason
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	umwkz: am_umwkz; // abap.char(5): Envir. Investment
+	kstempf: co_kstempf; // abap.char(1): Cost Collector
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Interest calculation profile'
+	@AbapCatalog.foreignKey.screenCheck: false
+	zschm: ps_zschm; // abap.char(7): Interest Profile
+	pkosa: pkosa_d; // abap.char(12): Cost Collector
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	anfaufnr: aufanfnr; // abap.char(12): Requesting Order
+	procnr: ckml_f_procnr; // abap.numc(12): Production Process No
+	proty: ckml_prozess_typ; // abap.char(4): Process Category
+	rsord: rsord; // abap.char(1): Refurbishment Order
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	bemot: bemot; // abap.char(2): Accounting Indicator
+	adrnra: ad_addrnum; // abap.char(10): Address Number
+	erfzeit: co_ins_time; // abap.tims(6): Time Created
+	aezeit: co_chg_time; // abap.tims(6): Changed At
+	cstg_vrnt: ck_klvar; // abap.char(4): Costing Variant
+	costestnr: ck_kalnr; // abap.numc(12): Cost Estimate Number
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	veraa_user: veraa_user; // abap.char(12): Person Responsible
+	order_proc_mode: orderprocmode; // abap.char(1): Procurement Mode
+	eew_aufk_ps_dummy: dummy; // abap.char(1): 
+	
+	@AbapCatalog.foreignKey.messageClass: 'KSCORE'
+	@AbapCatalog.foreignKey.messageNumber: '103'
+	@AbapCatalog.foreignKey.screenCheck: false
+	vname: jv_name; // abap.char(6): Joint Venture
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '104'
+	@AbapCatalog.foreignKey.screenCheck: false
+	recid: jv_recind; // abap.char(2): Recovery Indicator
+	
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '109'
+	@AbapCatalog.foreignKey.screenCheck: false
+	etype: jv_etype; // abap.char(3): Equity Type
+	otype: jv_otype; // abap.char(4): Joint Venture Object Type
+	
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '112'
+	@AbapCatalog.foreignKey.screenCheck: true
+	jv_jibcl: jv_jibcl; // abap.char(3): Jib/Jibe Class
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '113'
+	@AbapCatalog.foreignKey.screenCheck: true
+	jv_jibsa: jv_jibsa; // abap.char(5): Jib/Jibe Subclass A
+	jv_oco: jv_or_co; // abap.char(1): Orig. Cost Object
+	cpd_updat: /cpd/pfp_sc_tstmp; // abap.dec(15, 0): Time Stamp
+	/cum/indcu: /cum/indcu; // abap.char(1): Cu Order
+	/cum/cmnum: /cum/cmnum; // abap.char(12): Construction Measure Number
+	/cum/auest: /cum/auest; // abap.char(1): Auto Estimated Costs
+	/cum/desnum: /cum/desnum; // abap.char(12): Cu Design Number
+	ad01profnr: ad01profnr; // abap.char(8): Dip Profile
+	vaplz: gewrk; // abap.char(8): Main Work Center
+	wawrk: wergw; // abap.char(4): Plant For Workcenter
+	ferc_ind: fe_ind; // abap.char(4): Regulatory Indicator
+	aufk_status: actcmb_dele; // abap.int1(3): Status Comb. Code
+	claim_control: wtysc_claim_control; // abap.char(1): Claim Creation Control Indicator
+	update_needed: wtysc_update_needed; // abap.char(1): Claim Inconsistent With Order
+	update_control: wtysc_update_control; // abap.char(1): Claim Update Trigger
+}
