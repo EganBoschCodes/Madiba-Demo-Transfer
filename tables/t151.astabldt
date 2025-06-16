@@ -1,0 +1,11 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Customers: Customer Groups'
+
+define table t151 {
+	key mandt: mandt; // abap.clnt(3): Client
+	key kdgrp: kdgrp; // abap.char(2): Customer Group
+	bezbg: bezbg; // abap.char(1): Material Acq.author.
+}

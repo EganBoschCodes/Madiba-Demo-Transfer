@@ -1,0 +1,27 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Klassifizierung von Zahlungsdifferenzen'
+
+define table t053r {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	key rstgr: rstgr; // abap.char(3): Reason Code
+	xausb: xausb; // abap.char(1): Charge Off Diff.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kmrst: kmrst; // abap.char(5): Correspondence Type
+	xstrp: xstrp; // abap.char(1): Disputed Item
+	xuepi: xuepi; // abap.char(1): Initiate Check
+	xtxch: xtxch; // abap.char(1): Do Not Copy Text
+	xavtl: xavtl; // abap.char(1): No Tolerance Limit
+	xwrof: xwrof; // abap.char(1): Write Off
+}

@@ -1,0 +1,29 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Bewegungsarten'
+
+define table t856 {
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key trtyp: rmvct; // abap.char(3): Transaction Type
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ttgrp: rwgrp_d; // abap.char(3): Transaction Type Grp
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ttcfo: rmvct_cfo; // abap.char(3): Carryfwd Trans.type
+	sign: sign_mvct; // abap.char(1): +/- Sign
+	toind: kz_toind; // abap.char(1): Totals Transaction Type
+	sumru: rmvct_sum; // abap.char(75): Totals Formula
+	cfind: kz_cfind; // abap.char(1): No Changes To Balance C/F
+	cyind: kz_cyind; // abap.char(1): Year Of Acq. Only Current Year
+	cydbi: kz_cydbi; // abap.char(1): Suppress Acquisition Yrs.
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	ttret: rmvct_ret; // abap.char(3): Tty: Retirement
+}

@@ -1,0 +1,165 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Kostenstellenstammsatz'
+
+define table csks {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	key kokrs: kokrs; // abap.char(4): Controlling Area
+	key kostl: kostl; // abap.char(10): Cost Center
+	key datbi: datbi; // abap.dats(8): Valid To
+	datab: datab; // abap.dats(8): Valid From
+	bkzkp: bkzkp; // abap.char(1): Actual Primary Costs
+	pkzkp: pkzkp; // abap.char(1): Plan Primary Costs
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs: bukrs; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	gsber: gsber; // abap.char(4): Business Area
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kosar: kosar; // abap.char(1): Cost Center Category
+	verak: verak; // abap.char(20): Person Responsible
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	verak_user: verak_user; // abap.char(12): User Responsible
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers; // abap.cuky(5): Currency
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalsm: aufkalsm; // abap.char(6): Costing Sheet
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	txjcd: txjcd; // abap.char(15): Tax Jurisdiction
+	prctr: prctr; // abap.char(10): Profit Center
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	werks: werks_d; // abap.char(4): Plant
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	logsystem: logsystem; // abap.char(10): Logical System
+	ersda: erfdt; // abap.dats(8): Entered On
+	usnam: erfnm; // abap.char(12): Created By
+	bkzks: bkzks; // abap.char(1): Actual Secondary Costs
+	bkzer: bkzer; // abap.char(1): Actual Revenues
+	bkzob: bkzob; // abap.char(1): Commitment Update
+	pkzks: pkzks; // abap.char(1): Plan Secondary Costs
+	pkzer: pkzer; // abap.char(1): Plan Revenues
+	vmeth: vmeth; // abap.char(2): Allocation Methods
+	mgefl: mgefl; // abap.char(1): Record Quantity
+	abtei: abtei; // abap.char(12): Department
+	nkost: nkost; // abap.char(10): Subsequent Cost Ctr.
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kvewe: kvewe; // abap.char(1): Usage
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kappl: kappl; // abap.char(2): Application
+	koszschl: koszschl; // abap.char(6): Overhead Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	land1: land1; // abap.char(3): Country/Region Key
+	anred: anred; // abap.char(15): Title
+	name1: name1_gp; // abap.char(35): Name
+	name2: name2_gp; // abap.char(35): Name 2
+	name3: name3_gp; // abap.char(35): Name 3
+	name4: name4_gp; // abap.char(35): Name 4
+	ort01: ort01_gp; // abap.char(35): City
+	ort02: ort02_gp; // abap.char(35): District
+	stras: stras_gp; // abap.char(35): Street
+	pfach: pfach; // abap.char(10): Po Box
+	pstlz: pstlz; // abap.char(10): Postal Code
+	pstl2: pstl2; // abap.char(10): P.o. Box Postal Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	regio: regio; // abap.char(3): Region
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	spras: spras; // abap.lang(1): Language Key
+	telbx: telbx; // abap.char(15): Telebox Number
+	telf1: telf1; // abap.char(16): Telephone 1
+	telf2: telf2; // abap.char(16): Telephone 2
+	telfx: telfx; // abap.char(31): Fax Number
+	teltx: teltx; // abap.char(30): Teletex Number
+	telx1: telx1; // abap.char(30): Telex Number
+	datlt: datlt; // abap.char(14): Data Line
+	drnam: kdnam; // abap.char(4): Printer Destination
+	khinr: khinr; // abap.char(12): Hierarchy Area
+	cckey: cckey; // abap.char(23): Cost Collector Key
+	kompl: kskom; // abap.char(1): Complete
+	stakz: stakz; // abap.char(1): Statistics Indicator
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	objnr: j_objnr; // abap.char(22): Object Number
+	funkt: funkt_dlk; // abap.char(3): Function
+	afunk: afunk_dlk; // abap.char(3): Altern. Function
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	cpi_templ: cca_templ_cpi; // abap.char(10): Acty-Indep. Formplng Temp
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	cpd_templ: cca_templ_cpd; // abap.char(10): Acty-Dep. Form.plng Temp.
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	func_area: fkber; // abap.char(16): Functional Area
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	sci_templ: cca_templ_sci; // abap.char(10): Acty-Indep. Alloc. Temp.
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	scd_templ: cca_templ_scd; // abap.char(10): Acty-Dep. Alloc. Template
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	ski_templ: cca_templ_ski; // abap.char(10): Templ.: Act. Stat. Key Figure
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	skd_templ: cca_templ_skd; // abap.char(10): Templ.: Act. Stat. Key Figure
+	eew_csks_ps_dummy: dummy; // abap.char(1): 
+	
+	@AbapCatalog.foreignKey.messageClass: 'KSCORE'
+	@AbapCatalog.foreignKey.messageNumber: '103'
+	@AbapCatalog.foreignKey.screenCheck: false
+	vname: jv_name; // abap.char(6): Joint Venture
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '104'
+	@AbapCatalog.foreignKey.screenCheck: false
+	recid: jv_recind; // abap.char(2): Recovery Indicator
+	
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '109'
+	@AbapCatalog.foreignKey.screenCheck: false
+	etype: jv_etype; // abap.char(3): Equity Type
+	jv_otype: jv_otype; // abap.char(4): Joint Venture Object Type
+	
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '112'
+	@AbapCatalog.foreignKey.screenCheck: true
+	jv_jibcl: jv_jibcl; // abap.char(3): Jib/Jibe Class
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '113'
+	@AbapCatalog.foreignKey.screenCheck: true
+	jv_jibsa: jv_jibsa; // abap.char(5): Jib/Jibe Subclass A
+	budget_carrying_cost_ctr: fco_budget_carrying_cost_ctr; // abap.char(10): Budget-Carrying Cost Center
+	avc_profile: fco_avc_profile; // abap.char(6): Budget Availability Ctrl Prfl
+	avc_active: fco_avc_for_cost_center_active; // abap.char(1): Budget Availability Control Is Active
+	fund: bp_geber; // abap.char(10): Fund
+	grant_id: gm_grant_nbr; // abap.char(20): Grant
+	fund_fix_assigned: psm_fund_fix_assigned; // abap.char(1): Fund Fixed Assignment
+	grant_fix_assigned: psm_grant_fix_assigned; // abap.char(1): Grant Fixed Assignment
+	func_area_fix_assigned: psm_func_area_fix_assigned; // abap.char(1): Functional Area Fixed Assignment
+	ferc_ind: fe_ind; // abap.char(4): Regulatory Indicator
+}

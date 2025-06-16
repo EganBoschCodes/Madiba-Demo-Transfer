@@ -1,0 +1,66 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Organizational Unit: Sales Organizations'
+
+define table tvko {
+	key mandt: mandt; // abap.clnt(3): Client
+	key vkorg: vkorg; // abap.char(4): Sales Organization
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers_v; // abap.cuky(5): Statistics Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs: vkbuk; // abap.char(4): Company Code
+	adrnr: adrnr; // abap.char(10): Address
+	txnam_adr: txnam_adr; // abap.char(16): Address Text Name
+	txnam_kop: txnam_kop; // abap.char(16): Letter Header Text
+	txnam_fus: txnam_fus; // abap.char(16): Footer Lines Text
+	txnam_gru: txnam_gru; // abap.char(16): Greeting Text Name
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vkoau: vkoau; // abap.char(4): Refsorg.salesdoctype
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kunnr: kuniv; // abap.char(10): Cust.inter-Co.bill.
+	boavo: boavo; // abap.char(1): Rebate Proc.active
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vkokl: vkokl; // abap.char(2): Sales Org.calendar
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	ekorg: ekorg; // abap.char(4): Purch. Organization
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	ekgrp: ekgrp; // abap.char(3): Purchasing Group
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifnr: lifnr; // abap.char(10): Supplier
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	werks: werks_d; // abap.char(4): Plant
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	bsart: bsart; // abap.char(4): Order Type
+	bstyp: bstyp; // abap.char(1): Purch. Doc. Category
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	bwart: bwartwe; // abap.char(3): Movement Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	lgort: lgort_d; // abap.char(4): Storage Location
+	txnam_sdb: txnam_sdb; // abap.char(16): Text Sds Sender
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	mwskz: j_1amwskz; // abap.char(2): Tax Code For Sd Doc.
+	xstceg: xstceg; // abap.char(1): Vat Id Determination
+	j_1anutime: j_1anutime; // abap.char(1): Numbering Time
+	maxbi: maxbi; // abap.numc(3): Max. No. Bill. Items
+	hide: sd_obsolete; // abap.char(1): Hide Value In Input Help
+}

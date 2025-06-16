@@ -1,0 +1,27 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Bank Account Master Data: Text table of Account Description'
+
+define table fclm_bam_amd_t {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key acc_id: fclm_bam_acc_id; // abap.numc(10): Technical Id
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key langu: langu; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key revision: fclm_revision; // abap.numc(4): Revision Number
+	description: fclm_bam_description; // abap.char(60): Account Description
+	deleted_flag: boole_d; // abap.char(1): True
+}

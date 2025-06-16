@@ -1,0 +1,347 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'WBS (Work Breakdown Structure) Element Master Data'
+
+define table prps {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Client'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key pspnr: ps_posnr; // abap.numc(8): Wbs Element
+	posid: ps_posid; // abap.char(24): Wbs Element
+	post1: ps_post1; // abap.char(40): Description
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Object number, cost collector of the WBS element'
+	@AbapCatalog.foreignKey.screenCheck: true
+	objnr: j_objnr; // abap.char(22): Object Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Project'
+	@AbapCatalog.foreignKey.screenCheck: true
+	psphi: ps_psphi; // abap.numc(8): Current Internal Project Number
+	poski: ps_poski; // abap.char(16): Short Id (Wbs Elem)
+	ernam: ernam; // abap.char(12): Created By
+	erdat: erdat; // abap.dats(8): Created On
+	aenam: aenam; // abap.char(12): Changed By
+	aedat: updat; // abap.dats(8): Last Changed On
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Project manager personnel number'
+	@AbapCatalog.foreignKey.screenCheck: true
+	vernr: ps_vernr; // abap.numc(8): No. Of Person Resp.
+	verna: ps_verna; // abap.char(25): Name Of Person Resp.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Applicant personnel number'
+	@AbapCatalog.foreignKey.screenCheck: true
+	astnr: ps_astnr; // abap.numc(8): Applicant No.
+	astna: ps_astna; // abap.char(25): Applicant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Company code'
+	@AbapCatalog.foreignKey.messageClass: 'COCORE'
+	@AbapCatalog.foreignKey.messageNumber: '206'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pbukr: ps_pbukr; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Business area'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pgsbr: ps_pgsbr; // abap.char(4): Business Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Controlling area'
+	@AbapCatalog.foreignKey.messageClass: 'COCORE'
+	@AbapCatalog.foreignKey.messageNumber: '101'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pkokr: ps_pkokr; // abap.char(4): Controlling Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Profit Center'
+	@AbapCatalog.foreignKey.screenCheck: false
+	prctr: prctr; // abap.char(10): Profit Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Project type'
+	@AbapCatalog.foreignKey.screenCheck: true
+	prart: ps_prart; // abap.char(2): Project Type
+	stufe: ps_stufe; // abap.int1(3): Level
+	plakz: ps_plakz; // abap.char(1): Planning Element
+	belkz: ps_belkz; // abap.char(1): Acct Asst Elem.
+	fakkz: ps_fakkz; // abap.char(1): Billing Element
+	npfaz: ps_npfar; // abap.char(1): Relationship Network/Order
+	zuord: ps_zuord; // abap.numc(1): Network Asst
+	trmeq: ps_trmeq; // abap.char(1): Activity Dates
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Usage of the condition table'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kvewe: kvewe; // abap.char(1): Usage
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Application for costing sheet'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kappl: kappl; // abap.char(2): Application
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Costing sheet'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalsm: aufkalsm; // abap.char(6): Costing Sheet
+	zschl: aufzschl; // abap.char(6): Overhead Key
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Results analysis key'
+	@AbapCatalog.foreignKey.screenCheck: true
+	abgsl: abgr_schl; // abap.char(6): Results Analysis Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Controlling area of requesting cost center'
+	@AbapCatalog.foreignKey.messageClass: 'COCORE'
+	@AbapCatalog.foreignKey.messageNumber: '101'
+	@AbapCatalog.foreignKey.screenCheck: true
+	akokr: ps_akokr; // abap.char(4): Ca Req. Cost Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Requesting cost center'
+	@AbapCatalog.foreignKey.screenCheck: false
+	akstl: ps_akstl; // abap.char(10): Request. Cost Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Controlling area of responsible cost center'
+	@AbapCatalog.foreignKey.messageClass: 'COCORE'
+	@AbapCatalog.foreignKey.messageNumber: '101'
+	@AbapCatalog.foreignKey.screenCheck: true
+	fkokr: ps_fkokr; // abap.char(4): Ca Resp. Cost Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Responsible cost center'
+	@AbapCatalog.foreignKey.screenCheck: false
+	fkstl: ps_fkstl; // abap.char(10): Responsible Cc
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Factory calendar'
+	@AbapCatalog.foreignKey.screenCheck: true
+	fabkl: fabkl; // abap.char(2): Factory Calendar
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Priority'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pspri: nw_prio; // abap.char(1): Priority
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Equipment number'
+	@AbapCatalog.foreignKey.messageClass: 'IS'
+	@AbapCatalog.foreignKey.messageNumber: '801'
+	@AbapCatalog.foreignKey.screenCheck: true
+	equnr: equnr; // abap.char(18): Equipment
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Functional location'
+	@AbapCatalog.foreignKey.screenCheck: true
+	tplnr: tplnr; // abap.char(30): Functional Location
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'WBS element currency'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pwpos: ps_pwpos; // abap.cuky(5): Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Plant'
+	@AbapCatalog.foreignKey.screenCheck: true
+	werks: werks_d; // abap.char(4): Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Language Key'
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	txtsp: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Key word ID for user-defined fields'
+	@AbapCatalog.foreignKey.screenCheck: true
+	slwid: slwid; // abap.char(7): Field Key
+	usr00: usr00prps; // abap.char(20): Ufield 1 Wbs Element
+	usr01: usr01prps; // abap.char(20): Ufield 2 Wbs Element
+	usr02: usr02prps; // abap.char(10): Ufield 3 Wbs Element
+	usr03: usr03prps; // abap.char(10): Ufield 4 Wbs Element
+	
+	@Semantics.quantity.unitOfMeasure: 'prps.use04'
+	usr04: usr04prps; // abap.quan(13, 3): Ufield Quanty 1 Wbs
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Quantity unit'
+	@AbapCatalog.foreignKey.screenCheck: true
+	use04: use04prps; // abap.unit(3): User Field Unit 1 Wbs
+	
+	@Semantics.quantity.unitOfMeasure: 'prps.use05'
+	usr05: usr05prps; // abap.quan(13, 3): Ufield Quanty 2 Wbs
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Quantity unit'
+	@AbapCatalog.foreignKey.screenCheck: true
+	use05: use05prps; // abap.unit(3): User Field Unit 2 Wbs
+	
+	@Semantics.amount.currencyCode: 'prps.use06'
+	usr06: usr06prps; // abap.curr(13, 3): Ufield Value 1 Wbs
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Unit value fields'
+	@AbapCatalog.foreignKey.screenCheck: true
+	use06: use06prps; // abap.cuky(5): Ufield Unit 1 Wbs
+	
+	@Semantics.amount.currencyCode: 'prps.use07'
+	usr07: usr07prps; // abap.curr(13, 3): Ufield Value 2 Wbs
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Unit value fields'
+	@AbapCatalog.foreignKey.screenCheck: true
+	use07: use07prps; // abap.cuky(5): Ufield Unit 2 Wbs
+	usr08: usr08prps; // abap.dats(8): Ufield Date 1 Wbs
+	usr09: usr09prps; // abap.dats(8): Ufield Date 2 Wbs
+	usr10: usr10prps; // abap.char(1): Ufield Ind. 1 Wbs
+	usr11: usr11prps; // abap.char(1): Ufield Ind. 2 Wbs
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Cost center'
+	@AbapCatalog.foreignKey.screenCheck: false
+	kostl: ps_kostl; // abap.char(10): Cctr Posted Actual
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Cost object continuous flow production'
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktrg: kstrg; // abap.char(12): Cost Object
+	berst: ps_berst; // abap.char(16): Master Data Auth.
+	bertr: ps_bertr; // abap.char(16): Date Authorization
+	berko: ps_berko; // abap.char(16): Costs/Revs Auth.
+	berbu: ps_berbu; // abap.char(16): Budget Authorization
+	clasf: ps_clasf; // abap.char(1): Proj. Summarization
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Number of std WBS element (when creating by copying, SWBS)'
+	@AbapCatalog.foreignKey.screenCheck: true
+	spsnr: ps_spsnr; // abap.numc(8): Std. Wbs Element
+	scope: scope_cv; // abap.char(2): Object Class
+	xstat: ps_xstat; // abap.char(1): Statistical
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Tax Jurisdiction Code'
+	@AbapCatalog.foreignKey.screenCheck: true
+	txjcd: txjcd; // abap.char(15): Tax Jurisdiction
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Interest profile'
+	@AbapCatalog.foreignKey.screenCheck: true
+	zschm: ps_zschm; // abap.char(7): Interest Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	imprf: im_profil; // abap.char(6): Investment Profile
+	evgew: ev_weightd; // abap.dec(8, 0): Poc Weight
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Change number'
+	@AbapCatalog.foreignKey.screenCheck: true
+	aennr: aennr; // abap.char(12): Change Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	subpr: ps_subpr; // abap.char(12): Subproject
+	postu: ps_postu; // abap.char(40): Description
+	plint: plint; // abap.char(1): Integrated Planning
+	loevm: loevm; // abap.char(1): Deletion Indicator
+	kzbws: kzbws; // abap.char(1): Spec. Stk Valuation
+	fplnr: fplnr; // abap.char(10): Billing Plan Number
+	tadat: tabgdat; // abap.dats(8): Technical Completion
+	
+	@AbapCatalog.foreignKey.label: 'Reason for investment'
+	@AbapCatalog.foreignKey.screenCheck: true
+	izwek: izwek; // abap.char(2): Investment Reason
+	
+	@AbapCatalog.foreignKey.label: 'Scale'
+	@AbapCatalog.foreignKey.screenCheck: true
+	isize: im_sizecl; // abap.char(2): Scale
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	iumkz: am_umwkz; // abap.char(5): Envir. Investment
+	
+	@AbapCatalog.foreignKey.messageClass: 'COCORE'
+	@AbapCatalog.foreignKey.messageNumber: '206'
+	@AbapCatalog.foreignKey.screenCheck: true
+	abukr: im_abukrs; // abap.char(4): Requesting Co. Code
+	grpkz: grpspkz; // abap.char(1): Grouping Wbs Element
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	pgprf: pgprofid; // abap.char(6): Distribution Profile
+	logsystem: logsystem; // abap.char(10): Logical System
+	pspnr_logs: num08; // abap.numc(8): Numeric Field (8)
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	stort: ps_stort; // abap.char(10): Location
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	func_area: fkber; // abap.char(16): Functional Area
+	klvar: ck_klvar; // abap.char(4): Costing Variant
+	kalnr: ck_kalnr; // abap.numc(12): Cost Estimate Number
+	posid_edit: ps_posid_edit; // abap.char(24): Wbs Element
+	pspkz: pl_pspkz; // abap.char(1): Production Lot Ind.
+	matnr: matnr; // abap.char(40): Material
+	vlpsp: pl_psp_pnr; // abap.numc(8): Ref. Wbs Element
+	vlpkz: pl_vlpkz; // abap.char(1): Reference Wbs
+	sort1: pl_sort1; // abap.char(10): Sort String 1
+	sort2: pl_sort2; // abap.char(10): Sort String 2
+	sort3: pl_sort3; // abap.char(10): Sort String 3
+	
+	@AbapCatalog.foreignKey.messageClass: 'KSCORE'
+	@AbapCatalog.foreignKey.messageNumber: '103'
+	@AbapCatalog.foreignKey.screenCheck: false
+	vname: jv_name; // abap.char(6): Joint Venture
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '104'
+	@AbapCatalog.foreignKey.screenCheck: false
+	recid: jv_recind; // abap.char(2): Recovery Indicator
+	
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '109'
+	@AbapCatalog.foreignKey.screenCheck: false
+	etype: jv_etype; // abap.char(3): Equity Type
+	otype: jv_otype; // abap.char(4): Joint Venture Object Type
+	
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '112'
+	@AbapCatalog.foreignKey.screenCheck: true
+	jibcl: jv_jibcl; // abap.char(3): Jib/Jibe Class
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.messageClass: 'GJ'
+	@AbapCatalog.foreignKey.messageNumber: '113'
+	@AbapCatalog.foreignKey.screenCheck: true
+	jibsa: jv_jibsa; // abap.char(5): Jib/Jibe Subclass A
+	cgpl_guid16: cgpl_guid16_r3; // abap.raw(16): Cgpl_guid
+	cgpl_logsys: cgpl_logsys; // abap.char(10): Logical System
+	cgpl_objtype: cgpl_object_type_r3; // abap.char(3): Object Type
+	adpsp: addcompare_core; // abap.char(40): Ref. Element Pm/Ps
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	rfippnt: cn_rpip; // abap.char(20): Reference Point
+	eew_prps_ps_dummy: dummy; // abap.char(1): 
+	rfund: bp_geber; // abap.char(10): Fund
+	rgrant_nbr: gm_grant_nbr; // abap.char(20): Grant
+	fund_fix_assign: psm_fund_fix_assigned; // abap.char(1): Fund Fixed Assignment
+	grant_fix_assigned: psm_grant_fix_assigned; // abap.char(1): Grant Fixed Assignment
+	func_area_fix_assigned: psm_func_area_fix_assigned; // abap.char(1): Functional Area Fixed Assignment
+	sponsoredprog: gm_sponsored_prog; // abap.char(20): Sponsored Program
+	settlementelement: ps_settlementelement; // abap.char(1): Enterprise Project Settlement Element
+	settlmtruleinherited: ps_settlementruleinherited; // abap.char(1): Ent Project Settlement Rule Inherited
+	settlementobject: ps_settlementobject; // abap.char(22): Enterprise Project Settlement Object
+	cpd_updat: /cpd/pfp_sc_tstmp; // abap.dec(15, 0): Time Stamp
+	ferc_ind: fe_ind; // abap.char(4): Regulatory Indicator
+	prps_status: actcmb_dele; // abap.int1(3): Status Comb. Code
+	posnr_prps: posnr_va; // abap.numc(6): Sales Document Item
+	vbeln_prps: vbeln_va; // abap.char(10): Sales Document
+}

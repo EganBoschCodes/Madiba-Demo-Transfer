@@ -1,0 +1,12 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #E
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Objekttypen fr das Rechnungswesen'
+
+define table ttyp {
+	key awtyp: awtyp; // abap.char(5): Reference Procedure
+	struc: structure; // abap.char(10): Structure Descriptn
+	function: funit; // abap.char(30): Text
+	remote: swo_remote; // abap.char(1): Remote Possible
+}

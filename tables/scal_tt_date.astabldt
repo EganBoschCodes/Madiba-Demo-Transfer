@@ -1,0 +1,24 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #S
+@AbapCatalog.enhancement.category: #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Date table containing dates from 01011900 to 31129999'
+
+define table scal_tt_date {
+	key calendardate: calendardate; // abap.dats(8): Calendar Date
+	calendaryear: calendaryear; // abap.numc(4): Calendar Year
+	calendarmonth: calendarmonth; // abap.numc(2): Calendar Month
+	calendarquarter: calendarquarter; // abap.numc(1): Calendar Quarter
+	calendarweek: calendarweek; // abap.numc(2): Calendar Week
+	calendarday: calendarday; // abap.numc(2): Calendar Day
+	weekday: vdm_weekday; // abap.numc(1): Week Day
+	yearweek: vdm_yearweek; // abap.numc(6): Year And Calendar Week
+	yearquarter: vdm_yearquarter; // abap.numc(5): Year Quarter
+	yearmonth: vdm_yearmonth; // abap.numc(6): Year Month
+	firstdayofmonthdate: firstdayofmonthdate; // abap.dats(8): First Day Of Month
+	lastdayofmonthdate: lastdayofmonthdate; // abap.dats(8): Last Day Of Month
+	halfyear: vdm_halfyear; // abap.numc(1): Half Year
+	firstdayofweekdate: vdm_firstdayofweekdate; // abap.dats(8): First Day Of Week Date
+	calendardayofyear: vdm_calendardayofyear; // abap.numc(3): Calendar Day Of Year
+	yearday: vdm_yearday; // abap.numc(7): Day Of The Year
+}

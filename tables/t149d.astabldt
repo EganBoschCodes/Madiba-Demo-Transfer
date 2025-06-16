@@ -1,0 +1,18 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Global Valuation Types'
+
+define table t149d {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key bwtar: bwtar_d; // abap.char(10): Valuation Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kkref: kkref; // abap.char(4): Acct Cat. Reference
+	bsext: bsext; // abap.char(1): Ext. Purchase Orders
+	bsint: bsint; // abap.char(1): Int. Purchase Orders
+}

@@ -1,0 +1,34 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Hausbanken'
+
+define table t012 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	key hbkid: hbkid; // abap.char(5): House Bank
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	banks: banks; // abap.char(3): Bank Country/Region
+	bankl: bankk; // abap.char(15): Bank Key
+	telf1: telf1; // abap.char(16): Telephone 1
+	stcd1: stcd1; // abap.char(16): Tax Number 1
+	name1: name1_a; // abap.char(30): Contact Person
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	bupla: bupla_t012; // abap.char(4): Business Place
+	vpast: vpast; // abap.char(1): Past Value Date
+}

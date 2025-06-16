@@ -1,0 +1,261 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Anlagenstammsatz-Segment'
+
+define table anla {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key anln1: anln1; // abap.char(12): Asset
+	key anln2: anln2; // abap.char(4): Sub-Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	anlkl: anlkl; // abap.char(8): Asset Class
+	gegst: gegst; // abap.char(8): Tech.asset
+	anlar: anlar; // abap.char(5): Asset Type
+	ernam: ernam; // abap.char(12): Created By
+	erdat: erdat; // abap.dats(8): Created On
+	aenam: aenam; // abap.char(12): Changed By
+	aedat: aedat_anla; // abap.dats(8): Changed On
+	xloev: xloev; // abap.char(1): Mark For Deletion
+	xspeb: xspeb_anla; // abap.char(1): Locked To Acquis.
+	felei: felei; // abap.char(4): Screen Layout Rule
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktogr: ktogr; // abap.char(8): Account Determination
+	xopvw: opvwa; // abap.char(1): Line Item Settlement
+	anltp: anltp; // abap.numc(1): Asset Category
+	zujhr: dzujahr; // abap.numc(4): Acquisition Year
+	zuper: dzuper; // abap.numc(3): First Acquis. Period
+	zugdt: dzugdat; // abap.dats(8): First Acquisition On
+	aktiv: aktivd; // abap.dats(8): Capitalized On
+	abgdt: abgdat; // abap.dats(8): Last Retmt. On
+	deakt: deakt; // abap.dats(8): Deactivation On
+	gplab: gplab; // abap.dats(8): Plnd Retirement On
+	bstdt: bstdt; // abap.dats(8): Ordered On
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Ordnungsbegriff 1'
+	@AbapCatalog.foreignKey.screenCheck: false
+	ord41: ord41; // abap.char(4): Evaluation Group 1
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Ordnungsbegriff 2'
+	@AbapCatalog.foreignKey.screenCheck: false
+	ord42: ord42; // abap.char(4): Evaluation Group 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Ordnungsbegriff 3'
+	@AbapCatalog.foreignKey.screenCheck: false
+	ord43: ord43; // abap.char(4): Evaluation Group 3
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Ordnungsbegriff 4'
+	@AbapCatalog.foreignKey.screenCheck: false
+	ord44: ord44; // abap.char(4): Evaluation Group 4
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	anlue: anlue; // abap.char(12): Asset Super Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zuawa: dzuawa; // abap.char(3): Sort Key
+	aneqk: aneqk; // abap.numc(1): Manage Historically
+	aneqs: aneqs; // abap.numc(1): Complete.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifnr: am_lifnr; // abap.char(10): Vendor
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	land1: am_land1; // abap.char(3): Ctry/Reg. Of Origin
+	liefe: liefe; // abap.char(30): Supplier Name
+	herst: herst; // abap.char(30): Manufacturer
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	eigkz: eigkz; // abap.char(1): Property Indicator
+	aibn1: aibn1; // abap.char(12): Original Asset
+	aibn2: aibn2; // abap.char(4): Asset Subnumber Auc
+	aibdt: aibdt; // abap.dats(8): Acq. Orig. Asset On
+	urjhr: urjhr; // abap.numc(4): Org.acquisition Year
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	urwrt: urwrt; // abap.curr(23, 2): Original Value
+	antei: antei; // abap.dec(5, 2): In-House Prod. Perc.
+	projn: projn; // abap.char(16): Not In Use
+	eaufn: am_aufnr; // abap.char(12): Investment Order
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	meins: meins; // abap.unit(3): Base Unit Of Measure
+	
+	@Semantics.quantity.unitOfMeasure: 'anla.meins'
+	menge: am_menge; // abap.quan(13, 3): Quantity
+	typbz: typbz_anla; // abap.char(15): Type Name
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	izwek: izwek; // abap.char(2): Investment Reason
+	inken: inken; // abap.char(1): Include Asset
+	ivdat: ivdat_anla; // abap.dats(8): Last Inventory On
+	invzu: invzu_anla; // abap.char(15): Inventory Note
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Verm.Gliederung'
+	@AbapCatalog.foreignKey.screenCheck: true
+	vmgli: vmgli; // abap.char(4): Classification Key
+	xvrmw: xvrmw; // abap.char(1): Manual Net Worth Val
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	wrtma: wrtma; // abap.curr(23, 2): Man.net Wrth Val.
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	ehwrt: ehwrt; // abap.curr(23, 2): Assessed Val
+	aufla: aufla_anla; // abap.dats(8): Conveyance From
+	ehwzu: ehwzu_anla; // abap.dats(8): Notice On
+	ehwnr: ehwnr_anla; // abap.char(16): Assmt Notice Tax No.
+	gruvo: gruvo_anla; // abap.dats(8): Land Register Of
+	grein: grein_anla; // abap.dats(8): Entry By
+	grbnd: grbnd_anla; // abap.char(5): Vol./Page/Ser.no
+	grblt: grblt_anla; // abap.char(5): Land Register Page
+	grlfd: grlfd_anla; // abap.char(4): Landregentry Seqno.
+	flurk: flurk_anla; // abap.char(4): Ld.reg.map/Plot
+	flurn: flurn_anla; // abap.char(10): Plot Number
+	fiamt: fiamt; // abap.char(25): Tax Office
+	stadt: ort01_anla; // abap.char(25): Municipality
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	grund: grund; // abap.char(3): Reason For Man. Val.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	feins: feins; // abap.unit(3): Area Unit
+	
+	@Semantics.quantity.unitOfMeasure: 'anla.feins'
+	grufl: grufl; // abap.quan(13, 3): Area
+	invnr: invnr_anla; // abap.char(25): Inventory Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vbund: rassc; // abap.char(6): Trading Partner No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	spras: spras; // abap.lang(1): Language Key
+	txt50: txa50_anlt; // abap.char(50): Description
+	txa50: txa50_more; // abap.char(50): Additional Description
+	xltxid: xltxid; // abap.char(1): Long Text Exists
+	xverid: xverid; // abap.char(1): Long Text Exists
+	xtchid: xtchid; // abap.char(1): Techn.view Long Text
+	xkalid: xkalid; // abap.char(1): Longtxt.:C-Acc.view
+	xherid: xherid; // abap.char(1): Long Text Exists
+	xleaid: xleaid; // abap.char(1): Long Text Exists
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	leafi: leafi; // abap.char(10): Leasing Company
+	lvdat: lvdat; // abap.dats(8): Agreement Date
+	lkdat: lkdat; // abap.dats(8): Notice Date
+	leabg: leabg; // abap.dats(8): Lease Start Date
+	lejar: lejar; // abap.numc(3): Lease Length
+	leper: leper; // abap.numc(3): Lease In Periods
+	lryth: lryth; // abap.numc(3): Payment Cycle
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	legeb: legeb; // abap.curr(23, 2): Lease Payment
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	lbasw: lbasw; // abap.curr(23, 2): Base Value As New
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	lkauf: lkauf; // abap.curr(23, 2): Purchase Price
+	lmzin: lmzin; // abap.dec(7, 4): Monthly Int. Rate
+	lzins: lzins; // abap.dec(7, 4): Annual Interest Rate
+	ltzbw: ltzbw; // abap.dats(8): Last Posting Date
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	lkuza: lkuza; // abap.curr(23, 2): Posted Payments
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	lkuzi: lkuzi; // abap.curr(23, 2): Interest Posted
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	llavb: llavb; // abap.curr(23, 2): Long-Term Liability
+	leanz: leanz; // abap.dec(5, 0): No. Lease Payments
+	lvtnr: lvtnr; // abap.char(15): Agreement Number
+	letxt: letxt; // abap.char(50): Supplementary Text
+	xaktiv: xaktiv; // abap.char(1): Capitalize Fixed Asset
+	anupd: anupd; // abap.char(1): Change Type
+	lblnr: lblnr; // abap.char(10): Last Document Number
+	xv0dt: xv0dt; // abap.dats(8): Maintain Date View0
+	xv0nm: xv0nm; // abap.char(12): View0 Changed By
+	xv1dt: xv1dt; // abap.dats(8): Maintain Date V1
+	xv1nm: xv1nm; // abap.char(12): V1 Changed By
+	xv2dt: xv2dt; // abap.dats(8): Maintain Date V2
+	xv2nm: xv2nm; // abap.char(12): View2 Changed By
+	xv3dt: xv3dt; // abap.dats(8): Maintain Date V3
+	xv3nm: xv3nm; // abap.char(12): View3 Changed By
+	xv4dt: xv4dt; // abap.dats(8): Maintain Date View4
+	xv4nm: xv4nm; // abap.char(12): View4 Changed By
+	xv5dt: xv5dt; // abap.dats(8): Maintain Date V5
+	xv5nm: xv5nm; // abap.char(12): View5 Changed By
+	xv6dt: xv6dt; // abap.dats(8): Maintain Date V6
+	xv6nm: xv6nm; // abap.char(12): View6 Changed By
+	aimmo: aimmo; // abap.numc(1): Connection To Sap Real Estate Management
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	objnr: j_objnr; // abap.char(22): Object Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Leasingart'
+	@AbapCatalog.foreignKey.screenCheck: true
+	leart: leart; // abap.char(2): Type
+	lvors: lvors; // abap.char(1): Advance Payments
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Guidelinegroup'
+	@AbapCatalog.foreignKey.screenCheck: false
+	gdlgrp: gdlgrp; // abap.char(8): Evaluation Group 5
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	posnr: am_posnr; // abap.numc(8): Wbs Element
+	xerwrt: xerwrt; // abap.char(1): Do Not Take Memo Value Into Account
+	xafabch: xafabch; // abap.char(1): Purchased Used
+	xanlgr: xanlgr_1; // abap.char(1): Group Asset
+	mcoa1: mcoa1; // abap.char(30): Description
+	xinvm: im_xinvm; // abap.char(1): Investment Measure
+	sernr: am_sernr; // abap.char(18): Serial Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	umwkz: am_umwkz; // abap.char(5): Envir. Investment
+	lrvdat: am_lrvdat; // abap.dats(8): Last Reval. On
+	act_change_pm: aapm_act_change_pm; // abap.char(1): Change Asset Master Record From Equipmen
+	has_tddp: has_tddp; // abap.char(1): Time-Dependent Parameters Exist
+	last_reorg_date: faa_last_reorg; // abap.dats(8): Reorganization Date
+	ldt_date: faa_ldt_date; // abap.dats(8): Legacy Data Transfer Date
+	ldt_seqno: faa_ldt_seqno; // abap.numc(5): Ldt Sequence Number
+	sdm_status: faa_sdm_status; // abap.char(2): Silent Data Migration Status
+	dummy_faa_asset_incl_eew_ps: faa_asset_incl_eew; // abap.char(1): 
+	internal_code: /atl/internal_code; // abap.char(10): Internal Code
+	approval_number: /atl/approval_number; // abap.char(15): Approval Document Number
+	approval_version: /atl/approval_version; // abap.char(3): Approval Version
+	bogus_anln1: /atl/bogus_anln1; // abap.char(12): Investment Asset Number
+	asset_version: /atl/asset_version; // abap.char(3): Asset Version
+}

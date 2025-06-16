@@ -1,0 +1,36 @@
+CLASS zcsnap_f70g_offsetasset DEFINITION
+    PUBLIC
+    FINAL
+    CREATE PUBLIC .
+
+    PUBLIC SECTION.
+
+        INTERFACES if_amdp_marker_hdb.
+
+        CLASS-METHODS get_data
+            FOR TABLE FUNCTION ZSNAP_F70G_OffsetAsset.
+
+    PROTECTED SECTION.
+    PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zcsnap_f70g_offsetasset IMPLEMENTATION.
+
+  METHOD get_data BY DATABASE FUNCTION FOR HDB LANGUAGE SQLSCRIPT OPTIONS READ-ONLY USING bseg.
+
+    return /* ZSNAP_F70G_OffsetAsset */ select
+		main.mandt,
+		main.belnr as AccountingDocument,
+		main.bukrs as CompanyCode,
+		main.gjahr as FiscalYear,
+		min (main.anln1) as FixedAsset
+	from bseg as main
+	where main.koart = 'A'
+		and main.anln1 <> ''
+	group by main.mandt,
+		main.belnr,
+		main.bukrs,
+		main.gjahr;
+
+  ENDMETHOD.
+ENDCLASS.

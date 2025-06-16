@@ -1,0 +1,287 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Billing Document: Header Data'
+
+define table vbrk {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key vbeln: vbeln_vf; // abap.char(10): Billing Document
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fkart: fkart; // abap.char(4): Billing Type
+	fktyp: fktyp; // abap.char(1): Billing Category
+	vbtyp: vbtypl; // abap.char(4): Sd Document Category
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waerk: waerk; // abap.cuky(5): Document Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vkorg: vkorg; // abap.char(4): Sales Organization
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vtweg: vtweg; // abap.char(2): Distribution Channel
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalsm: kalsmasd; // abap.char(6): Pricing Procedure
+	knumv: knumv; // abap.char(10): Doc. Condition No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vsbed: vsbed; // abap.char(2): Shipping Conditions
+	fkdat: fkdat; // abap.dats(8): Billing Date
+	belnr: belnr_d; // abap.char(10): Document Number
+	gjahr: gjahr; // abap.numc(4): Fiscal Year
+	poper: poper; // abap.numc(3): Posting Period
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	konda: konda; // abap.char(2): Customer Price Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kdgrp: kdgrp; // abap.char(2): Customer Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bzirk: bzirk; // abap.char(6): Sales District
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	pltyp: pltyp; // abap.char(2): Price List Type
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	inco1: inco1; // abap.char(3): Incoterms
+	inco2: inco2; // abap.char(28): Incoterms (Part 2)
+	rfbsk: rfbsk; // abap.char(1): Posting Status
+	mrnkz: mrnkz; // abap.char(1): Man. Invoice Maint.
+	kurrf: kurrf; // abap.dec(9, 5): Exchng. Rate Accntg.
+	cpkur: cpkur; // abap.char(1): Set Exchange Rate
+	valtg: valtg; // abap.numc(2): Addit. Value Days
+	valdt: valdt; // abap.dats(8): Fixed Value Date
+	zterm: dzterm; // abap.char(4): Terms Of Payment
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zlsch: schzw_bseg; // abap.char(1): Payment Method
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktgrd: ktgrd; // abap.char(2): Acct Assmt Grp Cust.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	land1: lland; // abap.char(3): Dest. Country/Region
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	regio: regio; // abap.char(3): Region
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	counc: counc; // abap.char(3): County Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cityc: cityc; // abap.char(4): City Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs: bukrs; // abap.char(4): Company Code
+	taxk1: taxk1; // abap.char(1): Tax Class.1 Customer
+	taxk2: taxk2; // abap.char(1): Tax Class.2 Customer
+	taxk3: taxk3; // abap.char(1): Tax Class.3 Customer
+	taxk4: taxk4; // abap.char(1): Tax Class.4 Customer
+	taxk5: taxk5; // abap.char(1): Tax Class.5 Customer
+	taxk6: taxk6; // abap.char(1): Tax Class.6 Customer
+	taxk7: taxk7; // abap.char(1): Tax Class.7 Customer
+	taxk8: taxk8; // abap.char(1): Tax Class.8 Customer
+	taxk9: taxk9; // abap.char(1): Tax Class.9 Customer
+	
+	@Semantics.amount.currencyCode: 'vbrk.waerk'
+	netwr: netwr; // abap.curr(15, 2): Net Value
+	zukri: dzukri; // abap.char(40): Combination Criteria
+	ernam: ernam; // abap.char(12): Created By
+	erzet: erzet; // abap.tims(6): Time
+	erdat: erdat; // abap.dats(8): Created On
+	stafo: stafo; // abap.char(6): Update Group (Stats)
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kunrg: kunrg; // abap.char(10): Payer
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kunag: kunag; // abap.char(10): Sold-To Party
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	maber: maber; // abap.char(2): Dunning Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	stwae: stwae; // abap.cuky(5): Statistics Currency
+	stceg: stceg; // abap.char(20): Vat Registration No.
+	aedat: aedat; // abap.dats(8): Changed On
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	sfakn: sfakn; // abap.char(10): Canceled Bill. Doc.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	knuma: knuma; // abap.char(10): Agreement
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fkart_rl: fkart_rl; // abap.char(4): Invoice List Type
+	fkdat_rl: fkdat_rl; // abap.dats(8): Inv. List Bill. Date
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kurst: kurst; // abap.char(4): Exchange Rate Type
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mschl: mschl; // abap.char(1): Dunning Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mansp: mansp; // abap.char(1): Dunning Block
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	spart: spart; // abap.char(2): Division
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	kkber: kkber; // abap.char(4): Credit Control Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	knkli: knkli; // abap.char(10): Credit Account
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	cmwae: waers_cm; // abap.cuky(5): Currency
+	cmkuf: cmkuf; // abap.dec(9, 5): Cred.data Exch.rate
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hityp_pr: hityp_pr; // abap.char(1): Hierarchytypepricing
+	custh_univ_sales_relvnce: sd_custh_chrelv; // abap.char(2): Customer Hierarchy Relevance
+	custh_branch_uuid: sd_custh_uuid; // abap.char(32): Customer Hierarchy Branch Uuid
+	bstnk_vf: bstkd; // abap.char(35): Customer Reference
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vbund: rassc; // abap.char(6): Trading Partner No.
+	fkart_ab: fkart_ab; // abap.char(4): Accrual Billing Type
+	kappl: kappl; // abap.char(2): Application
+	landtx: landtx; // abap.char(3): Tax Departure C/R
+	stceg_h: stceg_h; // abap.char(1): Origin Sales Tax No.
+	stceg_l: stceg_l; // abap.char(3): Ctry/Rgn Sls Tax No.
+	xblnr: xblnr_v1; // abap.char(16): Reference
+	zuonr: ordnr_v; // abap.char(18): Assignment
+	
+	@Semantics.amount.currencyCode: 'vbrk.waerk'
+	mwsbk: mwsbp; // abap.curr(13, 2): Tax Amount
+	logsys: logsys; // abap.char(10): Logical System
+	fksto: fksto; // abap.char(1): Canceled
+	xegdr: xegdr; // abap.char(1): Eu Triangular Deal
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	rplnr: rplnr; // abap.char(10): Paym. Card Plan No.
+	
+	@AbapCatalog.foreignKey.label: 'Foreign key for J_1AFITP'
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1afitp: j_1afitp_d; // abap.char(2): Tax Type
+	kurrf_dat: wwert_d; // abap.dats(8): Translation Date
+	kidno: kidno; // abap.char(30): Payment Reference
+	bvtyp: bvtyp; // abap.char(4): Part.bank Type
+	numpg: j_1anopg; // abap.numc(3): Number Of Pages
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bupla: bupla; // abap.char(4): Business Place
+	vkont: corr_vkont_kk; // abap.char(12): Contract Account
+	fkk_docstat: docstat_kk; // abap.char(1): Add. Fin. Acc.status
+	nrzas: char12; // abap.char(12): 
+	spe_billing_ind: /spe/de_billing_ind; // abap.char(1): Ewm Billing Indicator
+	vtref: corr_vtref_kk; // abap.char(20): Contract
+	fk_source_sys: fk_source_sys; // abap.char(10): Source System
+	fktyp_crm: fktyp_crm; // abap.char(1): Service Bill. Categ.
+	
+	@AbapCatalog.foreignKey.screenCheck: false
+	stgrd: stgrd; // abap.char(2): Reversal Reason
+	changed_on: timestampl; // abap.dec(21, 7): Time Stamp
+	expkz: expkz; // abap.char(1): Export
+	exnum: exnum; // abap.char(10): Number Of Foreign Trade Data
+	akwae: akwae; // abap.cuky(5): Lett.-Of-Credit Crcy
+	akkur: akkur; // abap.dec(9, 5): Ex.rate-Lettofcredit
+	lcnum: lcnum; // abap.char(10): Financial Doc. No.
+	_dataaging: data_temperature; // abap.dats(8): Data Aging Filter
+	buchk: buchk; // abap.char(1): Posting Status
+	gbstk: gbstk; // abap.char(1): Overall Status
+	relik: relik; // abap.char(1): Invoice List Status
+	uvals: uvall_su; // abap.char(1): All Items
+	uvprs: uvprs_uk; // abap.char(1): Pricing   All Items
+	clrst: clrst; // abap.char(1): Clearing Status
+	fksak: fksak; // abap.char(1): Ord.-Rel. Billg Sts
+	fkara: fkara; // abap.char(4): Order-Rel. Bill.type
+	vf_status: vf_status; // abap.char(1): Status
+	vf_todo: vf_todo; // abap.char(1): Issue Type
+	bdr_status: bdr_status; // abap.char(1): Status
+	bdr_ref: bdr_ref; // abap.char(10): Billing Document Request Source Document
+	bdr_ref_logsys: bdr_ref_logsys; // abap.char(10): Bdr Source System
+	bdr_ref_vbtyp: bdr_ref_vbtyp; // abap.char(4): Bdr Source Sd Document Category
+	pbd_status: pbd_status; // abap.char(1): Status
+	abstk: abstk; // abap.char(1): Rejection Status
+	draft: vf_draft_indicator; // abap.char(1): Draft Indicator
+	activedocument: vbeln; // abap.char(10): Sd Document
+	grwcu: grwcu; // abap.cuky(5): Currency
+	blart: blart; // abap.char(2): Document Type
+	intra_rel: intra_rel; // abap.char(1): Intrastat Relevance
+	intra_excl: intra_excl; // abap.char(1): Intrastat Exclusion
+	accrrel: isaccrualrelevant; // abap.char(1): Is Relevant For Accrual
+	pspsd: pspsd; // abap.char(10): Payment Split Predecessor Sales Document
+	apm_approval_status: sd_apm_approval_status; // abap.char(1): Approval Status
+	apm_approval_reason: sd_apm_approval_reason; // abap.char(4): Approval Request Reason Id
+	srcedoc_ext_comm_syst_type: srce_doc_ext_comm_syst_type; // abap.char(2): Sourcedocument External Comm System Type
+	ico_lifnr: lifnr_wk; // abap.char(10): Supplier Number Of Plant
+	j_1tpbupl: bcode; // abap.char(5): Branch Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	incov: incov; // abap.char(4): Incoterms Version
+	inco2_l: inco2_l; // abap.char(70): Incoterms Location 1
+	inco3_l: inco3_l; // abap.char(70): Incoterms Location 2
+	sdm_version: sdbil_sdm_version_vbrk; // abap.char(2): Sdm Versioning
+	dummy_billingdoc_incl_eew_ps: dummy; // abap.char(1): 
+	glo_log_ref1_hd: glo_log_ref1_hd; // abap.char(25): Business Process Indicator
+	zapcgkh: /ile/tapcgk; // abap.numc(4): Annexing Package Key
+	apcgk_extendh: /ile/tapcgk_ext; // abap.numc(10): Annexing Package Extend
+	zabdath: /ile/tabdat; // abap.dats(8): Annexing Base Date
+	dpc_rel: /sappce/dpc_rel; // abap.char(1): Dpc Relevant
+	ad01basdoc: ad01basdoc; // abap.char(10): Initial Document
+	ad01fareg: ad01fareg; // abap.char(1): A&D Billing Rule
+	vchrnmbr: ad04vchnr; // abap.numc(8): Voucher Number
+	j_3gkbaul: j_3gkbaul; // abap.char(1): Etm-Relevant Ind.
+	j_3gkenie: j_3gkenie; // abap.char(1): Intern./Extern.
+	kunwe: kunwe; // abap.char(10): Ship-To Party
+	mndid: sepa_mndid; // abap.char(35): Mandate Reference
+	pay_type: sepa_pay_type; // abap.char(1): Payment Type
+	sepon: sd_sepa_flag; // abap.char(1): Sepa-Relevant
+	mndvg: sd_sepa_flag; // abap.char(1): Sepa-Relevant
+	sppaym: sppaym; // abap.char(2): Payment Method
+	sppord: sppord; // abap.char(10): Sales Order
+}

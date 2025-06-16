@@ -1,0 +1,69 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Sales Document: Partner'
+
+define table vbpa {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key vbeln: vbeln; // abap.char(10): Sd Document
+	key posnr: posnr; // abap.numc(6): Item (Sd)
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Partner function - Document partner'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key parvw: parvw; // abap.char(2): Partner Function
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Customer - Document Customer'
+	@AbapCatalog.foreignKey.screenCheck: true
+	kunnr: kunnr; // abap.char(10): Customer
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Vendor - Document Vendor'
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifnr: lifnr; // abap.char(10): Supplier
+	pernr: pernr_d; // abap.numc(8): Personnel Number
+	parnr: parnr; // abap.numc(10): Contact Person
+	adrnr: ad_addrnum; // abap.char(10): Address Number
+	ablad: ablad; // abap.char(25): Unloading Point
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	land1: land1; // abap.char(3): Country/Region Key
+	adrda: adrda; // abap.char(1): Address Indicator
+	xcpdk: xcpdk; // abap.char(1): One-Time Account
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hityp: hityp_kh; // abap.char(1): Cust.hierarchy Type
+	prfre: prfre; // abap.char(1): Price Determination
+	bokre: bokre; // abap.char(1): Rebate
+	histunr: histunr; // abap.numc(2): Hierarchy Level
+	knref: knref; // abap.char(30): Partner Description
+	lzone: lzone; // abap.char(10): Transportation Zone
+	hzuor: hzuor; // abap.numc(2): Hierarchy Assignment
+	stceg: stceg; // abap.char(20): Vat Registration No.
+	parvw_ff: partner_ff; // abap.char(1): Further Partners
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	adrnp: ad_persnum; // abap.char(10): Person Number
+	kale: kale; // abap.char(1): Maintain Appointments
+	_dataaging: data_temperature; // abap.dats(8): Data Aging Filter
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	assigned_bp: bu_partner; // abap.char(10): Business Partner
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	addr_operation: sd_addr_operation; // abap.char(6): Address Determination In Document
+	addr_type: ad_adrtype; // abap.char(1): Address Type
+	bp_ref_adrnr: sdpd_bp_ref_addrnum; // abap.char(10): Bp Reference Address Number
+	dummy_sddocpartner_incl_eew_ps: dummy; // abap.char(1): 
+	sdm_version: sd_sdm_version_vbpa; // abap.char(2): Sdm Versioning
+}

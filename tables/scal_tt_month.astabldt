@@ -1,0 +1,16 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #S
+@AbapCatalog.enhancement.category: #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Month'
+
+define table scal_tt_month {
+	key calendaryear: calendaryear; // abap.numc(4): Calendar Year
+	key calendarmonth: calendarmonth; // abap.numc(2): Calendar Month
+	calendarquarter: calendarquarter; // abap.numc(1): Calendar Quarter
+	halfyear: vdm_halfyear; // abap.numc(1): Half Year
+	numberofdays: numberofdays; // abap.int4(10): Number Of Days
+	yearmonth: vdm_yearmonth; // abap.numc(6): Year Month
+	firstdayofmonthdate: firstdayofmonthdate; // abap.dats(8): First Day Of Month
+	lastdayofmonthdate: lastdayofmonthdate; // abap.dats(8): Last Day Of Month
+}

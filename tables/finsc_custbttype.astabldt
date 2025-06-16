@@ -1,0 +1,29 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Business Transaction Type'
+
+define table finsc_custbttype {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key cbttype: fins_custbttype; // abap.char(4): Business Transaction Type
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bttype: fins_bttype; // abap.char(4): Business Transaction Category
+	xperiodcontrol: fins_xperiodcontrol; // abap.char(1): Relevant For Period Control
+	xrepresentative: fins_xrepresentative_bttype; // abap.char(1): Representative Business Transaction Type
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	closingstep: fins_closingstep; // abap.numc(3): Closing Step
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	blart: blart; // abap.char(2): Document Type
+	xperiodbyledger: fins_xperiodbyledger; // abap.char(1): Period Control By Ledger
+	inactive: fins_cbttype_inactive; // abap.char(1): Inactive
+}

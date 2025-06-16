@@ -1,0 +1,184 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Customer Master (Company Code)'
+
+define table knb1 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key kunnr: kunnr; // abap.char(10): Customer
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	pernr: pernr_d; // abap.numc(8): Personnel Number
+	knb1_eew_cc: knb1_eew_cc; // abap.char(1): 
+	erdat: erdat_rf; // abap.dats(8): Created On
+	ernam: ernam_rf; // abap.char(12): Created By
+	sperr: sperb_b; // abap.char(1): Posting Block For Company Code
+	loevm: loevm_b; // abap.char(1): Deletion Flag For Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zuawa: dzuawa; // abap.char(3): Sort Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	busab: busab; // abap.char(2): Clerk Abbreviation
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	akont: akont; // abap.char(10): Reconciliation Acct
+	begru: brgru; // abap.char(4): Authorization Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	knrze: knrze; // abap.char(10): Head Office
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	knrzb: knrzb; // abap.char(10): Alternative Payer
+	zamim: dzamim; // abap.char(1): Customer (With Ci)
+	zamiv: dzamiv; // abap.char(1): Sales
+	zamir: dzamir; // abap.char(1): Legal Department
+	zamib: dzamib; // abap.char(1): Accounting
+	zamio: dzamio; // abap.char(1): Customer (W/O Ci)
+	zwels: dzwels; // abap.char(10): Payment Methods
+	xverr: xverr_knb1; // abap.char(1): Clearing With Vendor
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zahls: dzahls; // abap.char(1): Payment Block
+	zterm: dzterm; // abap.char(4): Terms Of Payment
+	wakon: wakon; // abap.char(4): B/Ex. Charges Terms
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vzskz: vzskz; // abap.char(2): Interest Indicator
+	zindt: dzindt; // abap.dats(8): Key Date Of Last Int. Calc.
+	zinrt: dzinrt; // abap.numc(2): Interest Calc. Frequency
+	eikto: eikto_d; // abap.char(12): Account At Customer
+	zsabe: dzsabe_d; // abap.char(15): User At Customer
+	kverm: kverm; // abap.char(30): Account Memo
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fdgrv: fdgrv; // abap.char(10): Planning Group
+	vrbkz: vrbkz; // abap.char(2): Institution Number
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	vlibb: vlibb_cs; // abap.curr(13, 2): Amount Insured
+	vrszl: vrszl; // abap.dec(3, 0): Lead Months
+	vrspr: vrspr; // abap.dec(3, 0): Deductible
+	vrsnr: vrsnr; // abap.char(10): Policy Number
+	verdt: verdt; // abap.dats(8): Valid To
+	perkz: perkz_knb1; // abap.char(1): Coll.invoice Variant
+	xdezv: xdezv; // abap.char(1): Local Processing
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	xausz: xausz; // abap.char(1): Account Statement
+	
+	@Semantics.amount.currencyCode: 't001.waers'
+	webtr: webtr_cs; // abap.curr(13, 2): Bill/Ex. Limit
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	remit: remit; // abap.char(10): Next Payee
+	datlz: datlz; // abap.dats(8): Date Of Last Interest Calc.
+	xzver: xzver; // abap.char(1): Record Pmnt History
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	togru: togru; // abap.char(4): Tolerance Group
+	kultg: kultg; // abap.dec(3, 0): Check Cashing Time
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hbkid: hbkid; // abap.char(5): House Bank
+	xpore: xpore; // abap.char(1): Individual Payment
+	blnkz: blnkz; // abap.char(2): Subsidy Indicator
+	altkn: altkn; // abap.char(10): Previous Account No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zgrup: dzgrup; // abap.char(2): Grouping Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	urlid: urlid; // abap.char(4): Known/Negotiat.leave
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mgrup: mgrup; // abap.char(2): Grouping Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.messageClass: 'F2'
+	@AbapCatalog.foreignKey.messageNumber: '119'
+	@AbapCatalog.foreignKey.screenCheck: true
+	lockb: lockb; // abap.char(7): Lockbox
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	uzawe: uzawe; // abap.char(2): Pmt Meth. Supplement
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ekvbd: ekvbd; // abap.char(10): Buying Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	sregl: sregl; // abap.char(3): Selection Rule
+	xedip: xedip; // abap.char(1): Pmnt Advice By Edi
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	frgrp: frgrp; // abap.char(4): Release Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vrsdg: vrsdg; // abap.char(3): Reason Code Conv.
+	tlfxs: tlfxs; // abap.char(31): Acctg Clerk's Fax
+	intad: intad; // abap.char(130): Clrk's Internet Add.
+	xknzb: xknzb; // abap.char(1): Accts For Alt. Payer
+	guzte: guzte; // abap.char(4): Credit Memo Pyt Term
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	gricd: j_1agicd_d; // abap.char(2): Activity Code Gi Tax
+	
+	@AbapCatalog.foreignKey.label: 'Distrib. Types for Employment Tax'
+	@AbapCatalog.foreignKey.screenCheck: true
+	gridt: j_1adtyp_d; // abap.char(2): Distribution Type
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wbrsl: wbrsl; // abap.char(2): Value Adjustment
+	confs: confs_b; // abap.char(1): Confirm.status F.ccd
+	updat: updat_rf; // abap.dats(8): Confirmation Date
+	uptim: uptim_rf; // abap.tims(6): Confirmation Time
+	nodel: nodel_b; // abap.char(1): Cocd Deletion Block
+	tlfns: tlfns; // abap.char(30): Acct.clerks Tel.no.
+	
+	@AbapCatalog.foreignKey.label: 'Accounts Receivable Pledging Indicator'
+	@AbapCatalog.foreignKey.screenCheck: true
+	cession_kz: cession_kz; // abap.char(2): Ar Pledging Ind.
+	avsnd: avsnd; // abap.char(1): Paymt Advice By Xml
+	ad_hash: adhash; // abap.char(10): E-Mail For Avis
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	qland: qland; // abap.char(3): Wtax C/R Key
+	cvp_xblck_b: cvp_xblck; // abap.char(1): Business Purpose Completed Flag
+	ciiucode: ciiucode; // abap.numc(4): Main Economic Activity Per Ciiu Code
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	paymentclearinggrpid: far_payment_clearing_group; // abap.char(8): Payment Clearing Group Id
+	paytrsn: farp_payt_rsn; // abap.char(4): Payment Reason
+	gmvkzd: gmvkzd; // abap.char(1): Customer In Execution
+}

@@ -1,0 +1,45 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Valuation area'
+
+define table t001k {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Client'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key bwkey: bwkey; // abap.char(4): Valuation Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Company code'
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs: bukrs; // abap.char(4): Company Code
+	bwmod: bwmod; // abap.char(4): Valuation Grpg Code
+	xbkng: xbkng; // abap.char(1): Neg. Stocks Allowed
+	mlbwa: ck_ml_bwac; // abap.char(1): Mat. Ledger Active
+	mlbwv: ck_ml_bwav; // abap.char(1): Ml Active(Compulsory)
+	xvkbw: xvkbw; // abap.char(1): Salesprice Valuation
+	erklaerkom: erklaerkom; // abap.char(1): Explanation Facility
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	uprof: uprof_d; // abap.char(4): Revaluat. Profile
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wbpro: wbpro; // abap.char(4): Val.-Based Im Profile
+	mlast: ck_ml_abst; // abap.char(1): Material Price Determination: Control
+	mlasv: ck_ml_absv; // abap.char(1): Price Determ. Is Binding In Val. Area
+	bdifp: bdifp; // abap.dec(5, 2): Stock Correction Toler.
+	xlbpd: xlbpd; // abap.char(1): Prdiff. Gr Sc
+	xewrx: xewrx; // abap.char(1): Post With Recpt Val.
+	x2fdo: x2fdo; // abap.char(1): Two Fi Documents
+	prsfr: prsfrg; // abap.char(1): Price Release
+	mlccs: ck_mlccs; // abap.char(1): Actcstcmpsplt Active
+	xefre: xefre; // abap.char(1): Delivery Costs To Price Diff. Acct
+	efrej: efrej; // abap.numc(4): From Fiscal Year
+	/fmp/prsfr: /fmp/mp_prsfrg_n; // abap.char(1): Price Release Fmp
+	/fmp/prfrgr: /fmp/mp_prrgr; // abap.char(4): Price Release Group
+}

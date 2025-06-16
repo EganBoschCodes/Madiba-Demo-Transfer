@@ -1,0 +1,36 @@
+CLASS zcsnap_f70g_offsetsupplier DEFINITION
+    PUBLIC
+    FINAL
+    CREATE PUBLIC .
+
+    PUBLIC SECTION.
+
+        INTERFACES if_amdp_marker_hdb.
+
+        CLASS-METHODS get_data
+            FOR TABLE FUNCTION ZSNAP_F70G_OffsetSupplier.
+
+    PROTECTED SECTION.
+    PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zcsnap_f70g_offsetsupplier IMPLEMENTATION.
+
+  METHOD get_data BY DATABASE FUNCTION FOR HDB LANGUAGE SQLSCRIPT OPTIONS READ-ONLY USING bseg.
+
+    return /* ZSNAP_F70G_OffsetSupplier */ select
+		main.mandt,
+		main.belnr as AccountingDocument,
+		main.bukrs as CompanyCode,
+		main.gjahr as FiscalYear,
+		min (main.lifnr) as Supplier
+	from bseg as main
+	where main.koart = 'K'
+		and main.lifnr <> ''
+	group by main.mandt,
+		main.belnr,
+		main.bukrs,
+		main.gjahr;
+
+  ENDMETHOD.
+ENDCLASS.

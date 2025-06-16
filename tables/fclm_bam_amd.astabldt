@@ -1,0 +1,143 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Bank Account Master Data'
+
+define table fclm_bam_amd {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key acc_id: fclm_bam_acc_id; // abap.numc(10): Technical Id
+	key revision: fclm_revision; // abap.numc(4): Revision Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	banks: fclm_bam_bank_country_key; // abap.char(3): Bank Country/Region Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bankl: fclm_bam_bank_key; // abap.char(15): Bank Key
+	acc_num: fclm_bam_acc_num; // abap.char(40): Account Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	acc_type_id: fclm_bam_bk_acc_type_id; // abap.char(10): Account Type
+	valid_from: fclm_bam_amd_valid_from; // abap.dats(8): Opening Date
+	valid_to: fclm_bam_amd_valid_to; // abap.dats(8): Closing Date
+	iban: iban; // abap.char(34): Iban
+	status: fclm_bam_acc_status; // abap.char(2): Account Status
+	cash_pool: fclm_bam_cash_pool; // abap.char(30): Cash Pool
+	cash_pool_id: fclm_bam_cash_pool_id; // abap.char(10): Cash Pool (Header Account)
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs: bukrs; // abap.char(4): Company Code
+	prctr: prctr; // abap.char(10): Profit Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gsber: gsber; // abap.char(4): Business Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	segment: fb_segment; // abap.char(10): Segment
+	beneficial: fclm_bam_beneficiary_name; // abap.char(60): Account Holder
+	bank_contact: fclm_bam_contact_person; // abap.char(10): General Contact
+	rel_manager: fclm_bam_rel_manager; // abap.char(10): Relationship Manager
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	company_contact: fclm_bam_company_contact; // abap.char(12): Contact Person
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	account_supervisor: fclm_bam_account_supervisor; // abap.char(12): Bank Account Supervisor
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	edbsum: fclm_bam_import_type_endof_day; // abap.char(16): Import Method For Eod Statements
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	idbsum: fclm_bam_import_type_intra_day; // abap.char(16): Import Method For Intraday Statements
+	bs_upload_time: fclm_bam_import_time; // abap.tims(6): Banks Statement Check Time
+	created_at: fclm_bam_obsoletedtimestamp; // abap.dec(15, 0): Timestamp
+	created_by: fclm_bam_created_by; // abap.char(12): Created By
+	opened_at: fclm_bam_obsoletedtimestamp; // abap.dec(15, 0): Timestamp
+	opened_by: fclm_bam_opened_by; // abap.char(12): Opened By
+	changed_at: fclm_bam_obsoletedtimestamp; // abap.dec(15, 0): Timestamp
+	changed_by: fclm_bam_changed_by; // abap.char(12): Changed By
+	reviewed_at: fclm_bam_obsoletedtimestamp; // abap.dec(15, 0): Timestamp
+	reviewed_by: fclm_bam_reviewed_by; // abap.char(12): Reviewed By
+	closed_at: fclm_bam_obsoletedtimestamp; // abap.dec(15, 0): Timestamp
+	closed_by: fclm_bam_closed_by; // abap.char(12): Closed By
+	deleted_flag: boole_d; // abap.char(1): True
+	importing_channel: fclm_bam_importing_channel; // abap.char(16): Bank Statement Importing Channel
+	cutoff_time_d: fclm_bam_cutoff_time_d; // abap.tims(6): Cut-Off Time Domestic
+	cutoff_time_c: fclm_bam_cutoff_time_c; // abap.tims(6): Cut-Off Time Cross Border
+	planned_closing_date: fclm_bam_planning_close_date; // abap.dats(8): Planned Closing Date
+	upload_bs_flag: fclm_bam_upload_intraday_flg; // abap.char(1): Upload Of Intraday Statements
+	created_at_dat: fclm_bam_created_on; // abap.dats(8): Created On
+	created_at_tim: fclm_bam_created_at; // abap.tims(6): Created At
+	opened_at_dat: fclm_bam_opened_on; // abap.dats(8): Opened On
+	opened_at_tim: fclm_bam_opened_at; // abap.tims(6): Opened At
+	changed_at_dat: fclm_bam_changed_on; // abap.dats(8): Changed On
+	changed_at_tim: fclm_bam_changed_at; // abap.tims(6): Changed At
+	closed_at_dat: fclm_bam_closed_on; // abap.dats(8): Closed On
+	closed_at_tim: fclm_bam_closed_at; // abap.tims(6): Closed At
+	control_key: bkont; // abap.char(2): Bank Control Key
+	iban_valid_from: fclm_bam_iban_valid_from; // abap.dats(8): Iban Valid From
+	objnr: j_objnr; // abap.char(22): Object Number
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	vgtyp: farp_vgtyp; // abap.char(8): Payment Transaction Type Group
+	procstat_act: procstat_act; // abap.char(1): Activate Process Status
+	balstat_act: balstat_act; // abap.char(1): Activate Difference Sts
+	serstat_act: serstat_act; // abap.char(1): Activ. Serial No. Sts
+	reconstat_act: reconstat_act; // abap.char(1): Activate Reconcil. Sts
+	exp_number: exp_number; // abap.numc(2): Interval
+	exp_rhyth: exp_rhy; // abap.numc(1): Interval Unit
+	calendar: wfcid; // abap.char(2): Factory Calendar Id
+	sort_idx: disp_idx; // abap.numc(3): Display Item
+	
+	@Semantics.amount.currencyCode: 'tfte_bsm_cust.curr_diff'
+	amt_diff: amt_diff; // abap.curr(23, 2): Difference Amount
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers_curc; // abap.cuky(5): Currency
+	cash_pool_id_participant: fclm_bam_par_cash_pool_id; // abap.char(10): Cash Pool (Subaccount)
+	
+	@Semantics.amount.currencyCode: 'fclm_bam_amd.waers'
+	cash_pool_target_amt_max: fclm_bam_tar_amt_max; // abap.curr(23, 2): Target Balance
+	
+	@Semantics.amount.currencyCode: 'fclm_bam_amd.waers'
+	cash_pool_target_amt_min: fclm_bam_tar_amt_min; // abap.curr(23, 2): Minimum Target Amount
+	
+	@Semantics.amount.currencyCode: 'fclm_bam_amd.waers'
+	cash_pool_transfer_amt_min: fclm_bam_trans_amt_min; // abap.curr(23, 2): Minimum Transfer Amount
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	payment_method_l: fclm_bam_payment_method_l; // abap.char(1): Payment Method For Header Account
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	payment_method_p: fclm_bam_payment_method_p; // abap.char(1): Payment Method For Subaccount
+	payment_service_provider: dp_payment_service_provider; // abap.char(4): Payment Service Provider
+	tolerance_group: fclm_d_togru; // abap.char(10): Tolerance Group Key
+	reconcile_intraday: fclm_bam_recon_intra; // abap.char(1): Reconcile Intraday Memo Records
+	ext_rule_id: fclm_brm_rule_ext_id; // abap.char(5): Rule For Intraday Statements
+	planning_level: fdlev; // abap.char(2): Planning Level
+	bsr_group: fclm_bal_bsr_group; // abap.char(5): Bank Statement Group
+	reconcile_endofday: fclm_bam_recon_eod; // abap.char(1): Reconcile End-Of-Day Memo Records
+	sgtxt: sgtxt; // abap.char(50): Text
+	
+	@Semantics.amount.currencyCode: 'fclm_bam_amd.waers'
+	cash_pool_transfer_amt_max: fclm_bam_trans_amt_max; // abap.curr(23, 2): Maximum Transfer Amount
+	contract_type: fclm_bam_contract_type; // abap.char(2): Contract Type
+	open_request_id: fclm_bam_req_id; // abap.numc(12): Request Id
+	dummy_fclm_bam_amd_incl_eew_ps: cfd_dummy; // abap.char(1): Dummy
+}

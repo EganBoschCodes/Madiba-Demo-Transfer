@@ -1,0 +1,44 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Zahlungsbedingungen'
+
+define table t052 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key zterm: dzterm; // abap.char(4): Terms Of Payment
+	key ztagg: dztagg_052; // abap.numc(2): Day Limit
+	zdart: dzdart; // abap.char(1): Date Type
+	zfael: dzfael; // abap.numc(2): Fixed Day
+	zmona: dzmona; // abap.numc(2): Additional Months
+	ztag1: dztage; // abap.numc(3): 
+	zprz1: dzproz; // abap.dec(5, 3): 
+	ztag2: dztage; // abap.numc(3): 
+	zprz2: dzproz; // abap.dec(5, 3): 
+	ztag3: dztage; // abap.numc(3): 
+	zstg1: dzstg1_052; // abap.numc(2): 
+	zsmn1: dzsmn1_052; // abap.numc(2): Additional Months (Term 1)
+	zstg2: dzstg1_052; // abap.numc(2): 
+	zsmn2: dzsmn2_052; // abap.numc(2): Additional Months (Term 2)
+	zstg3: dzstg1_052; // abap.numc(2): 
+	zsmn3: dzsmn3_052; // abap.numc(2): Additional Months (Term 3)
+	xzbrv: xzbrv_052; // abap.char(1): 
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zschf: dzschf_052; // abap.char(1): Block Key
+	xchpb: xchpb; // abap.char(1): Transf. Payment Block For Changes
+	txn08: txn08; // abap.char(8): Standard Text
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zlsch: dzlsch; // abap.char(1): Payment Method
+	xchpm: xchpm; // abap.char(1): Transf. Pymt Method For Change
+	koart: koart_z; // abap.char(1): Account Type
+	xsplt: xsplt; // abap.char(1): Installment Payments
+	xscrc: xscrc; // abap.char(1): Rec. Entries: Supplement Fm Master
+	f_obsolete: fi_obsolete_f4; // abap.char(1): Hide Entry In Input Help
+}

@@ -1,0 +1,18 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Geschftsbereiche'
+
+define table tgsb {
+	key mandt: mandt; // abap.clnt(3): Client
+	key gsber: gsber; // abap.char(4): Business Area
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gsber_kons: gsber_kons; // abap.char(4): Cons.business Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gsber_glob: gsber_glob; // abap.char(4): X-Syst.business Area
+}

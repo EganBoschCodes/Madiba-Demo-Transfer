@@ -1,0 +1,47 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Parameter Datentrgeraustausch und Auslandszahlungsverkehr'
+
+define table t012d {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key hbkid: hbkid; // abap.char(5): House Bank
+	xbrie: xbrie_012d; // abap.char(1): By Letter
+	dtxbb: dtxbb_012d; // abap.char(1): Create Central Bank Report
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	dtaws: dtaws; // abap.char(2): Instruction Key
+	dtvta: dtvta_012d; // abap.numc(2): Lead Days For Date Of Execution
+	dtlbe: dtar10; // abap.numc(2): Area Number
+	dtxms: dtxms_012d; // abap.char(1): Forward Pay. Data
+	dtgis: dtat7a; // abap.char(3): Iso Curr. Code For Charge Acct
+	dtgbk: dtgbk; // abap.char(35): Account Number
+	dtgko: bkont; // abap.char(2): Bank Control Key
+	dtglz: dtglz; // abap.char(15): Charge Account Bank Number
+	dtelz: dtelz; // abap.char(15): Bank Receiving Dme
+	dtfin: dtfin_012d; // abap.char(20): Company Number
+	edipn: edibankprn; // abap.char(10): Edi Partner Number
+	edisn: edi_elsign; // abap.char(1): Type Of Signature
+	dtbid: dtbid; // abap.char(5): Alternative Bank Id
+	dtkid: dtkid; // abap.char(18): Customer Number At House Bank
+	xdrah: xdrah_012d; // abap.char(1): By Cable
+	xkoba: xkoba_012d; // abap.char(1): Correspondent Bank
+	xbabe: xbabe_012d; // abap.char(1): Beneficiary's Bank
+	xbegu: xbegu_012d; // abap.char(1): Beneficiary
+	dtblz: num08; // abap.numc(8): Numeric Field (8)
+	dtlfi: dtfnr; // abap.numc(5): Dme Format Number
+	dtlbr: dtar12; // abap.numc(3): Industry Number
+	dtgbl: num08; // abap.numc(8): Numeric Field (8)
+	dtgkt: num10; // abap.numc(10): Number
+}

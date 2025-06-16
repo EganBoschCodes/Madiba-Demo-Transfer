@@ -1,0 +1,157 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Plants/Branches'
+
+define table t001w {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Client'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key werks: werks_d; // abap.char(4): Plant
+	name1: name1; // abap.char(30): Name 1
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bwkey: bwkey; // abap.char(4): Valuation Area
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kunnr: kunnr_wk; // abap.char(10): Customer Number Of Plant
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifnr: lifnr_wk; // abap.char(10): Supplier Number Of Plant
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Calendar ID'
+	@AbapCatalog.foreignKey.screenCheck: true
+	fabkl: fabkl; // abap.char(2): Factory Calendar
+	name2: name2; // abap.char(30): Name 2
+	stras: stras; // abap.char(30): Street And House No.
+	pfach: pfach; // abap.char(10): Po Box
+	pstlz: pstlz; // abap.char(10): Postal Code
+	ort01: ort01; // abap.char(25): City
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ekorg: ekorg; // abap.char(4): Purch. Organization
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vkorg: vkoiv; // abap.char(4): Sls Organization Icb
+	chazv: chazv; // abap.char(1): Batch Status Mgmt
+	kkowk: kkowk; // abap.char(1): Conds. At Plant Level
+	kordb: kordb; // abap.char(1): Source List
+	bedpl: bedpl; // abap.char(1): Mrp
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Country key'
+	@AbapCatalog.foreignKey.screenCheck: true
+	land1: land1; // abap.char(3): Country/Region Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Region'
+	@AbapCatalog.foreignKey.screenCheck: true
+	regio: regio; // abap.char(3): Region
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'County zip code'
+	@AbapCatalog.foreignKey.screenCheck: true
+	counc: counc; // abap.char(3): County Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'City zip code'
+	@AbapCatalog.foreignKey.screenCheck: true
+	cityc: cityc; // abap.char(4): City Code
+	adrnr: adrnr; // abap.char(10): Address
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Planning plant'
+	@AbapCatalog.foreignKey.screenCheck: true
+	iwerk: iwerk; // abap.char(4): Planning Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	txjcd: txjcd; // abap.char(15): Tax Jurisdiction
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vtweg: vtwiv; // abap.char(2): Distrib.channel
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	spart: spaiv; // abap.char(2): Int.co Billing Div.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	spras: spras; // abap.lang(1): Language Key
+	wksop: wksop; // abap.char(1): Sop Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	awsls: awsls; // abap.char(6): Variance Key
+	chazv_old: chazv; // abap.char(1): Batch Status Mgmt
+	vlfkz: vlfkz; // abap.char(1): Plant Cat.
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bzirk: bzirk; // abap.char(6): Sales District
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zone1: lfreg; // abap.char(10): Supply Region
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	taxiw: taxiw1; // abap.char(1): Tax Indicator: Plant
+	bzqhl: bzqhl; // abap.char(1): Regular Supplier
+	let01: mahn1; // abap.dec(3, 0): 1St Reminder/Exped.
+	let02: mahn2; // abap.dec(3, 0): 2Nd Reminder/Exped.
+	let03: mahn3; // abap.dec(3, 0): 3Rd Reminder/Exped.
+	txnam_ma1: txnam_ma1; // abap.char(16): Text 1St Dunning
+	txnam_ma2: txnam_ma2; // abap.char(16): Text 2Nd Dunning
+	txnam_ma3: txnam_ma3; // abap.char(16): Text 3Rd Dunning
+	betol: betol; // abap.numc(3): Po Tolerance
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1bbranch: j_1bbranc_; // abap.char(4): Business Place
+	vtbfi: vtbfi; // abap.char(2): Sales Area Detrm.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fprfw: fprfw; // abap.char(3): Distrib. Profile Of Plant
+	achvm: achvm_x; // abap.char(1): Archiving Marker
+	dvsart: dvsart; // abap.char(1): Batch Rec. Dms Type
+	
+	@AbapCatalog.foreignKey.label: 'Plant category/node type: DRP network'
+	@AbapCatalog.foreignKey.screenCheck: true
+	nodetype: nodetype; // abap.char(3): Node Type:supply Chain
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	nschema: ckml_nschema; // abap.char(4): Naming Structure
+	pkosa: ckml_flg_pkosa; // abap.char(1): Cost Obj.controlling
+	misch: ckml_flg_misch; // abap.char(1): Mixed Costing
+	mgvupd: ckml_flg_mgvupd; // abap.char(1): Actual Costing
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	vstel: vstel; // abap.char(4): Shipping Point/Receiving Pt
+	mgvlaupd: ckml_mgvlaupd; // abap.char(1): Actual Activities Updated
+	mgvlareval: ckml_mgvlareval; // abap.char(1): Control Of Credit Of Cost Centers
+	sourcing: mmpur_sourcing; // abap.char(1): Af Srce Det. Via Atp
+	no_default_batch_management: no_default_batch_management; // abap.char(1): Batch Management Not Active By Default
+	fsh_mg_arun_req: arun_req; // abap.char(1): Supply Assignment (Arun)
+	fsh_seaim: fsh_seaim; // abap.char(1): Season Active In Inventory Management
+	fsh_bom_maintenance: fsh_bom_maintenance; // abap.char(1): Control Data For Bom
+	fsh_group_pr: fsh_group_pr; // abap.char(1): Activate Variant Grouping
+	arun_fix_batch: arun_fixbatch; // abap.char(1): Assign Batches In Arun
+	oilival: oia_valflg; // abap.char(1): Exchange Valuation
+	oihvtype: oih_j1b_vtyp; // abap.char(1): Vendor Type
+	oihcredipi: oih_j1b_txcredip; // abap.char(1): Cred Ipi?
+	storetype: wrf_storetype; // abap.char(1): Store Cat
+	dep_store: wrf_dep_store; // abap.char(4): Superior Dept. Store
+}

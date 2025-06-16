@@ -1,0 +1,280 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Purchasing Document Header'
+
+define table ekko {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key ebeln: ebeln; // abap.char(10): Purchasing Document
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs: bukrs; // abap.char(4): Company Code
+	bstyp: ebstyp; // abap.char(1): Purch. Doc. Category
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bsart: esart; // abap.char(4): Purchasing Doc. Type
+	bsakz: bsakz; // abap.char(1): Control Indicator
+	loekz: eloek; // abap.char(1): Deletion Indicator
+	statu: estak; // abap.char(1): Status
+	aedat: mmpur_erdat; // abap.dats(8): Created On
+	ernam: mmpur_ernam; // abap.char(12): Created By
+	lastchangedatetime: changedatetime; // abap.dec(21, 7): Last Changed
+	pincr: pincr; // abap.numc(5): Item Number Interval
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lponr: lponr; // abap.numc(5): Last Item
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifnr: elifn; // abap.char(10): Supplier
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	spras: spras; // abap.lang(1): Language Key
+	zterm: dzterm; // abap.char(4): Terms Of Payment
+	zbd1t: dzbdet; // abap.dec(3, 0): Payment In
+	zbd2t: dzbdet; // abap.dec(3, 0): Payment In
+	zbd3t: dzbdet; // abap.dec(3, 0): Payment In
+	zbd1p: dzbd1p; // abap.dec(5, 3): Cd Percentage 1
+	zbd2p: dzbd2p; // abap.dec(5, 3): Cd Percentage 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ekorg: ekorg; // abap.char(4): Purch. Organization
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ekgrp: bkgrp; // abap.char(3): Purchasing Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers; // abap.cuky(5): Currency
+	wkurs: wkurs; // abap.dec(9, 5): Exchange Rate
+	kufix: kufix; // abap.char(1): Fixed Exchange Rate
+	bedat: ebdat; // abap.dats(8): Document Date
+	kdatb: kdatb; // abap.dats(8): Validity Per. Start
+	kdate: kdate; // abap.dats(8): Validity Period End
+	bwbdt: bwbdt; // abap.dats(8): Application Close
+	angdt: angab; // abap.dats(8): Quotation Deadline
+	bnddt: ebndt; // abap.dats(8): Binding Period
+	gwldt: mm_gwldt; // abap.dats(8): Warranty
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ausnr: ausch; // abap.char(10): Bid Invitation
+	angnr: angnr; // abap.char(10): Quotation
+	ihran: ihran; // abap.dats(8): Quotation Date
+	ihrez: ihrez; // abap.char(12): Your Reference
+	verkf: everk; // abap.char(30): Salesperson
+	telf1: telf0; // abap.char(16): Telephone
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	llief: llief; // abap.char(10): Goods Supplier
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kunnr: kunnr; // abap.char(10): Customer
+	active_id: ebeln_ad; // abap.char(10): Active Purchasing Document
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	konnr: konnr; // abap.char(10): Outline Agreement
+	abgru: abdum; // abap.char(2): 
+	autlf: kmplf; // abap.char(1): Complete Delivery
+	weakt: weakt; // abap.char(1): Gr Message
+	reswk: reswk; // abap.char(4): Supplying Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lblif: lblif; // abap.char(10): Receiving Supplier
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.messageClass: '06'
+	@AbapCatalog.foreignKey.messageNumber: '485'
+	@AbapCatalog.foreignKey.screenCheck: true
+	inco1: inco1; // abap.char(3): Incoterms
+	inco2: inco2; // abap.char(28): Incoterms (Part 2)
+	
+	@Semantics.amount.currencyCode: 'ekkodata.waers'
+	ktwrt: ktwrt; // abap.curr(15, 2): Target Value
+	distributiontype: mmpur_distr_type; // abap.char(1): Distribution Type For Purchasing Doc.
+	submi: submi; // abap.char(10): Collective Number
+	knumv: knumv; // abap.char(10): Doc. Condition No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalsm: kalsm_d; // abap.char(6): Procedure
+	stafo: stafo; // abap.char(6): Update Group (Stats)
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lifre: lifre; // abap.char(10): Invoicing Party
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	exnum: exnum; // abap.char(10): Number Of Foreign Trade Data
+	unsez: unsez; // abap.char(12): Our Reference
+	logsy: logsystem; // abap.char(10): Logical System
+	upinc: upinc; // abap.numc(5): Subitem Interval
+	stako: stako; // abap.char(1): Time-Dep. Conditions
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	frggr: frggr; // abap.char(2): Release Group
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	frgsx: frgsx; // abap.char(2): Release Strategy
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	frgke: frgke; // abap.char(1): Release Indicator
+	frgzu: frgzu; // abap.char(8): Release State
+	frgrl: frgrl; // abap.char(1): Subject To Release
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	lands: land1_stml; // abap.char(3): C/R For Tax Report
+	lphis: lphis; // abap.char(1): Rel. Documentation
+	adrnr: ad_addrnum; // abap.char(10): Address Number
+	stceg_l: stceg_l; // abap.char(3): Ctry/Rgn Sls Tax No.
+	stceg: stceg; // abap.char(20): Vat Registration No.
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	absgr: absgr; // abap.numc(2): Reason For Canc.
+	addnr: addi_belnr; // abap.char(10): Document Number
+	kornr: kornr; // abap.char(1): Corr. Misc. Provis.
+	memory: memer; // abap.char(1): Incomplete
+	procstat: meprocstate; // abap.char(2): Purch. Doc. Proc. State
+	process_indicator: mmpur_process_indicator; // abap.char(3): Process Indicator
+	
+	@Semantics.amount.currencyCode: 'ekko.waers'
+	rlwrt: rlwrt; // abap.curr(15, 2): Total Val. Upon Release
+	cr_stat: cr_stat; // abap.char(2): Change Request Status
+	revno: revno; // abap.char(8): Version
+	scmproc: scmproc; // abap.char(1): Scmproc
+	reason_code: /sappspro/_gr_reason_code; // abap.char(4): Reason Code
+	memorytype: memorytype; // abap.char(1): Incompleteness
+	rettp: rettp; // abap.char(1): Retention
+	retpc: retpz; // abap.dec(5, 2): Retention In Percent
+	dptyp: me_dptyp; // abap.char(4): Down Payment
+	dppct: me_dppcnt; // abap.dec(5, 2): Down Payt Percentage
+	
+	@Semantics.amount.currencyCode: 'ekko.waers'
+	dpamt: me_dpamnt; // abap.curr(11, 2): Down Payment Amount
+	dpdat: me_dpddat; // abap.dats(8): Due Date For Down Payment
+	msr_id: msr_process_id; // abap.char(10): Process Id No.
+	hierarchy_exists: hierarchy_exists; // abap.char(1): Part Of A Contract Hierarchy
+	grouping_id: mmpur_d_cc_grouping_id; // abap.char(3): Grouping Id For Company Codes
+	parent_id: mmpur_parent_document_id; // abap.char(10): Id Of The Parent Document
+	threshold_exists: ex_rate_threshold; // abap.char(1): Threshold Value For Exchange Rates
+	legal_contract: legal_contract_id; // abap.char(40): Legal Contract Number
+	description: contract_description; // abap.char(40): Contract Name
+	release_date: release_date; // abap.dats(8): Release Date Of Contract
+	vsart: versart; // abap.char(2): Shipping Type
+	handoverloc: handover_loc; // abap.char(10): Handover Location
+	shipcond: vsbed; // abap.char(2): Shipping Conditions
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	incov: incov; // abap.char(4): Incoterms Version
+	inco2_l: inco2_l; // abap.char(70): Incoterms Location 1
+	inco3_l: inco3_l; // abap.char(70): Incoterms Location 2
+	inco2_key: /scmtms/inc_loc_1_key; // abap.raw(16): Incoterm Location 1
+	inco3_key: /scmtms/inc_loc_2_key; // abap.raw(16): Incoterm Location 2
+	inco4_key: /scmtms/inc_dev_place_dest_key; // abap.raw(16): Deviating Place Of Destination
+	grwcu: grwcu; // abap.cuky(5): Currency
+	intra_rel: intra_rel; // abap.char(1): Intrastat Relevance
+	intra_excl: intra_excl; // abap.char(1): Intrastat Exclusion
+	total_status_pcs: mmpur_pc_total_status_pcs; // abap.char(1): Product Compliance Supplier Check Status
+	total_status_pma: mmpur_pc_total_status_pma; // abap.char(1): Product Marketability Status
+	total_status_dg: mmpur_pc_total_status_dg; // abap.char(1): Dangerous Goods Status
+	total_status_sds: mmpur_pc_total_status_sds; // abap.char(1): Safety Data Sheet Status
+	qtn_erlst_submsn_date: qtn_erlst_submsn_date; // abap.dats(8): Quotation Start Date
+	followon_doc_cat: followondoccat; // abap.char(1): Follow-On Document Category
+	followon_doc_type: followondoctype; // abap.char(4): Follow-On Document Type
+	dummy_ekko_incl_eew_ps: ekko_incl_eew; // abap.char(1): Ext. Include
+	externalsystem: mmpur_extreferencesystemid; // abap.char(60): Id Of External Reference System
+	externalreferenceid: mmpur_externalreferenceid; // abap.char(70): External Reference Id
+	ext_rev_tmstmp: mm_ext_rev_tmstmp; // abap.dec(21, 7): Timestamp For Revision Of External Calls
+	iseopblocked: eopblocked; // abap.char(1): Business Purpose Completed
+	isaged: mmpur_isaged; // abap.char(1): Document Is Aged
+	force_id: /isdfps/force_id; // abap.char(32): Guid 32
+	force_cnt: /isdfps/force_cnt; // abap.numc(6): Counter
+	reloc_id: /isdfps/reloc_id; // abap.char(10): Relocation Id
+	reloc_seq_id: /isdfps/reloc_seq_id; // abap.char(4): Relocation Step Id
+	source_logsys: logsys; // abap.char(10): Logical System
+	fsh_transaction: fsh_transaction; // abap.char(10): Transaction Number
+	fsh_item_group: fsh_item_group; // abap.numc(5): Item Group
+	fsh_vas_last_item: fsh_vas_last_item; // abap.numc(5): Last Vas Item Number
+	fsh_os_stg_change: fsh_os_stg_change; // abap.char(1): Ord. Sch. Fields Changed Manually
+	tms_ref_uuid: tms_ref_uuid; // abap.char(22): Reference Uuid Of Transportation Mgmt
+	/dmbe/paymentdeemed: /dmbe/em_deemeddate; // abap.dats(8): Deemed Payment Date
+	/dmbe/dealnumber: /dmbe/em_smart_id; // abap.char(12): Deal Number
+	/dmbe/evgidrenewal: /dmbe/em_evergreen_id; // abap.char(4): Renewal Period - Eg
+	/dmbe/evgidcancel: /dmbe/em_evgidcancel; // abap.char(4): Cancellation Period - Eg
+	zapcgk: /ile/tapcgk; // abap.numc(4): Annexing Package Key
+	apcgk_extend: /ile/tapcgk_ext; // abap.numc(10): Annexing Package Extend
+	zbas_date: /ile/tbasdate; // abap.dats(8): Base Date
+	zadattyp: /ile/tadattyp; // abap.char(1): Annexing Date Type
+	zstart_dat: /ile/tasdat; // abap.dats(8): Annexing Start Date
+	z_dev: /ile/tmperc; // abap.dec(6, 3): Deviation Percentage
+	zindanx: /ile/tmanind; // abap.char(1): Annexed Indicator
+	zlimit_dat: /ile/taldat; // abap.dats(8): Limit Date
+	numerator: /ile/numerator; // abap.char(20): Il Ann Numerator
+	hashcal_bdat: /ile/hashcal_bdat; // abap.dats(8): New Base Date
+	hashcal: /ile/mtg_chashcal; // abap.char(1): Accountant General Method
+	negative: /ile/negative_annexing; // abap.char(1): Do Not Allow Negative Annexing
+	hashcal_exists: ekorg; // abap.char(4): Purch. Organization
+	known_index: /ile/known_index_anx; // abap.char(1): Known Index Indicator
+	postat: adspc_postat; // abap.char(1): S1postat Check
+	vzskz: vzskz; // abap.char(2): Interest Indicator
+	fsh_snst_status: fsh_snst_status; // abap.char(2): Snapshot Status
+	proce: pfm_01numprocedimento; // abap.numc(9): Procedure Number
+	conc: pfm_01concurso; // abap.char(5): Adjustment/Contest
+	cont: pfm_01contrato; // abap.char(5): Contract Type
+	comp: pfm_01competencia; // abap.char(5): Legal Competence
+	outr: pfm_01outros; // abap.char(5): Miscellaneous
+	desp: pfm_01despacho; // abap.char(100): Despatch
+	desp_dat: datum; // abap.dats(8): Date
+	desp_cargo: pfm_01cargo; // abap.char(5): Job
+	pare: pfm_01parecer; // abap.char(100): Assessment
+	pare_dat: datum; // abap.dats(8): Date
+	pare_cargo: pfm_01cargo; // abap.char(5): Job
+	pfm_contract: pfm_contract; // abap.numc(8): Contract
+	pohf_type: wrf_pohf_type; // abap.char(1): Document Category
+	eq_eindt: wrf_pohf_eq_eindt; // abap.dats(8): Same Delivery Date
+	eq_werks: wrf_pohf_eq_ewerk; // abap.char(4): Same Plant
+	fixpo: wrf_pohf_fixpo; // abap.char(1): Firm Deal Indicator
+	ekgrp_allow: wrf_pohf_ekgrp_allow; // abap.char(1): Take Account Of Purch. Group
+	werks_allow: wrf_pohf_werks_allow; // abap.char(1): Take Account Of Plnt
+	contract_allow: wrf_pohf_contract_allow; // abap.char(1): Take Account Of Contract
+	pstyp_allow: wrf_pohf_pstyp_allow; // abap.char(1): Take Account Of Item Categ.
+	fixpo_allow: wrf_pohf_fixpo_allow; // abap.char(1): Take Account Of Fixed-Date Purchases
+	key_id_allow: wrf_pohf_key_id_allow; // abap.char(1): Consider Budget
+	aurel_allow: wrf_pohf_aurel_allow; // abap.char(1): Take Account Of Alloc. Table Relevance
+	delper_allow: wrf_pohf_delper_allow; // abap.char(1): Take Account Of Dlvy Period
+	eindt_allow: wrf_pohf_eindt_allow; // abap.char(1): Take Account Of Delivery Date
+	ltsnr_allow: wrf_pohf_ltsnr_allow; // abap.char(1): Include Vendor Subrange
+	otb_level: wrf_potb_check_level; // abap.char(1): Otb Check Level
+	otb_cond_type: wrf_potb_cond_type; // abap.char(4): Otb Condition Type
+	key_id: wrf_budg_key_id; // abap.numc(16): Budget Number
+	otb_value: wrf_potb_value; // abap.curr(17, 2): Required Budget
+	otb_curr: wrf_potb_currency; // abap.cuky(5): Otb Currency
+	otb_res_value: wrf_potb_res_value; // abap.curr(17, 2): Reserved Budget
+	otb_spec_value: wrf_potb_special_value; // abap.curr(17, 2): Special Release Budget
+	spr_rsn_profile: wrf_potb_spr_rsn_profile; // abap.char(4): Otb Reason Profile For Special Release
+	budg_type: wrf_budg_type; // abap.char(2): Budget Type
+	otb_status: wrf_potb_status; // abap.char(1): Otb Check Status
+	otb_reason: wrf_potb_status_reason; // abap.char(3): Reason
+	check_type: wrf_budg_otb_check; // abap.char(1): Type Of Otb Check
+	con_otb_req: wrf_potb_con_req; // abap.char(1): Otb-Relevant Contract
+	con_prebook_lev: wrf_potb_prebook_level; // abap.char(1): Indicator Level For Contracts
+	con_distr_lev: wrf_potb_distrib_level; // abap.char(1): Distrib. Using Target Value Or Item Data
+}

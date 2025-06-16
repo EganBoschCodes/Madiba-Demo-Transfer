@@ -1,0 +1,76 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.replacementObject: 'v_t012k_ddl'
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Konten bei Hausbanken'
+
+define table t012k {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bukrs: bukrs; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key hbkid: hbkid; // abap.char(5): House Bank
+	key hktid: hktid; // abap.char(5): Account Id
+	bankn: bankn; // abap.char(18): Bank Account
+	bkont: bkont; // abap.char(2): Bank Control Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Whrung, in der das Bankkonto gefhrt wird'
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers; // abap.cuky(5): Currency
+	refzl: refzl; // abap.char(27): Reference Info.
+	dtaai: dtaai; // abap.char(5): Dme Identification
+	bnkn2: bnkn2; // abap.char(24): Altern.bank Acct No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fdgrp: fdgrp; // abap.char(10): Planning Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abwae: abwae; // abap.cuky(5): Settlement Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Hauptbuchkonto der Sachkontenbuchhaltung'
+	@AbapCatalog.foreignKey.screenCheck: true
+	hkont: hkont; // abap.char(10): G/L Account
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wekon: wekon; // abap.char(10): Bill Discount Acct
+	mindt: mindt; // abap.numc(3): Min. Days For B/Exch
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hbid1: hbid1_012k; // abap.char(5): Alt. House Bank 1
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hkid1: hkid1_012k; // abap.char(5): Alternative Account Id 1
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hbid2: hbid2_012k; // abap.char(5): Alt. House Bank 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hkid2: hkid2_012k; // abap.char(5): Alternative Account Id 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wkkon: wkkon_012k; // abap.char(10): Returned Boe Payable
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wikon: wikon_012k; // abap.char(10): Collection Account
+	broll: prq_broll; // abap.char(2): Bank Role
+	xtprb: prq_xtprb; // abap.char(1): Principal Bank
+}

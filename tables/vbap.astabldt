@@ -1,0 +1,746 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Sales Document: Item Data'
+
+define table vbap {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key vbeln: vbeln_va; // abap.char(10): Sales Document
+	key posnr: posnr_va; // abap.numc(6): Sales Document Item
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Material: order item'
+	@AbapCatalog.foreignKey.screenCheck: true
+	matnr: matnr; // abap.char(40): Material
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	matwa: matwa; // abap.char(40): Material Entered
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	pmatn: pmatn; // abap.char(40): Pricing Ref. Matl
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	charg: charg_d; // abap.char(10): Batch
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	matkl: matkl; // abap.char(9): Material Group
+	arktx: arktx; // abap.char(40): Item Description
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	pstyv: pstyv; // abap.char(4): Item Category
+	posar: posar; // abap.char(1): Item Type
+	process_code: tdd_item_process_code; // abap.char(1): Item Processing Code
+	lfrel: lfrel_ap; // abap.char(1): Itm Relev.for Deliv.
+	fkrel: fkrel; // abap.char(1): Relevant For Billing
+	uepos: uepos; // abap.numc(6): Higher-Level Item
+	grpos: grpos; // abap.numc(6): Alternative To Item
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abgru: abgru_va; // abap.char(2): Reason For Rejection
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Product hierarchy: order item'
+	@AbapCatalog.foreignKey.screenCheck: true
+	prodh: prodh_d; // abap.char(18): Product Hierarchy
+	discontinued_date: discontinued_date; // abap.dats(8): Discontinuation Date
+	discontinued_time: discontinued_time; // abap.tims(6): Discontinuation Time
+	follow_up_item: follow_up_item; // abap.numc(6): Follow-Up Item
+	pick_hu_ind: tdd_pick_hu_ind; // abap.char(1): Apply Picking Criteria For Hus
+	prodh_univ_sales_parnt_nodid: nodid; // abap.char(40): Node Id
+	prodh_univ_sales_det_origin: sd_prodh_det_origin; // abap.char(2): Relevant Date For Det. Of Prod. Hier
+	prodh_univ_batdet_parnt_nodid: nodid; // abap.char(40): Node Id
+	prodh_univ_batdet_det_origin: sd_prodh_det_origin; // abap.char(2): Relevant Date For Det. Of Prod. Hier
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	zwert: dzwert; // abap.curr(13, 2): Oa Target Value
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.zieme'
+	zmeng: dzmeng; // abap.quan(13, 3): Target Quantity
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	zieme: dzieme; // abap.unit(3): Target Quantity Uom
+	umziz: umziz; // abap.dec(5, 0): Conversion Factor
+	umzin: umzin; // abap.dec(5, 0): Conversion Factor
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	meins: meins; // abap.unit(3): Base Unit Of Measure
+	substn_numerator: md_substn_numerator; // abap.int2(5): Numerator For Conversion
+	substn_denominator: md_substn_denominator; // abap.int2(5): Denominator For Conversion
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.meins'
+	smeng: smeng; // abap.quan(13, 3): Scale Quantity
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.zieme'
+	ablfz: ablfz; // abap.quan(13, 3): Rounding Qty
+	abdat: abdat; // abap.dats(8): Reconciliation Date
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.zieme'
+	absfz: absfz; // abap.quan(13, 3): Absolute Deviation
+	posex: posex; // abap.char(6): Purchase Order Item
+	kdmat: matnr_ku; // abap.char(35): Customer Material
+	kbver: kbver; // abap.dec(3, 0): Deviation In Percent
+	kever: kever; // abap.dec(3, 0): Deviation Days
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vkgru: vkgru; // abap.char(3): Repair: Classification Of Items
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	vkaus: abrvw; // abap.char(3): Usage
+	grkor: grkor; // abap.numc(3): Delivery Group
+	fmeng: fmeng; // abap.char(1): Quantity Is Fixed
+	uebtk: uebtk_v; // abap.char(1): Unlimited Tolerance
+	uebto: uebto; // abap.dec(3, 1): Overdeliv. Tolerance
+	untto: untto; // abap.dec(3, 1): Underdel. Tolerance
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	faksp: faksp_ap; // abap.char(2): Billing Block
+	atpkz: atpkz; // abap.char(1): Replacement Part
+	rkfkf: rkfkf; // abap.char(1): Billing Meth. Co/Ppc
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	spart: spart; // abap.char(2): Division
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gsber: gsber; // abap.char(4): Business Area
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	netwr: netwr_ap; // abap.curr(15, 2): Net Value
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	waerk: waerk; // abap.cuky(5): Document Currency
+	antlf: antlf; // abap.dec(1, 0): Max.part.deliveries
+	kztlf: kztlf; // abap.char(1): Part.dlv./Item
+	resource_id: nsdm_resourcename_sid; // abap.char(40): Resource Name (Stock Identifier)
+	chspl: chspl; // abap.char(1): Batch Split Allowed
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.vrkme'
+	kwmeng: kwmeng; // abap.quan(15, 3): Order Quantity
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.vrkme'
+	lsmeng: lsmeng; // abap.quan(15, 3): Required Deliv. Qty
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.vrkme'
+	kbmeng: kbmeng; // abap.quan(15, 3): Cumltv Confd Qty(Su)
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.meins'
+	klmeng: klmeng; // abap.quan(15, 3): Cumltv Confd Qty(Bu)
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vrkme: vrkme; // abap.unit(3): Sales Unit
+	umvkz: umvkz; // abap.dec(5, 0): Numerator
+	umvkn: umvkn; // abap.dec(5, 0): Denominator
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.gewei'
+	brgew: brgew_ap; // abap.quan(15, 3): Gross Weight
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.gewei'
+	ntgew: ntgew_ap; // abap.quan(15, 3): Net Weight
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	gewei: gewei; // abap.unit(3): Unit Of Weight
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.voleh'
+	volum: volum_ap; // abap.quan(15, 3): Volume
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	voleh: voleh; // abap.unit(3): Volume Unit
+	vbelv: vbelv; // abap.char(10): Originating Document
+	posnv: posnv; // abap.numc(6): Originating Item
+	vgbel: vgbel; // abap.char(10): Reference Document
+	vgpos: vgpos; // abap.numc(6): Reference Item
+	voref: voref; // abap.char(1): Complete Reference
+	upflu: upflv; // abap.char(1): Update Document Flow
+	erlre: erlre; // abap.char(1): Completion Rule
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lprio: lprio; // abap.numc(2): Delivery Priority
+	werks: werks_ext; // abap.char(4): Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	lgort: lgort_d; // abap.char(4): Storage Location
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vstel: vstel; // abap.char(4): Shipping Point/Receiving Pt
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	route: route; // abap.char(6): Route
+	stkey: stkey; // abap.char(1): Bom Origin
+	stdat: stdat; // abap.dats(8): Bom Key Date
+	stlnr: stnum; // abap.char(8): Bill Of Material
+	stpos: stpos_vbap; // abap.dec(5, 0): Bill Of Material Item Number
+	awahr: awahr; // abap.numc(3): Order Probability
+	erdat: erdat; // abap.dats(8): Created On
+	ernam: ernam; // abap.char(12): Created By
+	erzet: erzet; // abap.tims(6): Time
+	taxm1: taxmt; // abap.char(1): Tax Classifc. Mat.
+	taxm2: taxmt; // abap.char(1): Tax Classifc. Mat.
+	taxm3: taxmt; // abap.char(1): Tax Classifc. Mat.
+	taxm4: taxmt; // abap.char(1): Tax Classifc. Mat.
+	taxm5: taxmt; // abap.char(1): Tax Classifc. Mat.
+	taxm6: taxmt; // abap.char(1): Tax Classifc. Mat.
+	taxm7: taxmt; // abap.char(1): Tax Classifc. Mat.
+	taxm8: taxmt; // abap.char(1): Tax Classifc. Mat.
+	taxm9: taxmt; // abap.char(1): Tax Classifc. Mat.
+	vbeaf: vbeaf; // abap.dec(5, 2): Fixed Process. Time
+	vbeav: vbeav; // abap.dec(5, 2): Var. Processing Time
+	vgref: vgref; // abap.char(1): Preceding Document Resulted From Ref.
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	netpr: netpr; // abap.curr(11, 2): Net Price
+	kpein: kpein; // abap.dec(5, 0): Pricing Unit
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kmein: kmein; // abap.unit(3): Unit Of Measure
+	shkzg: shkzg_va; // abap.char(1): Returns
+	sktof: sktof; // abap.char(1): Cash Discount
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mtvfp: mtvfp; // abap.char(2): Availability Check
+	sumbd: sumbd; // abap.char(1): Requirements Totals
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kondm: kondm; // abap.char(2): Material Price Grp
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ktgrm: ktgrm; // abap.char(2): Acct Assmt Grp Mat.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bonus: bonus; // abap.char(2): Volume Rebate Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	provg: provg; // abap.char(2): Commission Group
+	eannr: eannr; // abap.char(13): Ean Number
+	prsok: prsok; // abap.char(1): Pricing
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bwtar: bwtar_d; // abap.char(10): Valuation Type
+	bwtex: bwtex; // abap.char(1): Separate Valuation
+	xchpf: xchpf; // abap.char(1): Batch Management
+	xchar: xchar; // abap.char(1): Batch Management
+	batch_billing_variant: sdbil_batch_billing_variant; // abap.char(1): Batch Item Billing Variant
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.meins'
+	lfmng: minlf; // abap.quan(13, 3): Minimum Delivery Qty
+	stafo: stafo; // abap.char(6): Update Group (Stats)
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	wavwr: wavwr; // abap.curr(13, 2): Cost
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	kzwi1: kzwi1; // abap.curr(13, 2): Subtotal 1
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	kzwi2: kzwi2; // abap.curr(13, 2): Subtotal 2
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	kzwi3: kzwi3; // abap.curr(13, 2): Subtotal 3
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	kzwi4: kzwi4; // abap.curr(13, 2): Subtotal 4
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	kzwi5: kzwi5; // abap.curr(13, 2): Subtotal 5
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	kzwi6: kzwi6; // abap.curr(13, 2): Subtotal 6
+	stcur: stcur_ap; // abap.dec(9, 5): Exchange Rate Stats.
+	aedat: aedat; // abap.dats(8): Changed On
+	ean11: ean11; // abap.char(18): Ean/Upc
+	fixmg: fixmg; // abap.char(1): Fixed Date And Qty
+	prctr: prctr; // abap.char(10): Profit Center
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mvgr1: mvgr1; // abap.char(3): Material Group 1
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mvgr2: mvgr2; // abap.char(3): Material Group 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mvgr3: mvgr3; // abap.char(3): Material Group 3
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mvgr4: mvgr4; // abap.char(3): Material Group 4
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	mvgr5: mvgr5; // abap.char(3): Material Group 5
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.meins'
+	kmpmg: kmpmg; // abap.quan(13, 3): Component Quantity
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	sugrd: sugrd; // abap.char(4): Substitution Reason
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	sobkz: sobkz; // abap.char(1): Special Stock
+	vpzuo: vpzuo; // abap.char(1): Allocation Indicat.
+	bob_fg_id: tdd_bob_fg_id; // abap.int8(19): Fgid Omnichnl Slspromns
+	bob_promotion_id: tdd_bob_promotion_id; // abap.int8(19): Id Of Omnichnl Sales Promotion
+	paobjnr: rkeobjnr; // abap.numc(10): Profitab. Segmt No.
+	freeze_paobjnr: sd_freeze_paobjnr; // abap.char(1): Profitability Sgmt Depdnt On Precdg Doc.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ps_psp_pnr: ps_psp_pnr; // abap.numc(8): Wbs Element
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	aufnr: aufnr; // abap.char(12): Order
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vpmat: vpmat; // abap.char(40): Planning Material
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vpwrk: vpwrk; // abap.char(4): Planning Plant
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	prbme: prbme; // abap.unit(3): Product Group Unit
+	umref: umreff; // abap.fltp(16, 16): Cnversion
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	knttp: knttp; // abap.char(1): Acct Assignment Cat.
+	kzvbr: kzvbr; // abap.char(1): Consumption
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	sernr: sernr; // abap.char(8): Bom Explosion Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	objnr: objpo; // abap.char(22): Object No.item
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abgrs: abgr_schl; // abap.char(6): Results Analysis Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bedae: bedae; // abap.char(4): Requirements Type
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	cmpre: cmpre; // abap.curr(11, 2): Credit Price
+	cmtfg: cmtfg; // abap.char(1): Partial Release
+	cmpnt: cmpnt; // abap.char(1): Credit Funct. Active
+	cmkua: cmkua; // abap.dec(9, 5): Cred.data Exch.rate
+	cuobj: cuobj_va; // abap.numc(18): Configuration
+	cuobj_ch: cuobj_ch; // abap.numc(18): Internal Object No.
+	cepok: cepok; // abap.char(1): Expected Price
+	koupd: koupd; // abap.char(1): Condition Update
+	
+	@AbapCatalog.foreignKey.label: 'Serial no. profile'
+	@AbapCatalog.foreignKey.screenCheck: true
+	serail: serail; // abap.char(4): Serial No. Profile
+	anzsn: anzsn; // abap.int4(10): No.serial Numbers
+	nachl: nachl; // abap.char(1): No Gr Posted By Cst.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	magrv: magrv; // abap.char(4): Matl Grp Pack.matls
+	mprok: mprok; // abap.char(1): Manual Price
+	vgtyp: vbtypl_v; // abap.char(4): Preceding Doc.categ.
+	prosa: prosa; // abap.char(1): Mat.determ.active
+	uepvw: uepvw; // abap.char(1): Usage Of Hl Item
+	kalnr: ck_kalnr; // abap.numc(12): Cost Estimate Number
+	klvar: ck_klvar; // abap.char(4): Costing Variant
+	sposn: sposn; // abap.char(4): Item Number
+	kowrr: kowrr; // abap.char(1): Statistical Value
+	stadat: stadat; // abap.dats(8): Statistics Date
+	exart: exart; // abap.char(2): Business Trans. Type
+	prefe: prefe; // abap.char(1): Customs Preference
+	knumh: knumh_ch; // abap.char(10): No.cond.rec. Batch
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	clint: clint; // abap.numc(10): Internal Class No.
+	chmvs: chmvs; // abap.numc(3): Quantity Proposal
+	stlty: stlty; // abap.char(1): Bom Category
+	stlkn: stlkn; // abap.numc(8): Item Node
+	stpoz: cim_count; // abap.numc(8): Counter
+	stman: cuink; // abap.char(1): Inconsistent Confign
+	zschl_k: aufzschl; // abap.char(6): Overhead Key
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalsm_k: aufkalsm; // abap.char(6): Costing Sheet
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalvar: ck_klvar; // abap.char(4): Costing Variant
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kosch: kosch; // abap.char(18): Product Allocation
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	upmat: upmat; // abap.char(40): Pricing Ref.material
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	ukonm: ukonm; // abap.char(2): Mnitem Matpricinggrp
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Foreign key for material freight group'
+	@AbapCatalog.foreignKey.screenCheck: true
+	mfrgr: mfrgr; // abap.char(8): Material Freight Grp
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.messageClass: 'V4'
+	@AbapCatalog.foreignKey.messageNumber: '157'
+	@AbapCatalog.foreignKey.screenCheck: true
+	plavo: plavo; // abap.char(4): Plandelschedinstruct
+	kannr: kannr; // abap.char(35): Sequence Number
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	cmpre_flt: cmpre_flt; // abap.fltp(16, 16): Credit Price
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abfor: absform_cm; // abap.char(2): Paymt Guarantee Form
+	abges: abges_cm; // abap.fltp(16, 16): Guaranteed
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Foreign key for movement key'
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1bcfop: j_1bcfop; // abap.char(10): Cfop
+	
+	@AbapCatalog.foreignKey.label: 'Foreign key for Brazilian tax ICMS'
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1btaxlw1: j_1btaxlw1; // abap.char(3): Icms Law
+	
+	@AbapCatalog.foreignKey.label: 'Foreign key for Brazilian tax IPI'
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1btaxlw2: j_1btaxlw2; // abap.char(3): Ipi Law
+	
+	@AbapCatalog.foreignKey.label: 'Foreign key for SD tax code'
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1btxsdc: j_1btxsdc_; // abap.char(2): Tax Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wktnr: wktnr; // abap.char(10): Value Contract No.
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wktps: wktps; // abap.numc(6): Value Contract Item
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	skopf: w_sortk; // abap.char(18): Module
+	kzbws: kzbws; // abap.char(1): Spec. Stk Valuation
+	wgru1: wgru_hie1; // abap.char(18): Material Group 1
+	wgru2: wgru_hie2; // abap.char(18): Material Group 2
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	knuma_pi: knuma_pi; // abap.char(10): Promotion
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	knuma_ag: knuma_ag; // abap.char(10): Sales Deal
+	kzfme: kzfme; // abap.char(1): Leading Uom
+	lstanr: lstanr; // abap.char(1): Free Goods Delivery Control
+	techs: techs; // abap.char(12): Standard Variant
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	mwsbp: mwsbp; // abap.curr(13, 2): Tax Amount
+	berid: berid; // abap.char(10): Mrp Area
+	pctrf: pctrf; // abap.char(10): Profit Center Billing
+	logsys_ext: logsys; // abap.char(10): Logical System
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Foreign Key for Brazilian Tax ISS'
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1btaxlw3: j_1btaxlw3; // abap.char(3): Iss Law
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Foreign Key for Brazilian Tax COFINS'
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1btaxlw4: j_1btaxlw4; // abap.char(3): Cofins Law
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Foreign Key for Brazilian Tax PIS'
+	@AbapCatalog.foreignKey.screenCheck: true
+	j_1btaxlw5: j_1btaxlw5; // abap.char(3): Pis Law
+	stockloc: stockloc; // abap.char(20): Location
+	sloctype: sloctype; // abap.char(4): Location Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	msr_ret_reason: msr_returns_reason; // abap.char(3): Return Reason
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	msr_refund_code: msr_returns_refund_code; // abap.char(3): Refund Code
+	msr_approv_block: msr_approval_block; // abap.char(1): Approval
+	nrab_knumh: knumh; // abap.char(10): Condition Record No.
+	trmrisk_relevant: sls_trm_risk_relevancy; // abap.char(2): Risk Relevancy
+	sgt_rcat: sgt_rcat; // abap.char(40): Requirement Segment
+	vbkd_posnr: posnr_va; // abap.numc(6): Sales Document Item
+	veda_posnr: posnr_va; // abap.numc(6): Sales Document Item
+	handoverloc: handover_loc; // abap.char(10): Handover Location
+	ext_ref_item_id: sd_ext_ref_item_id; // abap.char(40): External Item Identifier
+	handoverdate: handover_date; // abap.dats(8): Handover Date
+	handovertime: handover_time; // abap.tims(6): Handover Time
+	tc_aut_det: j_1btc_aut_det; // abap.char(2): Tax Code Automatically Determined
+	manual_tc_reason: j_1bmanual_tc_reason; // abap.char(2): Manual Tax Code Reason
+	fiscal_incentive: j_1bfiscal_incentive_code; // abap.char(4): Tax Incentive Type
+	tax_subject_st: j_1btc_tax_subject_st; // abap.char(1): Tax Subject To Substitui  O Tribut Ria
+	fiscal_incentive_id: j_1bfiscal_incentive_id_sd; // abap.char(4): Incentive Id
+	spcsto: j_1bspcsto_sd; // abap.numc(2): Nf Cfop Special Case
+	revacc_refid: revacc_refid; // abap.char(30): Rev.acc. Reference Id
+	revacc_reftype: revacc_reftype; // abap.char(3): Rev.acc. Reference Type
+	_dataaging: data_temperature; // abap.dats(8): Data Aging Filter
+	absta: absta_vb; // abap.char(1): Rejection Status
+	besta: besta; // abap.char(1): Delivery Conf. Sts
+	cmppi: cmpsi; // abap.char(1): Financial Document
+	cmppj: cmpsj; // abap.char(1): Expt Cred. Insurance
+	costa: costa_d; // abap.char(1): Purchasing Conf. Sts
+	dcsta: dcsta; // abap.char(1): Delay Status
+	fksaa: fksaa; // abap.char(1): Ord.-Rel. Billg Sts
+	fssta: fssta; // abap.char(1): Billing Block Status
+	gbsta: gbsta; // abap.char(1): Overall Status
+	lfgsa: lfgsa; // abap.char(1): Ovrl Delivery Status
+	lfsta: lfsta; // abap.char(1): Delivery Status
+	lssta: lssta; // abap.char(1): Ovrl Deliv. Blk Sts
+	manek: manek; // abap.char(1): Manual Completion Of Contract
+	rfgsa: rfgsa; // abap.char(1): Ovrl Reference Sts
+	rfsta: rfsta; // abap.char(1): Reference Status
+	uvall: uvall_up; // abap.char(1): Item
+	uvfak: uvfak_up; // abap.char(1): Billing   Item
+	uvprs: uvprs_up; // abap.char(1): Pricing   Item
+	uvvlk: uvvlk_up; // abap.char(1): Delivery   Item
+	uvp01: uvp01; // abap.char(1): Item Reserves 1
+	uvp02: uvp02; // abap.char(1): Item Reserves 2
+	uvp03: uvp03; // abap.char(1): Item Reserves 3
+	uvp04: uvp04; // abap.char(1): Item Reserves 4
+	uvp05: uvp05; // abap.char(1): Item Reserves 5
+	wbsta: wbsta; // abap.char(1): Goods Movement Sts
+	emcst: /sapsll/emcst; // abap.char(1): Embargo Status
+	slcst: /sapsll/slcst; // abap.char(1): Screening Status
+	total_lccst: tdd_total_lccst; // abap.char(1): Legal Control Status
+	pcsta: tdd_pcsta; // abap.char(1): Product Marketability Status
+	dgsta: tdd_dgsta; // abap.char(1): Dangerous Goods Status
+	sdssta: tdd_sdssta; // abap.char(1): Safety Data Sheet Status
+	dp_clear_sta_itm: dp_clear_sta; // abap.char(1): Down Payment Status
+	deliv_reltd_billg_sta: tdd_deliv_reltd_billg_sta; // abap.char(1): Deliv.rel. Billg Sts
+	lglc_lic_ind: tdd_lglc_lic_ind; // abap.char(1): Indicator Of Legal Control License
+	cmtd_deliv_date: tdd_cmtd_deliv_date; // abap.dats(8): Committed Delivery Date
+	cmtd_deliv_creadate: tdd_cmtd_deliv_creadate; // abap.dats(8): Committed Delivery Creation Date
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.vrkme'
+	cmtd_deliv_qty_su: tdd_cmtd_deliv_qty_su; // abap.quan(15, 3): Committed Deliv. Quantity In Sales Unit
+	delivery_date_type_rule: sd_delivery_date_type_rule; // abap.char(1): Delivery Date Rule
+	
+	@Semantics.quantity.unitOfMeasure: 'vbap.meins'
+	reqqty_bu: tdd_reqqty_bu; // abap.quan(15, 3): Requested Sales Order Quantity
+	handle: guid_32; // abap.char(32): Guid 16
+	pbs_state: sd_pbs_state; // abap.char(1): Pbs State
+	ifrs15_relevance: ifrs15_relevance; // abap.char(1): Relevant For Ifrs 15
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	ifrs15_total_ssp: ifrs15_total_ssp; // abap.curr(15, 2): Standalone Selling Price
+	revfp: revfp; // abap.char(1): Avail.check Rule
+	
+	@Semantics.amount.currencyCode: 'vbap.waerk'
+	capped_net_amount: capped_net_amount; // abap.curr(15, 2): Net Amount Cap
+	capped_net_amount_alert_thld: capped_net_amount_alert_thld; // abap.numc(3): Cap Notification Threshold
+	cats_overtime_category: cats_overtime_category; // abap.char(4): Overtime Category
+	session_creation_date: session_creation_date; // abap.dats(8): Session Created On
+	session_creation_time: session_creation_time; // abap.tims(6): Session Created At
+	original_plant: original_plant; // abap.char(4): Original Plant
+	atp_abc_substitution_status: atp_abc_substitution_status; // abap.char(1): Substitution Status
+	transit_plant: transit_plant; // abap.char(4): Transit Plant
+	vcm_chain_uuid: guid_32; // abap.char(32): Guid 16
+	vcm_chain_category: vcm_chain_category; // abap.char(4): Value Chain Category
+	lmd_scheduled_delivery_date: sd_item_lmd_scheduled_date; // abap.dats(8): Last Mile Distribution Scheduled Date
+	reason_code: sd_item_reason_code; // abap.char(3): Reason For Return Or Expd Deliv. Qty Chg
+	dummy_slsdocitem_incl_eew_ps: dummy; // abap.char(1): 
+	
+	@Semantics.quantity.unitOfMeasure: 'arberp_s_poquan.po_unit'
+	po_quan: bstmg; // abap.quan(13, 3): Order Quantity
+	po_unit: bstme; // abap.unit(3): Order Unit
+	mill_se_gposn: mill_se_gposn; // abap.numc(6): Global Item
+	mill_batch_sel_f: mill_batch_sel_flg; // abap.char(1): Batch Selection
+	vbtyp_ana: vbtypl; // abap.char(4): Sd Document Category
+	auart_ana: auart; // abap.char(4): Sales Document Type
+	vkorg_ana: vkorg; // abap.char(4): Sales Organization
+	vtweg_ana: vtweg; // abap.char(2): Distribution Channel
+	spart_ana: spart; // abap.char(2): Division
+	vkbur_ana: vkbur; // abap.char(4): Sales Office
+	vkgrp_ana: vkgrp; // abap.char(3): Sales Group
+	augru_ana: augru; // abap.char(3): Order Reason
+	audat_ana: audat; // abap.dats(8): Document Date
+	kvgr1_ana: kvgr1; // abap.char(3): Customer Group 1
+	kvgr2_ana: kvgr2; // abap.char(3): Customer Group 2
+	kvgr3_ana: kvgr3; // abap.char(3): Customer Group 3
+	kvgr4_ana: kvgr4; // abap.char(3): Customer Group 4
+	kvgr5_ana: kvgr5; // abap.char(3): Customer Group 5
+	vdatu_ana: edatu_vbak; // abap.dats(8): Requested Deliv.date
+	vsbed_ana: vsbed; // abap.char(2): Shipping Conditions
+	kunnr_ana: kunag; // abap.char(10): Sold-To Party
+	knumv_ana: knumv; // abap.char(10): Doc. Condition No.
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	bzirk_ana: bzirk; // abap.char(6): Sales District
+	bstkd_ana: bstkd; // abap.char(35): Customer Reference
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kdgrp_ana: kdgrp; // abap.char(2): Customer Group
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	vsart_ana: vsarttr; // abap.char(2): Shipping Type
+	fkdat_ana: fkdat; // abap.dats(8): Billing Date
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fplnr_ana: fplnr; // abap.char(10): Billing Plan Number
+	kunwe_ana: kunwe; // abap.char(10): Ship-To Party
+	kunre_ana: kunre; // abap.char(10): Bill-To Party
+	perve_ana: sales_empl; // abap.numc(8): Sales Employee
+	perzm_ana: resp_empl; // abap.numc(8): Employee Responsible
+	kunrg_ana: kunrg; // abap.char(10): Payer
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	service_doc_type: fco_srvdoc_type; // abap.char(4): Service Document Type
+	service_doc_id: fco_srvdoc_id; // abap.char(10): Service Document
+	service_doc_item_id: fco_srvdoc_item_id; // abap.numc(6): Service Document Item
+	solution_order_id: crms4_solo_object_id; // abap.char(10): Solution Order
+	solution_order_itm_id: crms4_solo_number_int; // abap.numc(6): Solution Order Item
+	glo_log_ref1_it: glo_log_ref1_it; // abap.char(25): Commodity Code For Poland
+	txs_business_transaction: txs_business_transaction; // abap.char(4): Business Transaction
+	txs_material_usage: txs_material_usage; // abap.char(1): Customer Usage
+	txs_usage_purpose: txs_usage_purpose; // abap.char(25): Usage Purpose
+	cpd_updat: /cpd/pfp_sc_tstmp; // abap.dec(15, 0): Time Stamp
+	/dmbe/optionalitykey: /dmbe/em_optionality_key; // abap.numc(4): Detail Number
+	/dmbe/optionalityfor: /dmbe/em_optionality_for; // abap.numc(4): Optionality For
+	/dmbe/cimax2: /dmbe/er_max_ci_val; // abap.char(5): Max Ci Value
+	/dmbe/paymentdeemed: /dmbe/em_deemeddate; // abap.dats(8): Deemed Payment Date
+	/dmbe/item_type: /dmbe/ep_item_type; // abap.char(1): Item Type
+	/dmbe/effectivedatefrom: /dmbe/em_effective_from; // abap.dats(8): Effective From
+	/dmbe/effectivedateto: /dmbe/em_effective_to; // abap.dats(8): Effective To
+	/dmbe/optionof: /dmbe/em_option_of_sd_contract; // abap.numc(6): Option Of Sd Item
+	/dmbe/accounting_type: /dmbe/em_account_type; // abap.char(2): Accounting Type - Detail
+	/dmbe/fas_code: /dmbe/em_fas_code; // abap.char(4): Fas Code - Header
+	/dmbe/scheduling_desk: /dmbe/em_schedulers_desk; // abap.char(6): Scheduling Desk
+	/dmbe/componentfor: /dmbe/em_component_for; // abap.numc(4): Mixed Product Main Detail Number
+	/dmbe/mixedproduct: /dmbe/em_product; // abap.char(40): Product
+	/dmbe/posteddate: /dmbe/em_posteddate; // abap.dats(8): Posted Date
+	/dmbe/deal_posted: /dmbe/em_deal_posted; // abap.char(1): Posted
+	/dmbe/invoiceuom: /dmbe/em_invoiceuom; // abap.unit(3): Invoice Uom
+	zapcgki: /ile/tapcgk; // abap.numc(4): Annexing Package Key
+	apcgk_extendi: /ile/tapcgk_ext; // abap.numc(10): Annexing Package Extend
+	zabdati: /ile/tabdat; // abap.dats(8): Annexing Base Date
+	aufpl_olc: co_aufpl; // abap.numc(10): Opertn Task List No.
+	aplzl_olc: cim_count; // abap.numc(8): Counter
+	ad01profnr: ad01profnr; // abap.char(8): Dip Profile
+	admoi: admoi; // abap.char(4): Model Id Code
+	adicc: adicc; // abap.numc(2): Interchangeability Code
+	adpri: adpri; // abap.char(3): Order Priority
+	addns: addns; // abap.char(1): Donotsubstitute
+	adacn: adacn; // abap.char(10): Aircraft Registration Number
+	assignment_priority: arun_demand_priority; // abap.char(10): Demand Priority
+	arun_group_prio: arun_demand_group_priority; // abap.char(10): Demand Priority
+	labsg: labsg; // abap.char(1): Forecast Delsched. Edi Stop/Info Ind.
+	fabsg: fabsg; // abap.char(1): Jit Delsched Edi Stop/Info Indicator
+	pr_l_l: di_esd_profil_l; // abap.char(10): Comp.frcstds-Frcstds
+	pr_f_f: di_esd_profil_f; // abap.char(10): Comp. Jit Ds-Jit Ds
+	pr_f_l: di_esd_profil_g; // abap.char(10): Comp. Jitds-Frcstds
+	ferc_ind: fe_ind; // abap.char(4): Regulatory Indicator
+	fsh_season_year: fsh_saisj; // abap.char(4): Season Year
+	fsh_season: fsh_saiso; // abap.char(10): Season
+	fsh_collection: fsh_collection; // abap.char(10): Collection
+	fsh_theme: fsh_theme; // abap.char(10): Theme
+	fsh_crsd: fsh_crsd; // abap.char(10): Condition Record No.
+	fsh_searef: fsh_searef; // abap.char(1): Copied Season Data
+	fsh_candate: fsh_candate; // abap.dats(8): Cancellation Date
+	fsh_psm_pfm_split: fsh_psm_pfm_split; // abap.char(15): Pfm Split Id
+	fsh_vas_rel: fsh_vas_rel; // abap.char(1): Vas Relevant
+	fsh_vas_prnt_id: posnr; // abap.numc(6): Item (Sd)
+	fsh_transaction: fsh_transaction; // abap.char(10): Transaction Number
+	fsh_item_group: fsh_item_group; // abap.numc(5): Item Group
+	fsh_item: fsh_item; // abap.numc(5): Item Number
+	fsh_vasref: fsh_vasref; // abap.char(1): Copied Vas Data
+	fsh_grid_cond_rec: fsh_grid_cond_rec; // abap.char(32): Grid Record Number
+	fsh_pqr_uepos: fsh_pqr_uepos; // abap.numc(6): Higher-Lev.item Partial Quantity Rej.
+	rfm_scc_indicator: rfm_scc_indicator; // abap.char(1): Season Completeness Indicator
+	kostl: kostl; // abap.char(10): Cost Center
+	fonds: bp_geber; // abap.char(10): Fund
+	fistl: fistl; // abap.char(16): Funds Center
+	fkber: fkber; // abap.char(16): Functional Area
+	grant_nbr: gm_grant_nbr; // abap.char(20): Grant
+	budget_pd: fm_budget_period; // abap.char(10): Budget Period
+	iuid_relevant: iuid_relevant_cust; // abap.char(1): Iuid Customer Relevant
+	equnr: equnr; // abap.char(18): Equipment
+	eqart: eqart; // abap.char(10): Object Type
+	j_3glvart: j_3glvart; // abap.char(4): Activity Type
+	j_3gdatvo: j_3gdatvo; // abap.dats(8): From Date
+	j_3gdatbi: j_3gdatbi; // abap.dats(8): To Date
+	j_3gbelnri: j_3gbelnri; // abap.char(10): Document Number
+	j_3gposnri: j_3gbelpos; // abap.numc(5): Item Number
+	prs_objnr: prs_objnr; // abap.char(22): Engagement Mgmt: Object Number
+	prs_sd_spsnr: prs_sd_spsnr; // abap.numc(8): Standard Wbs Element
+	prs_work_period: prs_work_period; // abap.numc(7): Work Period
+	tas: fmfg_tas; // abap.char(30): Treasury Account Symbol
+	betc: fmfg_betc; // abap.char(10): Business Event Type Code
+	mod_allow: fmfg_mod_allow; // abap.char(1): Modification Allowed
+	cancel_allow: fmfg_cancel_allow; // abap.char(1): Cancellation Allowed
+	pay_method: dzwels; // abap.char(10): Payment Methods
+	bpn: fmfg_bpn; // abap.char(6): Business Partner No.
+	rep_freq: fmfg_rep_freq; // abap.char(3): Reporting Frequency
+	fmfgus_key: fmfg_us_key; // abap.char(22): Us Government Fields
+	rfm_psst_rule: rfm_psst_rule; // abap.char(4): Psst Grouping Rule
+	rfm_psst_group: rfm_psst_group_id; // abap.char(10): Psst Group
+	pargb: pargb; // abap.char(4): Trading Part.ba
+	aufpl_oaa: co_aufpl; // abap.numc(10): Opertn Task List No.
+	aplzl_oaa: cim_count; // abap.numc(8): Counter
+	vlcendcu: vlc_endcu; // abap.char(10): End Customer
+	wrf_charstc1: wrf_charstc1; // abap.char(18): Characteristic Value 1
+	wrf_charstc2: wrf_charstc2; // abap.char(18): Characteristic Value 2
+	wrf_charstc3: wrf_charstc3; // abap.char(18): Characteristic Value 3
+	arsnum: wtysc_rsnum; // abap.numc(10): Reservation
+	arspos: wtysc_rspos; // abap.numc(4): Item No. Of Reservation
+	wtysc_clmitem: wtysc_clmitem; // abap.char(16): Claim Item Number
+}

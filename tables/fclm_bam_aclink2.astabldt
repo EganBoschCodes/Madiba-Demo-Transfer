@@ -1,0 +1,93 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Linkages Between Bank Account and House Bank Accounts'
+
+define table fclm_bam_aclink2 {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key acc_id: fclm_bam_acc_id; // abap.numc(10): Technical Id
+	key guid: fclm_bam_guid; // abap.char(32): Guid 16
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key revision: fclm_revision; // abap.numc(4): Revision Number
+	valid_from: fclm_bam_aclink_validfrom; // abap.dats(8): Valid From
+	valid_to: fclm_bam_aclink_validto; // abap.dats(8): Valid To
+	herku: fclm_bam_aclink_herku; // abap.char(10): Remote System
+	bukrs: fclm_bam_bukrs; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hbkid: fclm_bam_aclink_hbkid; // abap.char(5): House Bank
+	hktid: fclm_bam_aclink_hktid; // abap.char(5): House Bank Account
+	remoteaccount: fclm_bam_remoteaccount; // abap.char(32): Additional Id
+	bankn: bankn; // abap.char(18): Bank Account
+	bkont: bkont; // abap.char(2): Bank Control Key
+	refzl: fclm_bam_refzl; // abap.char(27): Reference Info.
+	dtaai: fclm_bam_dtaai; // abap.char(5): Dme Identification
+	bnkn2: bnkn2; // abap.char(24): Altern.bank Acct No.
+	is_reused: fclm_bam_hba_reused_flag; // abap.char(1): Is Reused
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	fdgrp: fdgrp; // abap.char(10): Planning Group
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	abwae: abwae; // abap.cuky(5): Settlement Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Hauptbuchkonto der Sachkontenbuchhaltung'
+	@AbapCatalog.foreignKey.screenCheck: true
+	hkont: hkont; // abap.char(10): G/L Account
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wekon: wekon; // abap.char(10): Bill Discount Acct
+	mindt: mindt; // abap.numc(3): Min. Days For B/Exch
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hbid1: hbid1_012k; // abap.char(5): Alt. House Bank 1
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hkid1: hkid1_012k; // abap.char(5): Alternative Account Id 1
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hbid2: hbid2_012k; // abap.char(5): Alt. House Bank 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	hkid2: hkid2_012k; // abap.char(5): Alternative Account Id 2
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wkkon: wkkon_012k; // abap.char(10): Returned Boe Payable
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	wikon: wikon_012k; // abap.char(10): Collection Account
+	new_bacl_flag: fclm_bam_new_bacl_flag; // abap.char(1): Use Bank Reconciliation Account
+	old_hkont: hkont; // abap.char(10): G/L Account
+	migration_status: fclm_bam_bacl_migration_status; // abap.char(2): Bank Account Ledger Migration Status
+	cash_pooling_flag: fclm_bam_cash_pooling_flag; // abap.char(1): Use In Cash Pooling
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	bank_account_auth_group: bank_account_auth_group; // abap.char(4): Authorization Group
+	netting_group: fclm_bam_netting_group; // abap.char(6): Netting Group
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	togru: togru_s; // abap.char(4): Tolerance Group
+	xspeb: xspeb; // abap.char(1): Blocked For Posting
+	posting_block_date: fclm_bam_posting_block_date; // abap.dats(8): Opening Date
+	target_hkont: hkont; // abap.char(10): G/L Account
+	balance_transfer_date: fclm_bam_balance_transfer_date; // abap.dats(8): Balanace Transfer Date
+	bs_post_cat: fclm_bs_post_cat; // abap.char(1): Bank Statement Posting Category
+	bs2fqm_mode: fclm_bs2fqm_mode; // abap.char(1): Eod Bs Transfer Mode To Cash
+}

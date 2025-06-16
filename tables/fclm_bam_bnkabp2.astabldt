@@ -1,0 +1,20 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Risk Business Partners Assigned to Bank'
+
+define table fclm_bam_bnkabp2 {
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	key banks: banks; // abap.char(3): Bank Country/Region
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bankl: bankk; // abap.char(15): Bank Key
+	key valid_to: fclm_bam_valid_to; // abap.dats(8): Valid To
+	valid_from: fclm_bam_valid_from; // abap.dats(8): Valid From
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	partner: bu_partner; // abap.char(10): Business Partner
+}
