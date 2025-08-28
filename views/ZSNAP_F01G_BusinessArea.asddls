@@ -11,13 +11,10 @@
 define view entity ZSNAP_F01G_BusinessArea
 	as select from tgsb as main
 	
-	association [0..*] to ZSNAP_F01G_BusAreaHierNode as _BusinessAreaHierNode on $projection.BusinessArea = _BusinessAreaHierNode.BusinessArea
 	association [0..*] to ZSNAP_F01G_BusinessAreaText as _Text on $projection.BusinessArea = _Text.BusinessArea
 {
-	@ObjectModel.hierarchy.association: '_BusinessAreaHierNode'
 	@ObjectModel.text.association: '_Text'
 	@EndUserText.label: 'Business Area'
 	key main.gsber as BusinessArea,
-	_BusinessAreaHierNode,
 	_Text
 }

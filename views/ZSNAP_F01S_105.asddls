@@ -1,5 +1,5 @@
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'SNAP AP: Deriving Parameter Fields'
+@EndUserText.label: 'SNAP F01: Deriving Parameter Fields'
 
 define view entity ZSNAP_F01S_105	
 	with parameters
@@ -28,7 +28,7 @@ define view entity ZSNAP_F01S_105
 	main.ChartOfAccounts,
 	main.FiscalYearVariant,
 	main.FinancialAccountType,
-	cast (dats_days_between ($parameters.P_KeyDate, main.NetDueDate) as abap.dec (10, 0)) as NetDueArrearsDays,
+	dats_days_between (main.NetDueDate, $parameters.P_KeyDate) as NetDueArrearsDays,
 	main.NetDueDate,
 	main.ClearingDate,
 	main.PostingDate,
@@ -46,6 +46,7 @@ define view entity ZSNAP_F01S_105
 	main.IsUsedInPaymentTransaction,
 	main.PostingKey,
 	main.Supplier,
+	main.PartnerCompany,
 	main.GLAccount,
 	main.SpecialGLCode,
 	main.CostCenter,
@@ -55,20 +56,11 @@ define view entity ZSNAP_F01S_105
 	main.Segment,
 	main.PurchasingDocument,
 	main.AssignmentReference,
-	cast (99999 as abap.int4) as MaxNetDueIntervalInDays,
-	main.PosNetDueInterval1InDays,
-	main.PosNetDueInterval2InDays,
-	main.PosNetDueInterval3InDays,
-	main.PosNetDueInterval4InDays,
-	main.NegNetDueInterval1InDays,
-	main.NegNetDueInterval2InDays,
-	main.NegNetDueInterval3InDays,
-	main.NegNetDueInterval4InDays,
 	case
-		when main.PosNetDueInterval4InDays <> 0 then 4
-		when main.PosNetDueInterval3InDays <> 0 then 3
-		when main.PosNetDueInterval2InDays <> 0 then 2
-		when main.PosNetDueInterval1InDays <> 0 then 1
+		when $parameters.P_NetDueInterval4InDays <> 0 then 4
+		when $parameters.P_NetDueInterval3InDays <> 0 then 3
+		when $parameters.P_NetDueInterval2InDays <> 0 then 2
+		when $parameters.P_NetDueInterval1InDays <> 0 then 1
 		else 0
 	end as NumberOfParameters,
 	main.Title,

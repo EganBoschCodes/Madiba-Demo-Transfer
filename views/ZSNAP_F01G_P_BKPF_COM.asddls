@@ -11,7 +11,7 @@ define view entity ZSNAP_F01G_P_BKPF_COM
 	cast (main.blart as farp_blart preserving type) as blart,
 	cast (main.bldat as fis_bldat preserving type) as bldat,
 	cast (main.budat as fis_budat preserving type) as budat,
-	cast (concat ('0', main.monat) as abap.numc (3)) as monat,
+	cast (concat ('0', main.monat) as abap.numc(3)) as monat,
 	cast (main.cpudt as farp_cpudt preserving type) as cpudt,
 	cast (main.cputm as ttet_dt_cr_time preserving type) as cputm,
 	main.aedat,

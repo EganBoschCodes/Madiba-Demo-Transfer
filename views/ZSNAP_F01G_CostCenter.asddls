@@ -12,14 +12,12 @@ define view entity ZSNAP_F01G_CostCenter
 	as select from csks as main
 	
 	association [0..1] to ZSNAP_F01G_ControllingArea as _ControllingArea on $projection.ControllingArea = _ControllingArea.ControllingArea
-	association [0..*] to ZSNAP_F01G_CCHierNode as _CostCenterHierarchyNode on $projection.ControllingArea = _CostCenterHierarchyNode.ControllingArea and $projection.CostCenter = _CostCenterHierarchyNode.CostCenter
 	association [0..1] to ZSNAP_F01G_CostCenterText as _Text on $projection.ControllingArea = _Text.ControllingArea and $projection.CostCenter = _Text.CostCenter
 {
 	@ObjectModel.foreignKey.association: '_ControllingArea'
 	@EndUserText.label: 'Controlling Area'
 	key main.kokrs as ControllingArea,
 	
-	@ObjectModel.hierarchy.association: '_CostCenterHierarchyNode'
 	@ObjectModel.text.association: '_Text'
 	@EndUserText.label: 'Cost Center'
 	key cast (main.kostl as kostl preserving type) as CostCenter,
@@ -263,6 +261,5 @@ define view entity ZSNAP_F01G_CostCenter
 	@EndUserText.label: 'Templ.: Act. Stat. Key Figure'
 	main.skd_templ as ActlDepStatisticalKeyFigures,
 	_ControllingArea,
-	_CostCenterHierarchyNode,
 	_Text
 }

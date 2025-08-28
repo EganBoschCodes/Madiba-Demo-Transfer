@@ -38,7 +38,7 @@ union all select from finsc_period as main
 	'001' as next_fiscal_period,
 	main.fiscal_year as next_fiscal_period_fiscal_year,
 	cast (concat (main.fiscal_year, '000') as fins_jahrper) as fiscal_year_period,
-	cast ('1' as abap.numc (1)) as fiscal_quarter,
+	cast ('1' as abap.numc(1)) as fiscal_quarter,
 	concat (main.fiscal_year, '1') as fiscal_year_quarter
 }
 where main.fiscal_period = '001'

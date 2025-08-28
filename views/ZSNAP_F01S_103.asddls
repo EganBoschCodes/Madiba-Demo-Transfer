@@ -1,5 +1,5 @@
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'SNAP AP: Aging Grid Base'
+@EndUserText.label: 'SNAP F01: Aging Grid Base'
 
 define view entity ZSNAP_F01S_103	
 	with parameters
@@ -34,10 +34,16 @@ define view entity ZSNAP_F01S_103
 	main.DueCalculationBaseDate,
 	main.CashDiscount1Days,
 	main.CashDiscount1Percent,
-	main.CashDiscount1Date,
+	case main.UseReferencedInvoiceDates
+		when 'X' then main.CashDiscount1Date
+		else _ReferencedInvoices.CashDiscount1Date
+	end as CashDiscount1Date,
 	main.CashDiscount2Days,
 	main.CashDiscount2Percent,
-	main.CashDiscount2Date,
+	case main.UseReferencedInvoiceDates
+		when 'X' then main.CashDiscount2Date
+		else _ReferencedInvoices.CashDiscount2Date
+	end as CashDiscount2Date,
 	main.PaymentTerms,
 	main.PaymentBlockingReason,
 	main.PaymentMethod,
@@ -46,8 +52,8 @@ define view entity ZSNAP_F01S_103
 	main.FinancialAccountType,
 	main.Supplier,
 	main.InvoiceReferenceType,
-	case
-		when main.InvoiceReferenceType = '' or main.InvoiceReferenceType = 'V' or main.InvoiceReferenceType = 'P' or (main.InvoiceReference = '' and main.InvoiceItemReference = '000' and main.InvoiceReferenceFiscalYear = '0000') then main.NetDueDate
+	case main.UseReferencedInvoiceDates
+		when 'X' then main.NetDueDate
 		else _ReferencedInvoices.NetDueDate
 	end as NetDueDate,
 	main.SpecialGLCode,
@@ -57,16 +63,9 @@ define view entity ZSNAP_F01S_103
 	main.FunctionalArea,
 	main.BusinessArea,
 	main.Segment,
+	main.PartnerCompany,
 	main.PurchasingDocument,
 	main.AssignmentReference,
-	$parameters.P_NetDueInterval1InDays as PosNetDueInterval1InDays,
-	$parameters.P_NetDueInterval2InDays as PosNetDueInterval2InDays,
-	$parameters.P_NetDueInterval3InDays as PosNetDueInterval3InDays,
-	$parameters.P_NetDueInterval4InDays as PosNetDueInterval4InDays,
-	-1 * $parameters.P_NetDueInterval1InDays as NegNetDueInterval1InDays,
-	-1 * $parameters.P_NetDueInterval2InDays as NegNetDueInterval2InDays,
-	-1 * $parameters.P_NetDueInterval3InDays as NegNetDueInterval3InDays,
-	-1 * $parameters.P_NetDueInterval4InDays as NegNetDueInterval4InDays,
 	main.Title,
 	
 	@Semantics.amount.currencyCode: 'CompanyCodeCurrency'

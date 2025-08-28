@@ -11,7 +11,7 @@ define view entity ZSNAP_F01S_C01
 	with parameters
 		@Consumption.defaultValue: 'R'
 		@EndUserText.label: 'Signage'
-		P_Signage: abap.char (1),
+		P_Signage: abap.char(1),
 		@EndUserText.label: 'Open Items As Of'
 		@Environment.systemField: #SYSTEM_DATE
 		P_KeyDate: abap.dats,
@@ -38,7 +38,7 @@ define view entity ZSNAP_F01S_C01
 		P_ExchangeRateType: kurst,
 		@Consumption.defaultValue: 'N'
 		@EndUserText.label: 'Include Special GL Transactions'
-		P_IncludeSpecialGL: abap.char (1),
+		P_IncludeSpecialGL: abap.char(1),
 		@Consumption.defaultValue: '2'
 		@EndUserText.label: 'Early Payment Tolerance Days'
 		P_EarlyPaymentToleranceDays: abap.int4
@@ -198,7 +198,7 @@ define view entity ZSNAP_F01S_C01
 	@ObjectModel.foreignKey.association: '_BaselineDate'
 	main.DueCalculationBaseDate,
 	
-	@EndUserText.label: 'Terms Days 1'
+	@EndUserText.label: 'Terms Discount Days 1'
 	main.CashDiscount1Days,
 	
 	@EndUserText.label: 'Terms Discount Percent 1'
@@ -208,7 +208,7 @@ define view entity ZSNAP_F01S_C01
 	@ObjectModel.foreignKey.association: '_CashDiscount1Date'
 	main.CashDiscount1Date,
 	
-	@EndUserText.label: 'Terms Days 2'
+	@EndUserText.label: 'Terms Discount Days 2'
 	main.CashDiscount2Days,
 	
 	@EndUserText.label: 'Terms Discount Percent 2'
@@ -306,6 +306,12 @@ define view entity ZSNAP_F01S_C01
 	@ObjectModel.foreignKey.association: '_PurchasingDocument'
 	main.PurchasingDocument,
 	
+	@EndUserText.label: 'PO Payment Terms'
+	main.POPaymentTerms,
+	
+	@EndUserText.label: 'PO Payment Terms Differ'
+	main.POPaymentTermsDiffer,
+	
 	@EndUserText.label: 'Assignment Reference'
 	main.AssignmentReference,
 	
@@ -321,7 +327,7 @@ define view entity ZSNAP_F01S_C01
 	@ObjectModel.foreignKey.association: '_ControllingArea'
 	main.ControllingArea,
 	
-	@EndUserText.label: 'Reconciliation Account'
+	@EndUserText.label: 'Supplier Reconciliation Account'
 	@ObjectModel.foreignKey.association: '_ReconciliationAccount'
 	main.ReconciliationAccount,
 	
@@ -418,6 +424,9 @@ define view entity ZSNAP_F01S_C01
 	@EndUserText.label: 'Days Overdue'
 	main.DaysOverdue,
 	
+	@EndUserText.label: 'Days Overdue - Orderable'
+	main.DaysOverdueInt,
+	
 	@EndUserText.label: 'Is Cleared Flag'
 	@ObjectModel.foreignKey.association: '_IsCleared'
 	main.IsCleared,
@@ -482,7 +491,7 @@ define view entity ZSNAP_F01S_C01
 	
 	@DefaultAggregation: #SUM
 	@EndUserText.label: 'Number Of Rows'
-	cast (1 as abap.dec (12, 0)) as NumberOfRows,
+	cast (1 as abap.dec(12, 0)) as NumberOfRows,
 	_AccountingClerk,
 	_AccountingDocumentCategory,
 	_AccountingDocumentItem,

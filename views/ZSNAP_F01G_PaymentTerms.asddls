@@ -33,9 +33,9 @@ define view entity ZSNAP_F01G_PaymentTerms
 	
 	@EndUserText.label: 'Cash Discount 2 Percent'
 	main.CashDiscount2Percent,
-	case
-		when main.NetPaymentDays <> 0 then cast (main.NetPaymentDays as abap.int4)
-		else cast (main.CashDiscount1Days as abap.int4)
-	end as PaymentTermsDays,
+	
+	@Consumption.hidden: true
+	@EndUserText.label: 'Days Net'
+	cast (main.NetPaymentDays as abap.int4) as PaymentTermsDays,
 	_Text
 }

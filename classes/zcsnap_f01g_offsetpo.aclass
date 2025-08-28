@@ -1,0 +1,35 @@
+CLASS zcsnap_f01g_offsetpo DEFINITION
+    PUBLIC
+    FINAL
+    CREATE PUBLIC .
+
+    PUBLIC SECTION.
+
+        INTERFACES if_amdp_marker_hdb.
+
+        CLASS-METHODS get_data
+            FOR TABLE FUNCTION ZSNAP_F01G_OffsetPO.
+
+    PROTECTED SECTION.
+    PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zcsnap_f01g_offsetpo IMPLEMENTATION.
+
+  METHOD get_data BY DATABASE FUNCTION FOR HDB LANGUAGE SQLSCRIPT OPTIONS READ-ONLY USING bseg.
+
+    return /* ZSNAP_F01G_OffsetPO */ select
+		main.mandt,
+		main.belnr as AccountingDocument,
+		main.bukrs as CompanyCode,
+		main.gjahr as FiscalYear,
+		min (main.ebeln) as PurchaseOrder
+	from bseg as main
+	where main.ebeln <> ''
+	group by main.mandt,
+		main.belnr,
+		main.bukrs,
+		main.gjahr;
+
+  ENDMETHOD.
+ENDCLASS.

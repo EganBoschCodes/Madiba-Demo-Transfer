@@ -12,6 +12,7 @@ define view entity ZSNAP_F01G_Supplier
 	as select from lfa1 as main
 	
 	association [1..1] to ZSNAP_F01G_Address as _StandardAddress on $projection.AddressID = _StandardAddress.AddressID
+	association [0..1] to ZSNAP_F01G_CompanyCode as _TradingPartnerCompanyCode on main.vbund = _TradingPartnerCompanyCode.Company and main.vbund <> ''
 {
 	@Consumption.labelElement: 'SupplierName'
 	@ObjectModel.text.element: ['SupplierName']
@@ -19,9 +20,11 @@ define view entity ZSNAP_F01G_Supplier
 	key cast (main.lifnr as lifnr preserving type) as Supplier,
 	
 	@EndUserText.label: 'Is Intercompany Flag'
-	case
-		when main.ktokk = '' then 'X'
+	case main.vbund
+		when '' then ''
+		else 'X'
 	end as IsIntercompany,
+	coalesce (_TradingPartnerCompanyCode.CompanyCode, right (main.vbund, 4)) as PartnerCompanyCode,
 	
 	@EndUserText.label: 'Account Group'
 	main.ktokk as SupplierAccountGroup,

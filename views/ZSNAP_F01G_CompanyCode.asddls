@@ -12,11 +12,9 @@ define view entity ZSNAP_F01G_CompanyCode
 	
 	left outer to one join tka02 on tka02.bukrs = main.bukrs
 	
-	association [0..*] to ZSNAP_F01G_CoCodeHierNode as _CompanyCodeHierNode on $projection.CompanyCode = _CompanyCodeHierNode.CompanyCode
 	association [0..1] to ZSNAP_F01G_CtrllingAreaText as _ControllingAreaText on $projection.ControllingArea = _ControllingAreaText.ControllingArea
 	association [0..*] to ZSNAP_F01G_CreditCtrlAreaT as _CreditControlAreaText on $projection.CreditControlArea = _CreditControlAreaText.CreditControlArea
 {
-	@ObjectModel.hierarchy.association: '_CompanyCodeHierNode'
 	@ObjectModel.text.element: ['CompanyCodeName']
 	@EndUserText.label: 'Company Code'
 	key main.bukrs as CompanyCode,
@@ -40,6 +38,9 @@ define view entity ZSNAP_F01G_CompanyCode
 	
 	@EndUserText.label: 'Company'
 	main.rcomp as Company,
+	
+	@EndUserText.label: 'Pstng Period Variant'
+	main.opvar as PostingPeriodVariant,
 	
 	@EndUserText.label: 'City'
 	main.ort01 as CityName,
@@ -86,7 +87,6 @@ define view entity ZSNAP_F01G_CompanyCode
 	
 	@EndUserText.label: 'Output Tax Code'
 	main.mwska as NonTaxableTransactionTaxCode,
-	_CompanyCodeHierNode,
 	_ControllingAreaText,
 	_CreditControlAreaText
 }

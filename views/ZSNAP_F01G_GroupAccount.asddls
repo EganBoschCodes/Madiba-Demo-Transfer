@@ -14,13 +14,11 @@ define view entity ZSNAP_F01G_GroupAccount
 	association [0..1] to ZSNAP_F01G_ChartOfAccounts as _ChartOfAccounts on $projection.ChartOfAccounts = _ChartOfAccounts.ChartOfAccounts
 	association [0..*] to ZSNAP_F01G_GLAccGroupText as _GLAccountGroupText on $projection.GLAccountGroup = _GLAccountGroupText.GLAccountGroup and $projection.ChartOfAccounts = _GLAccountGroupText.ChartOfAccounts
 	association [0..*] to ZSNAP_F01G_GLAccountText as _Text on $projection.ChartOfAccounts = _Text.ChartOfAccounts and $projection.GroupAccount = _Text.GLAccount
-	association [0..*] to ZSNAP_F01G_GroupAccHierNode as _GroupAccHierarchyNode on $projection.GroupAccount = _GroupAccHierarchyNode.GroupAccount and $projection.ChartOfAccounts = _GroupAccHierarchyNode.ChartOfAccounts
 {
 	@ObjectModel.foreignKey.association: '_ChartOfAccounts'
 	@EndUserText.label: 'Chart Of Accounts'
 	key main.ktopl as ChartOfAccounts,
 	
-	@ObjectModel.hierarchy.association: '_GroupAccHierarchyNode'
 	@ObjectModel.text.association: '_Text'
 	@EndUserText.label: 'Group Account Number'
 	key cast (main.saknr as bilkt preserving type) as GroupAccount,
@@ -92,6 +90,5 @@ define view entity ZSNAP_F01G_GroupAccount
 	
 	@Consumption.hidden: true
 	_GLAccountGroupText,
-	_GroupAccHierarchyNode,
 	_Text
 }

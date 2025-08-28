@@ -1,5 +1,5 @@
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'SNAP AP: Deriving Net Due Interval'
+@EndUserText.label: 'SNAP F01: Deriving Net Due Interval'
 
 define view entity ZSNAP_F01S_107	
 	with parameters
@@ -46,6 +46,7 @@ define view entity ZSNAP_F01S_107
 	main.IsUsedInPaymentTransaction,
 	main.PostingKey,
 	main.Supplier,
+	main.PartnerCompany,
 	main.GLAccount,
 	main.SpecialGLCode,
 	main.CostCenter,
@@ -55,46 +56,42 @@ define view entity ZSNAP_F01S_107
 	main.Segment,
 	main.PurchasingDocument,
 	main.AssignmentReference,
-	main.PosNetDueInterval1InDays,
-	main.PosNetDueInterval2InDays,
-	main.PosNetDueInterval3InDays,
-	main.PosNetDueInterval4InDays,
-	main.NegNetDueInterval1InDays,
-	main.NegNetDueInterval2InDays,
-	main.NegNetDueInterval3InDays,
-	main.NegNetDueInterval4InDays,
-	main.MaxNetDueIntervalInDays,
-	main.NumberOfParameters,
 	case
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < main.NegNetDueInterval4InDays then main.MaxNetDueIntervalInDays
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < main.NegNetDueInterval3InDays and main.NetDueArrearsDays >= main.NegNetDueInterval4InDays then main.PosNetDueInterval4InDays
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < main.NegNetDueInterval2InDays and main.NetDueArrearsDays >= main.NegNetDueInterval3InDays then main.PosNetDueInterval3InDays
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < main.NegNetDueInterval1InDays and main.NetDueArrearsDays >= main.NegNetDueInterval2InDays then main.PosNetDueInterval2InDays
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < 0 and main.NetDueArrearsDays >= main.NegNetDueInterval1InDays then main.PosNetDueInterval1InDays
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays <= main.PosNetDueInterval1InDays then 0
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays <= main.PosNetDueInterval2InDays then main.NegNetDueInterval1InDays
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays <= main.PosNetDueInterval3InDays then main.NegNetDueInterval2InDays
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays <= main.PosNetDueInterval4InDays then main.NegNetDueInterval3InDays
-		when main.NumberOfParameters = 4 then main.NegNetDueInterval4InDays
-		when main.NumberOfParameters = 3 and main.NetDueArrearsDays < main.NegNetDueInterval3InDays then main.MaxNetDueIntervalInDays
-		when main.NumberOfParameters = 3 and main.NetDueArrearsDays < main.NegNetDueInterval2InDays and main.NetDueArrearsDays >= main.NegNetDueInterval3InDays then main.PosNetDueInterval3InDays
-		when main.NumberOfParameters = 3 and main.NetDueArrearsDays < main.NegNetDueInterval1InDays and main.NetDueArrearsDays >= main.NegNetDueInterval2InDays then main.PosNetDueInterval2InDays
-		when main.NumberOfParameters = 3 and main.NetDueArrearsDays < 0 and main.NetDueArrearsDays >= main.NegNetDueInterval1InDays then main.PosNetDueInterval1InDays
-		when main.NumberOfParameters = 3 and main.NetDueArrearsDays <= main.PosNetDueInterval1InDays then 0
-		when main.NumberOfParameters = 3 and main.NetDueArrearsDays <= main.PosNetDueInterval2InDays then main.NegNetDueInterval1InDays
-		when main.NumberOfParameters = 3 and main.NetDueArrearsDays <= main.PosNetDueInterval3InDays then main.NegNetDueInterval2InDays
-		when main.NumberOfParameters = 3 then main.NegNetDueInterval3InDays
-		when main.NumberOfParameters = 2 and main.NetDueArrearsDays < main.NegNetDueInterval2InDays then main.MaxNetDueIntervalInDays
-		when main.NumberOfParameters = 2 and main.NetDueArrearsDays < main.NegNetDueInterval1InDays and main.NetDueArrearsDays >= main.NegNetDueInterval2InDays then main.PosNetDueInterval2InDays
-		when main.NumberOfParameters = 2 and main.NetDueArrearsDays < 0 and main.NetDueArrearsDays >= main.NegNetDueInterval1InDays then main.PosNetDueInterval1InDays
-		when main.NumberOfParameters = 2 and main.NetDueArrearsDays <= main.PosNetDueInterval1InDays then 0
-		when main.NumberOfParameters = 2 and main.NetDueArrearsDays <= main.PosNetDueInterval2InDays then main.NegNetDueInterval1InDays
-		when main.NumberOfParameters = 2 then main.NegNetDueInterval2InDays
-		when main.NumberOfParameters = 1 and main.NetDueArrearsDays < main.NegNetDueInterval1InDays then main.MaxNetDueIntervalInDays
-		when main.NumberOfParameters = 1 and main.NetDueArrearsDays < 0 and main.NetDueArrearsDays >= main.NegNetDueInterval1InDays then main.PosNetDueInterval1InDays
-		when main.NumberOfParameters = 1 then main.NegNetDueInterval1InDays
-		when main.NumberOfParameters = 0 and main.NetDueArrearsDays < 0 then main.MaxNetDueIntervalInDays
-		else 0
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval4InDays then 5
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval3InDays then 4
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval2InDays then 3
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval1InDays then 2
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays < 0 then 1
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays = 0 then 0
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval1InDays then -1
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval2InDays then -2
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval3InDays then -3
+		when main.NumberOfParameters = 4 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval4InDays then -4
+		when main.NumberOfParameters = 4 then -5
+		when main.NumberOfParameters = 3 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval3InDays then 4
+		when main.NumberOfParameters = 3 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval2InDays then 3
+		when main.NumberOfParameters = 3 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval1InDays then 2
+		when main.NumberOfParameters = 3 and main.NetDueArrearsDays < 0 then 1
+		when main.NumberOfParameters = 3 and main.NetDueArrearsDays = 0 then 0
+		when main.NumberOfParameters = 3 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval1InDays then -1
+		when main.NumberOfParameters = 3 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval2InDays then -2
+		when main.NumberOfParameters = 3 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval3InDays then -3
+		when main.NumberOfParameters = 3 then -4
+		when main.NumberOfParameters = 2 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval2InDays then 3
+		when main.NumberOfParameters = 2 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval1InDays then 2
+		when main.NumberOfParameters = 2 and main.NetDueArrearsDays < 0 then 1
+		when main.NumberOfParameters = 2 and main.NetDueArrearsDays = 0 then 0
+		when main.NumberOfParameters = 2 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval1InDays then -1
+		when main.NumberOfParameters = 2 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval2InDays then -2
+		when main.NumberOfParameters = 2 then -3
+		when main.NumberOfParameters = 1 and main.NetDueArrearsDays < -$parameters.P_NetDueInterval1InDays then 2
+		when main.NumberOfParameters = 1 and main.NetDueArrearsDays < 0 then 1
+		when main.NumberOfParameters = 1 and main.NetDueArrearsDays = 0 then 0
+		when main.NumberOfParameters = 1 and main.NetDueArrearsDays <= $parameters.P_NetDueInterval1InDays then -1
+		when main.NumberOfParameters = 1 then -2
+		when main.NumberOfParameters = 0 and main.NetDueArrearsDays < 0 then 1
+		when main.NumberOfParameters = 0 and main.NetDueArrearsDays = 0 then 0
+		else -1
 	end as NetDueInterval,
 	main.Title,
 	

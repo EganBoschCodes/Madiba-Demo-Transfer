@@ -13,13 +13,13 @@ define view entity ZSNAP_F01C_IsOverdue
 	
 	@EndUserText.label: 'Is Overdue Description'
 	@Semantics.text: true
-	cast ('Overdue' as abap.char (11)) as Description
+	cast ('Overdue' as abap.char(11)) as Description
 }
 where main.mandt = $session.client
 
 union all select from t000 as main
 {
 	key '' as IsOverdue,
-	cast ('Not Overdue' as abap.char (11)) as Description
+	cast ('Not Overdue' as abap.char(11)) as Description
 }
 where main.mandt = $session.client

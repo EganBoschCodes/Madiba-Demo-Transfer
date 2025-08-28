@@ -1,5 +1,5 @@
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'SNAP AP: Isolate AP Journal Items'
+@EndUserText.label: 'SNAP F01: Isolate AP Journal Items'
 
 define view entity ZSNAP_F01S_050	
 	with parameters
@@ -7,6 +7,7 @@ define view entity ZSNAP_F01S_050
 	
 	as select from ZSNAP_F01G_JournalEntryItem as main
 	
+	association [0..1] to ZSNAP_F01G_OffsetPO as _OffsetPurchaseOrder on main.CompanyCode = _OffsetPurchaseOrder.CompanyCode and main.FiscalYear = _OffsetPurchaseOrder.FiscalYear and main.AccountingDocument = _OffsetPurchaseOrder.AccountingDocument
 	association [0..1] to ZSNAP_F01G_OplAcctgDocItem as _OperationalAcctgDocItem on $projection.CompanyCode = _OperationalAcctgDocItem.CompanyCode and $projection.FiscalYear = _OperationalAcctgDocItem.FiscalYear and $projection.AccountingDocument = _OperationalAcctgDocItem.AccountingDocument and $projection.AccountingDocumentItem = _OperationalAcctgDocItem.AccountingDocumentItem
 {
 	key main.CompanyCode,
@@ -29,10 +30,10 @@ define view entity ZSNAP_F01S_050
 	main.DocumentDate,
 	_OperationalAcctgDocItem.DueCalculationBaseDate,
 	_OperationalAcctgDocItem.CashDiscount1Days,
-	concat (rtrim (rtrim (cast (coalesce (_OperationalAcctgDocItem.CashDiscount1Percent, cast (0 as abap.dec (5, 3))) as abap.char (10)), '0'), '.'), '%') as CashDiscount1Percent,
+	concat (cast (cast (coalesce (_OperationalAcctgDocItem.CashDiscount1Percent, cast (0 as abap.dec(5, 3))) as abap.dec(5, 2)) as abap.char(20)), '%') as CashDiscount1Percent,
 	_OperationalAcctgDocItem.CashDiscount1Date,
 	_OperationalAcctgDocItem.CashDiscount2Days,
-	concat (rtrim (rtrim (cast (coalesce (_OperationalAcctgDocItem.CashDiscount2Percent, cast (0 as abap.dec (5, 3))) as abap.char (10)), '0'), '.'), '%') as CashDiscount2Percent,
+	concat (cast (cast (coalesce (_OperationalAcctgDocItem.CashDiscount2Percent, cast (0 as abap.dec(5, 3))) as abap.dec(5, 2)) as abap.char(20)), '%') as CashDiscount2Percent,
 	_OperationalAcctgDocItem.CashDiscount2Date,
 	_OperationalAcctgDocItem.PaymentBlockingReason,
 	_OperationalAcctgDocItem.PaymentMethod,
@@ -41,14 +42,22 @@ define view entity ZSNAP_F01S_050
 	main.Supplier,
 	main.FollowOnDocumentType as InvoiceReferenceType,
 	main.NetDueDate,
+	case
+		when main.FollowOnDocumentType = '' or main.FollowOnDocumentType = 'V' or main.FollowOnDocumentType = 'P' or (main.InvoiceReference = '' and main.InvoiceItemReference = '000' and main.InvoiceReferenceFiscalYear = '0000') then 'X'
+		else ''
+	end as UseReferencedInvoiceDates,
 	main.SpecialGLCode,
 	main.GLAccount,
 	main.CostCenter,
 	main.ProfitCenter,
 	main.FunctionalArea,
 	main.BusinessArea,
+	main.PartnerCompany,
 	main.Segment,
-	main.PurchasingDocument,
+	case main.PurchasingDocument
+		when '' then coalesce (_OffsetPurchaseOrder.PurchaseOrder, '')
+		else main.PurchasingDocument
+	end as PurchasingDocument,
 	main.AssignmentReference,
 	_OperationalAcctgDocItem.PaymentTerms,
 	main.PostingKey,

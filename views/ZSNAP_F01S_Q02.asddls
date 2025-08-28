@@ -10,48 +10,65 @@ define view entity ZSNAP_F01S_Q02
 	with parameters
 		@Consumption.defaultValue: 'R'
 		@EndUserText.label: 'Signage'
-		@AnalyticsDetails.query.variableSequence: 1
-		P_Signage: abap.char (1),
+		@AnalyticsDetails.query.variableSequence: 2
+		P_Signage: char1,
 		@EndUserText.label: 'Open Items As Of'
 		@Environment.systemField: #SYSTEM_DATE
-		@AnalyticsDetails.query.variableSequence: 2
+		@AnalyticsDetails.query.variableSequence: 3
 		P_KeyDate: abap.dats,
 		@Consumption.defaultValue: 'USD'
 		@EndUserText.label: 'Display Currency'
-		@AnalyticsDetails.query.variableSequence: 4
+		@AnalyticsDetails.query.variableSequence: 5
 		P_DisplayCurrency: abap.cuky,
 		@Consumption.defaultValue: 'M'
 		@EndUserText.label: 'Exchange Rate Type'
-		@AnalyticsDetails.query.variableSequence: 5
+		@AnalyticsDetails.query.variableSequence: 6
 		P_ExchangeRateType: kurst,
 		@Consumption.defaultValue: 'N'
 		@EndUserText.label: 'Include Special GL Transactions'
-		@AnalyticsDetails.query.variableSequence: 16
-		P_IncludeSpecialGL: abap.char (1),
+		@AnalyticsDetails.query.variableSequence: 17
+		P_IncludeSpecialGL: char1,
 		@EndUserText.label: 'Cleared Items After'
 		@Environment.systemField: #SYSTEM_DATE
-		@AnalyticsDetails.query.variableSequence: 3
+		@AnalyticsDetails.query.variableSequence: 4
 		P_ClearedDate: abap.dats,
 		@Consumption.defaultValue: '30'
 		@EndUserText.label: 'Net Due Interval 1 (Days)'
-		@AnalyticsDetails.query.variableSequence: 11
+		@AnalyticsDetails.query.variableSequence: 12
 		P_NetDueInterval1InDays: abap.int4,
 		@Consumption.defaultValue: '60'
 		@EndUserText.label: 'Net Due Interval 2 (Days)'
-		@AnalyticsDetails.query.variableSequence: 12
+		@AnalyticsDetails.query.variableSequence: 13
 		P_NetDueInterval2InDays: abap.int4,
 		@Consumption.defaultValue: '90'
 		@EndUserText.label: 'Net Due Interval 3 (Days)'
-		@AnalyticsDetails.query.variableSequence: 13
+		@AnalyticsDetails.query.variableSequence: 14
 		P_NetDueInterval3InDays: abap.int4,
 		@Consumption.defaultValue: '0'
 		@EndUserText.label: 'Net Due Interval 4 (Days)'
-		@AnalyticsDetails.query.variableSequence: 14
+		@AnalyticsDetails.query.variableSequence: 15
 		P_NetDueInterval4InDays: abap.int4,
 		@Consumption.defaultValue: '2'
 		@EndUserText.label: 'Early Payment Tolerance Days'
-		@AnalyticsDetails.query.variableSequence: 15
-		P_EarlyPaymentToleranceDays: abap.int4
+		@AnalyticsDetails.query.variableSequence: 16
+		P_EarlyPaymentToleranceDays: abap.int4,
+		@Consumption.hidden: true
+		@Consumption.defaultValue: 'MED1'
+		@EndUserText.label: 'Controlling Area'
+		@AnalyticsDetails.query.variableSequence: 1
+		P_ControllingArea: ktopl,
+		@Consumption.hidden: true
+		@Consumption.derivation.lookupEntity: 'ZSNAP_F01G_ControllingArea'
+		@Consumption.derivation.resultElement: 'ChartOfAccounts'
+		@Consumption.derivation.binding: [{ targetElement: 'ControllingArea', type: #PARAMETER, value: 'P_ControllingArea' }]
+		@EndUserText.label: 'Chart Of Accounts'
+		P_ChartOfAccounts: kokrs,
+		@Consumption.hidden: true
+		@Consumption.derivation.lookupEntity: 'ZSNAP_F01G_ControllingArea'
+		@Consumption.derivation.resultElement: 'FiscalYearVariant'
+		@Consumption.derivation.binding: [{ targetElement: 'ControllingArea', type: #PARAMETER, value: 'P_ControllingArea' }]
+		@EndUserText.label: 'Fiscal Year Variant'
+		P_FiscalYearVariant: periv
 	
 	as select from ZSNAP_F01S_C01 (P_Signage: $parameters.P_Signage, P_KeyDate: $parameters.P_KeyDate, P_ClearedDate: $parameters.P_ClearedDate, P_NetDueInterval1InDays: $parameters.P_NetDueInterval1InDays, P_NetDueInterval2InDays: $parameters.P_NetDueInterval2InDays, P_NetDueInterval3InDays: $parameters.P_NetDueInterval3InDays, P_NetDueInterval4InDays: $parameters.P_NetDueInterval4InDays, P_DisplayCurrency: $parameters.P_DisplayCurrency, P_ExchangeRateType: $parameters.P_ExchangeRateType, P_IncludeSpecialGL: $parameters.P_IncludeSpecialGL, P_EarlyPaymentToleranceDays: $parameters.P_EarlyPaymentToleranceDays) as main
 {
@@ -61,7 +78,7 @@ define view entity ZSNAP_F01S_Q02
 	@Consumption.filter.mandatory: false
 	@Consumption.filter.multipleSelections: true
 	@Consumption.filter.selectionType: #INTERVAL
-	@AnalyticsDetails.query.variableSequence: 6
+	@AnalyticsDetails.query.variableSequence: 7
 	main.CompanyCode,
 	
 	@AnalyticsDetails.query.axis: #FREE
@@ -271,7 +288,7 @@ define view entity ZSNAP_F01S_Q02
 	@Consumption.filter.mandatory: false
 	@Consumption.filter.multipleSelections: true
 	@Consumption.filter.selectionType: #INTERVAL
-	@AnalyticsDetails.query.variableSequence: 7
+	@AnalyticsDetails.query.variableSequence: 8
 	main.GLAccount,
 	
 	@AnalyticsDetails.query.axis: #FREE
@@ -310,7 +327,7 @@ define view entity ZSNAP_F01S_Q02
 	@Consumption.filter.mandatory: false
 	@Consumption.filter.multipleSelections: true
 	@Consumption.filter.selectionType: #INTERVAL
-	@AnalyticsDetails.query.variableSequence: 8
+	@AnalyticsDetails.query.variableSequence: 9
 	main.ProfitCenter,
 	
 	@AnalyticsDetails.query.axis: #FREE
@@ -336,6 +353,16 @@ define view entity ZSNAP_F01S_Q02
 	@AnalyticsDetails.query.axis: #FREE
 	@AnalyticsDetails.query.display: #KEY
 	@AnalyticsDetails.query.totals: #HIDE
+	main.POPaymentTerms,
+	
+	@AnalyticsDetails.query.axis: #FREE
+	@AnalyticsDetails.query.display: #KEY
+	@AnalyticsDetails.query.totals: #HIDE
+	main.POPaymentTermsDiffer,
+	
+	@AnalyticsDetails.query.axis: #FREE
+	@AnalyticsDetails.query.display: #KEY
+	@AnalyticsDetails.query.totals: #HIDE
 	main.AssignmentReference,
 	
 	@AnalyticsDetails.query.axis: #FREE
@@ -349,7 +376,7 @@ define view entity ZSNAP_F01S_Q02
 	@Consumption.filter.mandatory: false
 	@Consumption.filter.multipleSelections: true
 	@Consumption.filter.selectionType: #INTERVAL
-	@AnalyticsDetails.query.variableSequence: 10
+	@AnalyticsDetails.query.variableSequence: 11
 	main.ReconciliationAccount,
 	
 	@AnalyticsDetails.query.axis: #FREE
@@ -358,7 +385,7 @@ define view entity ZSNAP_F01S_Q02
 	@Consumption.filter.mandatory: false
 	@Consumption.filter.multipleSelections: true
 	@Consumption.filter.selectionType: #INTERVAL
-	@AnalyticsDetails.query.variableSequence: 9
+	@AnalyticsDetails.query.variableSequence: 10
 	main.Supplier,
 	
 	@AnalyticsDetails.query.axis: #FREE
@@ -479,6 +506,12 @@ define view entity ZSNAP_F01S_Q02
 	@AnalyticsDetails.query.axis: #FREE
 	@AnalyticsDetails.query.display: #KEY
 	@AnalyticsDetails.query.totals: #HIDE
+	@Consumption.hidden: true
+	main.DaysOverdueInt,
+	
+	@AnalyticsDetails.query.axis: #FREE
+	@AnalyticsDetails.query.display: #KEY
+	@AnalyticsDetails.query.totals: #HIDE
 	main.IsConversionBroken,
 	
 	@AnalyticsDetails.query.axis: #FREE
@@ -508,7 +541,7 @@ define view entity ZSNAP_F01S_Q02
 	main.IntercompanyPairing,
 	
 	@AnalyticsDetails.query.axis: #FREE
-	@AnalyticsDetails.query.display: #KEY
+	@AnalyticsDetails.query.display: #KEY_TEXT
 	@AnalyticsDetails.query.totals: #HIDE
 	main.Title,
 	
@@ -561,6 +594,6 @@ define view entity ZSNAP_F01S_Q02
 where main.IncludeSpecialGL = $parameters.P_IncludeSpecialGL
 	and main.IncludeSpecialGLFilter = 'Y'
 	and main.Signage = $parameters.P_Signage
-	and main.ChartOfAccounts = '1000'
-	and main.ControllingArea = 'MED1'
-	and main.FiscalYearVariant = 'K4'
+	and main.ChartOfAccounts = $parameters.P_ChartOfAccounts
+	and main.ControllingArea = $parameters.P_ControllingArea
+	and main.FiscalYearVariant = $parameters.P_FiscalYearVariant

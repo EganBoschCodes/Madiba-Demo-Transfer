@@ -10,13 +10,10 @@
 define view entity ZSNAP_F01G_FunctionalArea
 	as select from tfkb as main
 	
-	association [0..*] to ZSNAP_F01G_FnctlAreaHier_D8 as _FunctionalAreaHierarchyNode on $projection.FunctionalArea = _FunctionalAreaHierarchyNode.FunctionalArea
 	association [0..*] to ZSNAP_F01G_FnctlAreaTxt as _Text on $projection.FunctionalArea = _Text.FunctionalArea
 {
-	@ObjectModel.hierarchy.association: '_FunctionalAreaHierarchyNode'
 	@ObjectModel.text.association: '_Text'
 	@EndUserText.label: 'Functional Area'
 	key main.fkber as FunctionalArea,
-	_FunctionalAreaHierarchyNode,
 	_Text
 }

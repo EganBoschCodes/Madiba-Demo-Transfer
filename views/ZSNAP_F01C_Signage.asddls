@@ -13,13 +13,13 @@ define view entity ZSNAP_F01C_Signage
 	
 	@EndUserText.label: 'Signage Description'
 	@Semantics.text: true
-	cast ('Payments Are Positive' as abap.char (21)) as Description
+	cast ('Payments Are Positive' as abap.char(21)) as Description
 }
 where main.mandt = $session.client
 
 union all select from t000 as main
 {
 	key 'R' as Signage,
-	cast ('Open AP is Positive' as abap.char (21)) as Description
+	cast ('Open AP is Positive' as abap.char(21)) as Description
 }
 where main.mandt = $session.client

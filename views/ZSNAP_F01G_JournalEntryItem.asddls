@@ -24,6 +24,7 @@ define view entity ZSNAP_F01G_JournalEntryItem
 	cast (main.rfarea as fm_farea preserving type) as FunctionalArea,
 	cast (main.rbusa as fis_rbusa preserving type) as BusinessArea,
 	main.segment as Segment,
+	cast (main.rassc as fis_rassc preserving type) as PartnerCompany,
 	cast (main.rwcur as fis_rwcur preserving type) as TransactionCurrency,
 	
 	@Semantics.amount.currencyCode: 'TransactionCurrency'

@@ -13,13 +13,13 @@ define view entity ZSNAP_F01C_SuppIsInterco_FU
 	
 	@EndUserText.label: 'Supplier Is Intercompany Description'
 	@Semantics.text: true
-	cast ('Intercompany' as abap.char (12)) as Description
+	cast ('Intercompany' as abap.char(12)) as Description
 }
 where main.mandt = $session.client
 
 union all select from t000 as main
 {
 	key '' as SupplierIsIntercompany,
-	cast ('External' as abap.char (12)) as Description
+	cast ('External' as abap.char(12)) as Description
 }
 where main.mandt = $session.client

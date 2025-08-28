@@ -10,10 +10,7 @@
 
 define view entity ZSNAP_F01G_Partnercompany
 	as select from ZSNAP_F01G_GlobalCompany as PartnerCompany
-	
-	association [0..*] to ZSNAP_F01G_PartnerCoHier_EO as _PartnerCompanyHierNode on $projection.PartnerCompany = _PartnerCompanyHierNode.PartnerCompany
 {
-	@ObjectModel.hierarchy.association: '_PartnerCompanyHierNode'
 	@ObjectModel.text.element: ['CompanyName']
 	@EndUserText.label: 'Company'
 	key PartnerCompany.Company as PartnerCompany,
@@ -23,6 +20,5 @@ define view entity ZSNAP_F01G_Partnercompany
 	PartnerCompany.CompanyName,
 	
 	@EndUserText.label: 'Language Key'
-	PartnerCompany.CompanyLanguage as Language,
-	_PartnerCompanyHierNode
+	PartnerCompany.CompanyLanguage as Language
 }

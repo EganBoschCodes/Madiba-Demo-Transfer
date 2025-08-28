@@ -1,5 +1,5 @@
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'SNAP AP: Text Bucketing/Curr. Conversion'
+@EndUserText.label: 'SNAP F01: Text Bucketing/Curr. Conversion'
 
 define view entity ZSNAP_F01S_109	
 	with parameters
@@ -12,6 +12,13 @@ define view entity ZSNAP_F01S_109
 		P_ExchangeRateType: kurst
 	
 	as select from ZSNAP_F01S_107 (P_KeyDate: $parameters.P_KeyDate, P_NetDueInterval1InDays: $parameters.P_NetDueInterval1InDays, P_NetDueInterval2InDays: $parameters.P_NetDueInterval2InDays, P_NetDueInterval3InDays: $parameters.P_NetDueInterval3InDays, P_NetDueInterval4InDays: $parameters.P_NetDueInterval4InDays) as main
+	
+	left outer to one join ZSNAP_F01M_NetDueIntervalT (
+		P_NetDueInterval1InDays: $parameters.P_NetDueInterval1InDays,
+		P_NetDueInterval2InDays: $parameters.P_NetDueInterval2InDays,
+		P_NetDueInterval3InDays: $parameters.P_NetDueInterval3InDays,
+		P_NetDueInterval4InDays: $parameters.P_NetDueInterval4InDays
+	) as NetDueIntervalTextDerive on main.NetDueInterval = NetDueIntervalTextDerive.NetDueInterval
 {
 	key main.CompanyCode,
 	key main.FiscalYear,
@@ -45,16 +52,18 @@ define view entity ZSNAP_F01S_109
 	main.PaymentMethod,
 	main.IsUsedInPaymentTransaction,
 	main.PostingKey,
-	cast (0 as abap.dec (10, 0)) as ClearingDateVsDueDateOffset,
+	cast (0 as abap.dec(10, 0)) as ClearingDateVsDueDateOffset,
 	'' as PaymentTimingCategory,
 	main.NetDueArrearsDays as NetDueArrearsDaysInt,
-	cast (main.NetDueArrearsDays as abap.char (15)) as NetDueArrearsDays,
-	cast (cast (case
+	cast (main.NetDueArrearsDays as abap.char(15)) as NetDueArrearsDays,
+	cast (cast ($projection.DaysOverdueInt as abap.char(15)) as abap.numc(15)) as DaysOverdue,
+	case
 		when main.NetDueArrearsDays > 0 then main.NetDueArrearsDays
 		else 0
-	end as abap.char (15)) as abap.numc (15)) as DaysOverdue,
+	end as DaysOverdueInt,
 	main.NetDueDate,
 	main.Supplier,
+	main.PartnerCompany,
 	main.GLAccount,
 	main.SpecialGLCode,
 	main.CostCenter,
@@ -64,49 +73,10 @@ define view entity ZSNAP_F01S_109
 	main.Segment,
 	main.PurchasingDocument,
 	main.AssignmentReference,
-	
-	@EndUserText.label: 'Net Due Date Interval'
-	cast (case
-		when main.NumberOfParameters = 4 and main.NetDueArrearsDays = 0 then 'G. Due on Key Date'
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.MaxNetDueIntervalInDays then concat_with_space ('B. Due in over', cast (main.PosNetDueInterval4InDays as abap.char (20)), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.PosNetDueInterval4InDays then concat_with_space ('C. Due between', concat_with_space (concat_with_space (cast (main.PosNetDueInterval3InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval4InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.PosNetDueInterval3InDays then concat_with_space ('D. Due between', concat_with_space (concat_with_space (cast (main.PosNetDueInterval2InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval3InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.PosNetDueInterval2InDays then concat_with_space ('E. Due between', concat_with_space (concat_with_space (cast (main.PosNetDueInterval1InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval2InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.PosNetDueInterval1InDays then concat_with_space ('F. Due within', cast (main.PosNetDueInterval1InDays as abap.char (20)), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = 0 then concat_with_space ('H. Less than', concat_with_space (cast (main.PosNetDueInterval1InDays as abap.char (20)), 'Overdue', 1), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.NegNetDueInterval1InDays then concat_with_space ('I. Overdue by', concat_with_space (concat_with_space (cast (main.PosNetDueInterval1InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval2InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.NegNetDueInterval2InDays then concat_with_space ('J. Overdue by', concat_with_space (concat_with_space (cast (main.PosNetDueInterval2InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval3InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.NegNetDueInterval3InDays then concat_with_space ('K. Overdue by', concat_with_space (concat_with_space (cast (main.PosNetDueInterval3InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval4InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 4 and main.NetDueInterval = main.NegNetDueInterval4InDays then concat_with_space ('L. More than', concat_with_space (cast (main.PosNetDueInterval4InDays as abap.char (20)), 'Overdue', 1), 1)
-		when main.NumberOfParameters = 3 and main.NetDueArrearsDays = 0 then 'F. Due on Key Date'
-		when main.NumberOfParameters = 3 and main.NetDueInterval = main.MaxNetDueIntervalInDays then concat_with_space ('B. Due in over', cast (main.PosNetDueInterval3InDays as abap.char (20)), 1)
-		when main.NumberOfParameters = 3 and main.NetDueInterval = main.PosNetDueInterval3InDays then concat_with_space ('C. Due between', concat_with_space (concat_with_space (cast (main.PosNetDueInterval2InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval3InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 3 and main.NetDueInterval = main.PosNetDueInterval2InDays then concat_with_space ('D. Due between', concat_with_space (concat_with_space (cast (main.PosNetDueInterval1InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval2InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 3 and main.NetDueInterval = main.PosNetDueInterval1InDays then concat_with_space ('E. Due within', cast (main.PosNetDueInterval1InDays as abap.char (20)), 1)
-		when main.NumberOfParameters = 3 and main.NetDueInterval = 0 then concat_with_space ('G. Less than', concat_with_space (cast (main.PosNetDueInterval1InDays as abap.char (20)), 'Overdue', 1), 1)
-		when main.NumberOfParameters = 3 and main.NetDueInterval = main.NegNetDueInterval1InDays then concat_with_space ('H. Overdue by', concat_with_space (concat_with_space (cast (main.PosNetDueInterval1InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval2InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 3 and main.NetDueInterval = main.NegNetDueInterval2InDays then concat_with_space ('I. Overdue by', concat_with_space (concat_with_space (cast (main.PosNetDueInterval2InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval3InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 3 and main.NetDueInterval = main.NegNetDueInterval3InDays then concat_with_space ('J. More than', concat_with_space (cast (main.PosNetDueInterval3InDays as abap.char (20)), 'Overdue', 1), 1)
-		when main.NumberOfParameters = 2 and main.NetDueArrearsDays = 0 then 'E. Due on Key Date'
-		when main.NumberOfParameters = 2 and main.NetDueInterval = main.MaxNetDueIntervalInDays then concat_with_space ('B. Due in over', cast (main.PosNetDueInterval2InDays as abap.char (20)), 1)
-		when main.NumberOfParameters = 2 and main.NetDueInterval = main.PosNetDueInterval2InDays then concat_with_space ('C. Due between', concat_with_space (concat_with_space (cast (main.PosNetDueInterval1InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval2InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 2 and main.NetDueInterval = main.PosNetDueInterval1InDays then concat_with_space ('D. Due within', cast (main.PosNetDueInterval1InDays as abap.char (20)), 1)
-		when main.NumberOfParameters = 2 and main.NetDueInterval = 0 then concat_with_space ('F. Less than', concat_with_space (cast (main.PosNetDueInterval1InDays as abap.char (20)), 'Overdue', 1), 1)
-		when main.NumberOfParameters = 2 and main.NetDueInterval = main.NegNetDueInterval1InDays then concat_with_space ('G. Overdue by', concat_with_space (concat_with_space (cast (main.PosNetDueInterval1InDays + 1 as abap.char (20)), '-', 1), cast (main.PosNetDueInterval2InDays as abap.char (20)), 1), 1)
-		when main.NumberOfParameters = 2 and main.NetDueInterval = main.NegNetDueInterval2InDays then concat_with_space ('H. More than', concat_with_space (cast (main.PosNetDueInterval2InDays as abap.char (20)), 'Overdue', 1), 1)
-		when main.NumberOfParameters = 1 and main.NetDueArrearsDays = 0 then 'D. Due on Key Date'
-		when main.NumberOfParameters = 1 and main.NetDueInterval = main.MaxNetDueIntervalInDays then concat_with_space ('B. Due in over', cast (main.PosNetDueInterval1InDays as abap.char (20)), 1)
-		when main.NumberOfParameters = 1 and main.NetDueInterval = main.PosNetDueInterval1InDays then concat_with_space ('C. Due within', cast (main.PosNetDueInterval1InDays as abap.char (20)), 1)
-		when main.NumberOfParameters = 1 and main.NetDueInterval = 0 then concat_with_space ('E. Less than ', concat_with_space (cast (main.PosNetDueInterval1InDays as abap.char (20)), 'Overdue', 1), 1)
-		when main.NumberOfParameters = 1 and main.NetDueInterval = main.NegNetDueInterval1InDays then concat_with_space ('F. More than', concat_with_space (cast (main.PosNetDueInterval1InDays as abap.char (20)), 'Overdue', 1), 1)
-		when main.NumberOfParameters = 0 and main.NetDueArrearsDays = 0 then 'C. Due on Key Date'
-		when main.NumberOfParameters = 0 and main.NetDueInterval = main.MaxNetDueIntervalInDays then 'B. Not Overdue'
-		when main.NumberOfParameters = 0 and main.NetDueInterval = 0 then 'D. Overdue'
-		else 'ERROR'
-	end as abap.char (40)) as NetDueIntervalText,
-	'' as IsCleared,
+	NetDueIntervalTextDerive.NetDueIntervalText,
+	'O' as IsCleared,
 	case
-		when main.NetDueInterval > 0 then ''
+		when main.NetDueArrearsDays < 0 then ''
 		else 'X'
 	end as IsOverdue,
 	main.Title,
@@ -124,6 +94,6 @@ define view entity ZSNAP_F01S_109
 	main.TransactionCurrency,
 	
 	@Semantics.amount.currencyCode: 'DisplayCurrency'
-	cast (currency_conversion (client => $session.client, amount => main.AmountInCompanyCodeCurrency, source_currency => main.CompanyCodeCurrency, target_currency => $parameters.P_DisplayCurrency, exchange_rate_date => $parameters.P_KeyDate, exchange_rate_type => $parameters.P_ExchangeRateType, round => 'X', decimal_shift => 'X', decimal_shift_back => 'X', error_handling => 'SET_TO_NULL') as abap.curr (23, 2)) as AmountInDisplayCurrency,
+	cast (currency_conversion (client => $session.client, amount => main.AmountInCompanyCodeCurrency, source_currency => main.CompanyCodeCurrency, target_currency => $parameters.P_DisplayCurrency, exchange_rate_date => $parameters.P_KeyDate, exchange_rate_type => $parameters.P_ExchangeRateType, round => 'X', decimal_shift => 'X', decimal_shift_back => 'X', error_handling => 'SET_TO_NULL') as abap.curr(23, 2)) as AmountInDisplayCurrency,
 	cast ($parameters.P_DisplayCurrency as vdm_v_display_currency) as DisplayCurrency
 }

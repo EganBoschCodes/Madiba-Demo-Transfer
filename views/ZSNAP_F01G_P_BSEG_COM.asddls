@@ -346,17 +346,17 @@ define view entity ZSNAP_F01G_P_BSEG_COM
 	
 	@DefaultAggregation: #SUM
 	@Semantics.quantity.unitOfMeasure: 'meins'
-	cast (cast (main.menge as abap.quan (23, 3)) as quan1_12) as menge,
+	cast (cast (main.menge as abap.quan(23, 3)) as quan1_12) as menge,
 	main.erfme,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.quantity.unitOfMeasure: 'meins'
-	cast (cast (main.erfmg as abap.quan (23, 3)) as fis_quantityinentryunit) as erfmg,
+	cast (cast (main.erfmg as abap.quan(23, 3)) as fis_quantityinentryunit) as erfmg,
 	main.bprme,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.quantity.unitOfMeasure: 'meins'
-	cast (cast (main.bpmng as abap.quan (23, 3)) as fis_bpmng_long) as bpmng,
+	cast (cast (main.bpmng as abap.quan(23, 3)) as fis_bpmng_long) as bpmng,
 	main.peinh,
 	cast (main.shkzg_calc as fis_shkzg preserving type) as shkzg,
 	main.nbritm

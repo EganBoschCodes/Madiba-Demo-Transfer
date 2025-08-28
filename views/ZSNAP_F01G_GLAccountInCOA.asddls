@@ -13,14 +13,12 @@ define view entity ZSNAP_F01G_GLAccountInCOA
 	
 	association [0..1] to ZSNAP_F01G_ChartOfAccounts as _ChartOfAccounts on $projection.ChartOfAccounts = _ChartOfAccounts.ChartOfAccounts
 	association [0..*] to ZSNAP_F01G_GLAccGroupText as _GLAccountGroupText on $projection.GLAccountGroup = _GLAccountGroupText.GLAccountGroup and $projection.ChartOfAccounts = _GLAccountGroupText.ChartOfAccounts
-	association [0..*] to ZSNAP_F01G_GLAccHierNode as _GLAccountHierarchyNode on $projection.GLAccount = _GLAccountHierarchyNode.GLAccount and $projection.ChartOfAccounts = _GLAccountHierarchyNode.ChartOfAccounts
 	association [0..*] to ZSNAP_F01G_GLAccountText as _Text on $projection.ChartOfAccounts = _Text.ChartOfAccounts and $projection.GLAccount = _Text.GLAccount
 {
 	@ObjectModel.foreignKey.association: '_ChartOfAccounts'
 	@EndUserText.label: 'Chart Of Accounts'
 	key main.ktopl as ChartOfAccounts,
 	
-	@ObjectModel.hierarchy.association: '_GLAccountHierarchyNode'
 	@ObjectModel.text.association: '_Text'
 	@EndUserText.label: 'G/L Account'
 	key cast (main.saknr as saknr preserving type) as GLAccount,
@@ -95,6 +93,5 @@ define view entity ZSNAP_F01G_GLAccountInCOA
 	
 	@Consumption.hidden: true
 	_GLAccountGroupText,
-	_GLAccountHierarchyNode,
 	_Text
 }

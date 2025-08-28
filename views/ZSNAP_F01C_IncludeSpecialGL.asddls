@@ -13,13 +13,13 @@ define view entity ZSNAP_F01C_IncludeSpecialGL
 	
 	@EndUserText.label: 'Include Special GL Transactions Description'
 	@Semantics.text: true
-	cast ('Yes' as abap.char (3)) as Description
+	cast ('Yes' as abap.char(3)) as Description
 }
 where main.mandt = $session.client
 
 union all select from t000 as main
 {
 	key 'N' as IncludeSpecialGL,
-	cast ('No' as abap.char (3)) as Description
+	cast ('No' as abap.char(3)) as Description
 }
 where main.mandt = $session.client

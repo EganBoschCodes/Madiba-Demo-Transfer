@@ -9,17 +9,17 @@ define view entity ZSNAP_F01C_IsCleared
 {
 	@EndUserText.label: 'Is Cleared Flag'
 	@ObjectModel.text.element: ['Description']
-	key 'X' as IsCleared,
+	key 'C' as IsCleared,
 	
 	@EndUserText.label: 'Is Cleared Flag Description'
 	@Semantics.text: true
-	cast ('Cleared' as abap.char (7)) as Description
+	cast ('Cleared' as abap.char(7)) as Description
 }
 where main.mandt = $session.client
 
 union all select from t000 as main
 {
-	key '' as IsCleared,
-	cast ('Open' as abap.char (7)) as Description
+	key 'O' as IsCleared,
+	cast ('Open' as abap.char(7)) as Description
 }
 where main.mandt = $session.client

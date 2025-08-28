@@ -13,13 +13,13 @@ define view entity ZSNAP_F01C_IsUsedInPmtTr_BA
 	
 	@EndUserText.label: 'Is Payment Indicator Description'
 	@Semantics.text: true
-	cast ('Payment' as abap.char (11)) as Description
+	cast ('Payment' as abap.char(11)) as Description
 }
 where main.mandt = $session.client
 
 union all select from t000 as main
 {
 	key '' as IsUsedInPaymentTransaction,
-	cast ('Non-Payment' as abap.char (11)) as Description
+	cast ('Non-Payment' as abap.char(11)) as Description
 }
 where main.mandt = $session.client

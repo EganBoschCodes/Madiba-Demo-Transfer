@@ -13,13 +13,13 @@ define view entity ZSNAP_F01C_IsConversionB_66
 	
 	@EndUserText.label: 'Currency Conversion Error Flag Description'
 	@Semantics.text: true
-	cast ('ERROR' as abap.char (5)) as Description
+	cast ('ERROR' as abap.char(5)) as Description
 }
 where main.mandt = $session.client
 
 union all select from t000 as main
 {
 	key '' as IsConversionBroken,
-	cast ('' as abap.char (5)) as Description
+	cast ('' as abap.char(5)) as Description
 }
 where main.mandt = $session.client

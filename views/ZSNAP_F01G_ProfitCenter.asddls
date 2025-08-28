@@ -12,14 +12,12 @@ define view entity ZSNAP_F01G_ProfitCenter
 	as select distinct from cepc as main
 	
 	association [0..1] to ZSNAP_F01G_ControllingArea as _ControllingArea on $projection.ControllingArea = _ControllingArea.ControllingArea
-	association [0..*] to ZSNAP_F01G_PCHierNode as _ProfitCenterHierarchyNode on $projection.ControllingArea = _ProfitCenterHierarchyNode.ControllingArea and $projection.ProfitCenter = _ProfitCenterHierarchyNode.ProfitCenter
 	association [0..*] to ZSNAP_F01G_ProfitCenterText as _Text on $projection.ControllingArea = _Text.ControllingArea and $projection.ProfitCenter = _Text.ProfitCenter
 {
 	@ObjectModel.foreignKey.association: '_ControllingArea'
 	@EndUserText.label: 'Controlling Area'
 	key main.kokrs as ControllingArea,
 	
-	@ObjectModel.hierarchy.association: '_ProfitCenterHierarchyNode'
 	@ObjectModel.text.association: '_Text'
 	@EndUserText.label: 'Profit Center'
 	key cast (main.prctr as prctr preserving type) as ProfitCenter,
@@ -132,6 +130,5 @@ define view entity ZSNAP_F01G_ProfitCenter
 	@EndUserText.label: 'Prctr Formula Planning Template'
 	main.pca_template as FormulaPlanningTemplate,
 	_ControllingArea,
-	_ProfitCenterHierarchyNode,
 	_Text
 }

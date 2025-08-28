@@ -1,5 +1,5 @@
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'SNAP AP: Reunion Open/Cleared Items'
+@EndUserText.label: 'SNAP F01: Reunion Open/Cleared Items'
 @Metadata.ignorePropagatedAnnotations: true
 
 define view entity ZSNAP_F01S_303	
@@ -49,6 +49,7 @@ define view entity ZSNAP_F01S_303
 	main.NetDueArrearsDaysInt,
 	main.NetDueDate,
 	main.Supplier,
+	main.PartnerCompany,
 	main.GLAccount,
 	main.SpecialGLCode,
 	main.CostCenter,
@@ -65,6 +66,7 @@ define view entity ZSNAP_F01S_303
 	main.PaymentTimingCategory,
 	main.IsOverdue,
 	main.DaysOverdue,
+	main.DaysOverdueInt,
 	main.IsCleared,
 	main.NetDueIntervalText,
 	main.Title,
@@ -121,6 +123,7 @@ union all select from ZSNAP_F01S_203 (P_KeyDate: $parameters.P_KeyDate, P_Cleare
 	main.NetDueArrearsDaysInt,
 	main.NetDueDate,
 	main.Supplier,
+	main.PartnerCompany,
 	main.GLAccount,
 	main.SpecialGLCode,
 	main.CostCenter,
@@ -137,6 +140,7 @@ union all select from ZSNAP_F01S_203 (P_KeyDate: $parameters.P_KeyDate, P_Cleare
 	main.PaymentTimingCategory,
 	main.IsOverdue,
 	main.DaysOverdue,
+	main.DaysOverdueInt,
 	main.IsCleared,
 	main.NetDueIntervalText,
 	main.Title,

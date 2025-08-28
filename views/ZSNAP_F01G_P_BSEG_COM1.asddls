@@ -174,7 +174,7 @@ define view entity ZSNAP_F01G_P_BSEG_COM1
 	main.awkey,
 	main.awsys,
 	main.posnr,
-	cast (concat ('0', main.h_monat) as abap.numc (3)) as h_monat,
+	cast (concat ('0', main.h_monat) as abap.numc(3)) as h_monat,
 	main.h_bstat,
 	main.h_budat,
 	main.h_bldat,
@@ -199,262 +199,262 @@ define view entity ZSNAP_F01G_P_BSEG_COM1
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.dmbtr as abap.curr (23, 2))
-		when 'S' then cast (main.dmbtr as abap.curr (23, 2))
-		else cast (main.dmbtr as abap.curr (23, 2))
+		when 'H' then cast (-main.dmbtr as abap.curr(23, 2))
+		when 'S' then cast (main.dmbtr as abap.curr(23, 2))
+		else cast (main.dmbtr as abap.curr(23, 2))
 	end as dmbtr_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.txbhw as abap.curr (23, 2))
-		when 'S' then cast (main.txbhw as abap.curr (23, 2))
-		else cast (main.txbhw as abap.curr (23, 2))
+		when 'H' then cast (-main.txbhw as abap.curr(23, 2))
+		when 'S' then cast (main.txbhw as abap.curr(23, 2))
+		else cast (main.txbhw as abap.curr(23, 2))
 	end as txbhw_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.mwsts as abap.curr (23, 2))
-		when 'S' then cast (main.mwsts as abap.curr (23, 2))
-		else cast (main.mwsts as abap.curr (23, 2))
+		when 'H' then cast (-main.mwsts as abap.curr(23, 2))
+		when 'S' then cast (main.mwsts as abap.curr(23, 2))
+		else cast (main.mwsts as abap.curr(23, 2))
 	end as mwsts_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.hwbas as abap.curr (23, 2))
-		when 'S' then cast (main.hwbas as abap.curr (23, 2))
-		else cast (main.hwbas as abap.curr (23, 2))
+		when 'H' then cast (-main.hwbas as abap.curr(23, 2))
+		when 'S' then cast (main.hwbas as abap.curr(23, 2))
+		else cast (main.hwbas as abap.curr(23, 2))
 	end as hwbas_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.bdiff as abap.curr (23, 2))
-		when 'S' then cast (main.bdiff as abap.curr (23, 2))
-		else cast (main.bdiff as abap.curr (23, 2))
+		when 'H' then cast (-main.bdiff as abap.curr(23, 2))
+		when 'S' then cast (main.bdiff as abap.curr(23, 2))
+		else cast (main.bdiff as abap.curr(23, 2))
 	end as bdiff_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.sknto as abap.curr (23, 2))
-		when 'S' then cast (main.sknto as abap.curr (23, 2))
-		else cast (main.sknto as abap.curr (23, 2))
+		when 'H' then cast (-main.sknto as abap.curr(23, 2))
+		when 'S' then cast (main.sknto as abap.curr(23, 2))
+		else cast (main.sknto as abap.curr(23, 2))
 	end as sknto_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.dmbt1 as abap.curr (23, 2))
-		when 'S' then cast (main.dmbt1 as abap.curr (23, 2))
-		else cast (main.dmbt1 as abap.curr (23, 2))
+		when 'H' then cast (-main.dmbt1 as abap.curr(23, 2))
+		when 'S' then cast (main.dmbt1 as abap.curr(23, 2))
+		else cast (main.dmbt1 as abap.curr(23, 2))
 	end as dmbt1_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.dmbt2 as abap.curr (23, 2))
-		when 'S' then cast (main.dmbt2 as abap.curr (23, 2))
-		else cast (main.dmbt2 as abap.curr (23, 2))
+		when 'H' then cast (-main.dmbt2 as abap.curr(23, 2))
+		when 'S' then cast (main.dmbt2 as abap.curr(23, 2))
+		else cast (main.dmbt2 as abap.curr(23, 2))
 	end as dmbt2_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwaer'
 	case main.shkzg
-		when 'H' then cast (-main.rewrt as abap.curr (23, 2))
-		when 'S' then cast (main.rewrt as abap.curr (23, 2))
-		else cast (main.rewrt as abap.curr (23, 2))
+		when 'H' then cast (-main.rewrt as abap.curr(23, 2))
+		when 'S' then cast (main.rewrt as abap.curr(23, 2))
+		else cast (main.rewrt as abap.curr(23, 2))
 	end as rewrt_shl,
 	main.h_waers,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.wrbtr as abap.curr (23, 2))
-		when 'S' then cast (main.wrbtr as abap.curr (23, 2))
-		else cast (main.wrbtr as abap.curr (23, 2))
+		when 'H' then cast (-main.wrbtr as abap.curr(23, 2))
+		when 'S' then cast (main.wrbtr as abap.curr(23, 2))
+		else cast (main.wrbtr as abap.curr(23, 2))
 	end as wrbtr_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.txbfw as abap.curr (23, 2))
-		when 'S' then cast (main.txbfw as abap.curr (23, 2))
-		else cast (main.txbfw as abap.curr (23, 2))
+		when 'H' then cast (-main.txbfw as abap.curr(23, 2))
+		when 'S' then cast (main.txbfw as abap.curr(23, 2))
+		else cast (main.txbfw as abap.curr(23, 2))
 	end as txbfw_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.wmwst as abap.curr (23, 2))
-		when 'S' then cast (main.wmwst as abap.curr (23, 2))
-		else cast (main.wmwst as abap.curr (23, 2))
+		when 'H' then cast (-main.wmwst as abap.curr(23, 2))
+		when 'S' then cast (main.wmwst as abap.curr(23, 2))
+		else cast (main.wmwst as abap.curr(23, 2))
 	end as wmwst_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.fwbas as abap.curr (23, 2))
-		when 'S' then cast (main.fwbas as abap.curr (23, 2))
-		else cast (main.fwbas as abap.curr (23, 2))
+		when 'H' then cast (-main.fwbas as abap.curr(23, 2))
+		when 'S' then cast (main.fwbas as abap.curr(23, 2))
+		else cast (main.fwbas as abap.curr(23, 2))
 	end as fwbas_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.qsshb as abap.curr (23, 2))
-		when 'S' then cast (main.qsshb as abap.curr (23, 2))
-		else cast (main.qsshb as abap.curr (23, 2))
+		when 'H' then cast (-main.qsshb as abap.curr(23, 2))
+		when 'S' then cast (main.qsshb as abap.curr(23, 2))
+		else cast (main.qsshb as abap.curr(23, 2))
 	end as qsshb_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.fdwbt as abap.curr (23, 2))
-		when 'S' then cast (main.fdwbt as abap.curr (23, 2))
-		else cast (main.fdwbt as abap.curr (23, 2))
+		when 'H' then cast (-main.fdwbt as abap.curr(23, 2))
+		when 'S' then cast (main.fdwbt as abap.curr(23, 2))
+		else cast (main.fdwbt as abap.curr(23, 2))
 	end as fdwbt_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.skfbt as abap.curr (23, 2))
-		when 'S' then cast (main.skfbt as abap.curr (23, 2))
-		else cast (main.skfbt as abap.curr (23, 2))
+		when 'H' then cast (-main.skfbt as abap.curr(23, 2))
+		when 'S' then cast (main.skfbt as abap.curr(23, 2))
+		else cast (main.skfbt as abap.curr(23, 2))
 	end as skfbt_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.wskto as abap.curr (23, 2))
-		when 'S' then cast (main.wskto as abap.curr (23, 2))
-		else cast (main.wskto as abap.curr (23, 2))
+		when 'H' then cast (-main.wskto as abap.curr(23, 2))
+		when 'S' then cast (main.wskto as abap.curr(23, 2))
+		else cast (main.wskto as abap.curr(23, 2))
 	end as wskto_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.nebtr as abap.curr (23, 2))
-		when 'S' then cast (main.nebtr as abap.curr (23, 2))
-		else cast (main.nebtr as abap.curr (23, 2))
+		when 'H' then cast (-main.nebtr as abap.curr(23, 2))
+		when 'S' then cast (main.nebtr as abap.curr(23, 2))
+		else cast (main.nebtr as abap.curr(23, 2))
 	end as nebtr_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.qbshb as abap.curr (23, 2))
-		when 'S' then cast (main.qbshb as abap.curr (23, 2))
-		else cast (main.qbshb as abap.curr (23, 2))
+		when 'H' then cast (-main.qbshb as abap.curr(23, 2))
+		when 'S' then cast (main.qbshb as abap.curr(23, 2))
+		else cast (main.qbshb as abap.curr(23, 2))
 	end as qbshb_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.qsfbt as abap.curr (23, 2))
-		when 'S' then cast (main.qsfbt as abap.curr (23, 2))
-		else cast (main.qsfbt as abap.curr (23, 2))
+		when 'H' then cast (-main.qsfbt as abap.curr(23, 2))
+		when 'S' then cast (main.qsfbt as abap.curr(23, 2))
+		else cast (main.qsfbt as abap.curr(23, 2))
 	end as qsfbt_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_waers'
 	case main.shkzg
-		when 'H' then cast (-main.rewwr as abap.curr (23, 2))
-		when 'S' then cast (main.rewwr as abap.curr (23, 2))
-		else cast (main.rewwr as abap.curr (23, 2))
+		when 'H' then cast (-main.rewwr as abap.curr(23, 2))
+		when 'S' then cast (main.rewwr as abap.curr(23, 2))
+		else cast (main.rewwr as abap.curr(23, 2))
 	end as rewwr_shl,
 	main.pswsl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'pswsl'
 	case main.shkzg
-		when 'H' then cast (-main.pswbt as abap.curr (23, 2))
-		when 'S' then cast (main.pswbt as abap.curr (23, 2))
-		else cast (main.pswbt as abap.curr (23, 2))
+		when 'H' then cast (-main.pswbt as abap.curr(23, 2))
+		when 'S' then cast (main.pswbt as abap.curr(23, 2))
+		else cast (main.pswbt as abap.curr(23, 2))
 	end as pswbt_shl,
 	main.h_hwae2,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwae2'
 	case main.shkzg
-		when 'H' then cast (-main.bdif2 as abap.curr (23, 2))
-		when 'S' then cast (main.bdif2 as abap.curr (23, 2))
-		else cast (main.bdif2 as abap.curr (23, 2))
+		when 'H' then cast (-main.bdif2 as abap.curr(23, 2))
+		when 'S' then cast (main.bdif2 as abap.curr(23, 2))
+		else cast (main.bdif2 as abap.curr(23, 2))
 	end as bdif2_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwae2'
 	case main.shkzg
-		when 'H' then cast (-main.dmbe2 as abap.curr (23, 2))
-		when 'S' then cast (main.dmbe2 as abap.curr (23, 2))
-		else cast (main.dmbe2 as abap.curr (23, 2))
+		when 'H' then cast (-main.dmbe2 as abap.curr(23, 2))
+		when 'S' then cast (main.dmbe2 as abap.curr(23, 2))
+		else cast (main.dmbe2 as abap.curr(23, 2))
 	end as dmbe2_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwae2'
 	case main.shkzg
-		when 'H' then cast (-main.mwst2 as abap.curr (23, 2))
-		when 'S' then cast (main.mwst2 as abap.curr (23, 2))
-		else cast (main.mwst2 as abap.curr (23, 2))
+		when 'H' then cast (-main.mwst2 as abap.curr(23, 2))
+		when 'S' then cast (main.mwst2 as abap.curr(23, 2))
+		else cast (main.mwst2 as abap.curr(23, 2))
 	end as mwst2_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwae2'
 	case main.shkzg
-		when 'H' then cast (-main.txbh2 as abap.curr (23, 2))
-		when 'S' then cast (main.txbh2 as abap.curr (23, 2))
-		else cast (main.txbh2 as abap.curr (23, 2))
+		when 'H' then cast (-main.txbh2 as abap.curr(23, 2))
+		when 'S' then cast (main.txbh2 as abap.curr(23, 2))
+		else cast (main.txbh2 as abap.curr(23, 2))
 	end as txbh2_shl,
 	main.h_hwae3,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwae3'
 	case main.shkzg
-		when 'H' then cast (-main.dmbe3 as abap.curr (23, 2))
-		when 'S' then cast (main.dmbe3 as abap.curr (23, 2))
-		else cast (main.dmbe3 as abap.curr (23, 2))
+		when 'H' then cast (-main.dmbe3 as abap.curr(23, 2))
+		when 'S' then cast (main.dmbe3 as abap.curr(23, 2))
+		else cast (main.dmbe3 as abap.curr(23, 2))
 	end as dmbe3_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwae3'
 	case main.shkzg
-		when 'H' then cast (-main.mwst3 as abap.curr (23, 2))
-		when 'S' then cast (main.mwst3 as abap.curr (23, 2))
-		else cast (main.mwst3 as abap.curr (23, 2))
+		when 'H' then cast (-main.mwst3 as abap.curr(23, 2))
+		when 'S' then cast (main.mwst3 as abap.curr(23, 2))
+		else cast (main.mwst3 as abap.curr(23, 2))
 	end as mwst3_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwae3'
 	case main.shkzg
-		when 'H' then cast (-main.bdif3 as abap.curr (23, 2))
-		when 'S' then cast (main.bdif3 as abap.curr (23, 2))
-		else cast (main.bdif3 as abap.curr (23, 2))
+		when 'H' then cast (-main.bdif3 as abap.curr(23, 2))
+		when 'S' then cast (main.bdif3 as abap.curr(23, 2))
+		else cast (main.bdif3 as abap.curr(23, 2))
 	end as bdif3_shl,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'h_hwae3'
 	case main.shkzg
-		when 'H' then cast (-main.txbh3 as abap.curr (23, 2))
-		when 'S' then cast (main.txbh3 as abap.curr (23, 2))
-		else cast (main.txbh3 as abap.curr (23, 2))
+		when 'H' then cast (-main.txbh3 as abap.curr(23, 2))
+		when 'S' then cast (main.txbh3 as abap.curr(23, 2))
+		else cast (main.txbh3 as abap.curr(23, 2))
 	end as txbh3_shl,
 	main.pycur,
 	
 	@DefaultAggregation: #SUM
 	@Semantics.amount.currencyCode: 'pycur'
 	case main.shkzg
-		when 'H' then cast (-main.pyamt as abap.curr (23, 2))
-		when 'S' then cast (main.pyamt as abap.curr (23, 2))
-		else cast (main.pyamt as abap.curr (23, 2))
+		when 'H' then cast (-main.pyamt as abap.curr(23, 2))
+		when 'S' then cast (main.pyamt as abap.curr(23, 2))
+		else cast (main.pyamt as abap.curr(23, 2))
 	end as pyamt_shl,
 	t014.waers as t014_waers,
 	
 	@Semantics.amount.currencyCode: 't014_waers'
 	case main.shkzg
-		when 'H' then cast (-main.absbt as abap.curr (23, 2))
-		when 'S' then cast (main.absbt as abap.curr (23, 2))
-		else cast (main.absbt as abap.curr (23, 2))
+		when 'H' then cast (-main.absbt as abap.curr(23, 2))
+		when 'S' then cast (main.absbt as abap.curr(23, 2))
+		else cast (main.absbt as abap.curr(23, 2))
 	end as absbt_shl,
 	main.meins,
 	
@@ -482,7 +482,7 @@ define view entity ZSNAP_F01G_P_BSEG_COM1
 	end as shkzg_calc,
 	
 	@DefaultAggregation: #SUM
-	cast (cast (1 as abap.dec (12, 0)) as fis_nbritm) as nbritm,
+	cast (cast (1 as abap.dec(12, 0)) as fis_nbritm) as nbritm,
 	main.gst_part,
 	main.plc_sup,
 	main.hsn_sac

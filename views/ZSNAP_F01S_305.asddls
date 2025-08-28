@@ -1,9 +1,9 @@
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'SNAP AP: Additional Field Derivation'
+@EndUserText.label: 'SNAP F01: Additional Field Derivation'
 
 define view entity ZSNAP_F01S_305	
 	with parameters
-		P_Signage: abap.char (1),
+		P_Signage: abap.char(1),
 		P_KeyDate: sydate,
 		P_ClearedDate: sydate,
 		P_NetDueInterval1InDays: abap.int4,
@@ -12,7 +12,7 @@ define view entity ZSNAP_F01S_305
 		P_NetDueInterval4InDays: abap.int4,
 		P_DisplayCurrency: abap.cuky,
 		P_ExchangeRateType: kurst,
-		P_IncludeSpecialGL: abap.char (1),
+		P_IncludeSpecialGL: abap.char(1),
 		P_EarlyPaymentToleranceDays: abap.int4
 	
 	as select from ZSNAP_F01S_303 (P_KeyDate: $parameters.P_KeyDate, P_ClearedDate: $parameters.P_ClearedDate, P_NetDueInterval1InDays: $parameters.P_NetDueInterval1InDays, P_NetDueInterval2InDays: $parameters.P_NetDueInterval2InDays, P_NetDueInterval3InDays: $parameters.P_NetDueInterval3InDays, P_NetDueInterval4InDays: $parameters.P_NetDueInterval4InDays, P_DisplayCurrency: $parameters.P_DisplayCurrency, P_ExchangeRateType: $parameters.P_ExchangeRateType, P_EarlyPaymentToleranceDays: $parameters.P_EarlyPaymentToleranceDays) as main
@@ -25,9 +25,9 @@ define view entity ZSNAP_F01S_305
 	association [1..1] to ZSNAP_F01G_JournalEntry as _JournalEntry on $projection.CompanyCode = _JournalEntry.CompanyCode and $projection.FiscalYear = _JournalEntry.FiscalYear and $projection.AccountingDocument = _JournalEntry.AccountingDocument
 	association [0..1] to ZSNAP_F01G_PmtBlockingRsnT as _PaymentBlockingReasonText on $projection.PaymentBlockingReason = _PaymentBlockingReasonText.PaymentBlockingReason and _PaymentBlockingReasonText.Language = $session.system_language
 	association [0..1] to ZSNAP_F01G_PostingKeyText as _PostingKeyText on $projection.PostingKey = _PostingKeyText.PostingKey and _PostingKeyText.Language = $session.system_language
+	association [0..1] to ZSNAP_F01G_PurchasingDoc as _PurchaseOrder on _PurchaseOrder.PurchasingDocument = main.PurchasingDocument
 	association [0..1] to ZSNAP_F01G_Supplier as _Supplier on _Supplier.Supplier = $projection.Supplier
 	association [0..1] to ZSNAP_F01G_SupplierCompany as _SupplierCompany on _SupplierCompany.CompanyCode = $projection.CompanyCode and _SupplierCompany.Supplier = $projection.Supplier
-	association [0..1] to ZSNAP_F01M_ICSupplier as _ICSupplier on _ICSupplier.Supplier = $projection.Supplier
 {
 	key main.CompanyCode,
 	key main.FiscalYear,
@@ -91,6 +91,11 @@ define view entity ZSNAP_F01S_305
 	main.FunctionalArea,
 	main.Segment,
 	main.PurchasingDocument,
+	_PurchaseOrder.PaymentTerms as POPaymentTerms,
+	case
+		when _PurchaseOrder.PaymentTerms <> main.PaymentTerms then 'X'
+		else ''
+	end as POPaymentTermsDiffer,
 	main.AssignmentReference,
 	main.Supplier,
 	_Supplier.OrganizationBPName1 as SupplierName,
@@ -102,12 +107,15 @@ define view entity ZSNAP_F01S_305
 	_SupplierCompany.AuthorizationGroup as SupplierFinsAuthorizationGrp,
 	_SupplierCompany.WithholdingTaxCode,
 	_Supplier.SupplierAccountGroup,
-	coalesce (_ICSupplier.IsIntercompany, '') as SupplierIsIntercompany,
-	_ICSupplier.PartnerCompany,
+	case main.PartnerCompany
+		when '' then ''
+		else 'X'
+	end as SupplierIsIntercompany,
+	main.PartnerCompany,
 	case
-		when _ICSupplier.PartnerCompanyCode is null then ''
-		when main.CompanyCode < _ICSupplier.PartnerCompanyCode then concat (main.CompanyCode, concat ('-', _ICSupplier.PartnerCompanyCode))
-		else concat (_ICSupplier.PartnerCompanyCode, concat ('-', main.CompanyCode))
+		when _Supplier.PartnerCompanyCode = '' then ''
+		when main.CompanyCode < _Supplier.PartnerCompanyCode then concat (main.CompanyCode, concat ('-', _Supplier.PartnerCompanyCode))
+		else concat (_Supplier.PartnerCompanyCode, concat ('-', main.CompanyCode))
 	end as IntercompanyPairing,
 	main.ChartOfAccounts,
 	main.ControllingArea,
@@ -116,6 +124,7 @@ define view entity ZSNAP_F01S_305
 	main.PaymentTimingCategory,
 	main.IsOverdue,
 	main.DaysOverdue,
+	main.DaysOverdueInt,
 	main.IsCleared,
 	main.NetDueIntervalText,
 	case
