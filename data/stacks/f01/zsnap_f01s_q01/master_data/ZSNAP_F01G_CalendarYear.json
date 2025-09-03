@@ -1,0 +1,24 @@
+{
+    "name": "ZSNAP_F01G_CalendarYear",
+    "text_label": "Year",
+    "representative_key": "CalendarYear",
+    "description": "",
+    "text_type": "none",
+    "fields": {
+        "CalendarYear": {
+            "name": "CalendarYear",
+            "text_label": "Calendar Year",
+            "is_key": true
+        },
+        "IsLeapYear": {
+            "name": "IsLeapYear",
+            "text_label": "Is Leap Year"
+        },
+        "NumberOfDays": {
+            "name": "NumberOfDays",
+            "text_label": "Number Of Days",
+            "is_number": true,
+            "data_transformation": "int"
+        }
+    }
+}

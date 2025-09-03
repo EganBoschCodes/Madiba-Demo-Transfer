@@ -1,0 +1,99 @@
+{
+    "name": "ZSNAP_F01G_WithholdingTaxCd",
+    "text_label": "Withholding Tax Type",
+    "representative_key": "WithholdingTaxCode",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "WithholdingTaxCodeDescription",
+    "fields": {
+        "Country": {
+            "name": "Country",
+            "text_label": "Country/Region Key",
+            "is_key": true,
+            "masterdata": "_Country"
+        },
+        "WithholdingTaxCode": {
+            "name": "WithholdingTaxCode",
+            "text_label": "Withholding Tax Code",
+            "is_key": true
+        },
+        "OfficialWitholdingTaxCode": {
+            "name": "OfficialWitholdingTaxCode",
+            "text_label": "Official Withholding Tax Code"
+        },
+        "WithholdingTaxCodeDescription": {
+            "name": "WithholdingTaxCodeDescription",
+            "text_label": "Description"
+        },
+        "PerctSubjectToWithholdingTax": {
+            "name": "PerctSubjectToWithholdingTax",
+            "text_label": "% Subject to Withholding Tax",
+            "is_number": true,
+            "data_transformation": "decimal(2)"
+        },
+        "WithholdingTaxRate": {
+            "name": "WithholdingTaxRate",
+            "text_label": "Withholding Tax Rate",
+            "is_number": true,
+            "data_transformation": "decimal(2)"
+        },
+        "BaseForCalcNetWTax": {
+            "name": "BaseForCalcNetWTax",
+            "text_label": "Base for Calculation of Net Withholding Tax"
+        },
+        "WithhTaxPostingWPayment": {
+            "name": "WithhTaxPostingWPayment",
+            "text_label": "Withholding Tax Posting with Payment"
+        },
+        "ReducedWithholdingTaxRate": {
+            "name": "ReducedWithholdingTaxRate",
+            "text_label": "Reduced Withholding Tax Rate for Exemption",
+            "is_number": true,
+            "data_transformation": "decimal(2)"
+        },
+        "CalcTaxWithFormula": {
+            "name": "CalcTaxWithFormula",
+            "text_label": "Calculate Withholding Tax with Formula"
+        },
+        "MinAmountForWithholdingTax": {
+            "name": "MinAmountForWithholdingTax",
+            "text_label": "Minimum Amount for Withholding Tax",
+            "is_number": true,
+            "currency_code": "CurrencyForMinAmount"
+        },
+        "CurrencyForMinAmount": {
+            "name": "CurrencyForMinAmount",
+            "text_label": "Curr. for Min. Amount"
+        },
+        "Region": {
+            "name": "Region",
+            "text_label": "Region"
+        },
+        "FiscalRegionalCode": {
+            "name": "FiscalRegionalCode",
+            "text_label": "Fiscal Regional Code"
+        },
+        "IncomeType": {
+            "name": "IncomeType",
+            "text_label": "Income Type"
+        },
+        "GermanReunificationTax": {
+            "name": "GermanReunificationTax",
+            "text_label": "German Reunification Tax Code",
+            "is_number": true,
+            "data_transformation": "decimal(2)"
+        },
+        "TaxDeductionSection": {
+            "name": "TaxDeductionSection",
+            "text_label": "Tax Deduction Section"
+        },
+        "VendorType": {
+            "name": "VendorType",
+            "text_label": "Vendor Type"
+        },
+        "VendorTypeDescription": {
+            "name": "VendorTypeDescription",
+            "text_label": "Vendor Type Description"
+        }
+    }
+}

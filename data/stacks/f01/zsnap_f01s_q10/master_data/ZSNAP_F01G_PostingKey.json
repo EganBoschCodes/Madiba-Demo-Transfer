@@ -1,0 +1,68 @@
+{
+    "name": "ZSNAP_F01G_PostingKey",
+    "text_label": "Posting Key",
+    "representative_key": "PostingKey",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_PostingKeyText",
+        "view_target": "ZSNAP_F01G_PostingKeyText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "PostingKey"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "PostingKey"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "PostingKeyName"
+    },
+    "fields": {
+        "PostingKey": {
+            "name": "PostingKey",
+            "text_label": "Posting Key",
+            "is_key": true
+        },
+        "DebitCreditCode": {
+            "name": "DebitCreditCode",
+            "text_label": "Debit/Credit Code"
+        },
+        "FinancialAccountType": {
+            "name": "FinancialAccountType",
+            "text_label": "Account Type"
+        },
+        "IsSalesRelated": {
+            "name": "IsSalesRelated",
+            "text_label": "Sales-Related Item"
+        },
+        "IsUsedInPaymentTransaction": {
+            "name": "IsUsedInPaymentTransaction",
+            "text_label": "Payment Transaction"
+        },
+        "ReversalPostingKey": {
+            "name": "ReversalPostingKey",
+            "text_label": "Reversal Posting Key"
+        },
+        "IsSpecialGLTransaction": {
+            "name": "IsSpecialGLTransaction",
+            "text_label": "Special G/L"
+        }
+    }
+}

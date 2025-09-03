@@ -1,0 +1,89 @@
+{
+    "name": "ZSNAP_F01G_FiscYearQuarter",
+    "text_label": "Fiscal Year Quarter",
+    "representative_key": "FiscalYearQuarter",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "FiscalYearQuarterText",
+    "fields": {
+        "FiscalYearVariant": {
+            "name": "FiscalYearVariant",
+            "text_label": "Fiscal Year Variant",
+            "is_key": true,
+            "masterdata": "_FiscalYearVariant"
+        },
+        "FiscalYearQuarter": {
+            "name": "FiscalYearQuarter",
+            "text_label": "Fiscal Year Quarter",
+            "is_key": true,
+            "data_transformation": "fiscal_year_quarter"
+        },
+        "FiscalYearQuarterText": {
+            "name": "FiscalYearQuarterText",
+            "text_label": "FiscalYearQuarterText"
+        },
+        "FiscalYear": {
+            "name": "FiscalYear",
+            "text_label": "Fiscal Year"
+        },
+        "FiscalYearStartDate": {
+            "name": "FiscalYearStartDate",
+            "text_label": "Start Of Fiscal Year",
+            "data_transformation": "date"
+        },
+        "FiscalYearEndDate": {
+            "name": "FiscalYearEndDate",
+            "text_label": "End Of Fiscal Year",
+            "data_transformation": "date"
+        },
+        "FiscalQuarter": {
+            "name": "FiscalQuarter",
+            "text_label": "Fiscal Quarter"
+        },
+        "FiscalQuarterStartDate": {
+            "name": "FiscalQuarterStartDate",
+            "text_label": "Start Fiscal Quarter",
+            "data_transformation": "date"
+        },
+        "FiscalQuarterEndDate": {
+            "name": "FiscalQuarterEndDate",
+            "text_label": "End Of Fscal Quarter",
+            "data_transformation": "date"
+        },
+        "FiscalQuarterConsecutiveNumber": {
+            "name": "FiscalQuarterConsecutiveNumber",
+            "text_label": "Fiscal Year Quarter (Numbering)",
+            "is_number": true,
+            "data_transformation": "int"
+        },
+        "NextFiscalQuarter": {
+            "name": "NextFiscalQuarter",
+            "text_label": "Next Fiscal Quarter"
+        },
+        "NextFiscalYear": {
+            "name": "NextFiscalYear",
+            "text_label": "Next Fiscal Year"
+        },
+        "NextFiscalYearQuarter": {
+            "name": "NextFiscalYearQuarter",
+            "text_label": "Next Fiscal Year Quarter",
+            "data_transformation": "fiscal_year_quarter"
+        },
+        "NextFiscalQuarterStartDate": {
+            "name": "NextFiscalQuarterStartDate",
+            "text_label": "Start Next Fiscal Quarter",
+            "data_transformation": "date"
+        },
+        "NextFiscalQuarterEndDate": {
+            "name": "NextFiscalQuarterEndDate",
+            "text_label": "End Next Fiscal Quarter",
+            "data_transformation": "date"
+        },
+        "NextFsclQuarterConsecutiveNmbr": {
+            "name": "NextFsclQuarterConsecutiveNmbr",
+            "text_label": "Next  Fiscal Year Quarter (Numbering)",
+            "is_number": true,
+            "data_transformation": "int"
+        }
+    }
+}

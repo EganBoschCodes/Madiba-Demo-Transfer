@@ -1,0 +1,84 @@
+{
+    "name": "ZSNAP_F01G_PaymentTerms",
+    "text_label": "Payment Terms",
+    "representative_key": "PaymentTerms",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_PaymentTermsText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "PaymentTerms"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "PaymentTerms"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "PaymentTermsName"
+    },
+    "fields": {
+        "PaymentTerms": {
+            "name": "PaymentTerms",
+            "text_label": "Terms of Payment",
+            "is_key": true
+        },
+        "PaymentTermsFinAccountType": {
+            "name": "PaymentTermsFinAccountType",
+            "text_label": "Payment Terms Fin. Account Type"
+        },
+        "CashDiscount1Days": {
+            "name": "CashDiscount1Days",
+            "text_label": "Cash Discount 1 Days",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount2Days": {
+            "name": "CashDiscount2Days",
+            "text_label": "Cash Discount 2 Days",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "NetPaymentDays": {
+            "name": "NetPaymentDays",
+            "text_label": "Net Payment Days",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount1Percent": {
+            "name": "CashDiscount1Percent",
+            "text_label": "Cash Discount 1 Percent",
+            "is_number": true,
+            "data_transformation": "percent"
+        },
+        "CashDiscount2Percent": {
+            "name": "CashDiscount2Percent",
+            "text_label": "Cash Discount 2 Percent",
+            "is_number": true,
+            "data_transformation": "percent"
+        },
+        "PaymentTermsDays": {
+            "name": "PaymentTermsDays",
+            "text_label": "Days Net",
+            "is_number": true,
+            "data_transformation": "int"
+        }
+    }
+}

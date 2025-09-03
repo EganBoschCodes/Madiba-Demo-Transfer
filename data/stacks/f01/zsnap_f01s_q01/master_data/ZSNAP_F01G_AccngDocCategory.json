@@ -1,0 +1,44 @@
+{
+    "name": "ZSNAP_F01G_AccngDocCategory",
+    "text_label": "Accounting Document Category",
+    "representative_key": "AccountingDocumentCategory",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_AccngDocCateg_LZ",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "AccountingDocumentCategory"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "AccountingDocumentCategory"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "AccountingDocumentCategoryName"
+    },
+    "fields": {
+        "AccountingDocumentCategory": {
+            "name": "AccountingDocumentCategory",
+            "text_label": "Document Status",
+            "is_key": true
+        }
+    }
+}

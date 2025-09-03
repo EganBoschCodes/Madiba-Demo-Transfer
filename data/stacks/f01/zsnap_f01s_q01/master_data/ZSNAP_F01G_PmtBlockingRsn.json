@@ -1,0 +1,44 @@
+{
+    "name": "ZSNAP_F01G_PmtBlockingRsn",
+    "text_label": "Payment Blocking Reason",
+    "representative_key": "PaymentBlockingReason",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_PmtBlockingRsnT",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "PaymentBlockingReason"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "PaymentBlockingReason"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "PaymentBlockingReasonName"
+    },
+    "fields": {
+        "PaymentBlockingReason": {
+            "name": "PaymentBlockingReason",
+            "text_label": "Item Payment Block",
+            "is_key": true
+        }
+    }
+}

@@ -1,0 +1,126 @@
+{
+    "name": "ZSNAP_F01G_FiscalPeriod",
+    "text_label": "Fiscal Period",
+    "representative_key": "FiscalPeriod",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_FiscalPeriodText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "FiscalYearVariant"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "FiscalYearVariant"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "local",
+                    "value": "FiscalYear"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "FiscalYear"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "local",
+                    "value": "FiscalPeriod"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "FiscalPeriod"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "FiscalPeriodName"
+    },
+    "fields": {
+        "FiscalYearVariant": {
+            "name": "FiscalYearVariant",
+            "text_label": "Fiscal Year Variant",
+            "is_key": true,
+            "masterdata": "_FiscalYearVariant"
+        },
+        "FiscalYear": {
+            "name": "FiscalYear",
+            "text_label": "Fiscal Year",
+            "is_key": true,
+            "masterdata": "_FiscalYear"
+        },
+        "FiscalPeriod": {
+            "name": "FiscalPeriod",
+            "text_label": "Fiscal Period",
+            "is_key": true,
+            "data_transformation": "strip_leading_zeros_3"
+        },
+        "FiscalPeriodStartDate": {
+            "name": "FiscalPeriodStartDate",
+            "text_label": "Fiscal Period Start Date",
+            "data_transformation": "date"
+        },
+        "FiscalPeriodEndDate": {
+            "name": "FiscalPeriodEndDate",
+            "text_label": "Fiscal Period End Date",
+            "data_transformation": "date"
+        },
+        "IsSpecialPeriod": {
+            "name": "IsSpecialPeriod",
+            "text_label": "Is Special Period"
+        },
+        "FiscalYearStartDate": {
+            "name": "FiscalYearStartDate",
+            "text_label": "Fiscal Year Start Date",
+            "data_transformation": "date"
+        },
+        "FiscalYearEndDate": {
+            "name": "FiscalYearEndDate",
+            "text_label": "Fiscal Year End Date",
+            "data_transformation": "date"
+        },
+        "FiscalYearPeriod": {
+            "name": "FiscalYearPeriod",
+            "text_label": "Fiscal Year Period",
+            "data_transformation": "fiscal_year_period"
+        },
+        "NextFiscalPeriod": {
+            "name": "NextFiscalPeriod",
+            "text_label": "Next Fiscal Period",
+            "data_transformation": "strip_leading_zeros_3"
+        },
+        "NextFiscalPeriodFiscalYear": {
+            "name": "NextFiscalPeriodFiscalYear",
+            "text_label": "Fiscal Year of Next Fiscal Period"
+        },
+        "FiscalQuarter": {
+            "name": "FiscalQuarter",
+            "text_label": "Fiscal Quarter"
+        },
+        "FiscalYearQuarter": {
+            "name": "FiscalYearQuarter",
+            "text_label": "Fiscal Year Quarter",
+            "data_transformation": "fiscal_year_quarter"
+        }
+    }
+}

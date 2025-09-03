@@ -1,0 +1,103 @@
+{
+    "name": "ZSNAP_F01G_CompanyCode",
+    "text_label": "Company Code",
+    "representative_key": "CompanyCode",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "CompanyCodeName",
+    "fields": {
+        "CompanyCode": {
+            "name": "CompanyCode",
+            "text_label": "Company Code",
+            "is_key": true
+        },
+        "CompanyCodeName": {
+            "name": "CompanyCodeName",
+            "text_label": "Company Name"
+        },
+        "Currency": {
+            "name": "Currency",
+            "text_label": "Currency"
+        },
+        "ChartOfAccounts": {
+            "name": "ChartOfAccounts",
+            "text_label": "Chart Of Accounts"
+        },
+        "ControllingArea": {
+            "name": "ControllingArea",
+            "text_label": "Controlling Area"
+        },
+        "FiscalYearVariant": {
+            "name": "FiscalYearVariant",
+            "text_label": "Fiscal Year Variant"
+        },
+        "Company": {
+            "name": "Company",
+            "text_label": "Company"
+        },
+        "PostingPeriodVariant": {
+            "name": "PostingPeriodVariant",
+            "text_label": "Pstng Period Variant"
+        },
+        "CityName": {
+            "name": "CityName",
+            "text_label": "City"
+        },
+        "Country": {
+            "name": "Country",
+            "text_label": "Country/Region Key"
+        },
+        "DocDateIsUsedForTaxDetn": {
+            "name": "DocDateIsUsedForTaxDetn",
+            "text_label": "Tax Determ.With Doc.Date"
+        },
+        "TaxRptgDateIsActive": {
+            "name": "TaxRptgDateIsActive",
+            "text_label": "Tax Reporting Date Active"
+        },
+        "CashDiscountBaseAmtIsNetAmt": {
+            "name": "CashDiscountBaseAmtIsNetAmt",
+            "text_label": "Discount Base Is Net Value"
+        },
+        "Language": {
+            "name": "Language",
+            "text_label": "Language Key"
+        },
+        "CreditControlArea": {
+            "name": "CreditControlArea",
+            "text_label": "Credit Control Area"
+        },
+        "CountryChartOfAccounts": {
+            "name": "CountryChartOfAccounts",
+            "text_label": "Alternative Coa"
+        },
+        "FinancialManagementArea": {
+            "name": "FinancialManagementArea",
+            "text_label": "Fm Area"
+        },
+        "AddressID": {
+            "name": "AddressID",
+            "text_label": "Address"
+        },
+        "TaxableEntity": {
+            "name": "TaxableEntity",
+            "text_label": "Taxes On Sls/Purc."
+        },
+        "VATRegistration": {
+            "name": "VATRegistration",
+            "text_label": "Vat Registration No."
+        },
+        "ExtendedWhldgTaxIsActive": {
+            "name": "ExtendedWhldgTaxIsActive",
+            "text_label": "Extended Withholding Tax Active"
+        },
+        "FieldStatusVariant": {
+            "name": "FieldStatusVariant",
+            "text_label": "Field Status Variant"
+        },
+        "NonTaxableTransactionTaxCode": {
+            "name": "NonTaxableTransactionTaxCode",
+            "text_label": "Output Tax Code"
+        }
+    }
+}

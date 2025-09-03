@@ -1,0 +1,45 @@
+{
+    "name": "ZSNAP_F01G_CalendarMonth",
+    "text_label": "Calendar Month",
+    "representative_key": "CalendarMonth",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_CalendarMonthTxt",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "CalendarMonth"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "CalendarMonth"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "CalendarMonthName"
+    },
+    "fields": {
+        "CalendarMonth": {
+            "name": "CalendarMonth",
+            "text_label": "Calendar Month",
+            "is_key": true,
+            "data_transformation": "strip_leading_zeros_2"
+        }
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "name": "ZSNAP_F01G_ChartOfAccounts",
+    "text_label": "Chart Of Accounts",
+    "representative_key": "ChartOfAccounts",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_COAText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "ChartOfAccounts"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "ChartOfAccounts"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "ChartOfAccountsName"
+    },
+    "fields": {
+        "ChartOfAccounts": {
+            "name": "ChartOfAccounts",
+            "text_label": "Chart of Accounts",
+            "is_key": true
+        },
+        "CorporateGroupChartOfAccounts": {
+            "name": "CorporateGroupChartOfAccounts",
+            "text_label": "Group Chart Of Accts"
+        },
+        "ChartOfAcctsIsBlocked": {
+            "name": "ChartOfAcctsIsBlocked",
+            "text_label": "Blocked"
+        },
+        "MaintenanceLanguage": {
+            "name": "MaintenanceLanguage",
+            "text_label": "Maint.Language"
+        }
+    }
+}

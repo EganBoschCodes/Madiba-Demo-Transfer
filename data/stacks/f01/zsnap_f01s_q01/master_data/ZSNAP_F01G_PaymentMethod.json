@@ -1,0 +1,41 @@
+{
+    "name": "ZSNAP_F01G_PaymentMethod",
+    "text_label": "Payment Method for Country/Region",
+    "representative_key": "PaymentMethod",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "PaymentMethodName",
+    "fields": {
+        "Country": {
+            "name": "Country",
+            "text_label": "Country/Region Key",
+            "is_key": true,
+            "masterdata": "_Country"
+        },
+        "PaymentMethod": {
+            "name": "PaymentMethod",
+            "text_label": "Payment Method",
+            "is_key": true
+        },
+        "PaymentMethodName": {
+            "name": "PaymentMethodName",
+            "text_label": "Payment Method Name"
+        },
+        "PaymentMethodIsUsedForCheck": {
+            "name": "PaymentMethodIsUsedForCheck",
+            "text_label": "Check Is Created"
+        },
+        "PaytMethIsUsdForBillOfExchange": {
+            "name": "PaytMethIsUsdForBillOfExchange",
+            "text_label": "Bill Of Exchange Will Be Created"
+        },
+        "PaytMethIsUsdForChkBillOfExch": {
+            "name": "PaytMethIsUsdForChkBillOfExch",
+            "text_label": "Check/Bill Of Exchange"
+        },
+        "IsPaytMethForIncomingPayments": {
+            "name": "IsPaytMethForIncomingPayments",
+            "text_label": "Payment Method For Incoming Pmnts"
+        }
+    }
+}

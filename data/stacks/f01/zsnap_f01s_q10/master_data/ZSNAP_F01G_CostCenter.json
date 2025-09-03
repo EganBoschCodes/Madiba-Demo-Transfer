@@ -1,0 +1,405 @@
+{
+    "name": "ZSNAP_F01G_CostCenter",
+    "text_label": "Cost Center",
+    "representative_key": "CostCenter",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_CostCenterText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "ControllingArea"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "ControllingArea"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "local",
+                    "value": "CostCenter"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "CostCenter"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "ValidityEndDate"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_date"
+                },
+                "operator": ">"
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "ValidityStartDate"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_date"
+                },
+                "operator": "<="
+            }
+        ],
+        "text_field": "CostCenterName"
+    },
+    "fields": {
+        "ControllingArea": {
+            "name": "ControllingArea",
+            "text_label": "Controlling Area",
+            "is_key": true,
+            "masterdata": "_ControllingArea"
+        },
+        "CostCenter": {
+            "name": "CostCenter",
+            "text_label": "Cost Center",
+            "is_key": true,
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "ValidityEndDate": {
+            "name": "ValidityEndDate",
+            "text_label": "Valid To",
+            "is_key": true,
+            "data_transformation": "date"
+        },
+        "CompanyCode": {
+            "name": "CompanyCode",
+            "text_label": "Company Code"
+        },
+        "ValidityStartDate": {
+            "name": "ValidityStartDate",
+            "text_label": "Valid From",
+            "data_transformation": "date"
+        },
+        "IsBlkdForPrimaryCostsPosting": {
+            "name": "IsBlkdForPrimaryCostsPosting",
+            "text_label": "Actual Primary Costs"
+        },
+        "IsBlockedForPlanPrimaryCosts": {
+            "name": "IsBlockedForPlanPrimaryCosts",
+            "text_label": "Plan Primary Costs"
+        },
+        "CostCenterCategory": {
+            "name": "CostCenterCategory",
+            "text_label": "Cost Center Category"
+        },
+        "Department": {
+            "name": "Department",
+            "text_label": "Department"
+        },
+        "CostCtrResponsiblePersonName": {
+            "name": "CostCtrResponsiblePersonName",
+            "text_label": "Person Responsible"
+        },
+        "CostCenterCurrency": {
+            "name": "CostCenterCurrency",
+            "text_label": "Currency"
+        },
+        "ProfitCenter": {
+            "name": "ProfitCenter",
+            "text_label": "Profit Center",
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "LogicalSystem": {
+            "name": "LogicalSystem",
+            "text_label": "Logical System"
+        },
+        "IsBlockedForRevenuePosting": {
+            "name": "IsBlockedForRevenuePosting",
+            "text_label": "Actual Revenues"
+        },
+        "IsBlockedForCommitmentPosting": {
+            "name": "IsBlockedForCommitmentPosting",
+            "text_label": "Commitment Update"
+        },
+        "ConsumptionQtyIsRecorded": {
+            "name": "ConsumptionQtyIsRecorded",
+            "text_label": "Record Quantity"
+        },
+        "Country": {
+            "name": "Country",
+            "text_label": "Country/Region Key"
+        },
+        "CostCenterStandardHierArea": {
+            "name": "CostCenterStandardHierArea",
+            "text_label": "Hierarchy Area"
+        },
+        "ObjectInternalID": {
+            "name": "ObjectInternalID",
+            "text_label": "Object Number"
+        },
+        "JointVenture": {
+            "name": "JointVenture",
+            "text_label": "Joint Venture"
+        },
+        "BusinessArea": {
+            "name": "BusinessArea",
+            "text_label": "Business Area"
+        },
+        "CostCtrResponsibleUser": {
+            "name": "CostCtrResponsibleUser",
+            "text_label": "User Responsible"
+        },
+        "TaxJurisdiction": {
+            "name": "TaxJurisdiction",
+            "text_label": "Tax Jurisdiction"
+        },
+        "Plant": {
+            "name": "Plant",
+            "text_label": "Plant"
+        },
+        "CostCenterCreationDate": {
+            "name": "CostCenterCreationDate",
+            "text_label": "Entered On",
+            "data_transformation": "date"
+        },
+        "CostCenterCreatedByUser": {
+            "name": "CostCenterCreatedByUser",
+            "text_label": "Created By"
+        },
+        "IsBlkdForSecondaryCostsPosting": {
+            "name": "IsBlkdForSecondaryCostsPosting",
+            "text_label": "Actual Secondary Costs"
+        },
+        "IsBlockedForPlanSecondaryCosts": {
+            "name": "IsBlockedForPlanSecondaryCosts",
+            "text_label": "Lock Plan Secondary Costs"
+        },
+        "IsBlockedForPlanRevenues": {
+            "name": "IsBlockedForPlanRevenues",
+            "text_label": "Lock Planning Revenues"
+        },
+        "CostCenterAllocationMethod": {
+            "name": "CostCenterAllocationMethod",
+            "text_label": "Allocation Methods"
+        },
+        "SubsequentCostCenter": {
+            "name": "SubsequentCostCenter",
+            "text_label": "Subsequent Cost Ctr."
+        },
+        "ConditionUsage": {
+            "name": "ConditionUsage",
+            "text_label": "Usage"
+        },
+        "ConditionApplication": {
+            "name": "ConditionApplication",
+            "text_label": "Application"
+        },
+        "CostCenterAccountingOverhead": {
+            "name": "CostCenterAccountingOverhead",
+            "text_label": "Overhead Key"
+        },
+        "Region": {
+            "name": "Region",
+            "text_label": "Region"
+        },
+        "Language": {
+            "name": "Language",
+            "text_label": "Language Key"
+        },
+        "FunctionalArea": {
+            "name": "FunctionalArea",
+            "text_label": "Functional Area"
+        },
+        "JointVentureRecoveryCode": {
+            "name": "JointVentureRecoveryCode",
+            "text_label": "Recovery Indicator"
+        },
+        "JointVentureEquityType": {
+            "name": "JointVentureEquityType",
+            "text_label": "Equity Type"
+        },
+        "JointVentureObjectType": {
+            "name": "JointVentureObjectType",
+            "text_label": "Joint Venture Object Type"
+        },
+        "JointVentureClass": {
+            "name": "JointVentureClass",
+            "text_label": "Jib/Jibe Class"
+        },
+        "JointVentureSubClass": {
+            "name": "JointVentureSubClass",
+            "text_label": "Jib/Jibe Subclass A"
+        },
+        "BudgetCarryingCostCenter": {
+            "name": "BudgetCarryingCostCenter",
+            "text_label": "Budget-Carrying Cost Center"
+        },
+        "AvailabilityControlProfile": {
+            "name": "AvailabilityControlProfile",
+            "text_label": "Budget Availability Ctrl Prfl"
+        },
+        "AvailabilityControlIsActive": {
+            "name": "AvailabilityControlIsActive",
+            "text_label": "Budget Availability Control Is Active"
+        },
+        "Fund": {
+            "name": "Fund",
+            "text_label": "Fund"
+        },
+        "GrantID": {
+            "name": "GrantID",
+            "text_label": "Grant"
+        },
+        "FundIsFixAssigned": {
+            "name": "FundIsFixAssigned",
+            "text_label": "Fund Fixed Assignment"
+        },
+        "GrantIDIsFixAssigned": {
+            "name": "GrantIDIsFixAssigned",
+            "text_label": "Grant Fixed Assignment"
+        },
+        "FunctionalAreaIsFixAssigned": {
+            "name": "FunctionalAreaIsFixAssigned",
+            "text_label": "Functional Area Fixed Assignment"
+        },
+        "CostingSheet": {
+            "name": "CostingSheet",
+            "text_label": "Costing Sheet"
+        },
+        "FormOfAddress": {
+            "name": "FormOfAddress",
+            "text_label": "Title"
+        },
+        "AddressName": {
+            "name": "AddressName",
+            "text_label": "Name"
+        },
+        "AddressAdditionalName": {
+            "name": "AddressAdditionalName",
+            "text_label": "Name 2"
+        },
+        "CostCenterAddrName3": {
+            "name": "CostCenterAddrName3",
+            "text_label": "Name 3"
+        },
+        "CostCenterAddrName4": {
+            "name": "CostCenterAddrName4",
+            "text_label": "Name 4"
+        },
+        "CityName": {
+            "name": "CityName",
+            "text_label": "City"
+        },
+        "District": {
+            "name": "District",
+            "text_label": "District"
+        },
+        "StreetAddressName": {
+            "name": "StreetAddressName",
+            "text_label": "Street"
+        },
+        "POBox": {
+            "name": "POBox",
+            "text_label": "Po Box"
+        },
+        "PostalCode": {
+            "name": "PostalCode",
+            "text_label": "Postal Code"
+        },
+        "POBoxPostalCode": {
+            "name": "POBoxPostalCode",
+            "text_label": "P.O. Box Postal Code"
+        },
+        "TeleboxNumber": {
+            "name": "TeleboxNumber",
+            "text_label": "Telebox Number"
+        },
+        "PhoneNumber1": {
+            "name": "PhoneNumber1",
+            "text_label": "Telephone 1"
+        },
+        "PhoneNumber2": {
+            "name": "PhoneNumber2",
+            "text_label": "Telephone 2"
+        },
+        "FaxNumber": {
+            "name": "FaxNumber",
+            "text_label": "Fax Number"
+        },
+        "TeletexNumber": {
+            "name": "TeletexNumber",
+            "text_label": "Teletex Number"
+        },
+        "TelexNumber": {
+            "name": "TelexNumber",
+            "text_label": "Telex Number"
+        },
+        "DataCommunicationPhoneNumber": {
+            "name": "DataCommunicationPhoneNumber",
+            "text_label": "Data Line"
+        },
+        "CostCenterPrinterDestination": {
+            "name": "CostCenterPrinterDestination",
+            "text_label": "Printer Destination"
+        },
+        "CostCollector": {
+            "name": "CostCollector",
+            "text_label": "Cost Collector Key"
+        },
+        "CostCenterIsComplete": {
+            "name": "CostCenterIsComplete",
+            "text_label": "Complete"
+        },
+        "IsStatisticalCostCenter": {
+            "name": "IsStatisticalCostCenter",
+            "text_label": "Cost Center Is Statistical"
+        },
+        "CostCenterFunction": {
+            "name": "CostCenterFunction",
+            "text_label": "Function"
+        },
+        "CostCenterAlternativeFunction": {
+            "name": "CostCenterAlternativeFunction",
+            "text_label": "Altern. Function"
+        },
+        "ActyIndepFormulaPlanningTmpl": {
+            "name": "ActyIndepFormulaPlanningTmpl",
+            "text_label": "Acty-Indep. Formplng Temp"
+        },
+        "ActyDepdntFormulaPlanningTmpl": {
+            "name": "ActyDepdntFormulaPlanningTmpl",
+            "text_label": "Acty-Dep. Form.Plng Temp."
+        },
+        "ActyIndependentAllocationTmpl": {
+            "name": "ActyIndependentAllocationTmpl",
+            "text_label": "Acty-Indep. Alloc. Temp."
+        },
+        "ActyDependentAllocationTmpl": {
+            "name": "ActyDependentAllocationTmpl",
+            "text_label": "Acty-Dep. Alloc. Template"
+        },
+        "ActlIndepStatisticalKeyFigures": {
+            "name": "ActlIndepStatisticalKeyFigures",
+            "text_label": "Templ.: Act. Stat. Key Figure"
+        },
+        "ActlDepStatisticalKeyFigures": {
+            "name": "ActlDepStatisticalKeyFigures",
+            "text_label": "Templ.: Act. Stat. Key Figure"
+        }
+    }
+}

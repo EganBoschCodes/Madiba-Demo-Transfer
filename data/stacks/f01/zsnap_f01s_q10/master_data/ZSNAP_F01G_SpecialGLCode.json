@@ -1,0 +1,73 @@
+{
+    "name": "ZSNAP_F01G_SpecialGLCode",
+    "text_label": "Special General Ledger Code",
+    "representative_key": "SpecialGLCode",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_SpecialGLCdText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "FinancialAccountType"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "FinancialAccountType"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "local",
+                    "value": "SpecialGLCode"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "SpecialGLCode"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "SpecialGLCodeName"
+    },
+    "fields": {
+        "SpecialGLCode": {
+            "name": "SpecialGLCode",
+            "text_label": "Special G/L Ind.",
+            "is_key": true
+        },
+        "FinancialAccountType": {
+            "name": "FinancialAccountType",
+            "text_label": "Account Type",
+            "is_key": true,
+            "masterdata": "_FinancialAccountType"
+        },
+        "SpecialGLTransactionType": {
+            "name": "SpecialGLTransactionType",
+            "text_label": "Sp. G/L Trans.Type"
+        },
+        "CreditLimitIsChecked": {
+            "name": "CreditLimitIsChecked",
+            "text_label": "Rel.To Credit Limit"
+        },
+        "IsNotedItmWithoutBalUpdt": {
+            "name": "IsNotedItmWithoutBalUpdt",
+            "text_label": "Noted Items"
+        }
+    }
+}

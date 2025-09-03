@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01C_IncludeSpecialGL",
+    "text_label": "SNAP F01: Include Special GL Transactions Values",
+    "representative_key": "IncludeSpecialGL",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "IncludeSpecialGL": {
+            "name": "IncludeSpecialGL",
+            "text_label": "Include Special GL Transactions",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Include Special GL Transactions Description"
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01C_IsConversionB_66",
+    "text_label": "SNAP F01: Currency Conversion Error Flag Values",
+    "representative_key": "IsConversionBroken",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "IsConversionBroken": {
+            "name": "IsConversionBroken",
+            "text_label": "Currency Conversion Error Flag",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Currency Conversion Error Flag Description"
+        }
+    }
+}

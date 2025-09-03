@@ -1,0 +1,363 @@
+{
+    "name": "ZSNAP_F01G_JournalEntry",
+    "text_label": "Journal Entry",
+    "representative_key": "AccountingDocument",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "AccountingDocumentHeaderText",
+    "fields": {
+        "CompanyCode": {
+            "name": "CompanyCode",
+            "text_label": "Company Code",
+            "is_key": true,
+            "masterdata": "_CompanyCode"
+        },
+        "FiscalYear": {
+            "name": "FiscalYear",
+            "text_label": "Fiscal Year",
+            "is_key": true,
+            "masterdata": "_FiscalYear"
+        },
+        "FiscalYearVariant": {
+            "name": "FiscalYearVariant",
+            "text_label": "Fiscal Year Variant",
+            "is_key": true,
+            "masterdata": "_FiscalYearVariant"
+        },
+        "AccountingDocument": {
+            "name": "AccountingDocument",
+            "text_label": "Journal Entry",
+            "is_key": true
+        },
+        "AccountingDocumentType": {
+            "name": "AccountingDocumentType",
+            "text_label": "Journal Entry Type"
+        },
+        "DocumentDate": {
+            "name": "DocumentDate",
+            "text_label": "Journal Entry Date",
+            "data_transformation": "date"
+        },
+        "PostingDate": {
+            "name": "PostingDate",
+            "text_label": "Posting Date",
+            "data_transformation": "date"
+        },
+        "FiscalPeriod": {
+            "name": "FiscalPeriod",
+            "text_label": "Fiscal Period",
+            "data_transformation": "strip_leading_zeros_3"
+        },
+        "AccountingDocumentCreationDate": {
+            "name": "AccountingDocumentCreationDate",
+            "text_label": "Entered On",
+            "data_transformation": "date"
+        },
+        "CreationTime": {
+            "name": "CreationTime",
+            "text_label": "Creation Time"
+        },
+        "LastManualChangeDate": {
+            "name": "LastManualChangeDate",
+            "text_label": "Last Manual Change Date",
+            "data_transformation": "date"
+        },
+        "LastAutomaticChangeDate": {
+            "name": "LastAutomaticChangeDate",
+            "text_label": "Last Automatic Change Date",
+            "data_transformation": "date"
+        },
+        "LastChangeDate": {
+            "name": "LastChangeDate",
+            "text_label": "LastChangeDate",
+            "data_transformation": "date"
+        },
+        "ExchangeRateDate": {
+            "name": "ExchangeRateDate",
+            "text_label": "Exchange Rate Date",
+            "data_transformation": "date"
+        },
+        "AccountingDocCreatedByUser": {
+            "name": "AccountingDocCreatedByUser",
+            "text_label": "Journal Entry Created By"
+        },
+        "TransactionCode": {
+            "name": "TransactionCode",
+            "text_label": "Transaction Code"
+        },
+        "IntercompanyTransaction": {
+            "name": "IntercompanyTransaction",
+            "text_label": "Intercompany Transaction"
+        },
+        "DocumentReferenceID": {
+            "name": "DocumentReferenceID",
+            "text_label": "Document Reference ID"
+        },
+        "RecurringAccountingDocument": {
+            "name": "RecurringAccountingDocument",
+            "text_label": "Recurring Journal Entry"
+        },
+        "ReverseDocument": {
+            "name": "ReverseDocument",
+            "text_label": "Reverse Document"
+        },
+        "ReverseDocumentFiscalYear": {
+            "name": "ReverseDocumentFiscalYear",
+            "text_label": "Reverse Document Fiscal Year"
+        },
+        "AccountingDocumentHeaderText": {
+            "name": "AccountingDocumentHeaderText",
+            "text_label": "Document Header Text"
+        },
+        "TransactionCurrency": {
+            "name": "TransactionCurrency",
+            "text_label": "Currency"
+        },
+        "ExchangeRate": {
+            "name": "ExchangeRate",
+            "text_label": "Exchange Rate",
+            "is_number": true,
+            "data_transformation": "decimal(5)"
+        },
+        "AccountingDocumentCategory": {
+            "name": "AccountingDocumentCategory",
+            "text_label": "Journal Entry Category"
+        },
+        "BusinessTransactionType": {
+            "name": "BusinessTransactionType",
+            "text_label": "Business Transaction Category"
+        },
+        "BatchInputSession": {
+            "name": "BatchInputSession",
+            "text_label": "Batch Input Session"
+        },
+        "ReferenceDocumentType": {
+            "name": "ReferenceDocumentType",
+            "text_label": "Reference Document Type"
+        },
+        "OriginalReferenceDocument": {
+            "name": "OriginalReferenceDocument",
+            "text_label": "Object key"
+        },
+        "FinancialManagementArea": {
+            "name": "FinancialManagementArea",
+            "text_label": "Fm Area"
+        },
+        "CompanyCodeCurrency": {
+            "name": "CompanyCodeCurrency",
+            "text_label": "Company Code Currency"
+        },
+        "AdditionalCurrency1": {
+            "name": "AdditionalCurrency1",
+            "text_label": "Additional Currency 1"
+        },
+        "AdditionalCurrency2": {
+            "name": "AdditionalCurrency2",
+            "text_label": "Additional Currency 2"
+        },
+        "ReversalIsPlanned": {
+            "name": "ReversalIsPlanned",
+            "text_label": "Reversal Is Planned"
+        },
+        "PlannedReversalDate": {
+            "name": "PlannedReversalDate",
+            "text_label": "Planned Reversal Date",
+            "data_transformation": "date"
+        },
+        "TaxIsCalculatedAutomatically": {
+            "name": "TaxIsCalculatedAutomatically",
+            "text_label": "Tax Is Automatically Calculated"
+        },
+        "AdditionalCurrency1Role": {
+            "name": "AdditionalCurrency1Role",
+            "text_label": "Lc2 Currency Type"
+        },
+        "AdditionalCurrency2Role": {
+            "name": "AdditionalCurrency2Role",
+            "text_label": "Lc3 Currency Type"
+        },
+        "TaxBaseAmountIsNetAmount": {
+            "name": "TaxBaseAmountIsNetAmount",
+            "text_label": "Tax Base Amount is Net Amount"
+        },
+        "SourceCompanyCode": {
+            "name": "SourceCompanyCode",
+            "text_label": "Source Company Code"
+        },
+        "LogicalSystem": {
+            "name": "LogicalSystem",
+            "text_label": "Logical System"
+        },
+        "ReferenceDocumentLogicalSystem": {
+            "name": "ReferenceDocumentLogicalSystem",
+            "text_label": "Ref. Document Logical System"
+        },
+        "TaxExchangeRate": {
+            "name": "TaxExchangeRate",
+            "text_label": "Tax Exchange Rate",
+            "is_number": true,
+            "data_transformation": "decimal(5)"
+        },
+        "ReversalReason": {
+            "name": "ReversalReason",
+            "text_label": "Reversal Reason"
+        },
+        "ParkingDate": {
+            "name": "ParkingDate",
+            "text_label": "Date Of Parking",
+            "data_transformation": "date"
+        },
+        "ParkingTime": {
+            "name": "ParkingTime",
+            "text_label": "Time Of Parking"
+        },
+        "Branch": {
+            "name": "Branch",
+            "text_label": "Branch"
+        },
+        "NmbrOfPages": {
+            "name": "NmbrOfPages",
+            "text_label": "Number Of Pages"
+        },
+        "IsDiscountDocument": {
+            "name": "IsDiscountDocument",
+            "text_label": "Discount Document"
+        },
+        "Reference1InDocumentHeader": {
+            "name": "Reference1InDocumentHeader",
+            "text_label": "Reference 1 in Document Header"
+        },
+        "Reference2InDocumentHeader": {
+            "name": "Reference2InDocumentHeader",
+            "text_label": "Reference 2 in Document Header"
+        },
+        "InvoiceReceiptDate": {
+            "name": "InvoiceReceiptDate",
+            "text_label": "Invoice Receipt date",
+            "data_transformation": "date"
+        },
+        "Ledger": {
+            "name": "Ledger",
+            "text_label": "Ledger"
+        },
+        "LedgerGroup": {
+            "name": "LedgerGroup",
+            "text_label": "Ledger Group"
+        },
+        "AlternativeReferenceDocument": {
+            "name": "AlternativeReferenceDocument",
+            "text_label": "Alternative Reference Document"
+        },
+        "TaxReportingDate": {
+            "name": "TaxReportingDate",
+            "text_label": "Tax Reporting Date",
+            "data_transformation": "date"
+        },
+        "AccountingDocumentClass": {
+            "name": "AccountingDocumentClass",
+            "text_label": "Accounting Document Class"
+        },
+        "ExchangeRateType": {
+            "name": "ExchangeRateType",
+            "text_label": "Exchange Rate Type"
+        },
+        "SenderLogicalSystem": {
+            "name": "SenderLogicalSystem",
+            "text_label": "Sender Logical System"
+        },
+        "SenderCompanyCode": {
+            "name": "SenderCompanyCode",
+            "text_label": "Company Code In Sender System"
+        },
+        "SenderAccountingDocument": {
+            "name": "SenderAccountingDocument",
+            "text_label": "Sender Journal Entry"
+        },
+        "SenderFiscalYear": {
+            "name": "SenderFiscalYear",
+            "text_label": "Fiscal Year in Sender System"
+        },
+        "ReversalReferenceDocumentCntxt": {
+            "name": "ReversalReferenceDocumentCntxt",
+            "text_label": "Reversal Organizatns"
+        },
+        "ReversalReferenceDocument": {
+            "name": "ReversalReferenceDocument",
+            "text_label": "Reversal Ref. No."
+        },
+        "LatePaymentReason": {
+            "name": "LatePaymentReason",
+            "text_label": "Late Payment Reason"
+        },
+        "SalesDocumentCondition": {
+            "name": "SalesDocumentCondition",
+            "text_label": "Sales Document Condition"
+        },
+        "IsReversal": {
+            "name": "IsReversal",
+            "text_label": "Is Reversing Another Item"
+        },
+        "IsReversed": {
+            "name": "IsReversed",
+            "text_label": "Is Reversed"
+        },
+        "CostAccountingValuationDate": {
+            "name": "CostAccountingValuationDate",
+            "text_label": "Valuation Date",
+            "data_transformation": "date"
+        },
+        "JrnlEntryCntrySpecificRef1": {
+            "name": "JrnlEntryCntrySpecificRef1",
+            "text_label": "Country/Region Specific Reference 1"
+        },
+        "JrnlEntryCntrySpecificDate1": {
+            "name": "JrnlEntryCntrySpecificDate1",
+            "text_label": "Country/Region Specific Date 1",
+            "data_transformation": "date"
+        },
+        "JrnlEntryCntrySpecificRef2": {
+            "name": "JrnlEntryCntrySpecificRef2",
+            "text_label": "Country/Region Specific Reference 2"
+        },
+        "JrnlEntryCntrySpecificDate2": {
+            "name": "JrnlEntryCntrySpecificDate2",
+            "text_label": "Country/Region Specific Date 2",
+            "data_transformation": "date"
+        },
+        "JrnlEntryCntrySpecificRef3": {
+            "name": "JrnlEntryCntrySpecificRef3",
+            "text_label": "Country/Region Specific Reference 3"
+        },
+        "JrnlEntryCntrySpecificDate3": {
+            "name": "JrnlEntryCntrySpecificDate3",
+            "text_label": "Country/Region Specific Date 3",
+            "data_transformation": "date"
+        },
+        "JrnlEntryCntrySpecificRef4": {
+            "name": "JrnlEntryCntrySpecificRef4",
+            "text_label": "Country/Region Specific Reference 4"
+        },
+        "JrnlEntryCntrySpecificDate4": {
+            "name": "JrnlEntryCntrySpecificDate4",
+            "text_label": "Country/Region Specific Date 4",
+            "data_transformation": "date"
+        },
+        "JrnlEntryCntrySpecificRef5": {
+            "name": "JrnlEntryCntrySpecificRef5",
+            "text_label": "Country/Region Specific Reference 5"
+        },
+        "JrnlEntryCntrySpecificDate5": {
+            "name": "JrnlEntryCntrySpecificDate5",
+            "text_label": "Country/Region Specific Date 5",
+            "data_transformation": "date"
+        },
+        "JrnlEntryCntrySpecificBP1": {
+            "name": "JrnlEntryCntrySpecificBP1",
+            "text_label": "Ctry/Reg. Specific Business Partner 1"
+        },
+        "JrnlEntryCntrySpecificBP2": {
+            "name": "JrnlEntryCntrySpecificBP2",
+            "text_label": "Ctry/Reg. Specific Business Partner 2"
+        }
+    }
+}

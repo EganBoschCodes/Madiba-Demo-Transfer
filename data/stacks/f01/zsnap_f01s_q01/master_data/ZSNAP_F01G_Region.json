@@ -1,0 +1,61 @@
+{
+    "name": "ZSNAP_F01G_Region",
+    "text_label": "Region",
+    "representative_key": "Region",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_RegionText",
+        "view_target": "ZSNAP_F01G_RegionText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "Region"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "Region"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "local",
+                    "value": "Country"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "Country"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "RegionName"
+    },
+    "fields": {
+        "Country": {
+            "name": "Country",
+            "text_label": "Country/Region Key",
+            "is_key": true,
+            "masterdata": "_Country"
+        },
+        "Region": {
+            "name": "Region",
+            "text_label": "Region",
+            "is_key": true
+        }
+    }
+}

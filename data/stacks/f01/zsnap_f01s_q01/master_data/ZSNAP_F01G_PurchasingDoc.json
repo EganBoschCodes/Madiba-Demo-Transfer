@@ -1,0 +1,367 @@
+{
+    "name": "ZSNAP_F01G_PurchasingDoc",
+    "text_label": "Purchasing Document",
+    "representative_key": "PurchasingDocument",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "PurchasingDocumentName",
+    "fields": {
+        "PurchasingDocument": {
+            "name": "PurchasingDocument",
+            "text_label": "Purchasing Document",
+            "is_key": true
+        },
+        "PurchasingDocumentCategory": {
+            "name": "PurchasingDocumentCategory",
+            "text_label": "Purch. Doc. Category"
+        },
+        "PurchasingDocumentType": {
+            "name": "PurchasingDocumentType",
+            "text_label": "Purchasing Doc. Type"
+        },
+        "PurchasingDocumentSubtype": {
+            "name": "PurchasingDocumentSubtype",
+            "text_label": "Control Indicator"
+        },
+        "CompanyCode": {
+            "name": "CompanyCode",
+            "text_label": "Company Code"
+        },
+        "PurchasingDocumentDeletionCode": {
+            "name": "PurchasingDocumentDeletionCode",
+            "text_label": "Deletion Indicator"
+        },
+        "PurchasingDocumentIsAged": {
+            "name": "PurchasingDocumentIsAged",
+            "text_label": "Document Is Aged"
+        },
+        "ItemNumberInterval": {
+            "name": "ItemNumberInterval",
+            "text_label": "Item Number Interval"
+        },
+        "ItemNumberIntervalForSubItems": {
+            "name": "ItemNumberIntervalForSubItems",
+            "text_label": "Subitem Interval"
+        },
+        "PurchasingDocumentOrigin": {
+            "name": "PurchasingDocumentOrigin",
+            "text_label": "Status"
+        },
+        "ReleaseIsNotCompleted": {
+            "name": "ReleaseIsNotCompleted",
+            "text_label": "Subject To Release"
+        },
+        "ReleaseCode": {
+            "name": "ReleaseCode",
+            "text_label": "Release Indicator"
+        },
+        "PurchasingReleaseStrategy": {
+            "name": "PurchasingReleaseStrategy",
+            "text_label": "Release Strategy"
+        },
+        "PurgReleaseSequenceStatus": {
+            "name": "PurgReleaseSequenceStatus",
+            "text_label": "Release State"
+        },
+        "TaxReturnCountry": {
+            "name": "TaxReturnCountry",
+            "text_label": "C/R For Tax Report"
+        },
+        "CreationDate": {
+            "name": "CreationDate",
+            "text_label": "Created On",
+            "data_transformation": "date"
+        },
+        "LastChangeDateTime": {
+            "name": "LastChangeDateTime",
+            "text_label": "Last Changed",
+            "is_number": true,
+            "data_transformation": "decimal(7)"
+        },
+        "CreatedByUser": {
+            "name": "CreatedByUser",
+            "text_label": "Created By"
+        },
+        "Supplier": {
+            "name": "Supplier",
+            "text_label": "Supplier",
+            "data_transformation": "business_partner"
+        },
+        "SupplierRespSalesPersonName": {
+            "name": "SupplierRespSalesPersonName",
+            "text_label": "Salesperson"
+        },
+        "SupplierPhoneNumber": {
+            "name": "SupplierPhoneNumber",
+            "text_label": "Telephone"
+        },
+        "SupplierAddressID": {
+            "name": "SupplierAddressID",
+            "text_label": "Address Number"
+        },
+        "ManualSupplierAddressID": {
+            "name": "ManualSupplierAddressID",
+            "text_label": "Address Number"
+        },
+        "CorrespncExternalReference": {
+            "name": "CorrespncExternalReference",
+            "text_label": "Your Reference"
+        },
+        "CorrespncInternalReference": {
+            "name": "CorrespncInternalReference",
+            "text_label": "Our Reference"
+        },
+        "PurchasingOrganization": {
+            "name": "PurchasingOrganization",
+            "text_label": "Purch. Organization"
+        },
+        "PurchasingGroup": {
+            "name": "PurchasingGroup",
+            "text_label": "Purchasing Group"
+        },
+        "DocumentCurrency": {
+            "name": "DocumentCurrency",
+            "text_label": "Currency"
+        },
+        "ExchangeRate": {
+            "name": "ExchangeRate",
+            "text_label": "Exchange Rate",
+            "is_number": true,
+            "data_transformation": "decimal(5)"
+        },
+        "PurchasingDocumentOrderDate": {
+            "name": "PurchasingDocumentOrderDate",
+            "text_label": "Document Date",
+            "data_transformation": "date"
+        },
+        "SupplyingSupplier": {
+            "name": "SupplyingSupplier",
+            "text_label": "Goods Supplier"
+        },
+        "SupplyingPlant": {
+            "name": "SupplyingPlant",
+            "text_label": "Supplying Plant"
+        },
+        "InvoicingParty": {
+            "name": "InvoicingParty",
+            "text_label": "Invoicing Party"
+        },
+        "Customer": {
+            "name": "Customer",
+            "text_label": "Customer",
+            "data_transformation": "business_partner"
+        },
+        "PurchaseContract": {
+            "name": "PurchaseContract",
+            "text_label": "Outline Agreement"
+        },
+        "Language": {
+            "name": "Language",
+            "text_label": "Language Key"
+        },
+        "PurgReasonForDocCancellation": {
+            "name": "PurgReasonForDocCancellation",
+            "text_label": "Reason For Canc."
+        },
+        "PurchasingCompletenessStatus": {
+            "name": "PurchasingCompletenessStatus",
+            "text_label": "Incomplete"
+        },
+        "IncotermsClassification": {
+            "name": "IncotermsClassification",
+            "text_label": "Incoterms"
+        },
+        "IncotermsTransferLocation": {
+            "name": "IncotermsTransferLocation",
+            "text_label": "Incoterms (Part 2)"
+        },
+        "PaymentTerms": {
+            "name": "PaymentTerms",
+            "text_label": "Terms of Payment"
+        },
+        "CashDiscount1Days": {
+            "name": "CashDiscount1Days",
+            "text_label": "Days 1",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount2Days": {
+            "name": "CashDiscount2Days",
+            "text_label": "Days 2",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "NetPaymentDays": {
+            "name": "NetPaymentDays",
+            "text_label": "Days Net",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount1Percent": {
+            "name": "CashDiscount1Percent",
+            "text_label": "Cd Percentage 1",
+            "is_number": true,
+            "data_transformation": "percent"
+        },
+        "CashDiscount2Percent": {
+            "name": "CashDiscount2Percent",
+            "text_label": "Cd Percentage 2",
+            "is_number": true,
+            "data_transformation": "percent"
+        },
+        "PricingProcedure": {
+            "name": "PricingProcedure",
+            "text_label": "Procedure"
+        },
+        "TargetAmount": {
+            "name": "TargetAmount",
+            "text_label": "Target Value",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "none",
+            "currency_code": "DocumentCurrency"
+        },
+        "PurgDocumentDistributionType": {
+            "name": "PurgDocumentDistributionType",
+            "text_label": "Distribution Type For Purchasing Doc."
+        },
+        "PurchasingDocumentCondition": {
+            "name": "PurchasingDocumentCondition",
+            "text_label": "Doc. Condition No."
+        },
+        "ValidityStartDate": {
+            "name": "ValidityStartDate",
+            "text_label": "Validity Per. Start",
+            "data_transformation": "date"
+        },
+        "ValidityEndDate": {
+            "name": "ValidityEndDate",
+            "text_label": "Validity Period End",
+            "data_transformation": "date"
+        },
+        "ScheduleAgreementHasReleaseDoc": {
+            "name": "ScheduleAgreementHasReleaseDoc",
+            "text_label": "Rel. Documentation"
+        },
+        "QuotationLatestSubmissionDate": {
+            "name": "QuotationLatestSubmissionDate",
+            "text_label": "Quotation Deadline",
+            "data_transformation": "date"
+        },
+        "BindingPeriodValidityEndDate": {
+            "name": "BindingPeriodValidityEndDate",
+            "text_label": "Binding Period",
+            "data_transformation": "date"
+        },
+        "QuotationSubmissionDate": {
+            "name": "QuotationSubmissionDate",
+            "text_label": "Quotation Date",
+            "data_transformation": "date"
+        },
+        "SupplierQuotationExternalID": {
+            "name": "SupplierQuotationExternalID",
+            "text_label": "Quotation"
+        },
+        "RequestForQuotation": {
+            "name": "RequestForQuotation",
+            "text_label": "Bid Invitation"
+        },
+        "ExchangeRateIsFixed": {
+            "name": "ExchangeRateIsFixed",
+            "text_label": "Fixed Exchange Rate"
+        },
+        "IncotermsVersion": {
+            "name": "IncotermsVersion",
+            "text_label": "Incoterms Version"
+        },
+        "IncotermsLocation1": {
+            "name": "IncotermsLocation1",
+            "text_label": "Incoterms Location 1"
+        },
+        "IncotermsLocation2": {
+            "name": "IncotermsLocation2",
+            "text_label": "Incoterms Location 2"
+        },
+        "PurchasingProcessingStatus": {
+            "name": "PurchasingProcessingStatus",
+            "text_label": "Purch. Doc. Proc. State"
+        },
+        "PurgReleaseTimeTotalAmount": {
+            "name": "PurgReleaseTimeTotalAmount",
+            "text_label": "Total Val. Upon Release",
+            "is_number": true,
+            "currency_code": "DocumentCurrency"
+        },
+        "DownPaymentType": {
+            "name": "DownPaymentType",
+            "text_label": "Down Payment"
+        },
+        "DownPaymentPercentageOfTotAmt": {
+            "name": "DownPaymentPercentageOfTotAmt",
+            "text_label": "Down Payt Percentage",
+            "is_number": true,
+            "data_transformation": "decimal(2)"
+        },
+        "DownPaymentAmount": {
+            "name": "DownPaymentAmount",
+            "text_label": "Down Payment Amount",
+            "is_number": true,
+            "currency_code": "DocumentCurrency"
+        },
+        "DownPaymentDueDate": {
+            "name": "DownPaymentDueDate",
+            "text_label": "Due Date For Down Payment",
+            "data_transformation": "date"
+        },
+        "PurchasingDocumentName": {
+            "name": "PurchasingDocumentName",
+            "text_label": "Purchasing Document Name"
+        },
+        "QuotationEarliestSubmsnDate": {
+            "name": "QuotationEarliestSubmsnDate",
+            "text_label": "Quotation Start Date",
+            "data_transformation": "date"
+        },
+        "LatestRegistrationDate": {
+            "name": "LatestRegistrationDate",
+            "text_label": "Application Close",
+            "data_transformation": "date"
+        },
+        "FollowOnDocumentCategory": {
+            "name": "FollowOnDocumentCategory",
+            "text_label": "Follow-On Document Category"
+        },
+        "FollowOnDocumentType": {
+            "name": "FollowOnDocumentType",
+            "text_label": "Follow-On Document Type"
+        },
+        "VATRegistration": {
+            "name": "VATRegistration",
+            "text_label": "Vat Registration No."
+        },
+        "VATRegistrationCountry": {
+            "name": "VATRegistrationCountry",
+            "text_label": "Ctry/Rgn Sls Tax No."
+        },
+        "IsIntrastatReportingRelevant": {
+            "name": "IsIntrastatReportingRelevant",
+            "text_label": "Intrastat Relevance"
+        },
+        "IsIntrastatReportingExcluded": {
+            "name": "IsIntrastatReportingExcluded",
+            "text_label": "Intrastat Exclusion"
+        },
+        "IsEndOfPurposeBlocked": {
+            "name": "IsEndOfPurposeBlocked",
+            "text_label": "Business Purpose Completed"
+        },
+        "PurchasingParentDocument": {
+            "name": "PurchasingParentDocument",
+            "text_label": "Id Of The Parent Document"
+        },
+        "ProcmtHubCompanyCodeGroupingID": {
+            "name": "ProcmtHubCompanyCodeGroupingID",
+            "text_label": "Grouping Id For Company Codes"
+        }
+    }
+}

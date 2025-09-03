@@ -1,0 +1,228 @@
+{
+    "name": "ZSNAP_F01G_ProfitCenter",
+    "text_label": "Profit Center",
+    "representative_key": "ProfitCenter",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_ProfitCenterText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "ControllingArea"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "ControllingArea"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "local",
+                    "value": "ProfitCenter"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "ProfitCenter"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "ValidityEndDate"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_date"
+                },
+                "operator": ">"
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "ValidityStartDate"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_date"
+                },
+                "operator": "<="
+            }
+        ],
+        "text_field": "ProfitCenterName"
+    },
+    "fields": {
+        "ControllingArea": {
+            "name": "ControllingArea",
+            "text_label": "Controlling Area",
+            "is_key": true,
+            "masterdata": "_ControllingArea"
+        },
+        "ProfitCenter": {
+            "name": "ProfitCenter",
+            "text_label": "Profit Center",
+            "is_key": true,
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "ValidityEndDate": {
+            "name": "ValidityEndDate",
+            "text_label": "Valid To",
+            "is_key": true,
+            "data_transformation": "date"
+        },
+        "ValidityStartDate": {
+            "name": "ValidityStartDate",
+            "text_label": "Valid From",
+            "data_transformation": "date"
+        },
+        "Segment": {
+            "name": "Segment",
+            "text_label": "Segment"
+        },
+        "Department": {
+            "name": "Department",
+            "text_label": "Department"
+        },
+        "ProfitCtrResponsiblePersonName": {
+            "name": "ProfitCtrResponsiblePersonName",
+            "text_label": "Person Resp. For Pc"
+        },
+        "ProfitCenterStandardHierarchy": {
+            "name": "ProfitCenterStandardHierarchy",
+            "text_label": "Hierarchy Area"
+        },
+        "ProfitCenterCreationDate": {
+            "name": "ProfitCenterCreationDate",
+            "text_label": "Entered On",
+            "data_transformation": "date"
+        },
+        "ProfitCtrResponsibleUser": {
+            "name": "ProfitCtrResponsibleUser",
+            "text_label": "User Responsible"
+        },
+        "ProfitCenterIsBlocked": {
+            "name": "ProfitCenterIsBlocked",
+            "text_label": "Lock Indicator"
+        },
+        "FormOfAddress": {
+            "name": "FormOfAddress",
+            "text_label": "Title"
+        },
+        "AddressName": {
+            "name": "AddressName",
+            "text_label": "Name"
+        },
+        "AdditionalName": {
+            "name": "AdditionalName",
+            "text_label": "Name 2"
+        },
+        "ProfitCenterAddrName3": {
+            "name": "ProfitCenterAddrName3",
+            "text_label": "Name 3"
+        },
+        "ProfitCenterAddrName4": {
+            "name": "ProfitCenterAddrName4",
+            "text_label": "Name 4"
+        },
+        "StreetAddressName": {
+            "name": "StreetAddressName",
+            "text_label": "Street"
+        },
+        "POBox": {
+            "name": "POBox",
+            "text_label": "Po Box"
+        },
+        "CityName": {
+            "name": "CityName",
+            "text_label": "City"
+        },
+        "PostalCode": {
+            "name": "PostalCode",
+            "text_label": "Postal Code"
+        },
+        "POBoxPostalCode": {
+            "name": "POBoxPostalCode",
+            "text_label": "P.O. Box Postal Code"
+        },
+        "District": {
+            "name": "District",
+            "text_label": "District"
+        },
+        "Country": {
+            "name": "Country",
+            "text_label": "Country/Region Key"
+        },
+        "Region": {
+            "name": "Region",
+            "text_label": "Region"
+        },
+        "TaxJurisdiction": {
+            "name": "TaxJurisdiction",
+            "text_label": "Tax Jurisdiction"
+        },
+        "Language": {
+            "name": "Language",
+            "text_label": "Language Key"
+        },
+        "PhoneNumber1": {
+            "name": "PhoneNumber1",
+            "text_label": "Telephone 1"
+        },
+        "PhoneNumber2": {
+            "name": "PhoneNumber2",
+            "text_label": "Telephone 2"
+        },
+        "TeleboxNumber": {
+            "name": "TeleboxNumber",
+            "text_label": "Telebox Number"
+        },
+        "TelexNumber": {
+            "name": "TelexNumber",
+            "text_label": "Telex Number"
+        },
+        "FaxNumber": {
+            "name": "FaxNumber",
+            "text_label": "Fax Number"
+        },
+        "TeletexNumber": {
+            "name": "TeletexNumber",
+            "text_label": "Teletex Number"
+        },
+        "DataCommunicationPhoneNumber": {
+            "name": "DataCommunicationPhoneNumber",
+            "text_label": "Data Line"
+        },
+        "ProfitCenterPrinterName": {
+            "name": "ProfitCenterPrinterName",
+            "text_label": "Printer Name"
+        },
+        "ProfitCenterCreatedByUser": {
+            "name": "ProfitCenterCreatedByUser",
+            "text_label": "Created By"
+        },
+        "CompanyCode": {
+            "name": "CompanyCode",
+            "text_label": "Company Code"
+        },
+        "FormulaPlanningTemplate": {
+            "name": "FormulaPlanningTemplate",
+            "text_label": "Prctr Formula Planning Template"
+        }
+    }
+}

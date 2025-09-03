@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01C_IsOverdue",
+    "text_label": "SNAP F01: Is Overdue Values",
+    "representative_key": "IsOverdue",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "IsOverdue": {
+            "name": "IsOverdue",
+            "text_label": "Is Overdue",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Is Overdue Description"
+        }
+    }
+}

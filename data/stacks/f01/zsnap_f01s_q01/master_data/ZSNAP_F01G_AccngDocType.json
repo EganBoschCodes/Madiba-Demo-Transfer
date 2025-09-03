@@ -1,0 +1,60 @@
+{
+    "name": "ZSNAP_F01G_AccngDocType",
+    "text_label": "Journal Entry Type",
+    "representative_key": "AccountingDocumentType",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_AccngDocTypeText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "AccountingDocumentType"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "AccountingDocumentType"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "AccountingDocumentTypeName"
+    },
+    "fields": {
+        "AccountingDocumentType": {
+            "name": "AccountingDocumentType",
+            "text_label": "Journal Entry Type",
+            "is_key": true
+        },
+        "AccountingDocumentNumberRange": {
+            "name": "AccountingDocumentNumberRange",
+            "text_label": "Number Range"
+        },
+        "AuthorizationGroup": {
+            "name": "AuthorizationGroup",
+            "text_label": "Authorization Group"
+        },
+        "ExchangeRateType": {
+            "name": "ExchangeRateType",
+            "text_label": "Exchange Rate Type For Fc Documents"
+        },
+        "AllowedFinancialAccountTypes": {
+            "name": "AllowedFinancialAccountTypes",
+            "text_label": "Account Types"
+        }
+    }
+}

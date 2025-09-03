@@ -1,0 +1,2209 @@
+{
+    "name": "ZSNAP_F01S_Q01",
+    "text_label": "SNAP F01Q01: Open Accounts Payable Aging",
+    "cube": {
+        "cube_name": "ZSNAP_F01S_C01",
+        "parameter_mapping": {
+            "P_Signage": "$parameters.P_Signage",
+            "P_KeyDate": "$parameters.P_KeyDate",
+            "P_ClearedDate": "$parameters.P_ClearedDate",
+            "P_NetDueInterval1InDays": "$parameters.P_NetDueInterval1InDays",
+            "P_NetDueInterval2InDays": "$parameters.P_NetDueInterval2InDays",
+            "P_NetDueInterval3InDays": "$parameters.P_NetDueInterval3InDays",
+            "P_NetDueInterval4InDays": "$parameters.P_NetDueInterval4InDays",
+            "P_DisplayCurrency": "$parameters.P_DisplayCurrency",
+            "P_ExchangeRateType": "$parameters.P_ExchangeRateType",
+            "P_IncludeSpecialGL": "$parameters.P_IncludeSpecialGL",
+            "P_EarlyPaymentToleranceDays": "0"
+        },
+        "critical_fields": {
+            "TransactionCurrency": false,
+            "AmountInTransactionCurrency": true,
+            "CompanyCodeCurrency": false,
+            "AmountInCompanyCodeCurrency": true,
+            "GlobalCurrency": false,
+            "AmountInGlobalCurrency": true,
+            "DisplayCurrency": false,
+            "AmountInDisplayCurrency": true,
+            "NumberOfRows": true
+        }
+    },
+    "query_default_where": "main~IncludeSpecialGL = $parameters.P_IncludeSpecialGL and main~IncludeSpecialGLFilter = 'Y' and main~Signage = $parameters.P_Signage and main~ChartOfAccounts = $parameters.P_ChartOfAccounts and main~ControllingArea = $parameters.P_ControllingArea and main~FiscalYearVariant = $parameters.P_FiscalYearVariant and main~IsCleared = 'O'",
+    "query_hard_bindings": {
+        "IncludeSpecialGL": {
+            "type": "parameter",
+            "value": "P_IncludeSpecialGL"
+        },
+        "IncludeSpecialGLFilter": {
+            "type": "constant",
+            "value": "'Y'"
+        },
+        "Signage": {
+            "type": "parameter",
+            "value": "P_Signage"
+        },
+        "ChartOfAccounts": {
+            "type": "parameter",
+            "value": "P_ChartOfAccounts"
+        },
+        "ControllingArea": {
+            "type": "parameter",
+            "value": "P_ControllingArea"
+        },
+        "FiscalYearVariant": {
+            "type": "parameter",
+            "value": "P_FiscalYearVariant"
+        },
+        "IsCleared": {
+            "type": "constant",
+            "value": "'O'"
+        }
+    },
+    "masterdata": {
+        "_CompanyCode": {
+            "name": "_CompanyCode",
+            "view_target": "ZSNAP_F01G_CompanyCode",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "CompanyCode"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "CompanyCode"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_FiscalYear": {
+            "name": "_FiscalYear",
+            "view_target": "ZSNAP_F01G_FiscalYear",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_JournalEntry": {
+            "name": "_JournalEntry",
+            "view_target": "ZSNAP_F01G_JournalEntry",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CompanyCode"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CompanyCode"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "AccountingDocument"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocument"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_AccountingDocumentItem": {
+            "name": "_AccountingDocumentItem",
+            "view_target": "ZSNAP_F01G_OplAcctgDocItem",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CompanyCode"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CompanyCode"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "AccountingDocument"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocument"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "AccountingDocumentItem"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocumentItem"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_AccountingDocumentCategory": {
+            "name": "_AccountingDocumentCategory",
+            "view_target": "ZSNAP_F01G_AccngDocCategory",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "AccountingDocumentCategory"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocumentCategory"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_AccountingDocumentType": {
+            "name": "_AccountingDocumentType",
+            "view_target": "ZSNAP_F01G_AccngDocType",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "AccountingDocumentType"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocumentType"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_ReferenceDocument": {
+            "name": "_ReferenceDocument",
+            "view_target": "ZSNAP_F01G_JournalEntry",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CompanyCode"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CompanyCode"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "InvoiceReferenceFiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "InvoiceReference"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocument"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_ReferenceDocumentItem": {
+            "name": "_ReferenceDocumentItem",
+            "view_target": "ZSNAP_F01G_OplAcctgDocItem",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CompanyCode"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CompanyCode"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "InvoiceReference"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocument"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "InvoiceReferenceFiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "InvoiceItemReference"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocumentItem"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_ReferenceFiscalYear": {
+            "name": "_ReferenceFiscalYear",
+            "view_target": "ZSNAP_F01G_FiscalYear",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "InvoiceReferenceFiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_DebitCreditCode": {
+            "name": "_DebitCreditCode",
+            "view_target": "ZSNAP_F01G_DebitCreditCode",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "DebitCreditCode"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "DebitCreditCode"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_ClearingDocument": {
+            "name": "_ClearingDocument",
+            "view_target": "ZSNAP_F01G_JournalEntry",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CompanyCode"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CompanyCode"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "ClearingAccountingDocument"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "AccountingDocument"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_FinancialAccountType": {
+            "name": "_FinancialAccountType",
+            "view_target": "ZSNAP_F01G_FinancialAccType",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "FinancialAccountType"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "FinancialAccountType"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_ClearingDate": {
+            "name": "_ClearingDate",
+            "view_target": "ZSNAP_F01G_CalendarDate",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "ClearingDate"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarDate"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_PostingDate": {
+            "name": "_PostingDate",
+            "view_target": "ZSNAP_F01G_CalendarDate",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "PostingDate"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarDate"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_DocumentDate": {
+            "name": "_DocumentDate",
+            "view_target": "ZSNAP_F01G_CalendarDate",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "DocumentDate"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarDate"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_BaselineDate": {
+            "name": "_BaselineDate",
+            "view_target": "ZSNAP_F01G_CalendarDate",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "DueCalculationBaseDate"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarDate"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_CashDiscount1Date": {
+            "name": "_CashDiscount1Date",
+            "view_target": "ZSNAP_F01G_CalendarDate",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CashDiscount1Date"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarDate"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_CashDiscount2Date": {
+            "name": "_CashDiscount2Date",
+            "view_target": "ZSNAP_F01G_CalendarDate",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CashDiscount2Date"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarDate"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_PaymentTerms": {
+            "name": "_PaymentTerms",
+            "view_target": "ZSNAP_F01G_PaymentTerms",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "PaymentTerms"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "PaymentTerms"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_PaymentBlockingReason": {
+            "name": "_PaymentBlockingReason",
+            "view_target": "ZSNAP_F01G_PmtBlockingRsn",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "PaymentBlockingReason"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "PaymentBlockingReason"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_PaymentMethod": {
+            "name": "_PaymentMethod",
+            "view_target": "ZSNAP_F01G_PaymentMethod",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "PaymentMethod"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "PaymentMethod"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "SupplierCountry"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "Country"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_IsUsedInPaymentTransaction": {
+            "name": "_IsUsedInPaymentTransaction",
+            "view_target": "ZSNAP_F01C_IsUsedInPmtTr_BA",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "IsUsedInPaymentTransaction"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "IsUsedInPaymentTransaction"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_PostingKey": {
+            "name": "_PostingKey",
+            "view_target": "ZSNAP_F01G_PostingKey",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "PostingKey"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "PostingKey"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_NetDueDate": {
+            "name": "_NetDueDate",
+            "view_target": "ZSNAP_F01G_CalendarDate",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "NetDueDate"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarDate"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_GLAccountInChartOfAccounts": {
+            "name": "_GLAccountInChartOfAccounts",
+            "view_target": "ZSNAP_F01G_GLAccountInCOA",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "ChartOfAccounts"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "ChartOfAccounts"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "GLAccount"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "GLAccount"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_GroupAccount": {
+            "name": "_GroupAccount",
+            "view_target": "ZSNAP_F01G_GroupAccount",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "GroupChartOfAccounts"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "ChartOfAccounts"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "GroupAccount"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "GroupAccount"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_GroupChartOfAccounts": {
+            "name": "_GroupChartOfAccounts",
+            "view_target": "ZSNAP_F01G_ChartOfAccounts",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "GroupChartOfAccounts"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "ChartOfAccounts"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_SpecialGLCode": {
+            "name": "_SpecialGLCode",
+            "view_target": "ZSNAP_F01G_SpecialGLCode",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "SpecialGLCode"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "SpecialGLCode"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "FinancialAccountType"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "FinancialAccountType"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_IncludeSpecialGL": {
+            "name": "_IncludeSpecialGL",
+            "view_target": "ZSNAP_F01C_IncludeSpecialGL",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "IncludeSpecialGL"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "IncludeSpecialGL"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_CostCenter": {
+            "name": "_CostCenter",
+            "view_target": "ZSNAP_F01G_CostCenter",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "ControllingArea"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "ControllingArea"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CostCenter"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CostCenter"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "ValidityEndDate"
+                    },
+                    "right": {
+                        "type": "constant",
+                        "value": "$session.system_date"
+                    },
+                    "operator": ">"
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "ValidityStartDate"
+                    },
+                    "right": {
+                        "type": "constant",
+                        "value": "$session.system_date"
+                    },
+                    "operator": "<="
+                }
+            ]
+        },
+        "_ProfitCenter": {
+            "name": "_ProfitCenter",
+            "view_target": "ZSNAP_F01G_ProfitCenter",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "ControllingArea"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "ControllingArea"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "ProfitCenter"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "ProfitCenter"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "ValidityEndDate"
+                    },
+                    "right": {
+                        "type": "constant",
+                        "value": "$session.system_date"
+                    },
+                    "operator": ">"
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "ValidityStartDate"
+                    },
+                    "right": {
+                        "type": "constant",
+                        "value": "$session.system_date"
+                    },
+                    "operator": "<="
+                }
+            ]
+        },
+        "_BusinessArea": {
+            "name": "_BusinessArea",
+            "view_target": "ZSNAP_F01G_BusinessArea",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "BusinessArea"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "BusinessArea"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_FunctionalArea": {
+            "name": "_FunctionalArea",
+            "view_target": "ZSNAP_F01G_FunctionalArea",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FunctionalArea"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FunctionalArea"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_Segment": {
+            "name": "_Segment",
+            "view_target": "ZSNAP_F01G_Segment",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "Segment"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "Segment"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_PurchasingDocument": {
+            "name": "_PurchasingDocument",
+            "view_target": "ZSNAP_F01G_PurchasingDoc",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "PurchasingDocument"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "PurchasingDocument"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_AccountingClerk": {
+            "name": "_AccountingClerk",
+            "view_target": "ZSNAP_F01G_AccountingClerk",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "CompanyCode"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "CompanyCode"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "AccountingClerk"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "AccountingClerk"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_ReconciliationAccount": {
+            "name": "_ReconciliationAccount",
+            "view_target": "ZSNAP_F01G_SupplierReconAcc",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "ChartOfAccounts"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "ChartOfAccounts"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "ReconciliationAccount"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "ReconciliationAccount"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_Supplier": {
+            "name": "_Supplier",
+            "view_target": "ZSNAP_F01G_Supplier",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "Supplier"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "Supplier"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_WithholdingTaxCode": {
+            "name": "_WithholdingTaxCode",
+            "view_target": "ZSNAP_F01G_WithholdingTaxCd",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "WithholdingTaxCode"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "WithholdingTaxCode"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "Country"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "SupplierCountry"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_SupplierAccountGroup": {
+            "name": "_SupplierAccountGroup",
+            "view_target": "ZSNAP_F01G_SupplierAccGroup",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "SupplierAccountGroup"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "SupplierAccountGroup"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_SupplierCountry": {
+            "name": "_SupplierCountry",
+            "view_target": "ZSNAP_F01G_Country",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "SupplierCountry"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "Country"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_SupplierRegion": {
+            "name": "_SupplierRegion",
+            "view_target": "ZSNAP_F01G_Region",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "Region"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "SupplierRegion"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "Country"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "SupplierCountry"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_CalendarMonth": {
+            "name": "_CalendarMonth",
+            "view_target": "ZSNAP_F01G_CalendarMonth",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CalendarMonth"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarMonth"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_CalendarQuarter": {
+            "name": "_CalendarQuarter",
+            "view_target": "ZSNAP_F01G_CalendarQuarter",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CalendarQuarter"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarQuarter"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_CalendarYear": {
+            "name": "_CalendarYear",
+            "view_target": "ZSNAP_F01G_CalendarYear",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "CalendarYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "CalendarYear"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_FiscalPeriod": {
+            "name": "_FiscalPeriod",
+            "view_target": "ZSNAP_F01G_FiscalPeriod",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalPeriod"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalPeriod"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_FiscalQuarter": {
+            "name": "_FiscalQuarter",
+            "view_target": "ZSNAP_F01G_FiscalQuarter",
+            "offers_text": false,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYear"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYear"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalQuarter"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalQuarter"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_FiscalYearQuarter": {
+            "name": "_FiscalYearQuarter",
+            "view_target": "ZSNAP_F01G_FiscYearQuarter",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearQuarter"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearQuarter"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_FiscalYearPeriod": {
+            "name": "_FiscalYearPeriod",
+            "view_target": "ZSNAP_F01G_FiscalYearPeriod",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearPeriod"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearPeriod"
+                    },
+                    "operator": "="
+                },
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "FiscalYearVariant"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "FiscalYearVariant"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_Signage": {
+            "name": "_Signage",
+            "view_target": "ZSNAP_F01C_Signage",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "Signage"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "Signage"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_IsOverdue": {
+            "name": "_IsOverdue",
+            "view_target": "ZSNAP_F01C_IsOverdue",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "IsOverdue"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "IsOverdue"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_IsCleared": {
+            "name": "_IsCleared",
+            "view_target": "ZSNAP_F01C_IsCleared",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "IsCleared"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "IsCleared"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_IsConversionBroken": {
+            "name": "_IsConversionBroken",
+            "view_target": "ZSNAP_F01C_IsConversionB_66",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "IsConversionBroken"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "IsConversionBroken"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_PaymentTimingCategory": {
+            "name": "_PaymentTimingCategory",
+            "view_target": "ZSNAP_F01C_PmtTimingCate_BY",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "PaymentTimingCategory"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "PaymentTimingCategory"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_SupplierIsIntercompany": {
+            "name": "_SupplierIsIntercompany",
+            "view_target": "ZSNAP_F01C_SuppIsInterco_FU",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "foreign",
+                        "value": "SupplierIsIntercompany"
+                    },
+                    "right": {
+                        "type": "local",
+                        "value": "SupplierIsIntercompany"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_PartnerCompany": {
+            "name": "_PartnerCompany",
+            "view_target": "ZSNAP_F01G_Partnercompany",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "PartnerCompany"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "PartnerCompany"
+                    },
+                    "operator": "="
+                }
+            ]
+        },
+        "_IntercompanyPairing": {
+            "name": "_IntercompanyPairing",
+            "view_target": "ZSNAP_F01M_IntercompanyP_SJ",
+            "offers_text": true,
+            "binding": [
+                {
+                    "left": {
+                        "type": "local",
+                        "value": "IntercompanyPairing"
+                    },
+                    "right": {
+                        "type": "foreign",
+                        "value": "IntercompanyPairing"
+                    },
+                    "operator": "="
+                }
+            ]
+        }
+    },
+    "parameters": {
+        "P_Signage": {
+            "name": "P_Signage",
+            "text_label": "Signage",
+            "data_type": "char1",
+            "hidden": false,
+            "default_value": "'R'"
+        },
+        "P_KeyDate": {
+            "name": "P_KeyDate",
+            "text_label": "Open Items As Of",
+            "data_type": "abap.dats",
+            "hidden": false,
+            "system_field": "#SYSTEM_DATE",
+            "data_transformation": "date"
+        },
+        "P_DisplayCurrency": {
+            "name": "P_DisplayCurrency",
+            "text_label": "Display Currency",
+            "data_type": "abap.cuky",
+            "hidden": false,
+            "default_value": "'USD'"
+        },
+        "P_ExchangeRateType": {
+            "name": "P_ExchangeRateType",
+            "text_label": "Exchange Rate Type",
+            "data_type": "kurst",
+            "hidden": false,
+            "default_value": "'M'"
+        },
+        "P_IncludeSpecialGL": {
+            "name": "P_IncludeSpecialGL",
+            "text_label": "Include Special GL Transactions",
+            "data_type": "char1",
+            "hidden": false,
+            "default_value": "'N'"
+        },
+        "P_ClearedDate": {
+            "name": "P_ClearedDate",
+            "text_label": "Cleared Items After",
+            "data_type": "abap.dats",
+            "hidden": true,
+            "system_field": "#SYSTEM_DATE",
+            "data_transformation": "date"
+        },
+        "P_NetDueInterval1InDays": {
+            "name": "P_NetDueInterval1InDays",
+            "text_label": "Net Due Interval 1 (Days)",
+            "data_type": "abap.int4",
+            "hidden": false,
+            "is_number": true,
+            "default_value": "'30'",
+            "data_transformation": "int"
+        },
+        "P_NetDueInterval2InDays": {
+            "name": "P_NetDueInterval2InDays",
+            "text_label": "Net Due Interval 2 (Days)",
+            "data_type": "abap.int4",
+            "hidden": false,
+            "is_number": true,
+            "default_value": "'60'",
+            "data_transformation": "int"
+        },
+        "P_NetDueInterval3InDays": {
+            "name": "P_NetDueInterval3InDays",
+            "text_label": "Net Due Interval 3 (Days)",
+            "data_type": "abap.int4",
+            "hidden": false,
+            "is_number": true,
+            "default_value": "'90'",
+            "data_transformation": "int"
+        },
+        "P_NetDueInterval4InDays": {
+            "name": "P_NetDueInterval4InDays",
+            "text_label": "Net Due Interval 4 (Days)",
+            "data_type": "abap.int4",
+            "hidden": false,
+            "is_number": true,
+            "default_value": "'0'",
+            "data_transformation": "int"
+        },
+        "P_ControllingArea": {
+            "name": "P_ControllingArea",
+            "text_label": "Controlling Area",
+            "data_type": "ktopl",
+            "hidden": true,
+            "default_value": "'MED1'"
+        },
+        "P_ChartOfAccounts": {
+            "name": "P_ChartOfAccounts",
+            "text_label": "Chart Of Accounts",
+            "data_type": "kokrs",
+            "hidden": true,
+            "default_derivation": "SELECT ChartOfAccounts FROM ZSNAP_F01G_ControllingArea WHERE ControllingArea = $parameters.P_ControllingArea"
+        },
+        "P_FiscalYearVariant": {
+            "name": "P_FiscalYearVariant",
+            "text_label": "Fiscal Year Variant",
+            "data_type": "periv",
+            "hidden": true,
+            "default_derivation": "SELECT FiscalYearVariant FROM ZSNAP_F01G_ControllingArea WHERE ControllingArea = $parameters.P_ControllingArea"
+        }
+    },
+    "fields": {
+        "CompanyCode": {
+            "name": "CompanyCode",
+            "text_label": "Company Code",
+            "is_key": true,
+            "masterdata": "_CompanyCode"
+        },
+        "FiscalYear": {
+            "name": "FiscalYear",
+            "text_label": "Fiscal Year",
+            "is_key": true,
+            "masterdata": "_FiscalYear",
+            "secondary_keys": {
+                "FiscalYearVariant": "FiscalYearVariant"
+            }
+        },
+        "AccountingDocument": {
+            "name": "AccountingDocument",
+            "text_label": "Accounting Document",
+            "is_key": true,
+            "masterdata": "_JournalEntry",
+            "secondary_keys": {
+                "CompanyCode": "CompanyCode",
+                "FiscalYear": "FiscalYear",
+                "FiscalYearVariant": "FiscalYearVariant"
+            }
+        },
+        "AccountingDocumentItem": {
+            "name": "AccountingDocumentItem",
+            "text_label": "Accounting Document Item",
+            "is_key": true,
+            "masterdata": "_AccountingDocumentItem",
+            "secondary_keys": {
+                "CompanyCode": "CompanyCode",
+                "AccountingDocument": "AccountingDocument",
+                "FiscalYear": "FiscalYear",
+                "FiscalYearVariant": "FiscalYearVariant"
+            }
+        },
+        "DocumentItemText": {
+            "name": "DocumentItemText",
+            "text_label": "Acc. Document Item Text"
+        },
+        "AccountingDocumentCategory": {
+            "name": "AccountingDocumentCategory",
+            "text_label": "Accounting Document Category",
+            "masterdata": "_AccountingDocumentCategory"
+        },
+        "AccountingDocumentType": {
+            "name": "AccountingDocumentType",
+            "text_label": "Accounting Document Type",
+            "masterdata": "_AccountingDocumentType"
+        },
+        "AccountingDocumentTypeName": {
+            "name": "AccountingDocumentTypeName",
+            "text_label": "Accounting Document Type Name"
+        },
+        "AccountingDocumentHeaderText": {
+            "name": "AccountingDocumentHeaderText",
+            "text_label": "Acc. Document Header Text"
+        },
+        "AccountingDocumentCreationDate": {
+            "name": "AccountingDocumentCreationDate",
+            "text_label": "Creation Date",
+            "data_transformation": "date"
+        },
+        "LastChangeDate": {
+            "name": "LastChangeDate",
+            "text_label": "Last Change Date",
+            "data_transformation": "date"
+        },
+        "DocumentReferenceID": {
+            "name": "DocumentReferenceID",
+            "text_label": "Document Reference ID"
+        },
+        "InvoiceReference": {
+            "name": "InvoiceReference",
+            "text_label": "Invoice Reference",
+            "masterdata": "_ReferenceDocument",
+            "secondary_keys": {
+                "CompanyCode": "CompanyCode",
+                "FiscalYear": "InvoiceReferenceFiscalYear",
+                "FiscalYearVariant": "FiscalYearVariant"
+            },
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "InvoiceReferenceType": {
+            "name": "InvoiceReferenceType",
+            "text_label": "Invoice Reference Type"
+        },
+        "InvoiceItemReference": {
+            "name": "InvoiceItemReference",
+            "text_label": "Invoice Reference Item",
+            "masterdata": "_ReferenceDocumentItem",
+            "secondary_keys": {
+                "CompanyCode": "CompanyCode",
+                "AccountingDocument": "InvoiceReference",
+                "FiscalYear": "InvoiceReferenceFiscalYear",
+                "FiscalYearVariant": "FiscalYearVariant"
+            }
+        },
+        "InvoiceReferenceFiscalYear": {
+            "name": "InvoiceReferenceFiscalYear",
+            "text_label": "Invoice Reference Fiscal Year",
+            "masterdata": "_ReferenceFiscalYear",
+            "secondary_keys": {
+                "FiscalYearVariant": "FiscalYearVariant"
+            }
+        },
+        "DebitCreditCode": {
+            "name": "DebitCreditCode",
+            "text_label": "Debit/Credit Indicator",
+            "masterdata": "_DebitCreditCode"
+        },
+        "ClearingAccountingDocument": {
+            "name": "ClearingAccountingDocument",
+            "text_label": "Clearing Document",
+            "masterdata": "_ClearingDocument",
+            "secondary_keys": {
+                "CompanyCode": "CompanyCode",
+                "FiscalYear": "FiscalYear",
+                "FiscalYearVariant": "FiscalYearVariant"
+            }
+        },
+        "FinancialAccountType": {
+            "name": "FinancialAccountType",
+            "text_label": "Financial Account Type",
+            "masterdata": "_FinancialAccountType"
+        },
+        "ClearingDate": {
+            "name": "ClearingDate",
+            "text_label": "Clearing Date",
+            "masterdata": "_ClearingDate",
+            "data_transformation": "date"
+        },
+        "PostingDate": {
+            "name": "PostingDate",
+            "text_label": "Posting Date",
+            "masterdata": "_PostingDate",
+            "data_transformation": "date"
+        },
+        "DocumentDate": {
+            "name": "DocumentDate",
+            "text_label": "Document Date",
+            "masterdata": "_DocumentDate",
+            "data_transformation": "date"
+        },
+        "ParamKeyDate": {
+            "name": "ParamKeyDate",
+            "text_label": "Open Items As Of Date",
+            "data_transformation": "date"
+        },
+        "DueCalculationBaseDate": {
+            "name": "DueCalculationBaseDate",
+            "text_label": "Baseline Date",
+            "masterdata": "_BaselineDate",
+            "data_transformation": "date"
+        },
+        "CashDiscount1Days": {
+            "name": "CashDiscount1Days",
+            "text_label": "Terms Discount Days 1",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount1Percent": {
+            "name": "CashDiscount1Percent",
+            "text_label": "Terms Discount Percent 1",
+            "data_transformation": "percent"
+        },
+        "CashDiscount1Date": {
+            "name": "CashDiscount1Date",
+            "text_label": "Terms Discount Date 1",
+            "masterdata": "_CashDiscount1Date",
+            "data_transformation": "date"
+        },
+        "CashDiscount2Days": {
+            "name": "CashDiscount2Days",
+            "text_label": "Terms Discount Days 2",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount2Percent": {
+            "name": "CashDiscount2Percent",
+            "text_label": "Terms Discount Percent 2",
+            "data_transformation": "percent"
+        },
+        "CashDiscount2Date": {
+            "name": "CashDiscount2Date",
+            "text_label": "Terms Discount Date 2",
+            "masterdata": "_CashDiscount2Date",
+            "data_transformation": "date"
+        },
+        "PaymentTerms": {
+            "name": "PaymentTerms",
+            "text_label": "Payment Terms",
+            "masterdata": "_PaymentTerms"
+        },
+        "PaymentBlockingReason": {
+            "name": "PaymentBlockingReason",
+            "text_label": "Payment Blocking Reason",
+            "masterdata": "_PaymentBlockingReason"
+        },
+        "PaymentBlockingReasonName": {
+            "name": "PaymentBlockingReasonName",
+            "text_label": "Payment Blocking Reason Text"
+        },
+        "PaymentMethod": {
+            "name": "PaymentMethod",
+            "text_label": "Payment Method",
+            "masterdata": "_PaymentMethod",
+            "secondary_keys": {
+                "Country": "SupplierCountry"
+            }
+        },
+        "IsUsedInPaymentTransaction": {
+            "name": "IsUsedInPaymentTransaction",
+            "text_label": "Is Payment Indicator",
+            "masterdata": "_IsUsedInPaymentTransaction"
+        },
+        "PostingKey": {
+            "name": "PostingKey",
+            "text_label": "Posting Key",
+            "masterdata": "_PostingKey"
+        },
+        "PostingKeyName": {
+            "name": "PostingKeyName",
+            "text_label": "Posting Key Text"
+        },
+        "NetDueArrearsDays": {
+            "name": "NetDueArrearsDays",
+            "text_label": "Arrears by Net Due Date"
+        },
+        "NetDueArrearsDaysInt": {
+            "name": "NetDueArrearsDaysInt",
+            "text_label": "Arrears by Net Due Date - Orderable",
+            "is_number": true,
+            "data_transformation": "int"
+        },
+        "NetDueDate": {
+            "name": "NetDueDate",
+            "text_label": "Net Due Date",
+            "masterdata": "_NetDueDate",
+            "data_transformation": "date"
+        },
+        "GLAccount": {
+            "name": "GLAccount",
+            "text_label": "GL Account",
+            "masterdata": "_GLAccountInChartOfAccounts",
+            "secondary_keys": {
+                "ChartOfAccounts": "ChartOfAccounts"
+            },
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "GroupAccount": {
+            "name": "GroupAccount",
+            "text_label": "Group Account",
+            "masterdata": "_GroupAccount",
+            "secondary_keys": {
+                "ChartOfAccounts": "GroupChartOfAccounts"
+            }
+        },
+        "GroupChartOfAccounts": {
+            "name": "GroupChartOfAccounts",
+            "text_label": "Group Chart of Accounts",
+            "masterdata": "_GroupChartOfAccounts"
+        },
+        "SpecialGLCode": {
+            "name": "SpecialGLCode",
+            "text_label": "Special GL Code",
+            "masterdata": "_SpecialGLCode",
+            "secondary_keys": {
+                "FinancialAccountType": "FinancialAccountType"
+            }
+        },
+        "IncludeSpecialGL": {
+            "name": "IncludeSpecialGL",
+            "text_label": "Include Special GL Transactions",
+            "masterdata": "_IncludeSpecialGL"
+        },
+        "IncludeSpecialGLFilter": {
+            "name": "IncludeSpecialGLFilter",
+            "text_label": "Include Special GL Transactions Filter"
+        },
+        "CostCenter": {
+            "name": "CostCenter",
+            "text_label": "Cost Center",
+            "masterdata": "_CostCenter",
+            "secondary_keys": {
+                "ControllingArea": "ControllingArea"
+            },
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "ProfitCenter": {
+            "name": "ProfitCenter",
+            "text_label": "Profit Center",
+            "masterdata": "_ProfitCenter",
+            "secondary_keys": {
+                "ControllingArea": "ControllingArea"
+            },
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "BusinessArea": {
+            "name": "BusinessArea",
+            "text_label": "Business Area",
+            "masterdata": "_BusinessArea"
+        },
+        "FunctionalArea": {
+            "name": "FunctionalArea",
+            "text_label": "Functional Area",
+            "masterdata": "_FunctionalArea"
+        },
+        "Segment": {
+            "name": "Segment",
+            "text_label": "Segment",
+            "masterdata": "_Segment"
+        },
+        "PurchasingDocument": {
+            "name": "PurchasingDocument",
+            "text_label": "Purchase Order",
+            "masterdata": "_PurchasingDocument"
+        },
+        "POPaymentTerms": {
+            "name": "POPaymentTerms",
+            "text_label": "PO Payment Terms"
+        },
+        "POPaymentTermsDiffer": {
+            "name": "POPaymentTermsDiffer",
+            "text_label": "PO Payment Terms Differ"
+        },
+        "AssignmentReference": {
+            "name": "AssignmentReference",
+            "text_label": "Assignment Reference"
+        },
+        "AccountingClerk": {
+            "name": "AccountingClerk",
+            "text_label": "Accounting Clerk",
+            "masterdata": "_AccountingClerk",
+            "secondary_keys": {
+                "CompanyCode": "CompanyCode"
+            }
+        },
+        "ReconciliationAccount": {
+            "name": "ReconciliationAccount",
+            "text_label": "Supplier Reconciliation Account",
+            "masterdata": "_ReconciliationAccount",
+            "secondary_keys": {
+                "ChartOfAccounts": "ChartOfAccounts"
+            }
+        },
+        "Supplier": {
+            "name": "Supplier",
+            "text_label": "Supplier",
+            "masterdata": "_Supplier",
+            "data_transformation": "business_partner"
+        },
+        "SupplierName": {
+            "name": "SupplierName",
+            "text_label": "Supplier Name"
+        },
+        "SupplierBasicAuthorizationGrp": {
+            "name": "SupplierBasicAuthorizationGrp",
+            "text_label": "Supplier Basic Auth Group"
+        },
+        "SupplierFinsAuthorizationGrp": {
+            "name": "SupplierFinsAuthorizationGrp",
+            "text_label": "Supplier FINS Auth Group"
+        },
+        "WithholdingTaxCode": {
+            "name": "WithholdingTaxCode",
+            "text_label": "Withholding Tax Code",
+            "masterdata": "_WithholdingTaxCode",
+            "secondary_keys": {
+                "Country": "SupplierCountry"
+            }
+        },
+        "SupplierAccountGroup": {
+            "name": "SupplierAccountGroup",
+            "text_label": "Supplier Account Group",
+            "masterdata": "_SupplierAccountGroup"
+        },
+        "SupplierCountry": {
+            "name": "SupplierCountry",
+            "text_label": "Supplier Country",
+            "masterdata": "_SupplierCountry"
+        },
+        "SupplierRegion": {
+            "name": "SupplierRegion",
+            "text_label": "Supplier Region",
+            "masterdata": "_SupplierRegion",
+            "secondary_keys": {
+                "Country": "SupplierCountry"
+            }
+        },
+        "CalendarMonth": {
+            "name": "CalendarMonth",
+            "text_label": "Calendar Month",
+            "masterdata": "_CalendarMonth",
+            "data_transformation": "strip_leading_zeros_2"
+        },
+        "CalendarQuarter": {
+            "name": "CalendarQuarter",
+            "text_label": "Calendar Quarter",
+            "masterdata": "_CalendarQuarter"
+        },
+        "CalendarWeek": {
+            "name": "CalendarWeek",
+            "text_label": "Calendar Week"
+        },
+        "CalendarYear": {
+            "name": "CalendarYear",
+            "text_label": "Calendar Year",
+            "masterdata": "_CalendarYear"
+        },
+        "FiscalPeriod": {
+            "name": "FiscalPeriod",
+            "text_label": "Fiscal Period",
+            "masterdata": "_FiscalPeriod",
+            "secondary_keys": {
+                "FiscalYear": "FiscalYear",
+                "FiscalYearVariant": "FiscalYearVariant"
+            },
+            "data_transformation": "strip_leading_zeros_3"
+        },
+        "FiscalQuarter": {
+            "name": "FiscalQuarter",
+            "text_label": "Fiscal Quarter",
+            "masterdata": "_FiscalQuarter",
+            "secondary_keys": {
+                "FiscalYear": "FiscalYear",
+                "FiscalYearVariant": "FiscalYearVariant"
+            }
+        },
+        "FiscalYearQuarter": {
+            "name": "FiscalYearQuarter",
+            "text_label": "Fiscal Year Quarter",
+            "masterdata": "_FiscalYearQuarter",
+            "secondary_keys": {
+                "FiscalYearVariant": "FiscalYearVariant"
+            },
+            "data_transformation": "fiscal_year_quarter"
+        },
+        "FiscalYearPeriod": {
+            "name": "FiscalYearPeriod",
+            "text_label": "Fiscal Year Period",
+            "masterdata": "_FiscalYearPeriod",
+            "secondary_keys": {
+                "FiscalYearVariant": "FiscalYearVariant"
+            },
+            "data_transformation": "fiscal_year_period"
+        },
+        "ClearingFiscalYear": {
+            "name": "ClearingFiscalYear",
+            "text_label": "Clearing Fiscal Year"
+        },
+        "ClearingFiscalPeriod": {
+            "name": "ClearingFiscalPeriod",
+            "text_label": "Clearing Fiscal Period",
+            "data_transformation": "strip_leading_zeros_3"
+        },
+        "ClearingFiscalQuarter": {
+            "name": "ClearingFiscalQuarter",
+            "text_label": "Clearing Fiscal Quarter"
+        },
+        "ClearingFiscalYearPeriod": {
+            "name": "ClearingFiscalYearPeriod",
+            "text_label": "Clearing Fiscal Year Period",
+            "data_transformation": "fiscal_year_period"
+        },
+        "ClearingFiscalYearQuarter": {
+            "name": "ClearingFiscalYearQuarter",
+            "text_label": "Clearing Fiscal Year Quarter",
+            "data_transformation": "fiscal_year_quarter"
+        },
+        "Signage": {
+            "name": "Signage",
+            "text_label": "Signage",
+            "masterdata": "_Signage"
+        },
+        "IsOverdue": {
+            "name": "IsOverdue",
+            "text_label": "Is Overdue",
+            "masterdata": "_IsOverdue"
+        },
+        "DaysOverdue": {
+            "name": "DaysOverdue",
+            "text_label": "Days Overdue"
+        },
+        "DaysOverdueInt": {
+            "name": "DaysOverdueInt",
+            "text_label": "Days Overdue - Orderable",
+            "is_number": true,
+            "data_transformation": "int"
+        },
+        "IsCleared": {
+            "name": "IsCleared",
+            "text_label": "Is Cleared Flag",
+            "masterdata": "_IsCleared"
+        },
+        "IsConversionBroken": {
+            "name": "IsConversionBroken",
+            "text_label": "Currency Conversion Error Flag",
+            "masterdata": "_IsConversionBroken"
+        },
+        "PaymentTimingCategory": {
+            "name": "PaymentTimingCategory",
+            "text_label": "Payment Timing Category",
+            "masterdata": "_PaymentTimingCategory"
+        },
+        "SupplierIsIntercompany": {
+            "name": "SupplierIsIntercompany",
+            "text_label": "Supplier Is Intercompany",
+            "masterdata": "_SupplierIsIntercompany"
+        },
+        "PartnerCompany": {
+            "name": "PartnerCompany",
+            "text_label": "Trading Partner",
+            "masterdata": "_PartnerCompany"
+        },
+        "IntercompanyPairing": {
+            "name": "IntercompanyPairing",
+            "text_label": "Pairing Key",
+            "masterdata": "_IntercompanyPairing"
+        },
+        "Title": {
+            "name": "Title",
+            "text_label": "Title"
+        },
+        "TransactionCurrency": {
+            "name": "TransactionCurrency",
+            "text_label": "Transaction Currency"
+        },
+        "CompanyCodeCurrency": {
+            "name": "CompanyCodeCurrency",
+            "text_label": "Company Code Currency"
+        },
+        "GlobalCurrency": {
+            "name": "GlobalCurrency",
+            "text_label": "Global Currency"
+        },
+        "DisplayCurrency": {
+            "name": "DisplayCurrency",
+            "text_label": "Display Currency"
+        },
+        "AmountInDisplayCurrency": {
+            "name": "AmountInDisplayCurrency",
+            "text_label": "Amount in Disp. Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "DisplayCurrency"
+        },
+        "AmountInTransactionCurrency": {
+            "name": "AmountInTransactionCurrency",
+            "text_label": "Amount in Trans. Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "AmountInCompanyCodeCurrency": {
+            "name": "AmountInCompanyCodeCurrency",
+            "text_label": "Amount in CC Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "AmountInGlobalCurrency": {
+            "name": "AmountInGlobalCurrency",
+            "text_label": "Amount in Global Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "GlobalCurrency"
+        },
+        "NumberOfRows": {
+            "name": "NumberOfRows",
+            "text_label": "Number Of Rows",
+            "is_number": true,
+            "data_transformation": "int",
+            "aggregation": "sum"
+        },
+        "NetDueIntervalText": {
+            "name": "NetDueIntervalText",
+            "text_label": "Net Due Interval"
+        }
+    }
+}

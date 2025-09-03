@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01C_Signage",
+    "text_label": "SNAP F01: Signage Values",
+    "representative_key": "Signage",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "Signage": {
+            "name": "Signage",
+            "text_label": "Signage",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Signage Description"
+        }
+    }
+}

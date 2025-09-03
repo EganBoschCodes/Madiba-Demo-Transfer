@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01M_IntercompanyP_SJ",
+    "text_label": "SNAP: Company Code Pairings",
+    "representative_key": "IntercompanyPairing",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "IntercompanyPairing": {
+            "name": "IntercompanyPairing",
+            "text_label": "Pairing Key",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Description"
+        }
+    }
+}

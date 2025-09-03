@@ -1,0 +1,144 @@
+{
+    "name": "ZSNAP_F01G_GroupAccount",
+    "text_label": "Group Account",
+    "representative_key": "GroupAccount",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_GLAccountText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "ChartOfAccounts"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "ChartOfAccounts"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "local",
+                    "value": "GroupAccount"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "GLAccount"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "GLAccountName"
+    },
+    "fields": {
+        "ChartOfAccounts": {
+            "name": "ChartOfAccounts",
+            "text_label": "Chart Of Accounts",
+            "is_key": true,
+            "masterdata": "_ChartOfAccounts"
+        },
+        "GroupAccount": {
+            "name": "GroupAccount",
+            "text_label": "Group Account Number",
+            "is_key": true
+        },
+        "IsBalanceSheetAccount": {
+            "name": "IsBalanceSheetAccount",
+            "text_label": "Balance Sheet Account"
+        },
+        "GLAccountGroup": {
+            "name": "GLAccountGroup",
+            "text_label": "Account Group"
+        },
+        "CorporateGroupChartOfAccounts": {
+            "name": "CorporateGroupChartOfAccounts",
+            "text_label": "Group Chart Of Accts"
+        },
+        "CorporateGroupAccount": {
+            "name": "CorporateGroupAccount",
+            "text_label": "Group Account Number"
+        },
+        "ProfitLossAccountType": {
+            "name": "ProfitLossAccountType",
+            "text_label": "P&L Statmt Acct Type"
+        },
+        "SampleGLAccount": {
+            "name": "SampleGLAccount",
+            "text_label": "Sample Account"
+        },
+        "AccountIsMarkedForDeletion": {
+            "name": "AccountIsMarkedForDeletion",
+            "text_label": "Mark For Deletion"
+        },
+        "AccountIsBlockedForCreation": {
+            "name": "AccountIsBlockedForCreation",
+            "text_label": "Blocked For Creation"
+        },
+        "AccountIsBlockedForPosting": {
+            "name": "AccountIsBlockedForPosting",
+            "text_label": "Blocked For Posting"
+        },
+        "AccountIsBlockedForPlanning": {
+            "name": "AccountIsBlockedForPlanning",
+            "text_label": "Blocked For Planning"
+        },
+        "PartnerCompany": {
+            "name": "PartnerCompany",
+            "text_label": "Trading Partner No."
+        },
+        "FunctionalArea": {
+            "name": "FunctionalArea",
+            "text_label": "Functional Area"
+        },
+        "CreationDate": {
+            "name": "CreationDate",
+            "text_label": "Created On",
+            "data_transformation": "date"
+        },
+        "CreatedByUser": {
+            "name": "CreatedByUser",
+            "text_label": "Created By"
+        },
+        "LastChangeDateTime": {
+            "name": "LastChangeDateTime",
+            "text_label": "Time Stamp",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "GLAccountType": {
+            "name": "GLAccountType",
+            "text_label": "G/L Account Type"
+        },
+        "GLAccountSubtype": {
+            "name": "GLAccountSubtype",
+            "text_label": "G/L Account Subtype"
+        },
+        "GLAccountExternal": {
+            "name": "GLAccountExternal",
+            "text_label": "G/L Account External ID"
+        },
+        "BankReconciliationAccount": {
+            "name": "BankReconciliationAccount",
+            "text_label": "Reconciliation Account"
+        },
+        "IsProfitLossAccount": {
+            "name": "IsProfitLossAccount",
+            "text_label": "Profit Loss Account"
+        }
+    }
+}

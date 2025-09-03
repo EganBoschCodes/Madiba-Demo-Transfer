@@ -1,0 +1,44 @@
+{
+    "name": "ZSNAP_F01G_Segment",
+    "text_label": "Segment",
+    "representative_key": "Segment",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_SegmentText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "Segment"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "Segment"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "SegmentName"
+    },
+    "fields": {
+        "Segment": {
+            "name": "Segment",
+            "text_label": "Segment",
+            "is_key": true
+        }
+    }
+}

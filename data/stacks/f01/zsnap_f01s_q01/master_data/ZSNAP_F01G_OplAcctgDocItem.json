@@ -1,0 +1,1229 @@
+{
+    "name": "ZSNAP_F01G_OplAcctgDocItem",
+    "text_label": "Operational Accounting Document Item",
+    "representative_key": "AccountingDocumentItem",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "DocumentItemText",
+    "fields": {
+        "CompanyCode": {
+            "name": "CompanyCode",
+            "text_label": "Company Code",
+            "is_key": true,
+            "masterdata": "_CompanyCode"
+        },
+        "AccountingDocument": {
+            "name": "AccountingDocument",
+            "text_label": "Accounting Document",
+            "is_key": true,
+            "masterdata": "_JournalEntry"
+        },
+        "FiscalYear": {
+            "name": "FiscalYear",
+            "text_label": "Fiscal Year",
+            "is_key": true,
+            "masterdata": "_FiscalYear"
+        },
+        "FiscalYearVariant": {
+            "name": "FiscalYearVariant",
+            "text_label": "Fiscal Year Variant",
+            "is_key": true,
+            "masterdata": "_FiscalYearVariant"
+        },
+        "AccountingDocumentItem": {
+            "name": "AccountingDocumentItem",
+            "text_label": "Accounting Document Item",
+            "is_key": true
+        },
+        "ChartOfAccounts": {
+            "name": "ChartOfAccounts",
+            "text_label": "Chart Of Accounts"
+        },
+        "AccountingDocumentItemType": {
+            "name": "AccountingDocumentItemType",
+            "text_label": "Accounting Document Item Type"
+        },
+        "ClearingDate": {
+            "name": "ClearingDate",
+            "text_label": "Clearing Date",
+            "data_transformation": "date"
+        },
+        "ClearingCreationDate": {
+            "name": "ClearingCreationDate",
+            "text_label": "Clearing Creation Date",
+            "data_transformation": "date"
+        },
+        "ClearingAccountingDocument": {
+            "name": "ClearingAccountingDocument",
+            "text_label": "Clearing Accounting Document"
+        },
+        "PostingKey": {
+            "name": "PostingKey",
+            "text_label": "Posting Key"
+        },
+        "FinancialAccountType": {
+            "name": "FinancialAccountType",
+            "text_label": "Financial Account Type"
+        },
+        "SpecialGLCode": {
+            "name": "SpecialGLCode",
+            "text_label": "Special GLCode"
+        },
+        "SpecialGLTransactionType": {
+            "name": "SpecialGLTransactionType",
+            "text_label": "Special GLTransaction Type"
+        },
+        "DebitCreditCode": {
+            "name": "DebitCreditCode",
+            "text_label": "Debit Credit Code"
+        },
+        "BusinessArea": {
+            "name": "BusinessArea",
+            "text_label": "Business Area"
+        },
+        "PartnerBusinessArea": {
+            "name": "PartnerBusinessArea",
+            "text_label": "Partner Business Area"
+        },
+        "TaxCode": {
+            "name": "TaxCode",
+            "text_label": "Tax Code"
+        },
+        "TaxCountry": {
+            "name": "TaxCountry",
+            "text_label": "Tax Country"
+        },
+        "WithholdingTaxCode": {
+            "name": "WithholdingTaxCode",
+            "text_label": "Withholding Tax Code"
+        },
+        "TaxType": {
+            "name": "TaxType",
+            "text_label": "Tax Type"
+        },
+        "TaxItemGroup": {
+            "name": "TaxItemGroup",
+            "text_label": "Tax Item Group"
+        },
+        "TransactionTypeDetermination": {
+            "name": "TransactionTypeDetermination",
+            "text_label": "Transaction Type Determination"
+        },
+        "ValueDate": {
+            "name": "ValueDate",
+            "text_label": "Value Date",
+            "data_transformation": "date"
+        },
+        "AssignmentReference": {
+            "name": "AssignmentReference",
+            "text_label": "Assignment Reference"
+        },
+        "DocumentItemText": {
+            "name": "DocumentItemText",
+            "text_label": "Document Item Text"
+        },
+        "PartnerCompany": {
+            "name": "PartnerCompany",
+            "text_label": "Partner Company"
+        },
+        "FinancialTransactionType": {
+            "name": "FinancialTransactionType",
+            "text_label": "Financial Transaction Type"
+        },
+        "CorporateGroupAccount": {
+            "name": "CorporateGroupAccount",
+            "text_label": "Corporate Group Account"
+        },
+        "PlanningLevel": {
+            "name": "PlanningLevel",
+            "text_label": "Planning Level"
+        },
+        "ControllingArea": {
+            "name": "ControllingArea",
+            "text_label": "Controlling Area"
+        },
+        "CostCenter": {
+            "name": "CostCenter",
+            "text_label": "Cost Center",
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "Project": {
+            "name": "Project",
+            "text_label": "Project"
+        },
+        "OrderID": {
+            "name": "OrderID",
+            "text_label": "Order ID"
+        },
+        "BillingDocument": {
+            "name": "BillingDocument",
+            "text_label": "Billing Document"
+        },
+        "SalesDocument": {
+            "name": "SalesDocument",
+            "text_label": "Sales Document"
+        },
+        "SalesDocumentItem": {
+            "name": "SalesDocumentItem",
+            "text_label": "Sales Document Item"
+        },
+        "ScheduleLine": {
+            "name": "ScheduleLine",
+            "text_label": "Schedule Line"
+        },
+        "ServiceDocumentType": {
+            "name": "ServiceDocumentType",
+            "text_label": "Service Document Type"
+        },
+        "ServiceDocument": {
+            "name": "ServiceDocument",
+            "text_label": "Service Document"
+        },
+        "ServiceDocumentItem": {
+            "name": "ServiceDocumentItem",
+            "text_label": "Service Document Item"
+        },
+        "MasterFixedAsset": {
+            "name": "MasterFixedAsset",
+            "text_label": "Master Fixed Asset"
+        },
+        "FixedAsset": {
+            "name": "FixedAsset",
+            "text_label": "Fixed Asset"
+        },
+        "AssetTransactionType": {
+            "name": "AssetTransactionType",
+            "text_label": "Asset Transaction Type"
+        },
+        "AssetValueDate": {
+            "name": "AssetValueDate",
+            "text_label": "Asset Value Date",
+            "data_transformation": "date"
+        },
+        "PersonnelNumber": {
+            "name": "PersonnelNumber",
+            "text_label": "Personnel Number"
+        },
+        "IsSalesRelated": {
+            "name": "IsSalesRelated",
+            "text_label": "Is Sales Related"
+        },
+        "LineItemDisplayIsEnabled": {
+            "name": "LineItemDisplayIsEnabled",
+            "text_label": "Line Item Display Is Enabled"
+        },
+        "IsOpenItemManaged": {
+            "name": "IsOpenItemManaged",
+            "text_label": "Is Open Item Managed"
+        },
+        "AddressAndBankIsSetManually": {
+            "name": "AddressAndBankIsSetManually",
+            "text_label": "Address And Bank Is Set Manually"
+        },
+        "DownPaymentIsNetProcedure": {
+            "name": "DownPaymentIsNetProcedure",
+            "text_label": "Down Payment Is Net Procedure"
+        },
+        "IsNotCashDiscountLiable": {
+            "name": "IsNotCashDiscountLiable",
+            "text_label": "Is Not Cash Discount Liable"
+        },
+        "IsAutomaticallyCreated": {
+            "name": "IsAutomaticallyCreated",
+            "text_label": "Is Automatically Created"
+        },
+        "IsUsedInPaymentTransaction": {
+            "name": "IsUsedInPaymentTransaction",
+            "text_label": "Is Used In Payment Transaction"
+        },
+        "OperationalGLAccount": {
+            "name": "OperationalGLAccount",
+            "text_label": "Operational GL Account"
+        },
+        "GLAccount": {
+            "name": "GLAccount",
+            "text_label": "GL Account",
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "Customer": {
+            "name": "Customer",
+            "text_label": "Customer",
+            "data_transformation": "business_partner"
+        },
+        "Supplier": {
+            "name": "Supplier",
+            "text_label": "Supplier",
+            "data_transformation": "business_partner"
+        },
+        "BranchAccount": {
+            "name": "BranchAccount",
+            "text_label": "Branch Account"
+        },
+        "IsBalanceSheetAccount": {
+            "name": "IsBalanceSheetAccount",
+            "text_label": "Is Balance Sheet Account"
+        },
+        "ProfitLossAccountType": {
+            "name": "ProfitLossAccountType",
+            "text_label": "Profit Loss Account Type"
+        },
+        "SpecialGLAccountAssignment": {
+            "name": "SpecialGLAccountAssignment",
+            "text_label": "Special GL Account Assignment"
+        },
+        "DueCalculationBaseDate": {
+            "name": "DueCalculationBaseDate",
+            "text_label": "Baseline Date",
+            "data_transformation": "date"
+        },
+        "PaymentTerms": {
+            "name": "PaymentTerms",
+            "text_label": "Payment Terms"
+        },
+        "CashDiscount1Days": {
+            "name": "CashDiscount1Days",
+            "text_label": "Cash Discount 1 Days",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount1Date": {
+            "name": "CashDiscount1Date",
+            "text_label": "Cash Discount 1 Date",
+            "data_transformation": "date"
+        },
+        "CashDiscount2Days": {
+            "name": "CashDiscount2Days",
+            "text_label": "Cash Discount 2 Days",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount2Date": {
+            "name": "CashDiscount2Date",
+            "text_label": "Cash Discount 2 Date",
+            "data_transformation": "date"
+        },
+        "NetPaymentDays": {
+            "name": "NetPaymentDays",
+            "text_label": "Net Payment Days",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "CashDiscount1Percent": {
+            "name": "CashDiscount1Percent",
+            "text_label": "Cash Discount 1 Percent",
+            "is_number": true,
+            "data_transformation": "percent"
+        },
+        "CashDiscount2Percent": {
+            "name": "CashDiscount2Percent",
+            "text_label": "Cash Discount 2 Percent",
+            "is_number": true,
+            "data_transformation": "percent"
+        },
+        "PaymentMethod": {
+            "name": "PaymentMethod",
+            "text_label": "Payment Method"
+        },
+        "PaymentBlockingReason": {
+            "name": "PaymentBlockingReason",
+            "text_label": "Payment Blocking Reason"
+        },
+        "FixedCashDiscount": {
+            "name": "FixedCashDiscount",
+            "text_label": "Fixed Cash Discount"
+        },
+        "HouseBank": {
+            "name": "HouseBank",
+            "text_label": "House Bank"
+        },
+        "BPBankAccountInternalID": {
+            "name": "BPBankAccountInternalID",
+            "text_label": "BPBank Account Internal ID"
+        },
+        "TaxDistributionCode1": {
+            "name": "TaxDistributionCode1",
+            "text_label": "Tax Distribution Code 1"
+        },
+        "TaxDistributionCode2": {
+            "name": "TaxDistributionCode2",
+            "text_label": "Tax Distribution Code 2"
+        },
+        "TaxDistributionCode3": {
+            "name": "TaxDistributionCode3",
+            "text_label": "Tax Distribution Code 3"
+        },
+        "InvoiceReference": {
+            "name": "InvoiceReference",
+            "text_label": "Invoice Reference",
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "InvoiceReferenceFiscalYear": {
+            "name": "InvoiceReferenceFiscalYear",
+            "text_label": "Invoice Reference Fiscal Year"
+        },
+        "InvoiceItemReference": {
+            "name": "InvoiceItemReference",
+            "text_label": "Invoice Item Reference"
+        },
+        "FollowOnDocumentType": {
+            "name": "FollowOnDocumentType",
+            "text_label": "Follow On Document Type"
+        },
+        "StateCentralBankPaymentReason": {
+            "name": "StateCentralBankPaymentReason",
+            "text_label": "State Central Bank Payment Reason"
+        },
+        "SupplyingCountry": {
+            "name": "SupplyingCountry",
+            "text_label": "Supplying Country"
+        },
+        "InvoiceList": {
+            "name": "InvoiceList",
+            "text_label": "Invoice List"
+        },
+        "BillOfExchangeUsage": {
+            "name": "BillOfExchangeUsage",
+            "text_label": "Bill Of Exchange Usage"
+        },
+        "DunningKey": {
+            "name": "DunningKey",
+            "text_label": "Dunning Key"
+        },
+        "DunningBlockingReason": {
+            "name": "DunningBlockingReason",
+            "text_label": "Dunning Blocking Reason"
+        },
+        "LastDunningDate": {
+            "name": "LastDunningDate",
+            "text_label": "Last Dunning Date",
+            "data_transformation": "date"
+        },
+        "DunningLevel": {
+            "name": "DunningLevel",
+            "text_label": "Dunning Level"
+        },
+        "DunningArea": {
+            "name": "DunningArea",
+            "text_label": "Dunning Area"
+        },
+        "WithholdingTaxCertificate": {
+            "name": "WithholdingTaxCertificate",
+            "text_label": "Withholding Tax Certificate"
+        },
+        "Material": {
+            "name": "Material",
+            "text_label": "Material"
+        },
+        "Product": {
+            "name": "Product",
+            "text_label": "Product"
+        },
+        "Plant": {
+            "name": "Plant",
+            "text_label": "Plant"
+        },
+        "PurchasingDocument": {
+            "name": "PurchasingDocument",
+            "text_label": "Purchasing Document"
+        },
+        "PurchasingDocumentItem": {
+            "name": "PurchasingDocumentItem",
+            "text_label": "Purchasing Document Item"
+        },
+        "AccountAssignmentNumber": {
+            "name": "AccountAssignmentNumber",
+            "text_label": "Account Assignment Number"
+        },
+        "IsCompletelyDelivered": {
+            "name": "IsCompletelyDelivered",
+            "text_label": "Is Completely Delivered"
+        },
+        "MaterialPriceControl": {
+            "name": "MaterialPriceControl",
+            "text_label": "Material Price Control"
+        },
+        "ValuationArea": {
+            "name": "ValuationArea",
+            "text_label": "Valuation Area"
+        },
+        "InventoryValuationType": {
+            "name": "InventoryValuationType",
+            "text_label": "Inventory Valuation Type"
+        },
+        "VATRegistration": {
+            "name": "VATRegistration",
+            "text_label": "VATRegistration"
+        },
+        "DelivOfGoodsDestCountry": {
+            "name": "DelivOfGoodsDestCountry",
+            "text_label": "Deliv Of Goods Dest Country"
+        },
+        "PaymentDifferenceReason": {
+            "name": "PaymentDifferenceReason",
+            "text_label": "Payment Difference Reason"
+        },
+        "ProfitCenter": {
+            "name": "ProfitCenter",
+            "text_label": "Profit Center",
+            "data_transformation": "strip_leading_zeros_10"
+        },
+        "JointVenture": {
+            "name": "JointVenture",
+            "text_label": "Joint Venture"
+        },
+        "JointVentureCostRecoveryCode": {
+            "name": "JointVentureCostRecoveryCode",
+            "text_label": "Joint Venture Cost Recovery Code"
+        },
+        "JointVentureEquityGroup": {
+            "name": "JointVentureEquityGroup",
+            "text_label": "Joint Venture Equity Group"
+        },
+        "TreasuryContractType": {
+            "name": "TreasuryContractType",
+            "text_label": "Treasury Contract Type"
+        },
+        "AssetContract": {
+            "name": "AssetContract",
+            "text_label": "Asset Contract"
+        },
+        "CashFlowType": {
+            "name": "CashFlowType",
+            "text_label": "Cash Flow Type"
+        },
+        "TaxJurisdiction": {
+            "name": "TaxJurisdiction",
+            "text_label": "Tax Jurisdiction"
+        },
+        "RealEstateObject": {
+            "name": "RealEstateObject",
+            "text_label": "Real Estate Object"
+        },
+        "SettlementReferenceDate": {
+            "name": "SettlementReferenceDate",
+            "text_label": "Settlement Reference Date",
+            "data_transformation": "date"
+        },
+        "CommitmentItem": {
+            "name": "CommitmentItem",
+            "text_label": "Commitment Item"
+        },
+        "CommitmentItemShortID": {
+            "name": "CommitmentItemShortID",
+            "text_label": "Commitment Item Short ID"
+        },
+        "CostObject": {
+            "name": "CostObject",
+            "text_label": "Cost Object"
+        },
+        "ProjectNetwork": {
+            "name": "ProjectNetwork",
+            "text_label": "Project Network"
+        },
+        "OrderInternalBillOfOperations": {
+            "name": "OrderInternalBillOfOperations",
+            "text_label": "Order Internal Bill Of Operations"
+        },
+        "OrderIntBillOfOperationsItem": {
+            "name": "OrderIntBillOfOperationsItem",
+            "text_label": "Order Int Bill Of Operations Item"
+        },
+        "WBSElementInternalID": {
+            "name": "WBSElementInternalID",
+            "text_label": "WBSElement Internal ID"
+        },
+        "ProfitabilitySegment": {
+            "name": "ProfitabilitySegment",
+            "text_label": "Profitability Segment"
+        },
+        "JointVentureEquityType": {
+            "name": "JointVentureEquityType",
+            "text_label": "Joint Venture Equity Type"
+        },
+        "IsEUTriangularDeal": {
+            "name": "IsEUTriangularDeal",
+            "text_label": "Is EUTriangular Deal"
+        },
+        "CostOriginGroup": {
+            "name": "CostOriginGroup",
+            "text_label": "Cost Origin Group"
+        },
+        "CompanyCodeCurrencyDetnMethod": {
+            "name": "CompanyCodeCurrencyDetnMethod",
+            "text_label": "Company Code Currency Detn Method"
+        },
+        "ClearingIsReversed": {
+            "name": "ClearingIsReversed",
+            "text_label": "Clearing Is Reversed"
+        },
+        "PaymentMethodSupplement": {
+            "name": "PaymentMethodSupplement",
+            "text_label": "Payment Method Supplement"
+        },
+        "AlternativeGLAccount": {
+            "name": "AlternativeGLAccount",
+            "text_label": "Alternative GLAccount"
+        },
+        "FundsCenter": {
+            "name": "FundsCenter",
+            "text_label": "Funds Center"
+        },
+        "Fund": {
+            "name": "Fund",
+            "text_label": "Fund"
+        },
+        "PartnerProfitCenter": {
+            "name": "PartnerProfitCenter",
+            "text_label": "Partner Profit Center"
+        },
+        "Reference1IDByBusinessPartner": {
+            "name": "Reference1IDByBusinessPartner",
+            "text_label": "Reference 1IDBy Business Partner"
+        },
+        "Reference2IDByBusinessPartner": {
+            "name": "Reference2IDByBusinessPartner",
+            "text_label": "Reference 2IDBy Business Partner"
+        },
+        "EarmarkedFundsDocument": {
+            "name": "EarmarkedFundsDocument",
+            "text_label": "Earmarked Funds Document"
+        },
+        "EarmarkedFundsDocumentItem": {
+            "name": "EarmarkedFundsDocumentItem",
+            "text_label": "Earmarked Funds Document Item"
+        },
+        "IsNegativePosting": {
+            "name": "IsNegativePosting",
+            "text_label": "Is Negative Posting"
+        },
+        "PaymentCardItem": {
+            "name": "PaymentCardItem",
+            "text_label": "Payment Card Item"
+        },
+        "PaymentCardPaymentSettlement": {
+            "name": "PaymentCardPaymentSettlement",
+            "text_label": "Payment Card Payment Settlement"
+        },
+        "CreditControlArea": {
+            "name": "CreditControlArea",
+            "text_label": "Credit Control Area"
+        },
+        "Reference3IDByBusinessPartner": {
+            "name": "Reference3IDByBusinessPartner",
+            "text_label": "Reference 3IDBy Business Partner"
+        },
+        "DataExchangeInstruction1": {
+            "name": "DataExchangeInstruction1",
+            "text_label": "Data Exchange Instruction 1"
+        },
+        "DataExchangeInstruction2": {
+            "name": "DataExchangeInstruction2",
+            "text_label": "Data Exchange Instruction 2"
+        },
+        "DataExchangeInstruction3": {
+            "name": "DataExchangeInstruction3",
+            "text_label": "Data Exchange Instruction 3"
+        },
+        "DataExchangeInstruction4": {
+            "name": "DataExchangeInstruction4",
+            "text_label": "Data Exchange Instruction 4"
+        },
+        "Region": {
+            "name": "Region",
+            "text_label": "Region"
+        },
+        "HasPaymentOrder": {
+            "name": "HasPaymentOrder",
+            "text_label": "Has Payment Order"
+        },
+        "PaymentReference": {
+            "name": "PaymentReference",
+            "text_label": "Payment Reference"
+        },
+        "TaxDeterminationDate": {
+            "name": "TaxDeterminationDate",
+            "text_label": "Tax Determination Date",
+            "data_transformation": "date"
+        },
+        "ClearingItem": {
+            "name": "ClearingItem",
+            "text_label": "Clearing Item",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "BusinessPlace": {
+            "name": "BusinessPlace",
+            "text_label": "Business Place"
+        },
+        "TaxSection": {
+            "name": "TaxSection",
+            "text_label": "Tax Section"
+        },
+        "CostCtrActivityType": {
+            "name": "CostCtrActivityType",
+            "text_label": "Cost Ctr Activity Type"
+        },
+        "AccountsReceivableIsPledged": {
+            "name": "AccountsReceivableIsPledged",
+            "text_label": "Accounts Receivable Is Pledged"
+        },
+        "AcctsReceivablePledgingCode": {
+            "name": "AcctsReceivablePledgingCode",
+            "text_label": "Accts Receivable Pledging Code"
+        },
+        "BusinessProcess": {
+            "name": "BusinessProcess",
+            "text_label": "Business Process"
+        },
+        "GrantID": {
+            "name": "GrantID",
+            "text_label": "Grant ID"
+        },
+        "FunctionalArea": {
+            "name": "FunctionalArea",
+            "text_label": "Functional Area"
+        },
+        "CustomerIsInExecution": {
+            "name": "CustomerIsInExecution",
+            "text_label": "Customer Is In Execution"
+        },
+        "FundedProgram": {
+            "name": "FundedProgram",
+            "text_label": "Funded Program"
+        },
+        "ClearingDocFiscalYear": {
+            "name": "ClearingDocFiscalYear",
+            "text_label": "Clearing Doc Fiscal Year"
+        },
+        "LedgerGLLineItem": {
+            "name": "LedgerGLLineItem",
+            "text_label": "Ledger GLLine Item"
+        },
+        "Segment": {
+            "name": "Segment",
+            "text_label": "Segment"
+        },
+        "PartnerSegment": {
+            "name": "PartnerSegment",
+            "text_label": "Partner Segment"
+        },
+        "PartnerFunctionalArea": {
+            "name": "PartnerFunctionalArea",
+            "text_label": "Partner Functional Area"
+        },
+        "HouseBankAccount": {
+            "name": "HouseBankAccount",
+            "text_label": "House Bank Account"
+        },
+        "CostElement": {
+            "name": "CostElement",
+            "text_label": "Cost Element"
+        },
+        "TaxItemAcctgDocItemRef": {
+            "name": "TaxItemAcctgDocItemRef",
+            "text_label": "Tax Item Acctg Doc Item Ref"
+        },
+        "PaymentServiceProvider": {
+            "name": "PaymentServiceProvider",
+            "text_label": "Payment Service Provider"
+        },
+        "PaymentRefByPaytSrvcProvider": {
+            "name": "PaymentRefByPaytSrvcProvider",
+            "text_label": "Payment Ref By Payt Srvc Provider"
+        },
+        "SEPAMandate": {
+            "name": "SEPAMandate",
+            "text_label": "SEPAMandate"
+        },
+        "ReferenceDocumentType": {
+            "name": "ReferenceDocumentType",
+            "text_label": "Reference Document Type"
+        },
+        "OriginalReferenceDocument": {
+            "name": "OriginalReferenceDocument",
+            "text_label": "Original Reference Document"
+        },
+        "ReferenceDocumentLogicalSystem": {
+            "name": "ReferenceDocumentLogicalSystem",
+            "text_label": "Reference Document Logical System"
+        },
+        "AccountingDocumentItemRef": {
+            "name": "AccountingDocumentItemRef",
+            "text_label": "Accounting Document Item Ref"
+        },
+        "FiscalPeriod": {
+            "name": "FiscalPeriod",
+            "text_label": "Fiscal Period",
+            "data_transformation": "strip_leading_zeros_3"
+        },
+        "AccountingDocumentCategory": {
+            "name": "AccountingDocumentCategory",
+            "text_label": "Accounting Document Category"
+        },
+        "PostingDate": {
+            "name": "PostingDate",
+            "text_label": "Posting Date",
+            "data_transformation": "date"
+        },
+        "DocumentDate": {
+            "name": "DocumentDate",
+            "text_label": "Document Date",
+            "data_transformation": "date"
+        },
+        "AccountingDocumentType": {
+            "name": "AccountingDocumentType",
+            "text_label": "Accounting Document Type"
+        },
+        "NetDueDate": {
+            "name": "NetDueDate",
+            "text_label": "Net Due Date",
+            "data_transformation": "date"
+        },
+        "CashDiscount1DueDate": {
+            "name": "CashDiscount1DueDate",
+            "text_label": "Cash Discount 1 Due Date",
+            "data_transformation": "date"
+        },
+        "CashDiscount2DueDate": {
+            "name": "CashDiscount2DueDate",
+            "text_label": "Cash Discount 2 Due Date",
+            "data_transformation": "date"
+        },
+        "OffsettingAccount": {
+            "name": "OffsettingAccount",
+            "text_label": "Offsetting Account"
+        },
+        "OffsettingAccountType": {
+            "name": "OffsettingAccountType",
+            "text_label": "Offsetting Account Type"
+        },
+        "OffsettingChartOfAccounts": {
+            "name": "OffsettingChartOfAccounts",
+            "text_label": "Offsetting Chart Of Accounts"
+        },
+        "PartnerFund": {
+            "name": "PartnerFund",
+            "text_label": "Partner Fund"
+        },
+        "PartnerGrant": {
+            "name": "PartnerGrant",
+            "text_label": "Partner Grant"
+        },
+        "BudgetPeriod": {
+            "name": "BudgetPeriod",
+            "text_label": "Budget Period"
+        },
+        "PartnerBudgetPeriod": {
+            "name": "PartnerBudgetPeriod",
+            "text_label": "Partner Budget Period"
+        },
+        "BranchCode": {
+            "name": "BranchCode",
+            "text_label": "Branch Code"
+        },
+        "OplAcctgDocItmCntrySpcfcRef1": {
+            "name": "OplAcctgDocItmCntrySpcfcRef1",
+            "text_label": "Opl Acctg Doc Itm Cntry Spcfc Ref 1"
+        },
+        "CashLedgerCompanyCode": {
+            "name": "CashLedgerCompanyCode",
+            "text_label": "Cash Ledger Company Code"
+        },
+        "CashLedgerAccount": {
+            "name": "CashLedgerAccount",
+            "text_label": "Cash Ledger Account"
+        },
+        "PubSecBudgetAccountCoCode": {
+            "name": "PubSecBudgetAccountCoCode",
+            "text_label": "Pub Sec Budget Account Co Code"
+        },
+        "PubSecBudgetAccount": {
+            "name": "PubSecBudgetAccount",
+            "text_label": "Pub Sec Budget Account"
+        },
+        "CompanyCodeCurrency": {
+            "name": "CompanyCodeCurrency",
+            "text_label": "Company Code Currency"
+        },
+        "AmountInCompanyCodeCurrency": {
+            "name": "AmountInCompanyCodeCurrency",
+            "text_label": "Amount In Company Code Currency",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "TaxAmountInCoCodeCrcy": {
+            "name": "TaxAmountInCoCodeCrcy",
+            "text_label": "Tax Amount In Co Code Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "TaxBaseAmountInCoCodeCrcy": {
+            "name": "TaxBaseAmountInCoCodeCrcy",
+            "text_label": "Tax Base Amount In Co Code Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "ValuationDiffAmtInCoCodeCrcy": {
+            "name": "ValuationDiffAmtInCoCodeCrcy",
+            "text_label": "Valuation Diff Amt In Co Code Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "CashDiscountAmtInCoCodeCrcy": {
+            "name": "CashDiscountAmtInCoCodeCrcy",
+            "text_label": "Cash Discount Amt In Co Code Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "TaxBrkdwnAmount1InCoCodeCrcy": {
+            "name": "TaxBrkdwnAmount1InCoCodeCrcy",
+            "text_label": "Tax Brkdwn Amount 1In Co Code Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "TaxBrkdwnAmount2InCoCodeCrcy": {
+            "name": "TaxBrkdwnAmount2InCoCodeCrcy",
+            "text_label": "Tax Brkdwn Amount 2In Co Code Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "TaxBrkdwnAmount3InCoCodeCrcy": {
+            "name": "TaxBrkdwnAmount3InCoCodeCrcy",
+            "text_label": "Tax Brkdwn Amount 3In Co Code Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "InvoiceAmtInCoCodeCrcy": {
+            "name": "InvoiceAmtInCoCodeCrcy",
+            "text_label": "Invoice Amt In Co Code Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "TransactionCurrency": {
+            "name": "TransactionCurrency",
+            "text_label": "Transaction Currency"
+        },
+        "AmountInTransactionCurrency": {
+            "name": "AmountInTransactionCurrency",
+            "text_label": "Amount In Transaction Currency",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "OriginalTaxBaseAmount": {
+            "name": "OriginalTaxBaseAmount",
+            "text_label": "Original Tax Base Amount",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "TaxAmount": {
+            "name": "TaxAmount",
+            "text_label": "Tax Amount",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "TaxBaseAmountInTransCrcy": {
+            "name": "TaxBaseAmountInTransCrcy",
+            "text_label": "Tax Base Amount In Trans Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "WithholdingTaxBaseAmount": {
+            "name": "WithholdingTaxBaseAmount",
+            "text_label": "Withholding Tax Base Amount",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "PlannedAmtInTransactionCrcy": {
+            "name": "PlannedAmtInTransactionCrcy",
+            "text_label": "Planned Amt In Transaction Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "CashDiscountBaseAmount": {
+            "name": "CashDiscountBaseAmount",
+            "text_label": "Cash Discount Base Amount",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "CashDiscountAmount": {
+            "name": "CashDiscountAmount",
+            "text_label": "Cash Discount Amount",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "NetPaymentAmount": {
+            "name": "NetPaymentAmount",
+            "text_label": "Net Payment Amount",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "WithholdingTaxAmount": {
+            "name": "WithholdingTaxAmount",
+            "text_label": "Withholding Tax Amount",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "WithholdingTaxExemptionAmt": {
+            "name": "WithholdingTaxExemptionAmt",
+            "text_label": "Withholding Tax Exemption Amt",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "InvoiceAmountInFrgnCurrency": {
+            "name": "InvoiceAmountInFrgnCurrency",
+            "text_label": "Invoice Amount In Frgn Currency",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "TransactionCurrency"
+        },
+        "BalanceTransactionCurrency": {
+            "name": "BalanceTransactionCurrency",
+            "text_label": "Balance Transaction Currency"
+        },
+        "AmountInBalanceTransacCrcy": {
+            "name": "AmountInBalanceTransacCrcy",
+            "text_label": "Amount In Balance Transac Crcy",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "BalanceTransactionCurrency"
+        },
+        "AdditionalCurrency1": {
+            "name": "AdditionalCurrency1",
+            "text_label": "Additional Currency 1"
+        },
+        "ValuationDiffAmtInAddlCrcy1": {
+            "name": "ValuationDiffAmtInAddlCrcy1",
+            "text_label": "Valuation Diff Amt In Addl Crcy 1",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "AdditionalCurrency1"
+        },
+        "AmountInAdditionalCurrency1": {
+            "name": "AmountInAdditionalCurrency1",
+            "text_label": "Amount In Additional Currency 1",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "AdditionalCurrency1"
+        },
+        "TaxAmountInAdditionalCurrency1": {
+            "name": "TaxAmountInAdditionalCurrency1",
+            "text_label": "Tax Amount In Additional Currency 1",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "AdditionalCurrency1"
+        },
+        "AdditionalCurrency2": {
+            "name": "AdditionalCurrency2",
+            "text_label": "Additional Currency 2"
+        },
+        "AmountInAdditionalCurrency2": {
+            "name": "AmountInAdditionalCurrency2",
+            "text_label": "Amount In Additional Currency 2",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "AdditionalCurrency2"
+        },
+        "TaxAmountInAdditionalCurrency2": {
+            "name": "TaxAmountInAdditionalCurrency2",
+            "text_label": "Tax Amount In Additional Currency 2",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "AdditionalCurrency2"
+        },
+        "ValuationDiffAmtInAddlCrcy2": {
+            "name": "ValuationDiffAmtInAddlCrcy2",
+            "text_label": "Valuation Diff Amt In Addl Crcy 2",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "AdditionalCurrency2"
+        },
+        "PaymentCurrency": {
+            "name": "PaymentCurrency",
+            "text_label": "Payment Currency"
+        },
+        "AmountInPaymentCurrency": {
+            "name": "AmountInPaymentCurrency",
+            "text_label": "Amount In Payment Currency",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "PaymentCurrency"
+        },
+        "CreditControlAreaCurrency": {
+            "name": "CreditControlAreaCurrency",
+            "text_label": "Credit Control Area Currency"
+        },
+        "HedgedAmount": {
+            "name": "HedgedAmount",
+            "text_label": "Hedged Amount",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "currency_code": "CreditControlAreaCurrency"
+        },
+        "BaseUnit": {
+            "name": "BaseUnit",
+            "text_label": "Base Unit"
+        },
+        "Quantity": {
+            "name": "Quantity",
+            "text_label": "Quantity",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "unit_of_measure": "BaseUnit"
+        },
+        "GoodsMovementEntryUnit": {
+            "name": "GoodsMovementEntryUnit",
+            "text_label": "Goods Movement Entry Unit"
+        },
+        "QuantityInEntryUnit": {
+            "name": "QuantityInEntryUnit",
+            "text_label": "Quantity In Entry Unit",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "unit_of_measure": "GoodsMovementEntryUnit"
+        },
+        "PurchasingDocumentPriceUnit": {
+            "name": "PurchasingDocumentPriceUnit",
+            "text_label": "Purchasing Document Price Unit"
+        },
+        "PurchaseOrderQty": {
+            "name": "PurchaseOrderQty",
+            "text_label": "Purchase Order Qty",
+            "is_number": true,
+            "data_transformation": "number",
+            "aggregation": "sum",
+            "unit_of_measure": "PurchasingDocumentPriceUnit"
+        },
+        "MaterialPriceUnitQty": {
+            "name": "MaterialPriceUnitQty",
+            "text_label": "Material Price Unit Qty",
+            "is_number": true,
+            "data_transformation": "decimal(0)",
+            "unit_of_measure": "BaseUnit"
+        },
+        "NumberOfItems": {
+            "name": "NumberOfItems",
+            "text_label": "Number Of Items",
+            "is_number": true,
+            "data_transformation": "int",
+            "aggregation": "sum"
+        },
+        "EarmarkedFunds": {
+            "name": "EarmarkedFunds",
+            "text_label": "Earmarked Funds"
+        },
+        "EarmarkedFundsItem": {
+            "name": "EarmarkedFundsItem",
+            "text_label": "Earmarked Funds Item"
+        },
+        "IN_GSTPartner": {
+            "name": "IN_GSTPartner",
+            "text_label": "IN_GSTPartner"
+        },
+        "IN_GSTPlaceOfSupply": {
+            "name": "IN_GSTPlaceOfSupply",
+            "text_label": "IN_GSTPlace Of Supply"
+        },
+        "IN_HSNOrSACCode": {
+            "name": "IN_HSNOrSACCode",
+            "text_label": "IN_HSNOr SACCode"
+        },
+        "OriglTaxBaseAmountInCoCodeCrcy": {
+            "name": "OriglTaxBaseAmountInCoCodeCrcy",
+            "text_label": "Origl Tax Base Amount In Co Code Crcy",
+            "is_number": true,
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "OriginalTaxBaseAmtInAddlCrcy1": {
+            "name": "OriginalTaxBaseAmtInAddlCrcy1",
+            "text_label": "Original Tax Base Amt In Addl Crcy 1",
+            "is_number": true,
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "OriginalTaxBaseAmtInAddlCrcy2": {
+            "name": "OriginalTaxBaseAmtInAddlCrcy2",
+            "text_label": "Original Tax Base Amt In Addl Crcy 2",
+            "is_number": true,
+            "currency_code": "CompanyCodeCurrency"
+        },
+        "GLAccountAuthorizationGroup": {
+            "name": "GLAccountAuthorizationGroup",
+            "text_label": "GLAccount Authorization Group"
+        },
+        "SupplierBasicAuthorizationGrp": {
+            "name": "SupplierBasicAuthorizationGrp",
+            "text_label": "Supplier Basic Authorization Grp"
+        },
+        "CustomerBasicAuthorizationGrp": {
+            "name": "CustomerBasicAuthorizationGrp",
+            "text_label": "Customer Basic Authorization Grp"
+        },
+        "AcctgDocTypeAuthorizationGroup": {
+            "name": "AcctgDocTypeAuthorizationGroup",
+            "text_label": "Acctg Doc Type Authorization Group"
+        },
+        "OrderType": {
+            "name": "OrderType",
+            "text_label": "Order Type"
+        },
+        "SalesOrderType": {
+            "name": "SalesOrderType",
+            "text_label": "Sales Order Type"
+        },
+        "AssetClass": {
+            "name": "AssetClass",
+            "text_label": "Asset Class"
+        }
+    }
+}

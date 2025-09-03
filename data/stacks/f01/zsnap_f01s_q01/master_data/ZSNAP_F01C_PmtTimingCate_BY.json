@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01C_PmtTimingCate_BY",
+    "text_label": "SNAP F01: Payment Timing Category Values",
+    "representative_key": "PaymentTimingCategory",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "PaymentTimingCategory": {
+            "name": "PaymentTimingCategory",
+            "text_label": "Payment Timing Category",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Payment Timing Category Description"
+        }
+    }
+}

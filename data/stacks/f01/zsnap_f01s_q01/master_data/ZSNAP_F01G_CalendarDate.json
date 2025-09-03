@@ -1,0 +1,76 @@
+{
+    "name": "ZSNAP_F01G_CalendarDate",
+    "text_label": "Date",
+    "representative_key": "CalendarDate",
+    "description": "",
+    "text_type": "none",
+    "fields": {
+        "CalendarDate": {
+            "name": "CalendarDate",
+            "text_label": "Calendar Date",
+            "is_key": true,
+            "data_transformation": "date"
+        },
+        "CalendarYear": {
+            "name": "CalendarYear",
+            "text_label": "Calendar Year"
+        },
+        "CalendarQuarter": {
+            "name": "CalendarQuarter",
+            "text_label": "Calendar Quarter"
+        },
+        "CalendarMonth": {
+            "name": "CalendarMonth",
+            "text_label": "Calendar Month",
+            "data_transformation": "strip_leading_zeros_2"
+        },
+        "CalendarWeek": {
+            "name": "CalendarWeek",
+            "text_label": "Calendar Week"
+        },
+        "CalendarDay": {
+            "name": "CalendarDay",
+            "text_label": "Calendar Day"
+        },
+        "YearMonth": {
+            "name": "YearMonth",
+            "text_label": "Year Month"
+        },
+        "YearQuarter": {
+            "name": "YearQuarter",
+            "text_label": "Year Quarter"
+        },
+        "YearWeek": {
+            "name": "YearWeek",
+            "text_label": "Year And Calendar Week"
+        },
+        "WeekDay": {
+            "name": "WeekDay",
+            "text_label": "Week Day"
+        },
+        "FirstDayOfWeekDate": {
+            "name": "FirstDayOfWeekDate",
+            "text_label": "First Day Of Week Date",
+            "data_transformation": "date"
+        },
+        "FirstDayOfMonthDate": {
+            "name": "FirstDayOfMonthDate",
+            "text_label": "First Day Of Month",
+            "data_transformation": "date"
+        },
+        "LastDayOfMonthDate": {
+            "name": "LastDayOfMonthDate",
+            "text_label": "Last Day Of Month",
+            "data_transformation": "date"
+        },
+        "CalendarDayOfYear": {
+            "name": "CalendarDayOfYear",
+            "text_label": "Calendar Day Of Year",
+            "data_transformation": "date"
+        },
+        "YearDay": {
+            "name": "YearDay",
+            "text_label": "Day Of The Year"
+        }
+    }
+}

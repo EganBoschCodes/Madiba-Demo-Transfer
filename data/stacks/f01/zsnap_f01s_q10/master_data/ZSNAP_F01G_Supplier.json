@@ -1,0 +1,463 @@
+{
+    "name": "ZSNAP_F01G_Supplier",
+    "text_label": "Supplier",
+    "representative_key": "Supplier",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "SupplierName",
+    "fields": {
+        "Supplier": {
+            "name": "Supplier",
+            "text_label": "Supplier",
+            "is_key": true,
+            "data_transformation": "business_partner"
+        },
+        "IsIntercompany": {
+            "name": "IsIntercompany",
+            "text_label": "Is Intercompany Flag"
+        },
+        "PartnerCompanyCode": {
+            "name": "PartnerCompanyCode",
+            "text_label": "PartnerCompanyCode"
+        },
+        "SupplierAccountGroup": {
+            "name": "SupplierAccountGroup",
+            "text_label": "Account Group"
+        },
+        "SupplierName": {
+            "name": "SupplierName",
+            "text_label": "Name of Supplier"
+        },
+        "SupplierFullName": {
+            "name": "SupplierFullName",
+            "text_label": "Supplier Name"
+        },
+        "IsBusinessPurposeCompleted": {
+            "name": "IsBusinessPurposeCompleted",
+            "text_label": "Business Purpose Completed Flag"
+        },
+        "CreatedByUser": {
+            "name": "CreatedByUser",
+            "text_label": "Created By"
+        },
+        "CreationDate": {
+            "name": "CreationDate",
+            "text_label": "Created On",
+            "data_transformation": "date"
+        },
+        "IsOneTimeAccount": {
+            "name": "IsOneTimeAccount",
+            "text_label": "One-Time Account"
+        },
+        "AuthorizationGroup": {
+            "name": "AuthorizationGroup",
+            "text_label": "Authorization Group"
+        },
+        "VATRegistration": {
+            "name": "VATRegistration",
+            "text_label": "Vat Registration No."
+        },
+        "AccountIsBlockedForPosting": {
+            "name": "AccountIsBlockedForPosting",
+            "text_label": "Posting Block(Deprecated)"
+        },
+        "TaxJurisdiction": {
+            "name": "TaxJurisdiction",
+            "text_label": "Tax Jurisdiction"
+        },
+        "SupplierStandardCarrierAccess": {
+            "name": "SupplierStandardCarrierAccess",
+            "text_label": "Scac"
+        },
+        "SupplierFwdAgentFreightGroup": {
+            "name": "SupplierFwdAgentFreightGroup",
+            "text_label": "Carrier Freight Grp"
+        },
+        "SupplierAgentProcedureGroup": {
+            "name": "SupplierAgentProcedureGroup",
+            "text_label": "Servagntprocgrp"
+        },
+        "SupplIsSocialInsuranceRegtrd": {
+            "name": "SupplIsSocialInsuranceRegtrd",
+            "text_label": "Social Insurance"
+        },
+        "SocialInsuranceActivityCode": {
+            "name": "SocialInsuranceActivityCode",
+            "text_label": "Social Ins. Code"
+        },
+        "SupplierCorporateGroup": {
+            "name": "SupplierCorporateGroup",
+            "text_label": "Group Key"
+        },
+        "Customer": {
+            "name": "Customer",
+            "text_label": "Customer",
+            "data_transformation": "business_partner"
+        },
+        "Industry": {
+            "name": "Industry",
+            "text_label": "Industry"
+        },
+        "TaxNumber1": {
+            "name": "TaxNumber1",
+            "text_label": "Tax Number 1"
+        },
+        "TaxNumber2": {
+            "name": "TaxNumber2",
+            "text_label": "Tax Number 2"
+        },
+        "TaxNumber3": {
+            "name": "TaxNumber3",
+            "text_label": "Tax Number 3"
+        },
+        "TaxNumber4": {
+            "name": "TaxNumber4",
+            "text_label": "Tax Number 4"
+        },
+        "TaxNumber5": {
+            "name": "TaxNumber5",
+            "text_label": "Tax Number 5"
+        },
+        "TaxNumber6": {
+            "name": "TaxNumber6",
+            "text_label": "Tax Number 6"
+        },
+        "PostingIsBlocked": {
+            "name": "PostingIsBlocked",
+            "text_label": "Central Posting Block"
+        },
+        "PurchasingIsBlocked": {
+            "name": "PurchasingIsBlocked",
+            "text_label": "Purch. Block"
+        },
+        "InternationalLocationNumber1": {
+            "name": "InternationalLocationNumber1",
+            "text_label": "Int. Location No. 1"
+        },
+        "InternationalLocationNumber2": {
+            "name": "InternationalLocationNumber2",
+            "text_label": "Int. Location No. 2"
+        },
+        "InternationalLocationNumber3": {
+            "name": "InternationalLocationNumber3",
+            "text_label": "Check Digit"
+        },
+        "AddressID": {
+            "name": "AddressID",
+            "text_label": "Address"
+        },
+        "Region": {
+            "name": "Region",
+            "text_label": "Region"
+        },
+        "OrganizationBPName1": {
+            "name": "OrganizationBPName1",
+            "text_label": "Name"
+        },
+        "OrganizationBPName2": {
+            "name": "OrganizationBPName2",
+            "text_label": "Name 2"
+        },
+        "CityName": {
+            "name": "CityName",
+            "text_label": "City"
+        },
+        "PostalCode": {
+            "name": "PostalCode",
+            "text_label": "Postal Code"
+        },
+        "StreetName": {
+            "name": "StreetName",
+            "text_label": "Street"
+        },
+        "Country": {
+            "name": "Country",
+            "text_label": "Country/Region Key"
+        },
+        "ConcatenatedInternationalLocNo": {
+            "name": "ConcatenatedInternationalLocNo",
+            "text_label": "International Location No."
+        },
+        "SupplierProcurementBlock": {
+            "name": "SupplierProcurementBlock",
+            "text_label": "Block Function"
+        },
+        "SuplrQualityManagementSystem": {
+            "name": "SuplrQualityManagementSystem",
+            "text_label": "Actual Qm System"
+        },
+        "SuplrQltyInProcmtCertfnValidTo": {
+            "name": "SuplrQltyInProcmtCertfnValidTo",
+            "text_label": "Qm System Valid To",
+            "data_transformation": "date"
+        },
+        "SupplierLanguage": {
+            "name": "SupplierLanguage",
+            "text_label": "Language Key"
+        },
+        "AlternativePayeeAccountNumber": {
+            "name": "AlternativePayeeAccountNumber",
+            "text_label": "Alternative Payee"
+        },
+        "PhoneNumber1": {
+            "name": "PhoneNumber1",
+            "text_label": "Telephone 1"
+        },
+        "FaxNumber": {
+            "name": "FaxNumber",
+            "text_label": "Fax Number"
+        },
+        "IsNaturalPerson": {
+            "name": "IsNaturalPerson",
+            "text_label": "Natural Person"
+        },
+        "TaxNumberResponsible": {
+            "name": "TaxNumberResponsible",
+            "text_label": "Tax Number At Responsible Tax Authority"
+        },
+        "UK_ContractorBusinessType": {
+            "name": "UK_ContractorBusinessType",
+            "text_label": "Business Type"
+        },
+        "UK_PartnerTradingName": {
+            "name": "UK_PartnerTradingName",
+            "text_label": "Prtnrs Trading Name"
+        },
+        "UK_PartnerTaxReference": {
+            "name": "UK_PartnerTaxReference",
+            "text_label": "Partners Utr"
+        },
+        "UK_VerificationStatus": {
+            "name": "UK_VerificationStatus",
+            "text_label": "Verification Status"
+        },
+        "UK_VerificationNumber": {
+            "name": "UK_VerificationNumber",
+            "text_label": "Verification Number"
+        },
+        "UK_CompanyRegistrationNumber": {
+            "name": "UK_CompanyRegistrationNumber",
+            "text_label": "Companies House Registration Number"
+        },
+        "UK_VerifiedTaxStatus": {
+            "name": "UK_VerifiedTaxStatus",
+            "text_label": "Tax Status"
+        },
+        "FormOfAddress": {
+            "name": "FormOfAddress",
+            "text_label": "Title"
+        },
+        "ReferenceAccountGroup": {
+            "name": "ReferenceAccountGroup",
+            "text_label": "Reference Acct Group"
+        },
+        "VATLiability": {
+            "name": "VATLiability",
+            "text_label": "Liable For Vat"
+        },
+        "ResponsibleType": {
+            "name": "ResponsibleType",
+            "text_label": "Tax Type"
+        },
+        "TaxNumberType": {
+            "name": "TaxNumberType",
+            "text_label": "Tax Number Type"
+        },
+        "FiscalAddress": {
+            "name": "FiscalAddress",
+            "text_label": "Fiscal Address"
+        },
+        "BusinessType": {
+            "name": "BusinessType",
+            "text_label": "Type Of Business"
+        },
+        "BirthDate": {
+            "name": "BirthDate",
+            "text_label": "Date Of Birth",
+            "data_transformation": "date"
+        },
+        "PaymentIsBlockedForSupplier": {
+            "name": "PaymentIsBlockedForSupplier",
+            "text_label": "Payment Block"
+        },
+        "SortField": {
+            "name": "SortField",
+            "text_label": "Search Term"
+        },
+        "PhoneNumber2": {
+            "name": "PhoneNumber2",
+            "text_label": "Telephone 2"
+        },
+        "DeletionIndicator": {
+            "name": "DeletionIndicator",
+            "text_label": "Central Deletion Flag"
+        },
+        "TaxInvoiceRepresentativeName": {
+            "name": "TaxInvoiceRepresentativeName",
+            "text_label": "Name Of Representative"
+        },
+        "IndustryType": {
+            "name": "IndustryType",
+            "text_label": "Type Of Industry"
+        },
+        "IN_GSTSupplierClassification": {
+            "name": "IN_GSTSupplierClassification",
+            "text_label": "Gst Vendor Classification"
+        },
+        "SuplrProofOfDelivRlvtCode": {
+            "name": "SuplrProofOfDelivRlvtCode",
+            "text_label": "Relevant For Pod"
+        },
+        "TradingPartner": {
+            "name": "TradingPartner",
+            "text_label": "Trading Partner No."
+        },
+        "BR_TaxIsSplit": {
+            "name": "BR_TaxIsSplit",
+            "text_label": "Tax Split"
+        },
+        "AU_PayerIsPayingToCarryOnEnt": {
+            "name": "AU_PayerIsPayingToCarryOnEnt",
+            "text_label": "Enterprise In Au"
+        },
+        "AU_IndividualIsUnder18": {
+            "name": "AU_IndividualIsUnder18",
+            "text_label": "Individual Under 18"
+        },
+        "AU_PaymentIsExceeding75": {
+            "name": "AU_PaymentIsExceeding75",
+            "text_label": "Payment Does not Exc"
+        },
+        "AU_PaymentIsWhollyInputTaxed": {
+            "name": "AU_PaymentIsWhollyInputTaxed",
+            "text_label": "Wholly Input Taxed"
+        },
+        "AU_PartnerIsSupplyWithoutGain": {
+            "name": "AU_PartnerIsSupplyWithoutGain",
+            "text_label": "Individual w/o Gain"
+        },
+        "AU_SupplierIsEntitledToABN": {
+            "name": "AU_SupplierIsEntitledToABN",
+            "text_label": "The Supplier Is Not Entitled To An Abn"
+        },
+        "AU_PaymentIsIncomeExempted": {
+            "name": "AU_PaymentIsIncomeExempted",
+            "text_label": "The Whole Of The Payment Is Exempt Incom"
+        },
+        "AU_SupplyIsMadeAsPrivateHobby": {
+            "name": "AU_SupplyIsMadeAsPrivateHobby",
+            "text_label": "An Activity Done As A Private Recreation"
+        },
+        "AU_SupplyMadeIsOfDmstcNature": {
+            "name": "AU_SupplyMadeIsOfDmstcNature",
+            "text_label": "Wholly Of A Private Or Domestic Nature"
+        },
+        "IsToBeAcceptedAtOrigin": {
+            "name": "IsToBeAcceptedAtOrigin",
+            "text_label": "Origin Acceptance"
+        },
+        "BPIsEqualizationTaxSubject": {
+            "name": "BPIsEqualizationTaxSubject",
+            "text_label": "BPIsEqualizationTaxSubject"
+        },
+        "BRSpcfcTaxBasePercentageCode": {
+            "name": "BRSpcfcTaxBasePercentageCode",
+            "text_label": "Tax Base"
+        },
+        "SupplierProfession": {
+            "name": "SupplierProfession",
+            "text_label": "Profession"
+        },
+        "SuplrManufacturerExternalName": {
+            "name": "SuplrManufacturerExternalName",
+            "text_label": "Ext. Manufacturer"
+        },
+        "DataMediumExchangeIndicator": {
+            "name": "DataMediumExchangeIndicator",
+            "text_label": "Dme Recipient Code"
+        },
+        "DataExchangeInstructionKey": {
+            "name": "DataExchangeInstructionKey",
+            "text_label": "Instruction Key"
+        },
+        "SupplierIsSubRangeRelevant": {
+            "name": "SupplierIsSubRangeRelevant",
+            "text_label": "VSR Relevant"
+        },
+        "TrainStationName": {
+            "name": "TrainStationName",
+            "text_label": "Train Station"
+        },
+        "AlternativePayeeIsAllowed": {
+            "name": "AlternativePayeeIsAllowed",
+            "text_label": "Payee In Document"
+        },
+        "PaytSlipWthRefSubscriber": {
+            "name": "PaytSlipWthRefSubscriber",
+            "text_label": "Pbc/Isr Number"
+        },
+        "TranspServiceAgentStstcGrp": {
+            "name": "TranspServiceAgentStstcGrp",
+            "text_label": "Stat. Grp, Agent"
+        },
+        "SupplierIsPlantRelevant": {
+            "name": "SupplierIsPlantRelevant",
+            "text_label": "Plant Level Relevant"
+        },
+        "SuplrTaxAuthorityAccountNumber": {
+            "name": "SuplrTaxAuthorityAccountNumber",
+            "text_label": "Tax Office Responsible"
+        },
+        "SuplrCarrierConfirmIsExpected": {
+            "name": "SuplrCarrierConfirmIsExpected",
+            "text_label": "Carrier Confirmation Expected"
+        },
+        "SupplierPlant": {
+            "name": "SupplierPlant",
+            "text_label": "Plant"
+        },
+        "FactoryCalendar": {
+            "name": "FactoryCalendar",
+            "text_label": "Factory Calendar"
+        },
+        "PaymentReason": {
+            "name": "PaymentReason",
+            "text_label": "Payment Reason"
+        },
+        "SupplierCentralDeletionIsBlock": {
+            "name": "SupplierCentralDeletionIsBlock",
+            "text_label": "Central Del. Block"
+        },
+        "SupplierTransportationChain": {
+            "name": "SupplierTransportationChain",
+            "text_label": "Transportation Chain"
+        },
+        "SupplierStagingTimeInDays": {
+            "name": "SupplierStagingTimeInDays",
+            "text_label": "Staging Time",
+            "is_number": true,
+            "data_transformation": "decimal(0)"
+        },
+        "SupplierSchedulingProcedure": {
+            "name": "SupplierSchedulingProcedure",
+            "text_label": "Scheduling Procedure"
+        },
+        "CollectiveNumberingIsRelevant": {
+            "name": "CollectiveNumberingIsRelevant",
+            "text_label": "Cd: Relevant For Collective Numbering"
+        },
+        "BusinessPartnerPanNumber": {
+            "name": "BusinessPartnerPanNumber",
+            "text_label": "Permanent Account Number"
+        },
+        "BPPanReferenceNumber": {
+            "name": "BPPanReferenceNumber",
+            "text_label": "Pan Reference Number"
+        },
+        "BPPanValidFromDate": {
+            "name": "BPPanValidFromDate",
+            "text_label": "Pan Valid From Date",
+            "data_transformation": "date"
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "name": "ZSNAP_F01G_DebitCreditCode",
+    "text_label": "Debit Credit Code",
+    "representative_key": "DebitCreditCode",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_DebitCreditCdTxt",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "DebitCreditCode"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "DebitCreditCode"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "DebitCreditCodeName"
+    },
+    "fields": {
+        "DebitCreditCode": {
+            "name": "DebitCreditCode",
+            "text_label": "Debit/Credit Code",
+            "is_key": true
+        }
+    }
+}

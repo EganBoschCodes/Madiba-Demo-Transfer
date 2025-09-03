@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01C_SuppIsInterco_FU",
+    "text_label": "SNAP F01: Supplier Is Intercompany Values",
+    "representative_key": "SupplierIsIntercompany",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "SupplierIsIntercompany": {
+            "name": "SupplierIsIntercompany",
+            "text_label": "Supplier Is Intercompany",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Supplier Is Intercompany Description"
+        }
+    }
+}

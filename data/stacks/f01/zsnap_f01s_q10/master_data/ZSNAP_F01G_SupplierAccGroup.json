@@ -1,0 +1,48 @@
+{
+    "name": "ZSNAP_F01G_SupplierAccGroup",
+    "text_label": "Supplier Account Group",
+    "representative_key": "SupplierAccountGroup",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_SupplierAccountGroupText",
+        "view_target": "ZSNAP_F01G_SuppAccGroupText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "SupplierAccountGroup"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "SupplierAccountGroup"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "AccountGroupName"
+    },
+    "fields": {
+        "SupplierAccountGroup": {
+            "name": "SupplierAccountGroup",
+            "text_label": "Account Group",
+            "is_key": true
+        },
+        "BPSchemaPurgOrganizationLevel": {
+            "name": "BPSchemaPurgOrganizationLevel",
+            "text_label": "Partner Schema: Purch. Org."
+        }
+    }
+}

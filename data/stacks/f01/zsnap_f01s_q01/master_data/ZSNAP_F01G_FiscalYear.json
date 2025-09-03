@@ -1,0 +1,50 @@
+{
+    "name": "ZSNAP_F01G_FiscalYear",
+    "text_label": "Fiscal Year",
+    "representative_key": "FiscalYear",
+    "description": "",
+    "text_type": "none",
+    "fields": {
+        "FiscalYearVariant": {
+            "name": "FiscalYearVariant",
+            "text_label": "Fiscal Year Variant",
+            "is_key": true,
+            "masterdata": "_FiscalYearVariant"
+        },
+        "FiscalYear": {
+            "name": "FiscalYear",
+            "text_label": "Fiscal Year",
+            "is_key": true
+        },
+        "FiscalYearStartDate": {
+            "name": "FiscalYearStartDate",
+            "text_label": "Start Of Fiscal Year",
+            "data_transformation": "date"
+        },
+        "FiscalYearEndDate": {
+            "name": "FiscalYearEndDate",
+            "text_label": "End Of Fiscal Year",
+            "data_transformation": "date"
+        },
+        "FiscalYearConsecutiveNumber": {
+            "name": "FiscalYearConsecutiveNumber",
+            "text_label": "Fiscal Year",
+            "is_number": true,
+            "data_transformation": "int"
+        },
+        "NextFiscalYear": {
+            "name": "NextFiscalYear",
+            "text_label": "Next Fiscal Year"
+        },
+        "NextFiscalYearStartDate": {
+            "name": "NextFiscalYearStartDate",
+            "text_label": "Start of Next Fiscal Year",
+            "data_transformation": "date"
+        },
+        "NextFiscalYearEndDate": {
+            "name": "NextFiscalYearEndDate",
+            "text_label": "End of Next Fiscal Year",
+            "data_transformation": "date"
+        }
+    }
+}

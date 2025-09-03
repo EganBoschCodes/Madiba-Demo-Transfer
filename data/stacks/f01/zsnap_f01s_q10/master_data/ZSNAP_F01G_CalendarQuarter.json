@@ -1,0 +1,44 @@
+{
+    "name": "ZSNAP_F01G_CalendarQuarter",
+    "text_label": "Quarter",
+    "representative_key": "CalendarQuarter",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_CalQuarterTxt",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "CalendarQuarter"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "CalendarQuarter"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "CalendarQuarterName"
+    },
+    "fields": {
+        "CalendarQuarter": {
+            "name": "CalendarQuarter",
+            "text_label": "Calendar Quarter",
+            "is_key": true
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "name": "ZSNAP_F01G_FinancialAccType",
+    "text_label": "Financial Account Type",
+    "representative_key": "FinancialAccountType",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_FinAccTpTxt",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "FinancialAccountType"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "FinancialAccountType"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "FinancialAccountTypeName"
+    },
+    "fields": {
+        "FinancialAccountType": {
+            "name": "FinancialAccountType",
+            "text_label": "Account Type",
+            "is_key": true
+        },
+        "DomainValue": {
+            "name": "DomainValue",
+            "text_label": "Lower Value"
+        }
+    }
+}

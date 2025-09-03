@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01C_IsCleared",
+    "text_label": "SNAP F01: Is Cleared Flag Values",
+    "representative_key": "IsCleared",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "IsCleared": {
+            "name": "IsCleared",
+            "text_label": "Is Cleared Flag",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Is Cleared Flag Description"
+        }
+    }
+}

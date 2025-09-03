@@ -1,0 +1,44 @@
+{
+    "name": "ZSNAP_F01G_BusinessArea",
+    "text_label": "Business Area",
+    "representative_key": "BusinessArea",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_BusinessAreaText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "BusinessArea"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "BusinessArea"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "BusinessAreaName"
+    },
+    "fields": {
+        "BusinessArea": {
+            "name": "BusinessArea",
+            "text_label": "Business Area",
+            "is_key": true
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "ZSNAP_F01G_AccountingClerk",
+    "text_label": "Accounting Clerk",
+    "representative_key": "AccountingClerk",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "AccountingClerkName",
+    "fields": {
+        "CompanyCode": {
+            "name": "CompanyCode",
+            "text_label": "Company Code",
+            "is_key": true,
+            "masterdata": "_Company"
+        },
+        "AccountingClerk": {
+            "name": "AccountingClerk",
+            "text_label": "Accounting Clerk",
+            "is_key": true
+        },
+        "AccountingClerkName": {
+            "name": "AccountingClerkName",
+            "text_label": "Accounting Clerk Name"
+        },
+        "UserID": {
+            "name": "UserID",
+            "text_label": "User ID"
+        }
+    }
+}

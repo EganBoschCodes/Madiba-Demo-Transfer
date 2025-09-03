@@ -1,0 +1,56 @@
+{
+    "name": "ZSNAP_F01G_Country",
+    "text_label": "Country/Region",
+    "representative_key": "Country",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_CountryText",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "Country"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "Country"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "CountryName"
+    },
+    "fields": {
+        "Country": {
+            "name": "Country",
+            "text_label": "Country/Region Key",
+            "is_key": true
+        },
+        "CountryThreeLetterISOCode": {
+            "name": "CountryThreeLetterISOCode",
+            "text_label": "Iso Code 3 Characters"
+        },
+        "CountryThreeDigitISOCode": {
+            "name": "CountryThreeDigitISOCode",
+            "text_label": "Iso Code Numeric 3-Chars."
+        },
+        "CountryISOCode": {
+            "name": "CountryISOCode",
+            "text_label": "Iso Code"
+        }
+    }
+}

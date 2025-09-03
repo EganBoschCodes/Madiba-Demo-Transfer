@@ -1,0 +1,44 @@
+{
+    "name": "ZSNAP_F01G_FunctionalArea",
+    "text_label": "Functional Area",
+    "representative_key": "FunctionalArea",
+    "description": "",
+    "text_type": "text_association",
+    "text_reference": {
+        "name": "_Text",
+        "view_target": "ZSNAP_F01G_FnctlAreaTxt",
+        "offers_text": false,
+        "binding": [
+            {
+                "left": {
+                    "type": "local",
+                    "value": "FunctionalArea"
+                },
+                "right": {
+                    "type": "foreign",
+                    "value": "FunctionalArea"
+                },
+                "operator": "="
+            },
+            {
+                "left": {
+                    "type": "foreign",
+                    "value": "Language"
+                },
+                "right": {
+                    "type": "constant",
+                    "value": "$session.system_language"
+                },
+                "operator": "="
+            }
+        ],
+        "text_field": "FunctionalAreaName"
+    },
+    "fields": {
+        "FunctionalArea": {
+            "name": "FunctionalArea",
+            "text_label": "Functional Area",
+            "is_key": true
+        }
+    }
+}

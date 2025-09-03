@@ -1,0 +1,19 @@
+{
+    "name": "ZSNAP_F01C_IsUsedInPmtTr_BA",
+    "text_label": "SNAP F01: Is Payment Indicator Values",
+    "representative_key": "IsUsedInPaymentTransaction",
+    "description": "",
+    "text_type": "local_field",
+    "text_reference": "Description",
+    "fields": {
+        "IsUsedInPaymentTransaction": {
+            "name": "IsUsedInPaymentTransaction",
+            "text_label": "Is Payment Indicator",
+            "is_key": true
+        },
+        "Description": {
+            "name": "Description",
+            "text_label": "Is Payment Indicator Description"
+        }
+    }
+}
