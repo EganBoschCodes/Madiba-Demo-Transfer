@@ -1,0 +1,14 @@
+{
+    "FifthSeason-DS4": {
+        "adt": "https://vheclds4ci.us4.sap.fifthseason.com:44300"
+    },
+    "FifthSeason-QS4": {
+        "adt": "https://vheclqs4ci.us4.sap.fifthseason.com:44300"
+    },
+    "FifthSeason-PS4": {
+        "adt": "https://vheclps4ci.us4.sap.fifthseason.com:44300"
+    },
+    "MadibaDemo-DM1": {
+        "adt": "http://50.19.106.63:8000"
+    }
+}
