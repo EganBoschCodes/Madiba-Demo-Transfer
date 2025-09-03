@@ -1,0 +1,7 @@
+{
+    "dats": "date",
+    "int1": "int",
+    "int2": "int",
+    "int4": "int",
+    "dec": "decimal($decimals)"
+}

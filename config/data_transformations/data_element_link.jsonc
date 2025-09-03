@@ -1,0 +1,8 @@
+{
+    "kunnr": "business_partner",
+    "lifnr": "business_partner",
+
+    "saknr": "strip_leading_zeroes_10",
+    "fis_racct": "strip_leading_zeroes_10",
+    "hkont": "strip_leading_zeroes_10"
+}

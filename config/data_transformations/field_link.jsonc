@@ -1,0 +1,23 @@
+{
+    "Supplier": "business_partner",
+    "Customer": "business_partner",
+    "GLAccount": "strip_leading_zeros_10",
+    "CostCenter": "strip_leading_zeros_10",
+    "ProfitCenter": "strip_leading_zeros_10",
+
+    "InvoiceReference": "strip_leading_zeros_10",
+
+    "CalendarMonth": "strip_leading_zeros_2",
+    "\\w*FiscalPeriod": "strip_leading_zeros_3",
+    "\\w*FiscalYearPeriod": "fiscal_year_period",
+    "\\w*FiscalYearQuarter": "fiscal_year_quarter",
+
+    "\\w+Date": "date",
+    "CalendarDayOfYear": "date",
+
+    "CashDiscount1Percent": "percent",
+    "CashDiscount2Percent": "percent",
+
+    "NumberOfItems": "int",
+    "NumberOfRows": "int"
+}
