@@ -1,0 +1,22 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Bezeichnung der Sperrgrnde im maschinellen Zahlungsverkehr'
+
+define table t008t {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key zahls: dzahls; // abap.char(1): Payment Block
+	textl: textl_008; // abap.char(20): Description
+}

@@ -1,0 +1,193 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Adressen (Business Address Services)'
+
+define table adrc {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Mandant, in dem die Adresse liegt'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key client: mandt; // abap.clnt(3): Client
+	key addrnumber: ad_addrnum; // abap.char(10): Address Number
+	key date_from: ad_date_fr; // abap.dats(8): From
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'Versionskennzeichen fr internationale Adressen'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key nation: ad_nation; // abap.char(1): Address Version
+	date_to: ad_date_to; // abap.dats(8): To
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Anredeschlssel'
+	@AbapCatalog.foreignKey.screenCheck: true
+	title: ad_title; // abap.char(4): Title
+	name1: ad_name1; // abap.char(40): Name
+	name2: ad_name2; // abap.char(40): Name 2
+	name3: ad_name3; // abap.char(40): Name 3
+	name4: ad_name4; // abap.char(40): Name 4
+	name_text: ad_nametxt; // abap.char(50): Converted Name
+	name_co: ad_name_co; // abap.char(40): C/O
+	city1: ad_city1; // abap.char(40): City
+	city2: ad_city2; // abap.char(40): District
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	city_code: ad_citynum; // abap.char(12): City Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cityp_code: ad_citypnm; // abap.char(8): District
+	home_city: ad_city3; // abap.char(40): Different City
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	cityh_code: ad_cityhnm; // abap.char(12): City Code
+	chckstatus: ad_checkst; // abap.char(1): Test Stat./City File
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	regiogroup: regiogroup; // abap.char(8): Structure Group
+	post_code1: ad_pstcd1; // abap.char(10): Postal Code
+	post_code2: ad_pstcd2; // abap.char(10): Po Box Postal Code
+	post_code3: ad_pstcd3; // abap.char(10): Company Postal Code
+	pcode1_ext: ad_pst1xt; // abap.char(10): Postl Code Extension
+	pcode2_ext: ad_pst2xt; // abap.char(10): Postl Code Extension
+	pcode3_ext: ad_pst3xt; // abap.char(10): Postl Code Extension
+	po_box: ad_pobx; // abap.char(10): Po Box
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Unzustellbarkeitsgrund'
+	@AbapCatalog.foreignKey.screenCheck: true
+	dont_use_p: ad_no_usep; // abap.char(4): Undeliverable
+	po_box_num: ad_pobxnum; // abap.char(1): Po Box W/O No.
+	po_box_loc: ad_pobxloc; // abap.char(40): Po Box City
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	city_code2: ad_cit2num; // abap.char(12): City Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	po_box_reg: ad_pobxreg; // abap.char(3): Po Box Region
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	po_box_cty: ad_pobxcty; // abap.char(3): Po Box Ctry/Region
+	postalarea: ad_pstlar; // abap.char(15): Delivery District
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	transpzone: lzone; // abap.char(10): Transportation Zone
+	street: ad_street; // abap.char(60): Street
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Unzustellbarkeitsgrund'
+	@AbapCatalog.foreignKey.screenCheck: true
+	dont_use_s: ad_no_uses; // abap.char(4): Undeliverable
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	streetcode: ad_strnum; // abap.char(12): Street Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	streetabbr: ad_strabbr; // abap.char(2): Street Abbreviation
+	house_num1: ad_hsnm1; // abap.char(10): House Number
+	house_num2: ad_hsnm2; // abap.char(10): Supplement
+	house_num3: ad_hsnm3; // abap.char(10): House Number Range
+	str_suppl1: ad_strspp1; // abap.char(40): Street 2
+	str_suppl2: ad_strspp2; // abap.char(40): Street 3
+	str_suppl3: ad_strspp3; // abap.char(40): Street 4
+	location: ad_lctn; // abap.char(40): Street 5
+	building: ad_bldng; // abap.char(20): Building Code
+	floor: ad_floor; // abap.char(10): Floor
+	roomnumber: ad_roomnum; // abap.char(10): Room Number
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Lnderschlssel'
+	@AbapCatalog.foreignKey.screenCheck: true
+	country: land1; // abap.char(3): Country/Region Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Sprachenschlssel'
+	@AbapCatalog.foreignKey.screenCheck: true
+	langu: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Regionscode'
+	@AbapCatalog.foreignKey.screenCheck: true
+	region: regio; // abap.char(3): Region
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Adregruppe'
+	@AbapCatalog.foreignKey.screenCheck: true
+	addr_group: ad_group; // abap.char(4): Address Group
+	flaggroups: ad_flggp; // abap.char(1): 
+	pers_addr: ad_prsaddr; // abap.char(1): Personal Address
+	sort1: ad_sort1; // abap.char(20): Search Term 1
+	sort2: ad_sort2; // abap.char(20): Search Term 2
+	sort_phn: ad_srtphn; // abap.char(20): Sort Phonetically
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Kommunikationsart'
+	@AbapCatalog.foreignKey.screenCheck: true
+	deflt_comm: ad_comm; // abap.char(3): Comm. Method
+	tel_number: ad_tlnmbr1; // abap.char(30): Telephone
+	tel_extens: ad_tlxtns1; // abap.char(10): Extension
+	fax_number: ad_fxnmbr1; // abap.char(30): Fax
+	fax_extens: ad_fxxtns1; // abap.char(10): Extension
+	flagcomm2: ad_flgcm02; // abap.char(1): Telephone...
+	flagcomm3: ad_flgcm03; // abap.char(1): Fax...
+	flagcomm4: ad_flgcm04; // abap.char(1): Teletex
+	flagcomm5: ad_flgcm05; // abap.char(1): Telex
+	flagcomm6: ad_flgcm06; // abap.char(1): E-Mail Defined
+	flagcomm7: ad_flgcm07; // abap.char(1): R/Mail
+	flagcomm8: ad_flgcm08; // abap.char(1): X.400
+	flagcomm9: ad_flgcm09; // abap.char(1): Rfc
+	flagcomm10: ad_flgcm10; // abap.char(1): Printer
+	flagcomm11: ad_flgcm11; // abap.char(1): Ssf
+	flagcomm12: ad_flgcm12; // abap.char(1): Uri/Ftp
+	flagcomm13: ad_flgcm13; // abap.char(1): Pager
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Quelle der Adressdaten'
+	@AbapCatalog.foreignKey.screenCheck: true
+	addrorigin: ad_origina; // abap.char(4): Address Source
+	mc_name1: ad_mc_name; // abap.char(25): Company Name
+	mc_city1: ad_mc_city; // abap.char(25): City
+	mc_street: ad_mc_strt; // abap.char(25): Street
+	extension1: ad_extens1; // abap.char(40): Data Line
+	extension2: ad_extens2; // abap.char(40): Telebox
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	time_zone: ad_tzone; // abap.char(6): Time Zone
+	taxjurcode: ad_txjcd; // abap.char(15): Tax Jurisdiction
+	address_id: ad_addr_id; // abap.char(10): Address Id
+	
+	@AbapCatalog.textLanguage
+	langu_crea: ad_langucr; // abap.lang(1): Creation Language
+	adrc_uuid: ad_uuid; // abap.raw(16): Address Uuid
+	uuid_belated: ad_uuid_belated; // abap.char(1): Uuid Generated Later
+	id_category: ad_id_category; // abap.char(1): Address Id Category
+	adrc_err_status: ad_err_status; // abap.char(1): Error Status
+	po_box_lobby: ad_po_box_lby; // abap.char(40): Po Box Lobby
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.label: 'Address Delivery service type text table'
+	@AbapCatalog.foreignKey.screenCheck: true
+	deli_serv_type: ad_delivery_service_type; // abap.char(4): Type Of Delivry Service
+	deli_serv_number: ad_delivery_service_number; // abap.char(10): Number Of Delivery Service
+	county_code: ad_cntynum; // abap.char(8): County Code
+	county: ad_county; // abap.char(40): County
+	township_code: ad_twshpnum; // abap.char(8): Township Code
+	township: ad_township; // abap.char(40): Township
+	mc_county: ad_mc_county; // abap.char(25): County
+	mc_township: ad_mc_twshp; // abap.char(25): Township
+	xpcpt: ad_xpcpt; // abap.char(1): Business Purpose Completed Flag
+	_dataaging: data_temperature; // abap.dats(8): Data Aging Filter
+	duns: /sapht/rn_duns; // abap.char(9): Duns Number
+	dunsp4: /sapht/rn_dunsp4; // abap.char(4): Duns+4 (The Last 4 Digit)
+}

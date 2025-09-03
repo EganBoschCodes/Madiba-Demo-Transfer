@@ -1,0 +1,31 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Fiscal Date'
+
+define table finsc_fisc_date {
+	key client: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	key fiscal_year_variant: fins_periv; // abap.char(2): Fiscal Year Variant
+	key calendar_date: fins_caldate; // abap.dats(8): Calendar Date
+	fiscal_year: fins_gjahr; // abap.numc(4): Fiscal Year
+	fiscal_period: fins_fiscalperiod; // abap.numc(3): Fiscal Period
+	fiscal_period_start_date: fins_fperiod_startdate; // abap.dats(8): Start Fiscal Period
+	fiscal_period_end_date: fins_fperiod_enddate; // abap.dats(8): End Of Fiscal Period
+	fiscal_year_quarter: fins_fyearquarter; // abap.numc(5): Fiscal Year Quarter
+	fiscal_year_start_date: fins_fyear_startdate; // abap.dats(8): Start Of Fiscal Year
+	fiscal_year_end_date: fins_fyear_enddate; // abap.dats(8): End Of Fiscal Year
+	fiscal_quarter_start_date: fins_fquarter_startdate; // abap.dats(8): Start Fiscal Quarter
+	fiscal_quarter_end_date: fins_fquarter_enddate; // abap.dats(8): End Of Fscal Quarter
+	fiscal_year_period: fins_jahrper; // abap.numc(7): Fiscal Year Period
+	fiscal_quarter: fins_fscalquarter; // abap.numc(1): Fiscal Quarter
+	fiscal_week: fins_fiscalweek; // abap.numc(2): Fiscal Week
+	fiscal_week_start_date: fins_fweek_startdate; // abap.dats(8): Start Fiscal Week
+	fiscal_week_end_date: fins_fweek_enddate; // abap.dats(8): End Fiscal Week
+	fiscal_year_week: fins_fyearweek; // abap.numc(6): Fiscal Year Week
+	fiscal_year_period_int: fins_fyearperiod_i; // abap.int4(10): Fiscal Year Period (Numbering)
+	fiscal_year_quarter_int: fins_fyearquarter_i; // abap.int4(10): Fiscal Year Quarter (Numbering)
+	fiscal_year_week_int: fins_fyearweek_i; // abap.int4(10): Fiscal Year Week (Numbering)
+}

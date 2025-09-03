@@ -1,0 +1,22 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Bezeichnung der Geschftsjahresvarianten'
+
+define table t009t {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key periv: periv; // abap.char(2): Fiscal Year Variant
+	ltext: ltext_009; // abap.char(30): Description
+}

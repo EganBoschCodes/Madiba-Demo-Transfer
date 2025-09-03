@@ -1,0 +1,26 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Bezeichnung der Buchungsschlssel'
+
+define table tbslt {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	key spras: spras; // abap.lang(1): Language Key
+	
+	@AbapCatalog.foreignKey.keyType: #TEXT_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key bschl: bschl; // abap.char(2): Posting Key
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key umskz: umskz; // abap.char(1): Special G/L Ind.
+	ltext: text_bslt; // abap.char(20): Posting Key Name
+}

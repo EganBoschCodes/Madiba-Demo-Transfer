@@ -1,0 +1,111 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Lnder'
+
+define table t005 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key land1: land1; // abap.char(3): Country/Region Key
+	landk: landk; // abap.char(3): Vehicle Ctry/Reg Key
+	lnplz: lnplz_005; // abap.numc(2): Postal Code Length
+	prplz: pruef_005; // abap.char(1): Check Rule For Postal Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	addrs: addrs_005; // abap.char(3): Address Layout Key
+	xplzs: xplzs_005; // abap.char(1): Postal Code Required
+	xplpf: xplpf_005; // abap.char(1): Po Box Postal Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	spras: spras; // abap.lang(1): Language Key
+	xland: xland_005; // abap.char(1): Version Ctry/Region
+	xaddr: xaddr_005; // abap.char(1): Print C/R Name
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	nmfmt: nmfmt_005; // abap.char(2): Standard Name Format
+	xregs: xregs_005; // abap.char(1): City File Active
+	xplst: xplst_005; // abap.char(1): Street Postcode
+	intca: intca; // abap.char(2): Iso Code
+	intca3: intca3; // abap.char(3): Iso Code 3 Characters
+	intcn3: intcn3; // abap.numc(3): Iso Code Numeric 3-Chars.
+	xegld: xegld; // abap.char(1): Eu Member
+	xskfn: xskfn; // abap.char(1): Discount Base Is Net Value
+	xmwsn: xmwsn; // abap.char(1): Tax Base Is Net Value
+	lnbkn: lnbkn_005; // abap.numc(2): Bank Account Number Length
+	prbkn: prbkn_005; // abap.char(1): Check Rule For Bank Acct No.
+	lnblz: lnblz_005; // abap.numc(2): Bank Number Length
+	prblz: prblz_005; // abap.char(1): Check Rule For Bank Number
+	lnpsk: lnpsk_005; // abap.numc(2): Post Office Bank Acct No.length
+	prpsk: prpsk_005; // abap.char(1): Check Rule For Pst.chck Acct No.
+	xprbk: xprbk_005; // abap.char(1): Bank Data
+	bnkey: bnkey; // abap.char(1): Bank Key
+	lnbks: lnbks_005; // abap.numc(2): Length Of Bank Key
+	prbks: prbks_005; // abap.char(1): Check Rule For Bank Key
+	xprso: xprso_005; // abap.char(1): Other Data
+	pruin: pruin_005; // abap.char(1): Vat Registration Number
+	uinln: uinln; // abap.numc(2): Vat Registration No.
+	lnst1: lnst1_005; // abap.numc(2): Permitted Length For Tax Number 1
+	prst1: prst1_005; // abap.char(1): Check Rule For Tax Code 1
+	lnst2: lnst2_005; // abap.numc(2): Permitted Length For Tax Number 2
+	prst2: prst2_005; // abap.char(1): Check Rule For Tax Code 2
+	lnst3: lnst3_005; // abap.numc(2): Permitted Length For Tax Number 3
+	prst3: prst3_005; // abap.char(1): Check Rule For Tax Code 3
+	lnst4: lnst4_005; // abap.numc(2): Permitted Length For Tax Number 4
+	prst4: prst4_005; // abap.char(1): Check Rule For Tax Code 4
+	lnst5: lnst5_005; // abap.numc(2): Permitted Length For Tax Number 5
+	prst5: prst5_005; // abap.char(1): Check Rule For Tax Code 5
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	landd: dusta; // abap.char(3): Nationality
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalsm: kalsm_d; // abap.char(6): Procedure
+	landa: landa; // abap.char(3): Alternative Key
+	wechf: wechf; // abap.numc(3): Boe Payment Period
+	lkvrz: lkvrz; // abap.char(7): Trde Stat.short Name
+	intcn: intcn; // abap.numc(3): Intrastat Code
+	xdezp: xdezp; // abap.char(1): Decimal Format
+	datfm: datfm; // abap.char(1): Date Format
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	curin: curin; // abap.cuky(5): Index-Based Currency
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	curha: curha; // abap.cuky(5): Hard Currency
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers_005; // abap.cuky(5): Reporting Currency
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kurst: kurst_005; // abap.char(4): Exchange Rate Type
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	afapl: afapl; // abap.char(4): Chart Of Deprec.
+	
+	@Semantics.amount.currencyCode: 't005.waers'
+	gwgwrt: gwgwrt; // abap.curr(23, 2): Max.lva Amount: For Posting
+	
+	@Semantics.amount.currencyCode: 't005.waers'
+	umrwrt: umrwrt; // abap.curr(23, 2): Net Book Value For Dep.change
+	kzrbwb: kzrbwb; // abap.char(1): Post Net Book Value
+	xanzum: xanzum; // abap.char(1): Capitalize Auc W/O Downpayment
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	ctnconcept: ctnconcept; // abap.char(4): Wtax Certificate Numbering Concepts
+	kzsrv: kzsrv; // abap.char(1): Taxes At Ind. Serv. Level
+	xxinve: xxinve; // abap.char(1): Capital Goods Ind.
+	net_gross_posting_type: fins_net_gross_posting_type; // abap.char(1): Post Net Or Gross Amount
+	xgccv: xgccv; // abap.char(1): Gcc Member
+	sureg: prq_sureg; // abap.char(8): Super Region
+}

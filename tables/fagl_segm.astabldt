@@ -1,0 +1,10 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Stammdaten fr Segmente'
+
+define table fagl_segm {
+	key mandt: mandt; // abap.clnt(3): Client
+	key segment: fb_segment; // abap.char(10): Segment
+}

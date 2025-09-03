@@ -1,0 +1,21 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Buchungsschlssel'
+
+define table tbsl {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key bschl: bschl; // abap.char(2): Posting Key
+	shkzg: shkzg; // abap.char(1): Debit/Credit Ind
+	koart: koart; // abap.char(1): Account Type
+	xumsw: xumsw_bsl; // abap.char(1): Sales-Related
+	faus1: faus1; // abap.char(50): Field Selection
+	xzahl: xzahl; // abap.char(1): Payment Transaction
+	stbsl: stbsl; // abap.char(2): Reversal Posting Key
+	xsonu: xsonu; // abap.char(1): Special G/L
+	faus2: faus2; // abap.char(80): Field Selection
+}

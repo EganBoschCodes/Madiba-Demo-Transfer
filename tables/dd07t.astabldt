@@ -1,0 +1,20 @@
+@AbapCatalog.activationType: #NAMETAB_GENERATION_OFFLINE
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #W
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'DD: Texte zu Domnenfestwerten (sprachabhngig)'
+
+define table dd07t {
+	key domname: domname; // abap.char(30): Domain Name
+	
+	@AbapCatalog.textLanguage
+	key ddlanguage: ddlanguage; // abap.lang(1): Lang.
+	key as4local: as4local; // abap.char(1): Activation State
+	key valpos: valpos; // abap.numc(4): Value Key
+	key as4vers: as4vers; // abap.numc(4): Version
+	ddtext: val_text; // abap.char(60): Short Description
+	domval_ld: domval_ld; // abap.char(10): Lower Limit
+	domval_hd: domval_hd; // abap.char(10): Upper Limit
+	domvalue_l: domvalue_l; // abap.char(10): Lower Value
+}

@@ -1,0 +1,16 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Eigenschaften der Sonderhauptbuchkennzeichen'
+
+define table t074u {
+	key mandt: mandt; // abap.clnt(3): Client
+	key koart: koart; // abap.char(1): Account Type
+	key umskz: umskz; // abap.char(1): Special G/L Ind.
+	umsks: umsks; // abap.char(1): Sp. G/L Trans.type
+	merkp: merkp_074u; // abap.char(1): Noted Items
+	zumkz: dzumkz_074; // abap.char(20): Target Sp.g/L Ind.
+	klimp: klimp_074u; // abap.char(1): Rel.to Credit Limit
+	diams: diams_074u; // abap.char(1): Commitments Warning
+}

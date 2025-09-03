@@ -1,0 +1,60 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Belegarten'
+
+define table t003 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key blart: blart; // abap.char(2): Document Type
+	numkr: numkr; // abap.char(2): Number Range
+	koars: koars_003; // abap.char(5): Account Types
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	stbla: stbla_003; // abap.char(2): Reverse Documenttype
+	xnetb: xnetb; // abap.char(1): Net Document Type
+	xrvup: xrvup; // abap.char(1): Sap Billing Document
+	xsybl: xsybl; // abap.char(1): Batch Input Only
+	xvork: xvork; // abap.char(1): Init.acct Assignment
+	xkkpr: xkkpr; // abap.char(1): Only One Customer/Vendor Allowed?
+	xgsub: xgsub; // abap.char(1): Inter-Company
+	xmges: xmges; // abap.char(1): Enter Trading Part.
+	brgru: brgru; // abap.char(4): Authorization Group
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	recid: jv_recindd; // abap.char(2): Debit Rec.indicator
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	recic: jv_recindc; // abap.char(2): Rec.indicator Credit
+	xmtxt: xmtxt; // abap.char(1): Document Header Text
+	xmref: xmref; // abap.char(1): Reference Number
+	xngbk: xngbk; // abap.char(1): Doc.type For Subseq.adjustment
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kurst: kurst_003; // abap.char(4): Exchange Rate Type For Fc Documents
+	xnegp: xnegp_bla; // abap.char(1): Negative Postings Permitted
+	xkoaa: xkoaa; // abap.char(1): Assets
+	xkoad: xkoad; // abap.char(1): Customer
+	xkoak: xkoak; // abap.char(1): Supplier
+	xkoam: xkoam; // abap.char(1): Material
+	xkoas: xkoas; // abap.char(1): G/L Account
+	xnmrl: j_1anumrel; // abap.char(1): Official Document Numbering
+	xausg: j_1aselfis; // abap.char(1): Self-Issued Document
+	xdtch: j_1adatchk; // abap.char(1): Check Date
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	blkls: j_1adoccl_; // abap.char(1): Document Class
+	xrollup: g_docty_rollup; // abap.char(1): Rollup
+	xplan: g_docty_plan; // abap.char(1): Planning
+	xallocact: g_docty_alloc_act; // abap.char(1): Act.allocation
+	xallocplan: g_docty_alloc_plan; // abap.char(1): Plan.allocation
+	x_pp_process: x_pp_process; // abap.char(1): Erd Partial Payments
+	xkursx: x_fxr_ratex; // abap.char(1): Market Data Exchange Rate
+	xposacc: x_mca_posacc; // abap.char(1): Post To Position Accounts
+	xuacpa: xuacpa; // abap.char(1): Assignment To Acctg Principles Is Unique
+	xkoasecc: xkoasecc; // abap.char(1): Secondary Costs
+	xmref2: xmref2; // abap.char(1): Long Invoice Reference Required
+}

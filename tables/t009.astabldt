@@ -1,0 +1,22 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Geschftsjahresvarianten'
+
+define table t009 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key periv: periv; // abap.char(2): Fiscal Year Variant
+	xkale: xkale; // abap.char(1): Calendar Year
+	xjabh: xjabh; // abap.char(1): Year-Dependent
+	anzbp: anzbp; // abap.numc(3): No. Posting Periods
+	anzsp: anzsp; // abap.numc(2): No. Special Periods
+	xweek: xweek; // abap.char(1): Fiscal Weeks From Fy Start
+	fyofb: fyofb; // abap.numc(2): No. Fys Before Fiscal Year
+	fyofe: fyofe; // abap.numc(2): No. Fys After Fiscal Year
+	xweekquart: xweekquarter; // abap.char(1): Weekly Calendar
+	xperiodquart: xperiodquarter; // abap.char(1): Period-Based Quarters
+}

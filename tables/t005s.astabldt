@@ -1,0 +1,19 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Steuern: Provinzschlssel'
+
+define table t005s {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key land1: land1; // abap.char(3): Country/Region Key
+	key bland: regio; // abap.char(3): Region
+	fprcd: fprcd; // abap.char(3): Provincial Tax Code
+	herbl: herbl; // abap.char(2): State Of Manufacture
+}

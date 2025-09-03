@@ -1,0 +1,66 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Zahlwege fuer die maschinelle Regulierung'
+
+define table t042z {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key land1: land1; // abap.char(3): Country/Region Key
+	key zlsch: dzlsch; // abap.char(1): Payment Method
+	text1: text1_042z; // abap.char(30): Name (In Language Of Country/Region)
+	xbkkt: xbkkt; // abap.char(1): Bank Details
+	xstra: xstra; // abap.char(1): Street:p.o.box Or P.o.box Pst Code
+	xeinz: xeinz; // abap.char(1): Payment Method For Incoming Pmnts
+	xesrd: xesrd_042z; // abap.char(1): Isr/Qr Payment Procedure
+	xpgir: xpgir; // abap.char(1): Post Office Curr.acct Method?
+	xezer: xezer_042z; // abap.char(1): Collection Authorization
+	xschk: xschk_042z; // abap.char(1): Check Is Created
+	progn: progn_042z; // abap.char(40): Name Of The Print Program
+	xzwhr: xzwhr; // abap.char(1): Allowed For Personnel Payments
+	xeuro: xeuro; // abap.char(1): Eu Internal Transfer
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	formi: formi_combined; // abap.char(30): Payt Mdm Format
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: false
+	formz: formz_combined; // abap.char(6): Format Supplement
+	xwech: xwech; // abap.char(1): Bill Of Exchange Will Be Created
+	xwanf: xwanf; // abap.char(1): Bill Of Exchange Payment Request
+	xpskt: xpskt; // abap.char(1): Payment By Postal Check Account
+	xwecs: xwecs; // abap.char(1): Create Bill/Exch. Before Due Date
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	blart: blart_042z; // abap.char(2): Document Type For Payment
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	blarv: blarv_042z; // abap.char(2): Clearing Document Type
+	umskz: umskz_042z; // abap.char(1): Sp.g/L Ind.b/Ex. / B/Ex.pmnt Req.
+	xswec: xswec; // abap.char(1): Check/Bill Of Exchange
+	txtsl: txtsl_042z; // abap.char(2): Key In Code Line
+	zlstn: dzlstn; // abap.char(6): Name Of The Print Dataset
+	wlstn: wlstn; // abap.char(6): Print Dataset For B/Exch.
+	xzanf: xzanf; // abap.char(1): Payment Request
+	xaktz: xaktz; // abap.char(1): Bill Of Exchange Was Accepted
+	weart: weart; // abap.char(2): Bill Of Exch. Type
+	xnopo: xnopo; // abap.char(1): Generate Payment Order Only
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	xorb: fpmcl; // abap.char(1): Add. Payment Meth. Classificatns
+	xiban: xiban_042z; // abap.char(1): Swift Code And Iban
+	xno_accno: xno_accno_042z; // abap.char(1): 
+	xsepa: xsepa; // abap.char(1): Sepa Mandate Required
+	xalias: xalias; // abap.char(1): 
+	xsfsf: xsfsf; // abap.char(1): Supplier Financing
+	umskz_sf: umskz_sf; // abap.char(1): Special G/L Ind. For Supplier Financing
+}

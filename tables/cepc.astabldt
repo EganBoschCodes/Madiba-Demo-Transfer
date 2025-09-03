@@ -1,0 +1,102 @@
+@AbapCatalog.dataMaintenance: #RESTRICTED
+@AbapCatalog.deliveryClass: #A
+@AbapCatalog.enhancement.category: #EXTENSIBLE_CHARACTER_NUMERIC
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Stammdatentabelle von Profit Centern'
+
+define table cepc {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key prctr: prctr; // abap.char(10): Profit Center
+	key datbi: datbi; // abap.dats(8): Valid To
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.label: 'KOSTENRECHNUNGSKREIS'
+	@AbapCatalog.foreignKey.screenCheck: true
+	key kokrs: kokrs; // abap.char(4): Controlling Area
+	datab: datab; // abap.dats(8): Valid From
+	ersda: erfdt; // abap.dats(8): Entered On
+	usnam: erfnm; // abap.char(12): Created By
+	merkmal: fdmerkmal; // abap.char(30): Characteristic
+	abtei: abteil; // abap.char(12): Department
+	verak: verapc; // abap.char(20): Person Resp. For Pc
+	
+	@AbapCatalog.foreignKey.label: 'Adressschlusselzuordnung zu Benutzern'
+	@AbapCatalog.foreignKey.screenCheck: true
+	verak_user: verapc_user; // abap.char(12): User Responsible
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	waers: waers; // abap.cuky(5): Currency
+	nprctr: nprctr; // abap.char(10): Successor Profit Ctr
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	land1: land1; // abap.char(3): Country/Region Key
+	anred: anred; // abap.char(15): Title
+	name1: name1_gp; // abap.char(35): Name
+	name2: name2_gp; // abap.char(35): Name 2
+	name3: name3_gp; // abap.char(35): Name 3
+	name4: name4_gp; // abap.char(35): Name 4
+	ort01: ort01_gp; // abap.char(35): City
+	ort02: ort02_gp; // abap.char(35): District
+	stras: stras_gp; // abap.char(35): Street
+	pfach: pfach; // abap.char(10): Po Box
+	pstlz: pstlz; // abap.char(10): Postal Code
+	pstl2: pstl2; // abap.char(10): P.o. Box Postal Code
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	@AbapCatalog.textLanguage
+	spras: spras; // abap.lang(1): Language Key
+	telbx: telbx; // abap.char(15): Telebox Number
+	telf1: telf1; // abap.char(16): Telephone 1
+	telf2: telf2; // abap.char(16): Telephone 2
+	telfx: telfx; // abap.char(31): Fax Number
+	teltx: teltx; // abap.char(30): Teletex Number
+	telx1: telx1; // abap.char(30): Telex Number
+	datlt: datlt; // abap.char(14): Data Line
+	drnam: pcdnam; // abap.char(4): Printer Name
+	khinr: phinr; // abap.char(12): Hierarchy Area
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	bukrs: bukrs; // abap.char(4): Company Code
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	vname: jv_name; // abap.char(6): Joint Venture
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	recid: jv_recind; // abap.char(2): Recovery Indicator
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	etype: jv_etype; // abap.char(3): Equity Type
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	txjcd: txjcd; // abap.char(15): Tax Jurisdiction
+	
+	@AbapCatalog.foreignKey.keyType: #NON_KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	regio: regio; // abap.char(3): Region
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kvewe: kvewe; // abap.char(1): Usage
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kappl: kappl; // abap.char(2): Application
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	kalsm: kalsm_d; // abap.char(6): Procedure
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	logsystem: logsystem; // abap.char(10): Logical System
+	lock_ind: lock_ind; // abap.char(1): Lock Indicator
+	
+	@AbapCatalog.foreignKey.label: 'Template fr Formelplanung'
+	@AbapCatalog.foreignKey.screenCheck: true
+	pca_template: pca_template; // abap.char(10): Prctr Formula Planning Template
+	
+	@AbapCatalog.foreignKey.screenCheck: true
+	segment: fb_segment; // abap.char(10): Segment
+	eew_cepc_ps_dummy: dummy; // abap.char(1): 
+}

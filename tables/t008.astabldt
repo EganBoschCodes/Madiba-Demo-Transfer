@@ -1,0 +1,16 @@
+@AbapCatalog.dataMaintenance: #ALLOWED
+@AbapCatalog.deliveryClass: #C
+@AbapCatalog.enhancement.category: #NOT_CLASSIFIED
+@AbapCatalog.tableCategory: #TRANSPARENT
+@EndUserText.label: 'Sperrgrnde fr maschinellen Zahlungsverkehr'
+
+define table t008 {
+	
+	@AbapCatalog.foreignKey.keyType: #KEY
+	@AbapCatalog.foreignKey.screenCheck: true
+	key mandt: mandt; // abap.clnt(3): Client
+	key zahls: dzahls; // abap.char(1): Payment Block
+	char1: xzvae; // abap.char(1): Changeable In Payment Proposal
+	xozsp: xozsp; // abap.char(1): Manual Payments Block
+	xnchg: xnchg; // abap.char(1): Not Changeable
+}
